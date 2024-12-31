@@ -1,0 +1,24 @@
+<scpd xmlns="urn:dslforum-org:service-1-0">
+    <specVersion>
+        <major>0</major>
+        <minor>1</minor>
+    </specVersion>
+    <actionList>
+        <action>
+            <name>Ping</name>
+            <argumentList>
+                <argument>
+                    <name>Out</name>
+                    <direction>out</direction>
+                    <relatedStateVariable>PingData</relatedStateVariable>
+                </argument>
+            </argumentList>
+        </action>
+    </actionList>
+    <serviceStateTable>
+        <stateVariable>
+        <name>PingData</name>
+        <dataType>string</dataType>
+        </stateVariable>
+    </serviceStateTable>
+</scpd>
