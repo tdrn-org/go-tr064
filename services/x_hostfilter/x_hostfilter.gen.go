@@ -24,8 +24,8 @@ type MarkTicketResponse struct {
 func (client *ServiceClient) MarkTicket(out *MarkTicketResponse) error {
 	in := &MarkTicketRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[MarkTicketRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[MarkTicketRequest]{
 			In: in,
 		},
@@ -52,8 +52,8 @@ type GetTicketIDStatusResponse struct {
 func (client *ServiceClient) GetTicketIDStatus(in *GetTicketIDStatusRequest, out *GetTicketIDStatusResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[GetTicketIDStatusRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetTicketIDStatusRequest]{
 			In: in,
 		},
@@ -78,8 +78,8 @@ type DiscardAllTicketsResponse struct {
 func (client *ServiceClient) DiscardAllTickets() error {
 	in := &DiscardAllTicketsRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[DiscardAllTicketsRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[DiscardAllTicketsRequest]{
 			In: in,
 		},
@@ -107,8 +107,8 @@ type DisallowWANAccessByIPResponse struct {
 func (client *ServiceClient) DisallowWANAccessByIP(in *DisallowWANAccessByIPRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[DisallowWANAccessByIPRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[DisallowWANAccessByIPRequest]{
 			In: in,
 		},
@@ -137,8 +137,8 @@ type GetWANAccessByIPResponse struct {
 func (client *ServiceClient) GetWANAccessByIP(in *GetWANAccessByIPRequest, out *GetWANAccessByIPResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[GetWANAccessByIPRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetWANAccessByIPRequest]{
 			In: in,
 		},

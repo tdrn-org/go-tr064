@@ -24,8 +24,8 @@ type GetNumberOfFilelinkEntriesResponse struct {
 func (client *ServiceClient) GetNumberOfFilelinkEntries(out *GetNumberOfFilelinkEntriesResponse) error {
 	in := &GetNumberOfFilelinkEntriesRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetNumberOfFilelinkEntriesRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetNumberOfFilelinkEntriesRequest]{
 			In: in,
 		},
@@ -61,8 +61,8 @@ type GetGenericFilelinkEntryResponse struct {
 func (client *ServiceClient) GetGenericFilelinkEntry(in *GetGenericFilelinkEntryRequest, out *GetGenericFilelinkEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[GetGenericFilelinkEntryRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetGenericFilelinkEntryRequest]{
 			In: in,
 		},
@@ -97,8 +97,8 @@ type GetSpecificFilelinkEntryResponse struct {
 func (client *ServiceClient) GetSpecificFilelinkEntry(in *GetSpecificFilelinkEntryRequest, out *GetSpecificFilelinkEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[GetSpecificFilelinkEntryRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetSpecificFilelinkEntryRequest]{
 			In: in,
 		},
@@ -127,8 +127,8 @@ type NewFilelinkEntryResponse struct {
 func (client *ServiceClient) NewFilelinkEntry(in *NewFilelinkEntryRequest, out *NewFilelinkEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[NewFilelinkEntryRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[NewFilelinkEntryRequest]{
 			In: in,
 		},
@@ -156,8 +156,8 @@ type SetFilelinkEntryResponse struct {
 func (client *ServiceClient) SetFilelinkEntry(in *SetFilelinkEntryRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetFilelinkEntryRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetFilelinkEntryRequest]{
 			In: in,
 		},
@@ -184,8 +184,8 @@ type DeleteFilelinkEntryResponse struct {
 func (client *ServiceClient) DeleteFilelinkEntry(in *DeleteFilelinkEntryRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[DeleteFilelinkEntryRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[DeleteFilelinkEntryRequest]{
 			In: in,
 		},
@@ -212,8 +212,8 @@ type GetFilelinkListPathResponse struct {
 func (client *ServiceClient) GetFilelinkListPath(out *GetFilelinkListPathResponse) error {
 	in := &GetFilelinkListPathRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetFilelinkListPathRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetFilelinkListPathRequest]{
 			In: in,
 		},

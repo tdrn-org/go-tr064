@@ -39,8 +39,8 @@ type GetInfoResponse struct {
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetInfoRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetInfoRequest]{
 			In: in,
 		},
@@ -67,8 +67,8 @@ type GetConnectionTypeInfoResponse struct {
 func (client *ServiceClient) GetConnectionTypeInfo(out *GetConnectionTypeInfoResponse) error {
 	in := &GetConnectionTypeInfoRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetConnectionTypeInfoRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetConnectionTypeInfoRequest]{
 			In: in,
 		},
@@ -94,8 +94,8 @@ type SetConnectionTypeResponse struct {
 func (client *ServiceClient) SetConnectionType(in *SetConnectionTypeRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetConnectionTypeRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetConnectionTypeRequest]{
 			In: in,
 		},
@@ -124,8 +124,8 @@ type GetStatusInfoResponse struct {
 func (client *ServiceClient) GetStatusInfo(out *GetStatusInfoResponse) error {
 	in := &GetStatusInfoRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetStatusInfoRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetStatusInfoRequest]{
 			In: in,
 		},
@@ -152,8 +152,8 @@ type GetNATRSIPStatusResponse struct {
 func (client *ServiceClient) GetNATRSIPStatus(out *GetNATRSIPStatusResponse) error {
 	in := &GetNATRSIPStatusRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetNATRSIPStatusRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetNATRSIPStatusRequest]{
 			In: in,
 		},
@@ -179,8 +179,8 @@ type SetConnectionTriggerResponse struct {
 func (client *ServiceClient) SetConnectionTrigger(in *SetConnectionTriggerRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetConnectionTriggerRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetConnectionTriggerRequest]{
 			In: in,
 		},
@@ -206,8 +206,8 @@ type ForceTerminationResponse struct {
 func (client *ServiceClient) ForceTermination() error {
 	in := &ForceTerminationRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[ForceTerminationRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[ForceTerminationRequest]{
 			In: in,
 		},
@@ -233,8 +233,8 @@ type RequestConnectionResponse struct {
 func (client *ServiceClient) RequestConnection() error {
 	in := &RequestConnectionRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[RequestConnectionRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[RequestConnectionRequest]{
 			In: in,
 		},
@@ -269,8 +269,8 @@ type GetGenericPortMappingEntryResponse struct {
 func (client *ServiceClient) GetGenericPortMappingEntry(in *GetGenericPortMappingEntryRequest, out *GetGenericPortMappingEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[GetGenericPortMappingEntryRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetGenericPortMappingEntryRequest]{
 			In: in,
 		},
@@ -303,8 +303,8 @@ type GetSpecificPortMappingEntryResponse struct {
 func (client *ServiceClient) GetSpecificPortMappingEntry(in *GetSpecificPortMappingEntryRequest, out *GetSpecificPortMappingEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[GetSpecificPortMappingEntryRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetSpecificPortMappingEntryRequest]{
 			In: in,
 		},
@@ -337,8 +337,8 @@ type AddPortMappingResponse struct {
 func (client *ServiceClient) AddPortMapping(in *AddPortMappingRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[AddPortMappingRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[AddPortMappingRequest]{
 			In: in,
 		},
@@ -367,8 +367,8 @@ type DeletePortMappingResponse struct {
 func (client *ServiceClient) DeletePortMapping(in *DeletePortMappingRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[DeletePortMappingRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[DeletePortMappingRequest]{
 			In: in,
 		},
@@ -395,8 +395,8 @@ type GetExternalIPAddressResponse struct {
 func (client *ServiceClient) GetExternalIPAddress(out *GetExternalIPAddressResponse) error {
 	in := &GetExternalIPAddressRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetExternalIPAddressRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetExternalIPAddressRequest]{
 			In: in,
 		},
@@ -422,8 +422,8 @@ type X_GetDNSServersResponse struct {
 func (client *ServiceClient) X_GetDNSServers(out *X_GetDNSServersResponse) error {
 	in := &X_GetDNSServersRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[X_GetDNSServersRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_GetDNSServersRequest]{
 			In: in,
 		},
@@ -449,8 +449,8 @@ type GetPortMappingNumberOfEntriesResponse struct {
 func (client *ServiceClient) GetPortMappingNumberOfEntries(out *GetPortMappingNumberOfEntriesResponse) error {
 	in := &GetPortMappingNumberOfEntriesRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetPortMappingNumberOfEntriesRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetPortMappingNumberOfEntriesRequest]{
 			In: in,
 		},
@@ -476,8 +476,8 @@ type SetRouteProtocolRxResponse struct {
 func (client *ServiceClient) SetRouteProtocolRx(in *SetRouteProtocolRxRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetRouteProtocolRxRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetRouteProtocolRxRequest]{
 			In: in,
 		},
@@ -504,8 +504,8 @@ type SetIdleDisconnectTimeResponse struct {
 func (client *ServiceClient) SetIdleDisconnectTime(in *SetIdleDisconnectTimeRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetIdleDisconnectTimeRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetIdleDisconnectTimeRequest]{
 			In: in,
 		},

@@ -28,8 +28,8 @@ type GetInfoResponse struct {
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetInfoRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetInfoRequest]{
 			In: in,
 		},
@@ -56,8 +56,8 @@ type X_AVM_DE_GetCurrentUserResponse struct {
 func (client *ServiceClient) X_AVM_DE_GetCurrentUser(out *X_AVM_DE_GetCurrentUserResponse) error {
 	in := &X_AVM_DE_GetCurrentUserRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetCurrentUserRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetCurrentUserRequest]{
 			In: in,
 		},
@@ -84,8 +84,8 @@ type X_AVM_DE_GetAnonymousLoginResponse struct {
 func (client *ServiceClient) X_AVM_DE_GetAnonymousLogin(out *X_AVM_DE_GetAnonymousLoginResponse) error {
 	in := &X_AVM_DE_GetAnonymousLoginRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetAnonymousLoginRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetAnonymousLoginRequest]{
 			In: in,
 		},
@@ -111,8 +111,8 @@ type SetConfigPasswordResponse struct {
 func (client *ServiceClient) SetConfigPassword(in *SetConfigPasswordRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetConfigPasswordRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetConfigPasswordRequest]{
 			In: in,
 		},
@@ -139,8 +139,8 @@ type X_AVM_DE_GetUserListResponse struct {
 func (client *ServiceClient) X_AVM_DE_GetUserList(out *X_AVM_DE_GetUserListResponse) error {
 	in := &X_AVM_DE_GetUserListRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetUserListRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetUserListRequest]{
 			In: in,
 		},

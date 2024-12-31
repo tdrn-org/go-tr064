@@ -31,8 +31,8 @@ type GetCommonLinkPropertiesResponse struct {
 func (client *ServiceClient) GetCommonLinkProperties(out *GetCommonLinkPropertiesResponse) error {
 	in := &GetCommonLinkPropertiesRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetCommonLinkPropertiesRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetCommonLinkPropertiesRequest]{
 			In: in,
 		},
@@ -58,8 +58,8 @@ type GetTotalBytesSentResponse struct {
 func (client *ServiceClient) GetTotalBytesSent(out *GetTotalBytesSentResponse) error {
 	in := &GetTotalBytesSentRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetTotalBytesSentRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetTotalBytesSentRequest]{
 			In: in,
 		},
@@ -85,8 +85,8 @@ type GetTotalBytesReceivedResponse struct {
 func (client *ServiceClient) GetTotalBytesReceived(out *GetTotalBytesReceivedResponse) error {
 	in := &GetTotalBytesReceivedRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetTotalBytesReceivedRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetTotalBytesReceivedRequest]{
 			In: in,
 		},
@@ -112,8 +112,8 @@ type GetTotalPacketsSentResponse struct {
 func (client *ServiceClient) GetTotalPacketsSent(out *GetTotalPacketsSentResponse) error {
 	in := &GetTotalPacketsSentRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetTotalPacketsSentRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetTotalPacketsSentRequest]{
 			In: in,
 		},
@@ -139,8 +139,8 @@ type GetTotalPacketsReceivedResponse struct {
 func (client *ServiceClient) GetTotalPacketsReceived(out *GetTotalPacketsReceivedResponse) error {
 	in := &GetTotalPacketsReceivedRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetTotalPacketsReceivedRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetTotalPacketsReceivedRequest]{
 			In: in,
 		},
@@ -166,8 +166,8 @@ type X_AVM_DE_SetWANAccessTypeResponse struct {
 func (client *ServiceClient) X_AVM_DE_SetWANAccessType(in *X_AVM_DE_SetWANAccessTypeRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_SetWANAccessTypeRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_SetWANAccessTypeRequest]{
 			In: in,
 		},
@@ -194,8 +194,8 @@ type X_AVM_DE_GetActiveProviderResponse struct {
 func (client *ServiceClient) X_AVM_DE_GetActiveProvider(out *X_AVM_DE_GetActiveProviderResponse) error {
 	in := &X_AVM_DE_GetActiveProviderRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetActiveProviderRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetActiveProviderRequest]{
 			In: in,
 		},
@@ -233,8 +233,8 @@ type X_AVM_DE_GetOnlineMonitorResponse struct {
 func (client *ServiceClient) X_AVM_DE_GetOnlineMonitor(in *X_AVM_DE_GetOnlineMonitorRequest, out *X_AVM_DE_GetOnlineMonitorResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetOnlineMonitorRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetOnlineMonitorRequest]{
 			In: in,
 		},

@@ -28,8 +28,8 @@ type GetInfoResponse struct {
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetInfoRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetInfoRequest]{
 			In: in,
 		},
@@ -85,8 +85,8 @@ type GetGenericDeviceInfosResponse struct {
 func (client *ServiceClient) GetGenericDeviceInfos(in *GetGenericDeviceInfosRequest, out *GetGenericDeviceInfosResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[GetGenericDeviceInfosRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetGenericDeviceInfosRequest]{
 			In: in,
 		},
@@ -141,8 +141,8 @@ type GetSpecificDeviceInfosResponse struct {
 func (client *ServiceClient) GetSpecificDeviceInfos(in *GetSpecificDeviceInfosRequest, out *GetSpecificDeviceInfosResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[GetSpecificDeviceInfosRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetSpecificDeviceInfosRequest]{
 			In: in,
 		},
@@ -169,8 +169,8 @@ type SetDeviceNameResponse struct {
 func (client *ServiceClient) SetDeviceName(in *SetDeviceNameRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetDeviceNameRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetDeviceNameRequest]{
 			In: in,
 		},
@@ -198,8 +198,8 @@ type SetSwitchResponse struct {
 func (client *ServiceClient) SetSwitch(in *SetSwitchRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetSwitchRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetSwitchRequest]{
 			In: in,
 		},

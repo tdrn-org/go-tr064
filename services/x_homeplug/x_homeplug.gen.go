@@ -24,8 +24,8 @@ type GetNumberOfDeviceEntriesResponse struct {
 func (client *ServiceClient) GetNumberOfDeviceEntries(out *GetNumberOfDeviceEntriesResponse) error {
 	in := &GetNumberOfDeviceEntriesRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetNumberOfDeviceEntriesRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetNumberOfDeviceEntriesRequest]{
 			In: in,
 		},
@@ -57,8 +57,8 @@ type GetGenericDeviceEntryResponse struct {
 func (client *ServiceClient) GetGenericDeviceEntry(in *GetGenericDeviceEntryRequest, out *GetGenericDeviceEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[GetGenericDeviceEntryRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetGenericDeviceEntryRequest]{
 			In: in,
 		},
@@ -89,8 +89,8 @@ type GetSpecificDeviceEntryResponse struct {
 func (client *ServiceClient) GetSpecificDeviceEntry(in *GetSpecificDeviceEntryRequest, out *GetSpecificDeviceEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[GetSpecificDeviceEntryRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetSpecificDeviceEntryRequest]{
 			In: in,
 		},
@@ -116,8 +116,8 @@ type DeviceDoUpdateResponse struct {
 func (client *ServiceClient) DeviceDoUpdate(in *DeviceDoUpdateRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[DeviceDoUpdateRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[DeviceDoUpdateRequest]{
 			In: in,
 		},

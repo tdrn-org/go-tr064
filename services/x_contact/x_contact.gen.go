@@ -30,8 +30,8 @@ type GetInfoResponse struct {
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetInfoRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetInfoRequest]{
 			In: in,
 		},
@@ -57,8 +57,8 @@ type SetEnableResponse struct {
 func (client *ServiceClient) SetEnable(in *SetEnableRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetEnableRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetEnableRequest]{
 			In: in,
 		},
@@ -90,8 +90,8 @@ type SetConfigResponse struct {
 func (client *ServiceClient) SetConfig(in *SetConfigRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetConfigRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetConfigRequest]{
 			In: in,
 		},
@@ -125,8 +125,8 @@ type GetInfoByIndexResponse struct {
 func (client *ServiceClient) GetInfoByIndex(in *GetInfoByIndexRequest, out *GetInfoByIndexResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[GetInfoByIndexRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetInfoByIndexRequest]{
 			In: in,
 		},
@@ -153,8 +153,8 @@ type SetEnableByIndexResponse struct {
 func (client *ServiceClient) SetEnableByIndex(in *SetEnableByIndexRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetEnableByIndexRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetEnableByIndexRequest]{
 			In: in,
 		},
@@ -187,8 +187,8 @@ type SetConfigByIndexResponse struct {
 func (client *ServiceClient) SetConfigByIndex(in *SetConfigByIndexRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetConfigByIndexRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetConfigByIndexRequest]{
 			In: in,
 		},
@@ -215,8 +215,8 @@ type DeleteByIndexResponse struct {
 func (client *ServiceClient) DeleteByIndex(in *DeleteByIndexRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[DeleteByIndexRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[DeleteByIndexRequest]{
 			In: in,
 		},
@@ -243,8 +243,8 @@ type GetNumberOfEntriesResponse struct {
 func (client *ServiceClient) GetNumberOfEntries(out *GetNumberOfEntriesResponse) error {
 	in := &GetNumberOfEntriesRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetNumberOfEntriesRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetNumberOfEntriesRequest]{
 			In: in,
 		},
@@ -270,8 +270,8 @@ type GetCallListResponse struct {
 func (client *ServiceClient) GetCallList(out *GetCallListResponse) error {
 	in := &GetCallListRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetCallListRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetCallListRequest]{
 			In: in,
 		},
@@ -297,8 +297,8 @@ type GetPhonebookListResponse struct {
 func (client *ServiceClient) GetPhonebookList(out *GetPhonebookListResponse) error {
 	in := &GetPhonebookListRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetPhonebookListRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetPhonebookListRequest]{
 			In: in,
 		},
@@ -327,8 +327,8 @@ type GetPhonebookResponse struct {
 func (client *ServiceClient) GetPhonebook(in *GetPhonebookRequest, out *GetPhonebookResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[GetPhonebookRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetPhonebookRequest]{
 			In: in,
 		},
@@ -355,8 +355,8 @@ type AddPhonebookResponse struct {
 func (client *ServiceClient) AddPhonebook(in *AddPhonebookRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[AddPhonebookRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[AddPhonebookRequest]{
 			In: in,
 		},
@@ -384,8 +384,8 @@ type DeletePhonebookResponse struct {
 func (client *ServiceClient) DeletePhonebook(in *DeletePhonebookRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[DeletePhonebookRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[DeletePhonebookRequest]{
 			In: in,
 		},
@@ -414,8 +414,8 @@ type GetPhonebookEntryResponse struct {
 func (client *ServiceClient) GetPhonebookEntry(in *GetPhonebookEntryRequest, out *GetPhonebookEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[GetPhonebookEntryRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetPhonebookEntryRequest]{
 			In: in,
 		},
@@ -443,8 +443,8 @@ type GetPhonebookEntryUIDResponse struct {
 func (client *ServiceClient) GetPhonebookEntryUID(in *GetPhonebookEntryUIDRequest, out *GetPhonebookEntryUIDResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[GetPhonebookEntryUIDRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetPhonebookEntryUIDRequest]{
 			In: in,
 		},
@@ -472,8 +472,8 @@ type SetPhonebookEntryResponse struct {
 func (client *ServiceClient) SetPhonebookEntry(in *SetPhonebookEntryRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetPhonebookEntryRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetPhonebookEntryRequest]{
 			In: in,
 		},
@@ -502,8 +502,8 @@ type SetPhonebookEntryUIDResponse struct {
 func (client *ServiceClient) SetPhonebookEntryUID(in *SetPhonebookEntryUIDRequest, out *SetPhonebookEntryUIDResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetPhonebookEntryUIDRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetPhonebookEntryUIDRequest]{
 			In: in,
 		},
@@ -530,8 +530,8 @@ type DeletePhonebookEntryResponse struct {
 func (client *ServiceClient) DeletePhonebookEntry(in *DeletePhonebookEntryRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[DeletePhonebookEntryRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[DeletePhonebookEntryRequest]{
 			In: in,
 		},
@@ -559,8 +559,8 @@ type DeletePhonebookEntryUIDResponse struct {
 func (client *ServiceClient) DeletePhonebookEntryUID(in *DeletePhonebookEntryUIDRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[DeletePhonebookEntryUIDRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[DeletePhonebookEntryUIDRequest]{
 			In: in,
 		},
@@ -588,8 +588,8 @@ type GetCallBarringEntryResponse struct {
 func (client *ServiceClient) GetCallBarringEntry(in *GetCallBarringEntryRequest, out *GetCallBarringEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[GetCallBarringEntryRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetCallBarringEntryRequest]{
 			In: in,
 		},
@@ -616,8 +616,8 @@ type GetCallBarringEntryByNumResponse struct {
 func (client *ServiceClient) GetCallBarringEntryByNum(in *GetCallBarringEntryByNumRequest, out *GetCallBarringEntryByNumResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[GetCallBarringEntryByNumRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetCallBarringEntryByNumRequest]{
 			In: in,
 		},
@@ -643,8 +643,8 @@ type GetCallBarringListResponse struct {
 func (client *ServiceClient) GetCallBarringList(out *GetCallBarringListResponse) error {
 	in := &GetCallBarringListRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetCallBarringListRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetCallBarringListRequest]{
 			In: in,
 		},
@@ -671,8 +671,8 @@ type SetCallBarringEntryResponse struct {
 func (client *ServiceClient) SetCallBarringEntry(in *SetCallBarringEntryRequest, out *SetCallBarringEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetCallBarringEntryRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetCallBarringEntryRequest]{
 			In: in,
 		},
@@ -698,8 +698,8 @@ type DeleteCallBarringEntryUIDResponse struct {
 func (client *ServiceClient) DeleteCallBarringEntryUID(in *DeleteCallBarringEntryUIDRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[DeleteCallBarringEntryUIDRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[DeleteCallBarringEntryUIDRequest]{
 			In: in,
 		},
@@ -726,8 +726,8 @@ type GetDECTHandsetListResponse struct {
 func (client *ServiceClient) GetDECTHandsetList(out *GetDECTHandsetListResponse) error {
 	in := &GetDECTHandsetListRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetDECTHandsetListRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetDECTHandsetListRequest]{
 			In: in,
 		},
@@ -755,8 +755,8 @@ type GetDECTHandsetInfoResponse struct {
 func (client *ServiceClient) GetDECTHandsetInfo(in *GetDECTHandsetInfoRequest, out *GetDECTHandsetInfoResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[GetDECTHandsetInfoRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetDECTHandsetInfoRequest]{
 			In: in,
 		},
@@ -783,8 +783,8 @@ type SetDECTHandsetPhonebookResponse struct {
 func (client *ServiceClient) SetDECTHandsetPhonebook(in *SetDECTHandsetPhonebookRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetDECTHandsetPhonebookRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetDECTHandsetPhonebookRequest]{
 			In: in,
 		},
@@ -811,8 +811,8 @@ type GetNumberOfDeflectionsResponse struct {
 func (client *ServiceClient) GetNumberOfDeflections(out *GetNumberOfDeflectionsResponse) error {
 	in := &GetNumberOfDeflectionsRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetNumberOfDeflectionsRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetNumberOfDeflectionsRequest]{
 			In: in,
 		},
@@ -845,8 +845,8 @@ type GetDeflectionResponse struct {
 func (client *ServiceClient) GetDeflection(in *GetDeflectionRequest, out *GetDeflectionResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[GetDeflectionRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetDeflectionRequest]{
 			In: in,
 		},
@@ -872,8 +872,8 @@ type GetDeflectionsResponse struct {
 func (client *ServiceClient) GetDeflections(out *GetDeflectionsResponse) error {
 	in := &GetDeflectionsRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetDeflectionsRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetDeflectionsRequest]{
 			In: in,
 		},
@@ -900,8 +900,8 @@ type SetDeflectionEnableResponse struct {
 func (client *ServiceClient) SetDeflectionEnable(in *SetDeflectionEnableRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetDeflectionEnableRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetDeflectionEnableRequest]{
 			In: in,
 		},

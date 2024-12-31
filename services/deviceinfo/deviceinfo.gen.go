@@ -35,8 +35,8 @@ type GetInfoResponse struct {
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetInfoRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetInfoRequest]{
 			In: in,
 		},
@@ -62,8 +62,8 @@ type SetProvisioningCodeResponse struct {
 func (client *ServiceClient) SetProvisioningCode(in *SetProvisioningCodeRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetProvisioningCodeRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetProvisioningCodeRequest]{
 			In: in,
 		},
@@ -90,8 +90,8 @@ type GetDeviceLogResponse struct {
 func (client *ServiceClient) GetDeviceLog(out *GetDeviceLogResponse) error {
 	in := &GetDeviceLogRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetDeviceLogRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetDeviceLogRequest]{
 			In: in,
 		},
@@ -117,8 +117,8 @@ type GetSecurityPortResponse struct {
 func (client *ServiceClient) GetSecurityPort(out *GetSecurityPortResponse) error {
 	in := &GetSecurityPortRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetSecurityPortRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetSecurityPortRequest]{
 			In: in,
 		},
@@ -144,8 +144,8 @@ type X_AVM_DE_GetDeviceLogPathResponse struct {
 func (client *ServiceClient) X_AVM_DE_GetDeviceLogPath(out *X_AVM_DE_GetDeviceLogPathResponse) error {
 	in := &X_AVM_DE_GetDeviceLogPathRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetDeviceLogPathRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetDeviceLogPathRequest]{
 			In: in,
 		},

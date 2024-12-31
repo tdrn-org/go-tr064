@@ -146,8 +146,8 @@ func (gc *generateContext) generateServiceAction(buffer *bytes.Buffer, action *a
 		gc.emit(buffer, "in := &%s{XMLNameSpace: client.Service.Type() }\n", requestTypeName)
 	}
 	gc.emit(buffer, "soapRequest := &tr064.SOAPRequest[%s]{\n", requestTypeName)
-	gc.emit(buffer, "XMLNameSpace: \"http://schemas.xmlsoap.org/soap/envelope/\",\n")
-	gc.emit(buffer, "XMLEncodingStyle: \"http://schemas.xmlsoap.org/soap/encoding/\",\n")
+	gc.emit(buffer, "XMLNameSpace: tr064.XMLNameSpace,\n")
+	gc.emit(buffer, "XMLEncodingStyle: tr064.XMLEncodingStyle,\n")
 	gc.emit(buffer, "Body: &tr064.SOAPRequestBody[%s]{\n", requestTypeName)
 	gc.emit(buffer, "In: in,\n")
 	gc.emit(buffer, "},\n")

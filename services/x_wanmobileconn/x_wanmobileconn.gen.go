@@ -27,8 +27,8 @@ type GetInfoResponse struct {
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetInfoRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetInfoRequest]{
 			In: in,
 		},
@@ -71,8 +71,8 @@ type GetInfoExResponse struct {
 func (client *ServiceClient) GetInfoEx(out *GetInfoExResponse) error {
 	in := &GetInfoExRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetInfoExRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetInfoExRequest]{
 			In: in,
 		},
@@ -98,8 +98,8 @@ type SetPINResponse struct {
 func (client *ServiceClient) SetPIN(in *SetPINRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetPINRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetPINRequest]{
 			In: in,
 		},
@@ -127,8 +127,8 @@ type SetPUKResponse struct {
 func (client *ServiceClient) SetPUK(in *SetPUKRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetPUKRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetPUKRequest]{
 			In: in,
 		},
@@ -155,8 +155,8 @@ type SetAccessTechnologyResponse struct {
 func (client *ServiceClient) SetAccessTechnology(in *SetAccessTechnologyRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetAccessTechnologyRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetAccessTechnologyRequest]{
 			In: in,
 		},
@@ -185,8 +185,8 @@ type GetAccessTechnologyResponse struct {
 func (client *ServiceClient) GetAccessTechnology(out *GetAccessTechnologyResponse) error {
 	in := &GetAccessTechnologyRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetAccessTechnologyRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetAccessTechnologyRequest]{
 			In: in,
 		},
@@ -212,8 +212,8 @@ type SetPreferredAccessTechnologyResponse struct {
 func (client *ServiceClient) SetPreferredAccessTechnology(in *SetPreferredAccessTechnologyRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetPreferredAccessTechnologyRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetPreferredAccessTechnologyRequest]{
 			In: in,
 		},
@@ -241,8 +241,8 @@ type GetPreferredAccessTechnologyResponse struct {
 func (client *ServiceClient) GetPreferredAccessTechnology(out *GetPreferredAccessTechnologyResponse) error {
 	in := &GetPreferredAccessTechnologyRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetPreferredAccessTechnologyRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetPreferredAccessTechnologyRequest]{
 			In: in,
 		},
@@ -270,8 +270,8 @@ type SetEnabledBandCapabilitiesResponse struct {
 func (client *ServiceClient) SetEnabledBandCapabilities(in *SetEnabledBandCapabilitiesRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetEnabledBandCapabilitiesRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetEnabledBandCapabilitiesRequest]{
 			In: in,
 		},
@@ -300,8 +300,8 @@ type GetEnabledBandCapabilitiesResponse struct {
 func (client *ServiceClient) GetEnabledBandCapabilities(out *GetEnabledBandCapabilitiesResponse) error {
 	in := &GetEnabledBandCapabilitiesRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetEnabledBandCapabilitiesRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetEnabledBandCapabilitiesRequest]{
 			In: in,
 		},
@@ -329,8 +329,8 @@ type GetBandCapabilitiesResponse struct {
 func (client *ServiceClient) GetBandCapabilities(out *GetBandCapabilitiesResponse) error {
 	in := &GetBandCapabilitiesRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetBandCapabilitiesRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetBandCapabilitiesRequest]{
 			In: in,
 		},

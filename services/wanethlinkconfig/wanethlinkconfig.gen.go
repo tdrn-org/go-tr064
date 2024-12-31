@@ -24,8 +24,8 @@ type GetEthernetLinkStatusResponse struct {
 func (client *ServiceClient) GetEthernetLinkStatus(out *GetEthernetLinkStatusResponse) error {
 	in := &GetEthernetLinkStatusRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetEthernetLinkStatusRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetEthernetLinkStatusRequest]{
 			In: in,
 		},

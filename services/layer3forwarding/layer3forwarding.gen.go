@@ -24,8 +24,8 @@ type SetDefaultConnectionServiceResponse struct {
 func (client *ServiceClient) SetDefaultConnectionService(in *SetDefaultConnectionServiceRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetDefaultConnectionServiceRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetDefaultConnectionServiceRequest]{
 			In: in,
 		},
@@ -52,8 +52,8 @@ type GetDefaultConnectionServiceResponse struct {
 func (client *ServiceClient) GetDefaultConnectionService(out *GetDefaultConnectionServiceResponse) error {
 	in := &GetDefaultConnectionServiceRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetDefaultConnectionServiceRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetDefaultConnectionServiceRequest]{
 			In: in,
 		},
@@ -79,8 +79,8 @@ type GetForwardNumberOfEntriesResponse struct {
 func (client *ServiceClient) GetForwardNumberOfEntries(out *GetForwardNumberOfEntriesResponse) error {
 	in := &GetForwardNumberOfEntriesRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetForwardNumberOfEntriesRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetForwardNumberOfEntriesRequest]{
 			In: in,
 		},
@@ -113,8 +113,8 @@ type AddForwardingEntryResponse struct {
 func (client *ServiceClient) AddForwardingEntry(in *AddForwardingEntryRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[AddForwardingEntryRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[AddForwardingEntryRequest]{
 			In: in,
 		},
@@ -144,8 +144,8 @@ type DeleteForwardingEntryResponse struct {
 func (client *ServiceClient) DeleteForwardingEntry(in *DeleteForwardingEntryRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[DeleteForwardingEntryRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[DeleteForwardingEntryRequest]{
 			In: in,
 		},
@@ -181,8 +181,8 @@ type GetSpecificForwardingEntryResponse struct {
 func (client *ServiceClient) GetSpecificForwardingEntry(in *GetSpecificForwardingEntryRequest, out *GetSpecificForwardingEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[GetSpecificForwardingEntryRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetSpecificForwardingEntryRequest]{
 			In: in,
 		},
@@ -218,8 +218,8 @@ type GetGenericForwardingEntryResponse struct {
 func (client *ServiceClient) GetGenericForwardingEntry(in *GetGenericForwardingEntryRequest, out *GetGenericForwardingEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[GetGenericForwardingEntryRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetGenericForwardingEntryRequest]{
 			In: in,
 		},
@@ -249,8 +249,8 @@ type SetForwardingEntryEnableResponse struct {
 func (client *ServiceClient) SetForwardingEntryEnable(in *SetForwardingEntryEnableRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetForwardingEntryEnableRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetForwardingEntryEnableRequest]{
 			In: in,
 		},

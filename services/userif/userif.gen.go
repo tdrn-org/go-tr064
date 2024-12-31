@@ -33,8 +33,8 @@ type GetInfoResponse struct {
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetInfoRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetInfoRequest]{
 			In: in,
 		},
@@ -59,8 +59,8 @@ type X_AVM_DE_CheckUpdateResponse struct {
 func (client *ServiceClient) X_AVM_DE_CheckUpdate() error {
 	in := &X_AVM_DE_CheckUpdateRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_CheckUpdateRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_CheckUpdateRequest]{
 			In: in,
 		},
@@ -88,8 +88,8 @@ type X_AVM_DE_DoUpdateResponse struct {
 func (client *ServiceClient) X_AVM_DE_DoUpdate(out *X_AVM_DE_DoUpdateResponse) error {
 	in := &X_AVM_DE_DoUpdateRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_DoUpdateRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_DoUpdateRequest]{
 			In: in,
 		},
@@ -116,8 +116,8 @@ type X_AVM_DE_DoPrepareCGIResponse struct {
 func (client *ServiceClient) X_AVM_DE_DoPrepareCGI(out *X_AVM_DE_DoPrepareCGIResponse) error {
 	in := &X_AVM_DE_DoPrepareCGIRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_DoPrepareCGIRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_DoPrepareCGIRequest]{
 			In: in,
 		},
@@ -144,8 +144,8 @@ type X_AVM_DE_DoManualUpdateResponse struct {
 func (client *ServiceClient) X_AVM_DE_DoManualUpdate(in *X_AVM_DE_DoManualUpdateRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_DoManualUpdateRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_DoManualUpdateRequest]{
 			In: in,
 		},
@@ -177,8 +177,8 @@ type X_AVM_DE_GetInternationalConfigResponse struct {
 func (client *ServiceClient) X_AVM_DE_GetInternationalConfig(out *X_AVM_DE_GetInternationalConfigResponse) error {
 	in := &X_AVM_DE_GetInternationalConfigRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetInternationalConfigRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetInternationalConfigRequest]{
 			In: in,
 		},
@@ -206,8 +206,8 @@ type X_AVM_DE_SetInternationalConfigResponse struct {
 func (client *ServiceClient) X_AVM_DE_SetInternationalConfig(in *X_AVM_DE_SetInternationalConfigRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_SetInternationalConfigRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_SetInternationalConfigRequest]{
 			In: in,
 		},
@@ -239,8 +239,8 @@ type X_AVM_DE_GetInfoResponse struct {
 func (client *ServiceClient) X_AVM_DE_GetInfo(out *X_AVM_DE_GetInfoResponse) error {
 	in := &X_AVM_DE_GetInfoRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetInfoRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetInfoRequest]{
 			In: in,
 		},
@@ -266,8 +266,8 @@ type X_AVM_DE_SetConfigResponse struct {
 func (client *ServiceClient) X_AVM_DE_SetConfig(in *X_AVM_DE_SetConfigRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_SetConfigRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_SetConfigRequest]{
 			In: in,
 		},

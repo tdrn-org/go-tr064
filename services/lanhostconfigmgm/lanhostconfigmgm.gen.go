@@ -33,8 +33,8 @@ type GetInfoResponse struct {
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetInfoRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetInfoRequest]{
 			In: in,
 		},
@@ -60,8 +60,8 @@ type SetDHCPServerEnableResponse struct {
 func (client *ServiceClient) SetDHCPServerEnable(in *SetDHCPServerEnableRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetDHCPServerEnableRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetDHCPServerEnableRequest]{
 			In: in,
 		},
@@ -91,8 +91,8 @@ type SetIPInterfaceResponse struct {
 func (client *ServiceClient) SetIPInterface(in *SetIPInterfaceRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetIPInterfaceRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetIPInterfaceRequest]{
 			In: in,
 		},
@@ -120,8 +120,8 @@ type GetAddressRangeResponse struct {
 func (client *ServiceClient) GetAddressRange(out *GetAddressRangeResponse) error {
 	in := &GetAddressRangeRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetAddressRangeRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetAddressRangeRequest]{
 			In: in,
 		},
@@ -148,8 +148,8 @@ type SetAddressRangeResponse struct {
 func (client *ServiceClient) SetAddressRange(in *SetAddressRangeRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetAddressRangeRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetAddressRangeRequest]{
 			In: in,
 		},
@@ -176,8 +176,8 @@ type GetIPRoutersListResponse struct {
 func (client *ServiceClient) GetIPRoutersList(out *GetIPRoutersListResponse) error {
 	in := &GetIPRoutersListRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetIPRoutersListRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetIPRoutersListRequest]{
 			In: in,
 		},
@@ -203,8 +203,8 @@ type SetIPRouterResponse struct {
 func (client *ServiceClient) SetIPRouter(in *SetIPRouterRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetIPRouterRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetIPRouterRequest]{
 			In: in,
 		},
@@ -231,8 +231,8 @@ type GetSubnetMaskResponse struct {
 func (client *ServiceClient) GetSubnetMask(out *GetSubnetMaskResponse) error {
 	in := &GetSubnetMaskRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetSubnetMaskRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetSubnetMaskRequest]{
 			In: in,
 		},
@@ -258,8 +258,8 @@ type SetSubnetMaskResponse struct {
 func (client *ServiceClient) SetSubnetMask(in *SetSubnetMaskRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetSubnetMaskRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetSubnetMaskRequest]{
 			In: in,
 		},
@@ -286,8 +286,8 @@ type GetDNSServersResponse struct {
 func (client *ServiceClient) GetDNSServers(out *GetDNSServersResponse) error {
 	in := &GetDNSServersRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetDNSServersRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetDNSServersRequest]{
 			In: in,
 		},
@@ -313,8 +313,8 @@ type GetIPInterfaceNumberOfEntriesResponse struct {
 func (client *ServiceClient) GetIPInterfaceNumberOfEntries(out *GetIPInterfaceNumberOfEntriesResponse) error {
 	in := &GetIPInterfaceNumberOfEntriesRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetIPInterfaceNumberOfEntriesRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetIPInterfaceNumberOfEntriesRequest]{
 			In: in,
 		},

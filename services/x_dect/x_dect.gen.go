@@ -24,8 +24,8 @@ type GetNumberOfDectEntriesResponse struct {
 func (client *ServiceClient) GetNumberOfDectEntries(out *GetNumberOfDectEntriesResponse) error {
 	in := &GetNumberOfDectEntriesRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetNumberOfDectEntriesRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetNumberOfDectEntriesRequest]{
 			In: in,
 		},
@@ -58,8 +58,8 @@ type GetGenericDectEntryResponse struct {
 func (client *ServiceClient) GetGenericDectEntry(in *GetGenericDectEntryRequest, out *GetGenericDectEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[GetGenericDectEntryRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetGenericDectEntryRequest]{
 			In: in,
 		},
@@ -91,8 +91,8 @@ type GetSpecificDectEntryResponse struct {
 func (client *ServiceClient) GetSpecificDectEntry(in *GetSpecificDectEntryRequest, out *GetSpecificDectEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[GetSpecificDectEntryRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetSpecificDectEntryRequest]{
 			In: in,
 		},
@@ -118,8 +118,8 @@ type DectDoUpdateResponse struct {
 func (client *ServiceClient) DectDoUpdate(in *DectDoUpdateRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[DectDoUpdateRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[DectDoUpdateRequest]{
 			In: in,
 		},
@@ -146,8 +146,8 @@ type GetDectListPathResponse struct {
 func (client *ServiceClient) GetDectListPath(out *GetDectListPathResponse) error {
 	in := &GetDectListPathRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetDectListPathRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetDectListPathRequest]{
 			In: in,
 		},

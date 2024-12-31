@@ -28,6 +28,10 @@ import (
 	"regexp"
 )
 
+const XMLNameSpace = "http://schemas.xmlsoap.org/soap/envelope/"
+
+const XMLEncodingStyle = "http://schemas.xmlsoap.org/soap/encoding/"
+
 const rootSpec = "/tr64desc.xml"
 
 func unmarshalDocument(url *url.URL, v any) error {

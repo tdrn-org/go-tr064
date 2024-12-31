@@ -24,8 +24,8 @@ type SetEnableResponse struct {
 func (client *ServiceClient) SetEnable(in *SetEnableRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetEnableRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetEnableRequest]{
 			In: in,
 		},
@@ -71,8 +71,8 @@ type GetInfoResponse struct {
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetInfoRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetInfoRequest]{
 			In: in,
 		},
@@ -104,8 +104,8 @@ type SetConfigResponse struct {
 func (client *ServiceClient) SetConfig(in *SetConfigRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetConfigRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetConfigRequest]{
 			In: in,
 		},
@@ -137,8 +137,8 @@ type SetSecurityKeysResponse struct {
 func (client *ServiceClient) SetSecurityKeys(in *SetSecurityKeysRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetSecurityKeysRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetSecurityKeysRequest]{
 			In: in,
 		},
@@ -170,8 +170,8 @@ type GetSecurityKeysResponse struct {
 func (client *ServiceClient) GetSecurityKeys(out *GetSecurityKeysResponse) error {
 	in := &GetSecurityKeysRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetSecurityKeysRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetSecurityKeysRequest]{
 			In: in,
 		},
@@ -197,8 +197,8 @@ type SetDefaultWEPKeyIndexResponse struct {
 func (client *ServiceClient) SetDefaultWEPKeyIndex(in *SetDefaultWEPKeyIndexRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetDefaultWEPKeyIndexRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetDefaultWEPKeyIndexRequest]{
 			In: in,
 		},
@@ -225,8 +225,8 @@ type GetDefaultWEPKeyIndexResponse struct {
 func (client *ServiceClient) GetDefaultWEPKeyIndex(out *GetDefaultWEPKeyIndexResponse) error {
 	in := &GetDefaultWEPKeyIndexRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetDefaultWEPKeyIndexRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetDefaultWEPKeyIndexRequest]{
 			In: in,
 		},
@@ -253,8 +253,8 @@ type SetBasBeaconSecurityPropertiesResponse struct {
 func (client *ServiceClient) SetBasBeaconSecurityProperties(in *SetBasBeaconSecurityPropertiesRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetBasBeaconSecurityPropertiesRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetBasBeaconSecurityPropertiesRequest]{
 			In: in,
 		},
@@ -282,8 +282,8 @@ type GetBasBeaconSecurityPropertiesResponse struct {
 func (client *ServiceClient) GetBasBeaconSecurityProperties(out *GetBasBeaconSecurityPropertiesResponse) error {
 	in := &GetBasBeaconSecurityPropertiesRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetBasBeaconSecurityPropertiesRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetBasBeaconSecurityPropertiesRequest]{
 			In: in,
 		},
@@ -310,8 +310,8 @@ type GetStatisticsResponse struct {
 func (client *ServiceClient) GetStatistics(out *GetStatisticsResponse) error {
 	in := &GetStatisticsRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetStatisticsRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetStatisticsRequest]{
 			In: in,
 		},
@@ -338,8 +338,8 @@ type GetPacketStatisticsResponse struct {
 func (client *ServiceClient) GetPacketStatistics(out *GetPacketStatisticsResponse) error {
 	in := &GetPacketStatisticsRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetPacketStatisticsRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetPacketStatisticsRequest]{
 			In: in,
 		},
@@ -365,8 +365,8 @@ type GetBSSIDResponse struct {
 func (client *ServiceClient) GetBSSID(out *GetBSSIDResponse) error {
 	in := &GetBSSIDRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetBSSIDRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetBSSIDRequest]{
 			In: in,
 		},
@@ -392,8 +392,8 @@ type GetSSIDResponse struct {
 func (client *ServiceClient) GetSSID(out *GetSSIDResponse) error {
 	in := &GetSSIDRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetSSIDRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetSSIDRequest]{
 			In: in,
 		},
@@ -419,8 +419,8 @@ type SetSSIDResponse struct {
 func (client *ServiceClient) SetSSID(in *SetSSIDRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetSSIDRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetSSIDRequest]{
 			In: in,
 		},
@@ -448,8 +448,8 @@ type GetBeaconTypeResponse struct {
 func (client *ServiceClient) GetBeaconType(out *GetBeaconTypeResponse) error {
 	in := &GetBeaconTypeRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetBeaconTypeRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetBeaconTypeRequest]{
 			In: in,
 		},
@@ -475,8 +475,8 @@ type SetBeaconTypeResponse struct {
 func (client *ServiceClient) SetBeaconType(in *SetBeaconTypeRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetBeaconTypeRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetBeaconTypeRequest]{
 			In: in,
 		},
@@ -506,8 +506,8 @@ type GetChannelInfoResponse struct {
 func (client *ServiceClient) GetChannelInfo(out *GetChannelInfoResponse) error {
 	in := &GetChannelInfoRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetChannelInfoRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetChannelInfoRequest]{
 			In: in,
 		},
@@ -533,8 +533,8 @@ type SetChannelResponse struct {
 func (client *ServiceClient) SetChannel(in *SetChannelRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetChannelRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetChannelRequest]{
 			In: in,
 		},
@@ -561,8 +561,8 @@ type GetBeaconAdvertisementResponse struct {
 func (client *ServiceClient) GetBeaconAdvertisement(out *GetBeaconAdvertisementResponse) error {
 	in := &GetBeaconAdvertisementRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetBeaconAdvertisementRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetBeaconAdvertisementRequest]{
 			In: in,
 		},
@@ -588,8 +588,8 @@ type SetBeaconAdvertisementResponse struct {
 func (client *ServiceClient) SetBeaconAdvertisement(in *SetBeaconAdvertisementRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[SetBeaconAdvertisementRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[SetBeaconAdvertisementRequest]{
 			In: in,
 		},
@@ -616,8 +616,8 @@ type GetTotalAssociationsResponse struct {
 func (client *ServiceClient) GetTotalAssociations(out *GetTotalAssociationsResponse) error {
 	in := &GetTotalAssociationsRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetTotalAssociationsRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetTotalAssociationsRequest]{
 			In: in,
 		},
@@ -649,8 +649,8 @@ type GetGenericAssociatedDeviceInfoResponse struct {
 func (client *ServiceClient) GetGenericAssociatedDeviceInfo(in *GetGenericAssociatedDeviceInfoRequest, out *GetGenericAssociatedDeviceInfoResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[GetGenericAssociatedDeviceInfoRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetGenericAssociatedDeviceInfoRequest]{
 			In: in,
 		},
@@ -681,8 +681,8 @@ type GetSpecificAssociatedDeviceInfoResponse struct {
 func (client *ServiceClient) GetSpecificAssociatedDeviceInfo(in *GetSpecificAssociatedDeviceInfoRequest, out *GetSpecificAssociatedDeviceInfoResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[GetSpecificAssociatedDeviceInfoRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetSpecificAssociatedDeviceInfoRequest]{
 			In: in,
 		},
@@ -713,8 +713,8 @@ type X_AVM_DE_GetSpecificAssociatedDeviceInfoByIpResponse struct {
 func (client *ServiceClient) X_AVM_DE_GetSpecificAssociatedDeviceInfoByIp(in *X_AVM_DE_GetSpecificAssociatedDeviceInfoByIpRequest, out *X_AVM_DE_GetSpecificAssociatedDeviceInfoByIpResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetSpecificAssociatedDeviceInfoByIpRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetSpecificAssociatedDeviceInfoByIpRequest]{
 			In: in,
 		},
@@ -740,8 +740,8 @@ type X_AVM_DE_GetWLANDeviceListPathResponse struct {
 func (client *ServiceClient) X_AVM_DE_GetWLANDeviceListPath(out *X_AVM_DE_GetWLANDeviceListPathResponse) error {
 	in := &X_AVM_DE_GetWLANDeviceListPathRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetWLANDeviceListPathRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetWLANDeviceListPathRequest]{
 			In: in,
 		},
@@ -767,8 +767,8 @@ type X_AVM_DE_SetStickSurfEnableResponse struct {
 func (client *ServiceClient) X_AVM_DE_SetStickSurfEnable(in *X_AVM_DE_SetStickSurfEnableRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_SetStickSurfEnableRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_SetStickSurfEnableRequest]{
 			In: in,
 		},
@@ -795,8 +795,8 @@ type X_AVM_DE_GetIPTVOptimizedResponse struct {
 func (client *ServiceClient) X_AVM_DE_GetIPTVOptimized(out *X_AVM_DE_GetIPTVOptimizedResponse) error {
 	in := &X_AVM_DE_GetIPTVOptimizedRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetIPTVOptimizedRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetIPTVOptimizedRequest]{
 			In: in,
 		},
@@ -822,8 +822,8 @@ type X_AVM_DE_SetIPTVOptimizedResponse struct {
 func (client *ServiceClient) X_AVM_DE_SetIPTVOptimized(in *X_AVM_DE_SetIPTVOptimizedRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_SetIPTVOptimizedRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_SetIPTVOptimizedRequest]{
 			In: in,
 		},
@@ -851,8 +851,8 @@ type X_AVM_DE_GetNightControlResponse struct {
 func (client *ServiceClient) X_AVM_DE_GetNightControl(out *X_AVM_DE_GetNightControlResponse) error {
 	in := &X_AVM_DE_GetNightControlRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetNightControlRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetNightControlRequest]{
 			In: in,
 		},
@@ -886,8 +886,8 @@ type X_AVM_DE_GetWLANHybridModeResponse struct {
 func (client *ServiceClient) X_AVM_DE_GetWLANHybridMode(out *X_AVM_DE_GetWLANHybridModeResponse) error {
 	in := &X_AVM_DE_GetWLANHybridModeRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetWLANHybridModeRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetWLANHybridModeRequest]{
 			In: in,
 		},
@@ -921,8 +921,8 @@ type X_AVM_DE_SetWLANHybridModeResponse struct {
 func (client *ServiceClient) X_AVM_DE_SetWLANHybridMode(in *X_AVM_DE_SetWLANHybridModeRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_SetWLANHybridModeRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_SetWLANHybridModeRequest]{
 			In: in,
 		},
@@ -958,8 +958,8 @@ type X_AVM_DE_GetWLANExtInfoResponse struct {
 func (client *ServiceClient) X_AVM_DE_GetWLANExtInfo(out *X_AVM_DE_GetWLANExtInfoResponse) error {
 	in := &X_AVM_DE_GetWLANExtInfoRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetWLANExtInfoRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetWLANExtInfoRequest]{
 			In: in,
 		},
@@ -986,8 +986,8 @@ type X_AVM_DE_GetWPSInfoResponse struct {
 func (client *ServiceClient) X_AVM_DE_GetWPSInfo(out *X_AVM_DE_GetWPSInfoResponse) error {
 	in := &X_AVM_DE_GetWPSInfoRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetWPSInfoRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetWPSInfoRequest]{
 			In: in,
 		},
@@ -1014,8 +1014,8 @@ type X_AVM_DE_SetWPSConfigResponse struct {
 func (client *ServiceClient) X_AVM_DE_SetWPSConfig(in *X_AVM_DE_SetWPSConfigRequest, out *X_AVM_DE_SetWPSConfigResponse) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_SetWPSConfigRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_SetWPSConfigRequest]{
 			In: in,
 		},
@@ -1041,8 +1041,8 @@ type X_AVM_DE_SetWPSEnableResponse struct {
 func (client *ServiceClient) X_AVM_DE_SetWPSEnable(in *X_AVM_DE_SetWPSEnableRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_SetWPSEnableRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_SetWPSEnableRequest]{
 			In: in,
 		},
@@ -1069,8 +1069,8 @@ type X_AVM_DE_SetWLANGlobalEnableResponse struct {
 func (client *ServiceClient) X_AVM_DE_SetWLANGlobalEnable(in *X_AVM_DE_SetWLANGlobalEnableRequest) error {
 	in.XMLNameSpace = client.Service.Type()
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_SetWLANGlobalEnableRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_SetWLANGlobalEnableRequest]{
 			In: in,
 		},
@@ -1110,8 +1110,8 @@ type X_AVM_DE_GetWLANConnectionInfoResponse struct {
 func (client *ServiceClient) X_AVM_DE_GetWLANConnectionInfo(out *X_AVM_DE_GetWLANConnectionInfoResponse) error {
 	in := &X_AVM_DE_GetWLANConnectionInfoRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetWLANConnectionInfoRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetWLANConnectionInfoRequest]{
 			In: in,
 		},

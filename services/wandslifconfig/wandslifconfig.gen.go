@@ -38,8 +38,8 @@ type GetInfoResponse struct {
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetInfoRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetInfoRequest]{
 			In: in,
 		},
@@ -79,8 +79,8 @@ type GetStatisticsTotalResponse struct {
 func (client *ServiceClient) GetStatisticsTotal(out *GetStatisticsTotalResponse) error {
 	in := &GetStatisticsTotalRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[GetStatisticsTotalRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[GetStatisticsTotalRequest]{
 			In: in,
 		},
@@ -111,8 +111,8 @@ type X_AVM_DE_GetDSLDiagnoseInfoResponse struct {
 func (client *ServiceClient) X_AVM_DE_GetDSLDiagnoseInfo(out *X_AVM_DE_GetDSLDiagnoseInfoResponse) error {
 	in := &X_AVM_DE_GetDSLDiagnoseInfoRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetDSLDiagnoseInfoRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetDSLDiagnoseInfoRequest]{
 			In: in,
 		},
@@ -162,8 +162,8 @@ type X_AVM_DE_GetDSLInfoResponse struct {
 func (client *ServiceClient) X_AVM_DE_GetDSLInfo(out *X_AVM_DE_GetDSLInfoResponse) error {
 	in := &X_AVM_DE_GetDSLInfoRequest{XMLNameSpace: client.Service.Type()}
 	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetDSLInfoRequest]{
-		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
-		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
+		XMLNameSpace:     tr064.XMLNameSpace,
+		XMLEncodingStyle: tr064.XMLEncodingStyle,
 		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetDSLInfoRequest]{
 			In: in,
 		},
