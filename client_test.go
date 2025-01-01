@@ -22,7 +22,6 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/tdrn-org/go-tr064"
 	"github.com/tdrn-org/go-tr064/mock"
-	"github.com/tdrn-org/go-tr064/services/deviceconfig"
 )
 
 func TestServices(t *testing.T) {
@@ -47,50 +46,4 @@ func TestServicesByName(t *testing.T) {
 	services, err := client.ServicesByName("MockPing")
 	require.NoError(t, err)
 	require.Equal(t, 1, len(services))
-}
-
-func TestClient(t *testing.T) {
-	// Start mock server
-	tr064Mock := mock.Start("testdata")
-	defer tr064Mock.Shutdown()
-	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), "", "")
-	client.Debug = true
-	testDeviceConfig(t, client)
-}
-
-func testDeviceConfig(t *testing.T, client *tr064.Client) {
-	serviceClient := &deviceconfig.ServiceClient{
-		TR064Client: client,
-		Service: &tr064.StaticServiceDescriptor{
-			ServiceName: "DeviceConfig",
-			ServiceType: "urn:dslforum-org:service:DeviceConfig:1",
-			ServiceId:   "urn:DeviceConfig-com:serviceId:DeviceConfig1",
-			ServiceUrl:  "/deviceconfig",
-		},
-	}
-	{
-		out := &deviceconfig.ConfigurationFinishedResponse{}
-		require.NoError(t, serviceClient.ConfigurationFinished(out))
-		require.Equal(t, "NewStatus", out.NewStatus)
-	}
-	{
-		in := &deviceconfig.ConfigurationStartedRequest{}
-		require.NoError(t, serviceClient.ConfigurationStarted(in))
-	}
-	{
-		require.NoError(t, serviceClient.FactoryReset())
-	}
-	{
-		out := &deviceconfig.GetPersistentDataResponse{}
-		require.NoError(t, serviceClient.GetPersistentData(out))
-		require.Equal(t, "NewPersistentData", out.NewPersistentData)
-	}
-	{
-		require.NoError(t, serviceClient.Reboot())
-	}
-	{
-		in := &deviceconfig.SetPersistentDataRequest{}
-		require.NoError(t, serviceClient.SetPersistentData(in))
-	}
 }

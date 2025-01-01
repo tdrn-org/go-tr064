@@ -38,10 +38,12 @@ func TestGenerate(t *testing.T) {
 	defer dir.Remove()
 	// Actual test
 	tr064.Generate(tr064Mock.Server(), dir.TempDir)
-	require.NoError(t, dir.FileNotEmpty("services/mockecho/mockecho.gen.go"))
-	require.NoError(t, dir.FileNotEmpty("services/mockecho/name.gen.go"))
-	require.NoError(t, dir.FileNotEmpty("services/mockping/mockping.gen.go"))
-	require.NoError(t, dir.FileNotEmpty("services/mockping/name.gen.go"))
+	require.NoError(t, dir.FileNotEmpty("services/mockecho/mockecho.go"))
+	require.NoError(t, dir.FileNotEmpty("services/mockecho/name.go"))
+	require.NoError(t, dir.FileNotEmpty("services/mockecho_test.go"))
+	require.NoError(t, dir.FileNotEmpty("services/mockping/mockping.go"))
+	require.NoError(t, dir.FileNotEmpty("services/mockping/name.go"))
+	require.NoError(t, dir.FileNotEmpty("services/mockping_test.go"))
 }
 
 type generateDir struct {

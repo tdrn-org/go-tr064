@@ -31,6 +31,14 @@ import (
 	"sync"
 )
 
+const User = "user"
+const Password = "password"
+
+type ServiceMock struct {
+	Path       string
+	HandleFunc func(http.ResponseWriter, *http.Request)
+}
+
 // TR064Server interface is used to interact with a mock server instantiated via [Start].
 type TR064Server interface {
 	// Server gets the HTTP URL the mock server is listenting on.
@@ -49,7 +57,7 @@ type TR064Server interface {
 //
 // The mock server establishes a HTTP as well as an HTTPS listener using dynamic ports.
 // Use [Server] and [SecureServer] to get the actual addresses.
-func Start(docsDir string) TR064Server {
+func Start(docsDir string, mocks ...*ServiceMock) TR064Server {
 	httpListener, err := net.Listen("tcp", "localhost:0")
 	if err != nil {
 		log.Fatal(err)
@@ -73,7 +81,7 @@ func Start(docsDir string) TR064Server {
 		httpsListener:  httpsListener,
 		httpsServerUrl: httpsServerUrl,
 	}
-	mock.setupAndStartServer()
+	mock.setupAndStartServer(mocks...)
 	return mock
 }
 
@@ -152,9 +160,9 @@ type soapRequest struct {
 	}
 }
 
-var soapActionPattern = regexp.MustCompile(`^\s*<u:(\w+)Request .*`)
+var soapActionPattern = regexp.MustCompile(`^\s*<u:([0-9a-zA-z_-]+)Request .*`)
 
-func (mock *mockServer) unmarshalSoapAction(w http.ResponseWriter, req *http.Request) (string, error) {
+func UnmarshalSoapAction(w http.ResponseWriter, req *http.Request) (string, error) {
 	requestBody, err := io.ReadAll(req.Body)
 	defer req.Body.Close()
 	if err != nil {
@@ -175,19 +183,7 @@ func (mock *mockServer) unmarshalSoapAction(w http.ResponseWriter, req *http.Req
 	return match[1], nil
 }
 
-type soapResponse struct {
-	XMLName          xml.Name `xml:"s:Envelope"`
-	XMLNameSpace     string   `xml:"xmlns:s,attr"`
-	XMLEncodingStyle string   `xml:"s:encodingStyle,attr"`
-	Body             *soapResponseBody
-}
-
-type soapResponseBody struct {
-	XMLName xml.Name `xml:"s:Body"`
-	Out     any
-}
-
-func (mock *mockServer) sendSoapResponse(w http.ResponseWriter, out any) error {
+func WriteSoapResponse(w http.ResponseWriter, out any) error {
 	response := &soapResponse{
 		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
 		XMLEncodingStyle: "http://schemas.xmlsoap.org/soap/encoding/",
@@ -208,10 +204,24 @@ func (mock *mockServer) sendSoapResponse(w http.ResponseWriter, out any) error {
 	return nil
 }
 
-func (mock *mockServer) setupAndStartServer() {
+type soapResponse struct {
+	XMLName          xml.Name `xml:"s:Envelope"`
+	XMLNameSpace     string   `xml:"xmlns:s,attr"`
+	XMLEncodingStyle string   `xml:"s:encodingStyle,attr"`
+	Body             *soapResponseBody
+}
+
+type soapResponseBody struct {
+	XMLName xml.Name `xml:"s:Body"`
+	Out     any
+}
+
+func (mock *mockServer) setupAndStartServer(mocks ...*ServiceMock) {
 	handler := http.NewServeMux()
 	handler.HandleFunc("GET /ping", mock.handlePing)
-	handler.HandleFunc("POST /deviceconfig", mock.handleDeviceconfig)
+	for _, mock := range mocks {
+		handler.HandleFunc("POST "+mock.Path, mock.HandleFunc)
+	}
 	docsFS := http.FileServer(http.Dir(mock.docsDir))
 	handler.Handle("/", docsFS)
 	//handler.HandleFunc("/", mock.handleDocs)

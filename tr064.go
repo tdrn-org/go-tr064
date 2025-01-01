@@ -213,6 +213,24 @@ type argumentListDoc struct {
 	Arguments []argumentDoc `xml:"argument"`
 }
 
+func (doc *argumentListDoc) hasIn() bool {
+	for _, argument := range doc.Arguments {
+		if argument.Direction == "in" {
+			return true
+		}
+	}
+	return false
+}
+
+func (doc *argumentListDoc) hasOut() bool {
+	for _, argument := range doc.Arguments {
+		if argument.Direction == "out" {
+			return true
+		}
+	}
+	return false
+}
+
 type argumentDoc struct {
 	Name                 string `xml:"name"`
 	Direction            string `xml:"direction"`
