@@ -62,7 +62,7 @@ func Start(docsDir string, mocks ...*ServiceMock) TR064Server {
 	if err != nil {
 		log.Fatal(err)
 	}
-	httpServerUrl, err := url.Parse("http://" + httpListener.Addr().String() + "/")
+	httpServerUrl, err := url.Parse("http://" + User + ":" + Password + "@" + httpListener.Addr().String() + "/")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -70,7 +70,7 @@ func Start(docsDir string, mocks ...*ServiceMock) TR064Server {
 	if err != nil {
 		log.Fatal(err)
 	}
-	httpsServerUrl, err := url.Parse("https://" + httpsListener.Addr().String() + "/")
+	httpsServerUrl, err := url.Parse("https://" + User + ":" + Password + "@" + httpsListener.Addr().String() + "/")
 	if err != nil {
 		log.Fatal(err)
 	}

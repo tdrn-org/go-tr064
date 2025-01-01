@@ -21,7 +21,7 @@ func TestX_AVM_DE_UPnP(t *testing.T) {
 	tr064Mock := mock.Start("testdata", x_upnpMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), mock.User, mock.Password)
+	client := tr064.NewClient(tr064Mock.Server())
 	client.Debug = true
 	serviceClient := &x_upnp.ServiceClient{
 		TR064Client: client,

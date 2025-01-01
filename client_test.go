@@ -29,7 +29,7 @@ func TestServices(t *testing.T) {
 	tr064Mock := mock.Start("testdata")
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), "", "")
+	client := tr064.NewClient(tr064Mock.Server())
 	client.Debug = true
 	services, err := client.Services()
 	require.NoError(t, err)
@@ -41,7 +41,7 @@ func TestServicesByName(t *testing.T) {
 	tr064Mock := mock.Start("testdata")
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), "", "")
+	client := tr064.NewClient(tr064Mock.Server())
 	client.Debug = true
 	services, err := client.ServicesByName("MockPing")
 	require.NoError(t, err)

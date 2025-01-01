@@ -35,19 +35,15 @@ import (
 	"time"
 )
 
-func NewClient(url *url.URL, username string, password string) *Client {
+func NewClient(url *url.URL) *Client {
 	return &Client{
-		Url:      url,
-		Username: username,
-		Password: password,
-		mutex:    &sync.Mutex{},
+		Url:   url,
+		mutex: &sync.Mutex{},
 	}
 }
 
 type Client struct {
 	Url                   *url.URL
-	Username              string
-	Password              string
 	Timeout               time.Duration
 	InsecureSkipVerify    bool
 	Debug                 bool
@@ -235,7 +231,9 @@ func (client *Client) authenticate(challenge *http.Response, serviceType string)
 		}
 	}
 	digestRealm := challengeValues["Digest realm"]
-	ha1 := client.md5Hash(fmt.Sprintf("%s:%s:%s", client.Username, digestRealm, client.Password))
+	username := client.Url.User.Username()
+	password, _ := client.Url.User.Password()
+	ha1 := client.md5Hash(fmt.Sprintf("%s:%s:%s", username, digestRealm, password))
 	ha2 := client.md5Hash(fmt.Sprintf("%s:%s", http.MethodPost, serviceType))
 	nonce := challengeValues["nonce"]
 	qop := challengeValues["qop"]
@@ -243,7 +241,7 @@ func (client *Client) authenticate(challenge *http.Response, serviceType string)
 	nc := "1"
 	response := client.md5Hash(fmt.Sprintf("%s:%s:%s:%s:%s:%s", ha1, nonce, nc, cnonce, qop, ha2))
 	authentication := fmt.Sprintf(`Digest username="%s", realm="%s", nonce="%s", uri="%s", cnonce="%s", nc="%v", qop="%s", response="%s"`,
-		client.Username, digestRealm, nonce, serviceType, cnonce, nc, qop, response)
+		username, digestRealm, nonce, serviceType, cnonce, nc, qop, response)
 	client.mutex.Lock()
 	defer client.mutex.Unlock()
 	if client.cachedAuthentications == nil {

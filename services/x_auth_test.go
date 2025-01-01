@@ -21,7 +21,7 @@ func TestX_AVM_DE_Auth(t *testing.T) {
 	tr064Mock := mock.Start("testdata", x_authMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), mock.User, mock.Password)
+	client := tr064.NewClient(tr064Mock.Server())
 	client.Debug = true
 	serviceClient := &x_auth.ServiceClient{
 		TR064Client: client,

@@ -21,7 +21,7 @@ func TestLayer3Forwarding(t *testing.T) {
 	tr064Mock := mock.Start("testdata", layer3forwardingMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), mock.User, mock.Password)
+	client := tr064.NewClient(tr064Mock.Server())
 	client.Debug = true
 	serviceClient := &layer3forwarding.ServiceClient{
 		TR064Client: client,
