@@ -27,16 +27,48 @@ import (
 	"net"
 	"net/http"
 	"net/url"
+	"os"
 	"regexp"
 	"sync"
 )
 
+// Mock server user name
 const User = "user"
+
+// Mock server password
 const Password = "password"
 
+// ServiceMock is used to define the actual mocked services.
 type ServiceMock struct {
-	Path       string
+	// Path sets the URL path used to invoke this service.
+	Path string
+	// HandleFunc provides the actual mock functionality (which is called as soon the URL path defined is accessed).
 	HandleFunc func(http.ResponseWriter, *http.Request)
+}
+
+// ServiceMockFromFile creates a [ServiceMock] instance sending the given file everytime the associated path accessed.
+func ServiceMockFromFile(path string, file string) *ServiceMock {
+	return &ServiceMock{
+		Path: path,
+		HandleFunc: func(w http.ResponseWriter, _ *http.Request) {
+			responseBytes, err := os.ReadFile(file)
+			if errors.Is(err, os.ErrNotExist) {
+				w.WriteHeader(http.StatusNotFound)
+				return
+			} else if err != nil {
+				log.Println(err)
+				w.WriteHeader(http.StatusInternalServerError)
+				return
+			}
+			w.Header().Set("Content-Type", "text/xml")
+			_, err = w.Write(responseBytes)
+			if err != nil {
+				log.Println(err)
+				w.WriteHeader(http.StatusInternalServerError)
+				return
+			}
+		},
+	}
 }
 
 // TR064Server interface is used to interact with a mock server instantiated via [Start].
@@ -162,6 +194,9 @@ type soapRequest struct {
 
 var soapActionPattern = regexp.MustCompile(`^\s*<u:([0-9a-zA-z_-]+)Request .*`)
 
+// UnmarshalSoapAction unmarshals a SOAP body from the given HTTP request and determines the contained action.
+//
+// In case of an error, the corresponding response status code is automatically written.
 func UnmarshalSoapAction(w http.ResponseWriter, req *http.Request) (string, error) {
 	requestBody, err := io.ReadAll(req.Body)
 	defer req.Body.Close()
@@ -183,6 +218,7 @@ func UnmarshalSoapAction(w http.ResponseWriter, req *http.Request) (string, erro
 	return match[1], nil
 }
 
+// WriteSoapResponse writes a SOAP response by wrapping the given output object into the necessary SOAP envelope.
 func WriteSoapResponse(w http.ResponseWriter, out any) error {
 	response := &soapResponse{
 		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",
@@ -193,11 +229,14 @@ func WriteSoapResponse(w http.ResponseWriter, out any) error {
 	}
 	responseBody, err := xml.MarshalIndent(response, "", "\t")
 	if err != nil {
+		log.Println(err)
 		w.WriteHeader(http.StatusInternalServerError)
 		return err
 	}
+	w.Header().Set("Content-Type", "text/xml")
 	_, err = w.Write(responseBody)
 	if err != nil {
+		log.Println(err)
 		w.WriteHeader(http.StatusInternalServerError)
 		return err
 	}

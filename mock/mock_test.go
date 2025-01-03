@@ -17,6 +17,7 @@
 package mock_test
 
 import (
+	"net/http"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -31,4 +32,15 @@ func TestMockStartStop(t *testing.T) {
 	require.NoError(t, err)
 	err = tr064Mock.SecurePing()
 	require.NoError(t, err)
+}
+
+func TestServiceMockFromFile(t *testing.T) {
+	tr064Mock := mock.Start("testdata", mock.ServiceMockFromFile("/mocknotfound", "testdata/notfound.xml"), mock.ServiceMockFromFile("/mockping", "testdata/ping.xml"))
+	defer tr064Mock.Shutdown()
+	response, err := http.Post(tr064Mock.Server().JoinPath("/mocknotfound").String(), "text/xml", nil)
+	require.NoError(t, err)
+	require.Equal(t, http.StatusNotFound, response.StatusCode)
+	response, err = http.Post(tr064Mock.Server().JoinPath("/mockping").String(), "text/xml", nil)
+	require.NoError(t, err)
+	require.Equal(t, http.StatusOK, response.StatusCode)
 }
