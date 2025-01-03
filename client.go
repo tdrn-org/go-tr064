@@ -35,24 +35,6 @@ import (
 	"time"
 )
 
-func NewClient(url *url.URL) *Client {
-	return &Client{
-		Url:   url,
-		mutex: &sync.Mutex{},
-	}
-}
-
-type Client struct {
-	Url                   *url.URL
-	Timeout               time.Duration
-	InsecureSkipVerify    bool
-	Debug                 bool
-	mutex                 *sync.Mutex
-	cachedServices        []ServiceDescriptor
-	cachedHttpClient      *http.Client
-	cachedAuthentications map[string]string
-}
-
 type ServiceDescriptor interface {
 	Name() string
 	Type() string
@@ -83,6 +65,57 @@ func (service *StaticServiceDescriptor) Url() string {
 	return service.ServiceUrl
 }
 
+// NewClient instantiates a new TR-064 client for accessing the given URL.
+//
+// If the given URL contains a userinfo, the contained username and password are automatically used for authentication.
+func NewClient(deviceUrl *url.URL) *Client {
+	safeUrl := *deviceUrl
+	safeUrl.User = url.User("")
+	username := deviceUrl.User.Username()
+	password, _ := deviceUrl.User.Password()
+	return &Client{
+		Url:      &safeUrl,
+		Username: username,
+		Password: password,
+		mutex:    &sync.Mutex{},
+	}
+}
+
+// Client provides the necessary parameters to access a TR-064 capable server and perform service discovery.
+//
+// To access an actual service, this client as well as the desired service descriptor is combined into a
+// service specific service client:
+//
+//	client := tr064.NewClient(deviceUrl)
+//	services, _ := client.ServiceByName(deviceinfo.ServiceName)
+//	serviceClient := deviceinfo.ServiceClient {
+//		TR064Client: client,
+//		Service:     services[0],
+//	}
+//	info := &deviceinfo.GetInfoResponse{}
+//	_ = serviceClient.GetInfo(info)
+//
+// The service client is then used to access the individual service functions.
+type Client struct {
+	// Url defines the URL to access the TR-064 server.
+	Url *url.URL
+	// Username is set to the login to use for accessing restricted services.
+	Username string
+	// Password is set to the password to use for accessing restricted services.
+	Password string
+	// Timeout sets the timeout for HTTP(S) communication.
+	Timeout time.Duration
+	// InsecureSkipVerify disables certificate validation while access the TR-064 server. Use with care.
+	InsecureSkipVerify bool
+	// Debug enables debug logging while accessing the TR-064 server.
+	Debug                 bool
+	mutex                 *sync.Mutex
+	cachedServices        []ServiceDescriptor
+	cachedHttpClient      *http.Client
+	cachedAuthentications map[string]string
+}
+
+// Services fetches and parses the TR-064 server's service specifications and returns the available services.
 func (client *Client) Services() ([]ServiceDescriptor, error) {
 	client.mutex.Lock()
 	defer client.mutex.Unlock()
@@ -103,6 +136,8 @@ func (client *Client) Services() ([]ServiceDescriptor, error) {
 	return client.cachedServices, nil
 }
 
+// ServicesByName fetches and parses the TR-064 server's service specifications
+// like [Services], but returns only the available services matching the given service name.
 func (client *Client) ServicesByName(name string) ([]ServiceDescriptor, error) {
 	all, err := client.Services()
 	if err != nil {
@@ -231,9 +266,7 @@ func (client *Client) authenticate(challenge *http.Response, serviceType string)
 		}
 	}
 	digestRealm := challengeValues["Digest realm"]
-	username := client.Url.User.Username()
-	password, _ := client.Url.User.Password()
-	ha1 := client.md5Hash(fmt.Sprintf("%s:%s:%s", username, digestRealm, password))
+	ha1 := client.md5Hash(fmt.Sprintf("%s:%s:%s", client.Username, digestRealm, client.Password))
 	ha2 := client.md5Hash(fmt.Sprintf("%s:%s", http.MethodPost, serviceType))
 	nonce := challengeValues["nonce"]
 	qop := challengeValues["qop"]
@@ -241,7 +274,7 @@ func (client *Client) authenticate(challenge *http.Response, serviceType string)
 	nc := "1"
 	response := client.md5Hash(fmt.Sprintf("%s:%s:%s:%s:%s:%s", ha1, nonce, nc, cnonce, qop, ha2))
 	authentication := fmt.Sprintf(`Digest username="%s", realm="%s", nonce="%s", uri="%s", cnonce="%s", nc="%v", qop="%s", response="%s"`,
-		username, digestRealm, nonce, serviceType, cnonce, nc, qop, response)
+		client.Username, digestRealm, nonce, serviceType, cnonce, nc, qop, response)
 	client.mutex.Lock()
 	defer client.mutex.Unlock()
 	if client.cachedAuthentications == nil {
