@@ -36,7 +36,7 @@ func TestServices(t *testing.T) {
 	require.Equal(t, 2, len(services))
 }
 
-func TestServicesByName(t *testing.T) {
+func TestServicesByType(t *testing.T) {
 	// Start mock server
 	tr064Mock := mock.Start("testdata")
 	defer tr064Mock.Shutdown()

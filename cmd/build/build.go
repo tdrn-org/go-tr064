@@ -42,7 +42,7 @@ func main() {
 
 var specNamePattern = regexp.MustCompile(`^/(.+)\.xml$`)
 
-// Generate from generate.conf (if available)
+// Generate from generate.conf (if available and not empty)
 func generate() {
 	confFile, err := os.Open("./generate.conf")
 	if err != nil {
@@ -50,19 +50,21 @@ func generate() {
 	}
 	conf := bufio.NewReader(confFile)
 	for {
+		// Read conf file line by line. Empty lines or lines starting with # are ignored.
+		// Every other non-empty line is assumed to be an URL pointing to a TR-064 spec XML
+		// document to be procssed.
 		line, err := conf.ReadString('\n')
 		if errors.Is(err, io.EOF) {
 			return
 		} else if err != nil {
 			log.Fatal(err)
-		}
-		if strings.HasPrefix(line, "#") {
+		} else if line == "" || strings.HasPrefix(line, "#") {
 			continue
 		}
 		line = strings.Trim(line, " \r\n")
 		parsedUrl, err := url.Parse(line)
 		if err != nil {
-			log.Fatal(err)
+			log.Fatal("Invalid url: '", line, "' ", err)
 		}
 		baseUrl := *parsedUrl
 		baseUrl.User = nil

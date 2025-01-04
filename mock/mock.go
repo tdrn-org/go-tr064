@@ -38,15 +38,17 @@ const User = "user"
 // Mock server password
 const Password = "password"
 
-// ServiceMock is used to define the actual mocked services.
+// ServiceMock is used to plugin service mocks.
 type ServiceMock struct {
 	// Path sets the URL path used to invoke this service.
 	Path string
-	// HandleFunc provides the actual mock functionality (which is called as soon the URL path defined is accessed).
+	// HandleFunc provides the actual mock functionality (which is called as
+	// soon the URL path defined is accessed).
 	HandleFunc func(http.ResponseWriter, *http.Request)
 }
 
-// ServiceMockFromFile creates a [ServiceMock] instance sending the given file everytime the associated path accessed.
+// ServiceMockFromFile creates a [ServiceMock] instance sending the given file
+// everytime the associated path is accessed.
 func ServiceMockFromFile(path string, file string) *ServiceMock {
 	return &ServiceMock{
 		Path: path,
@@ -85,9 +87,9 @@ type TR064Server interface {
 	Shutdown()
 }
 
-// Start starts a new mock server instance.
+// Start setup and starts a new mock server.
 //
-// The mock server establishes a HTTP as well as an HTTPS listener using dynamic ports.
+// The mock server establishes a HTTP as well as a HTTPS listener using dynamic ports.
 // Use [Server] and [SecureServer] to get the actual addresses.
 func Start(docsDir string, mocks ...*ServiceMock) TR064Server {
 	httpListener, err := net.Listen("tcp", "localhost:0")

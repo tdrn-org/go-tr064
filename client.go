@@ -109,7 +109,8 @@ type Client struct {
 	Username string
 	// Password is set to the password to use for accessing restricted services.
 	Password string
-	Specs    []ServiceSpec
+	// Specs lists the TR-064 specs describing the TR-064 server's services. If empty [DefaultServiceSpec] is assumed.
+	Specs []ServiceSpec
 	// Timeout sets the timeout for HTTP(S) communication.
 	Timeout time.Duration
 	// InsecureSkipVerify disables certificate validation while access the TR-064 server. Use with care.
@@ -150,8 +151,8 @@ func (client *Client) Services() ([]ServiceDescriptor, error) {
 	return client.cachedServices, nil
 }
 
-// ServicesByName fetches and parses the TR-064 server's service specifications
-// like [Services], but returns only the available services matching the given service name.
+// ServicesByType fetches and parses the TR-064 server's service specifications
+// like [Services], but returns only the services matching the given spec and service type.
 func (client *Client) ServicesByType(spec ServiceSpec, serviceType string) ([]ServiceDescriptor, error) {
 	all, err := client.Services()
 	if err != nil {
