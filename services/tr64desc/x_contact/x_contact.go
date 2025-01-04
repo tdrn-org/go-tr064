@@ -29,18 +29,8 @@ type GetInfoResponse struct {
 
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetInfoRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetInfoRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetInfoResponse]{
-		Body: &tr064.SOAPResponseBody[GetInfoResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetInfo", soapRequest, soapResponse)
 }
 
@@ -56,19 +46,9 @@ type SetEnableResponse struct {
 
 func (client *ServiceClient) SetEnable(in *SetEnableRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetEnableRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetEnableRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetEnableResponse{}
-	soapResponse := &tr064.SOAPResponse[SetEnableResponse]{
-		Body: &tr064.SOAPResponseBody[SetEnableResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetEnable", soapRequest, soapResponse)
 }
 
@@ -89,19 +69,9 @@ type SetConfigResponse struct {
 
 func (client *ServiceClient) SetConfig(in *SetConfigRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetConfigRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetConfigRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetConfigResponse{}
-	soapResponse := &tr064.SOAPResponse[SetConfigResponse]{
-		Body: &tr064.SOAPResponseBody[SetConfigResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetConfig", soapRequest, soapResponse)
 }
 
@@ -124,18 +94,8 @@ type GetInfoByIndexResponse struct {
 
 func (client *ServiceClient) GetInfoByIndex(in *GetInfoByIndexRequest, out *GetInfoByIndexResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[GetInfoByIndexRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetInfoByIndexRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetInfoByIndexResponse]{
-		Body: &tr064.SOAPResponseBody[GetInfoByIndexResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetInfoByIndex", soapRequest, soapResponse)
 }
 
@@ -152,19 +112,9 @@ type SetEnableByIndexResponse struct {
 
 func (client *ServiceClient) SetEnableByIndex(in *SetEnableByIndexRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetEnableByIndexRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetEnableByIndexRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetEnableByIndexResponse{}
-	soapResponse := &tr064.SOAPResponse[SetEnableByIndexResponse]{
-		Body: &tr064.SOAPResponseBody[SetEnableByIndexResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetEnableByIndex", soapRequest, soapResponse)
 }
 
@@ -186,19 +136,9 @@ type SetConfigByIndexResponse struct {
 
 func (client *ServiceClient) SetConfigByIndex(in *SetConfigByIndexRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetConfigByIndexRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetConfigByIndexRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetConfigByIndexResponse{}
-	soapResponse := &tr064.SOAPResponse[SetConfigByIndexResponse]{
-		Body: &tr064.SOAPResponseBody[SetConfigByIndexResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetConfigByIndex", soapRequest, soapResponse)
 }
 
@@ -214,19 +154,9 @@ type DeleteByIndexResponse struct {
 
 func (client *ServiceClient) DeleteByIndex(in *DeleteByIndexRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[DeleteByIndexRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[DeleteByIndexRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &DeleteByIndexResponse{}
-	soapResponse := &tr064.SOAPResponse[DeleteByIndexResponse]{
-		Body: &tr064.SOAPResponseBody[DeleteByIndexResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "DeleteByIndex", soapRequest, soapResponse)
 }
 
@@ -242,18 +172,8 @@ type GetNumberOfEntriesResponse struct {
 
 func (client *ServiceClient) GetNumberOfEntries(out *GetNumberOfEntriesResponse) error {
 	in := &GetNumberOfEntriesRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetNumberOfEntriesRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetNumberOfEntriesRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetNumberOfEntriesResponse]{
-		Body: &tr064.SOAPResponseBody[GetNumberOfEntriesResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetNumberOfEntries", soapRequest, soapResponse)
 }
 
@@ -269,18 +189,8 @@ type GetCallListResponse struct {
 
 func (client *ServiceClient) GetCallList(out *GetCallListResponse) error {
 	in := &GetCallListRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetCallListRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetCallListRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetCallListResponse]{
-		Body: &tr064.SOAPResponseBody[GetCallListResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetCallList", soapRequest, soapResponse)
 }
 
@@ -296,18 +206,8 @@ type GetPhonebookListResponse struct {
 
 func (client *ServiceClient) GetPhonebookList(out *GetPhonebookListResponse) error {
 	in := &GetPhonebookListRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetPhonebookListRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetPhonebookListRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetPhonebookListResponse]{
-		Body: &tr064.SOAPResponseBody[GetPhonebookListResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetPhonebookList", soapRequest, soapResponse)
 }
 
@@ -326,18 +226,8 @@ type GetPhonebookResponse struct {
 
 func (client *ServiceClient) GetPhonebook(in *GetPhonebookRequest, out *GetPhonebookResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[GetPhonebookRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetPhonebookRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetPhonebookResponse]{
-		Body: &tr064.SOAPResponseBody[GetPhonebookResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetPhonebook", soapRequest, soapResponse)
 }
 
@@ -354,19 +244,9 @@ type AddPhonebookResponse struct {
 
 func (client *ServiceClient) AddPhonebook(in *AddPhonebookRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[AddPhonebookRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[AddPhonebookRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &AddPhonebookResponse{}
-	soapResponse := &tr064.SOAPResponse[AddPhonebookResponse]{
-		Body: &tr064.SOAPResponseBody[AddPhonebookResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "AddPhonebook", soapRequest, soapResponse)
 }
 
@@ -383,19 +263,9 @@ type DeletePhonebookResponse struct {
 
 func (client *ServiceClient) DeletePhonebook(in *DeletePhonebookRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[DeletePhonebookRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[DeletePhonebookRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &DeletePhonebookResponse{}
-	soapResponse := &tr064.SOAPResponse[DeletePhonebookResponse]{
-		Body: &tr064.SOAPResponseBody[DeletePhonebookResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "DeletePhonebook", soapRequest, soapResponse)
 }
 
@@ -413,18 +283,8 @@ type GetPhonebookEntryResponse struct {
 
 func (client *ServiceClient) GetPhonebookEntry(in *GetPhonebookEntryRequest, out *GetPhonebookEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[GetPhonebookEntryRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetPhonebookEntryRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetPhonebookEntryResponse]{
-		Body: &tr064.SOAPResponseBody[GetPhonebookEntryResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetPhonebookEntry", soapRequest, soapResponse)
 }
 
@@ -442,18 +302,8 @@ type GetPhonebookEntryUIDResponse struct {
 
 func (client *ServiceClient) GetPhonebookEntryUID(in *GetPhonebookEntryUIDRequest, out *GetPhonebookEntryUIDResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[GetPhonebookEntryUIDRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetPhonebookEntryUIDRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetPhonebookEntryUIDResponse]{
-		Body: &tr064.SOAPResponseBody[GetPhonebookEntryUIDResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetPhonebookEntryUID", soapRequest, soapResponse)
 }
 
@@ -471,19 +321,9 @@ type SetPhonebookEntryResponse struct {
 
 func (client *ServiceClient) SetPhonebookEntry(in *SetPhonebookEntryRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetPhonebookEntryRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetPhonebookEntryRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetPhonebookEntryResponse{}
-	soapResponse := &tr064.SOAPResponse[SetPhonebookEntryResponse]{
-		Body: &tr064.SOAPResponseBody[SetPhonebookEntryResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetPhonebookEntry", soapRequest, soapResponse)
 }
 
@@ -501,18 +341,8 @@ type SetPhonebookEntryUIDResponse struct {
 
 func (client *ServiceClient) SetPhonebookEntryUID(in *SetPhonebookEntryUIDRequest, out *SetPhonebookEntryUIDResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetPhonebookEntryUIDRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetPhonebookEntryUIDRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[SetPhonebookEntryUIDResponse]{
-		Body: &tr064.SOAPResponseBody[SetPhonebookEntryUIDResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetPhonebookEntryUID", soapRequest, soapResponse)
 }
 
@@ -529,19 +359,9 @@ type DeletePhonebookEntryResponse struct {
 
 func (client *ServiceClient) DeletePhonebookEntry(in *DeletePhonebookEntryRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[DeletePhonebookEntryRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[DeletePhonebookEntryRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &DeletePhonebookEntryResponse{}
-	soapResponse := &tr064.SOAPResponse[DeletePhonebookEntryResponse]{
-		Body: &tr064.SOAPResponseBody[DeletePhonebookEntryResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "DeletePhonebookEntry", soapRequest, soapResponse)
 }
 
@@ -558,19 +378,9 @@ type DeletePhonebookEntryUIDResponse struct {
 
 func (client *ServiceClient) DeletePhonebookEntryUID(in *DeletePhonebookEntryUIDRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[DeletePhonebookEntryUIDRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[DeletePhonebookEntryUIDRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &DeletePhonebookEntryUIDResponse{}
-	soapResponse := &tr064.SOAPResponse[DeletePhonebookEntryUIDResponse]{
-		Body: &tr064.SOAPResponseBody[DeletePhonebookEntryUIDResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "DeletePhonebookEntryUID", soapRequest, soapResponse)
 }
 
@@ -587,18 +397,8 @@ type GetCallBarringEntryResponse struct {
 
 func (client *ServiceClient) GetCallBarringEntry(in *GetCallBarringEntryRequest, out *GetCallBarringEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[GetCallBarringEntryRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetCallBarringEntryRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetCallBarringEntryResponse]{
-		Body: &tr064.SOAPResponseBody[GetCallBarringEntryResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetCallBarringEntry", soapRequest, soapResponse)
 }
 
@@ -615,18 +415,8 @@ type GetCallBarringEntryByNumResponse struct {
 
 func (client *ServiceClient) GetCallBarringEntryByNum(in *GetCallBarringEntryByNumRequest, out *GetCallBarringEntryByNumResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[GetCallBarringEntryByNumRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetCallBarringEntryByNumRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetCallBarringEntryByNumResponse]{
-		Body: &tr064.SOAPResponseBody[GetCallBarringEntryByNumResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetCallBarringEntryByNum", soapRequest, soapResponse)
 }
 
@@ -642,18 +432,8 @@ type GetCallBarringListResponse struct {
 
 func (client *ServiceClient) GetCallBarringList(out *GetCallBarringListResponse) error {
 	in := &GetCallBarringListRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetCallBarringListRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetCallBarringListRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetCallBarringListResponse]{
-		Body: &tr064.SOAPResponseBody[GetCallBarringListResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetCallBarringList", soapRequest, soapResponse)
 }
 
@@ -670,18 +450,8 @@ type SetCallBarringEntryResponse struct {
 
 func (client *ServiceClient) SetCallBarringEntry(in *SetCallBarringEntryRequest, out *SetCallBarringEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetCallBarringEntryRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetCallBarringEntryRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[SetCallBarringEntryResponse]{
-		Body: &tr064.SOAPResponseBody[SetCallBarringEntryResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetCallBarringEntry", soapRequest, soapResponse)
 }
 
@@ -697,19 +467,9 @@ type DeleteCallBarringEntryUIDResponse struct {
 
 func (client *ServiceClient) DeleteCallBarringEntryUID(in *DeleteCallBarringEntryUIDRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[DeleteCallBarringEntryUIDRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[DeleteCallBarringEntryUIDRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &DeleteCallBarringEntryUIDResponse{}
-	soapResponse := &tr064.SOAPResponse[DeleteCallBarringEntryUIDResponse]{
-		Body: &tr064.SOAPResponseBody[DeleteCallBarringEntryUIDResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "DeleteCallBarringEntryUID", soapRequest, soapResponse)
 }
 
@@ -725,18 +485,8 @@ type GetDECTHandsetListResponse struct {
 
 func (client *ServiceClient) GetDECTHandsetList(out *GetDECTHandsetListResponse) error {
 	in := &GetDECTHandsetListRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetDECTHandsetListRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetDECTHandsetListRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetDECTHandsetListResponse]{
-		Body: &tr064.SOAPResponseBody[GetDECTHandsetListResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetDECTHandsetList", soapRequest, soapResponse)
 }
 
@@ -754,18 +504,8 @@ type GetDECTHandsetInfoResponse struct {
 
 func (client *ServiceClient) GetDECTHandsetInfo(in *GetDECTHandsetInfoRequest, out *GetDECTHandsetInfoResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[GetDECTHandsetInfoRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetDECTHandsetInfoRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetDECTHandsetInfoResponse]{
-		Body: &tr064.SOAPResponseBody[GetDECTHandsetInfoResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetDECTHandsetInfo", soapRequest, soapResponse)
 }
 
@@ -782,19 +522,9 @@ type SetDECTHandsetPhonebookResponse struct {
 
 func (client *ServiceClient) SetDECTHandsetPhonebook(in *SetDECTHandsetPhonebookRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetDECTHandsetPhonebookRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetDECTHandsetPhonebookRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetDECTHandsetPhonebookResponse{}
-	soapResponse := &tr064.SOAPResponse[SetDECTHandsetPhonebookResponse]{
-		Body: &tr064.SOAPResponseBody[SetDECTHandsetPhonebookResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetDECTHandsetPhonebook", soapRequest, soapResponse)
 }
 
@@ -810,18 +540,8 @@ type GetNumberOfDeflectionsResponse struct {
 
 func (client *ServiceClient) GetNumberOfDeflections(out *GetNumberOfDeflectionsResponse) error {
 	in := &GetNumberOfDeflectionsRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetNumberOfDeflectionsRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetNumberOfDeflectionsRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetNumberOfDeflectionsResponse]{
-		Body: &tr064.SOAPResponseBody[GetNumberOfDeflectionsResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetNumberOfDeflections", soapRequest, soapResponse)
 }
 
@@ -844,18 +564,8 @@ type GetDeflectionResponse struct {
 
 func (client *ServiceClient) GetDeflection(in *GetDeflectionRequest, out *GetDeflectionResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[GetDeflectionRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetDeflectionRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetDeflectionResponse]{
-		Body: &tr064.SOAPResponseBody[GetDeflectionResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetDeflection", soapRequest, soapResponse)
 }
 
@@ -871,18 +581,8 @@ type GetDeflectionsResponse struct {
 
 func (client *ServiceClient) GetDeflections(out *GetDeflectionsResponse) error {
 	in := &GetDeflectionsRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetDeflectionsRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetDeflectionsRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetDeflectionsResponse]{
-		Body: &tr064.SOAPResponseBody[GetDeflectionsResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetDeflections", soapRequest, soapResponse)
 }
 
@@ -899,18 +599,8 @@ type SetDeflectionEnableResponse struct {
 
 func (client *ServiceClient) SetDeflectionEnable(in *SetDeflectionEnableRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetDeflectionEnableRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetDeflectionEnableRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetDeflectionEnableResponse{}
-	soapResponse := &tr064.SOAPResponse[SetDeflectionEnableResponse]{
-		Body: &tr064.SOAPResponseBody[SetDeflectionEnableResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetDeflectionEnable", soapRequest, soapResponse)
 }

@@ -38,18 +38,8 @@ type GetInfoResponse struct {
 
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetInfoRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetInfoRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetInfoResponse]{
-		Body: &tr064.SOAPResponseBody[GetInfoResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetInfo", soapRequest, soapResponse)
 }
 
@@ -66,18 +56,8 @@ type GetConnectionTypeInfoResponse struct {
 
 func (client *ServiceClient) GetConnectionTypeInfo(out *GetConnectionTypeInfoResponse) error {
 	in := &GetConnectionTypeInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetConnectionTypeInfoRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetConnectionTypeInfoRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetConnectionTypeInfoResponse]{
-		Body: &tr064.SOAPResponseBody[GetConnectionTypeInfoResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetConnectionTypeInfo", soapRequest, soapResponse)
 }
 
@@ -93,19 +73,9 @@ type SetConnectionTypeResponse struct {
 
 func (client *ServiceClient) SetConnectionType(in *SetConnectionTypeRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetConnectionTypeRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetConnectionTypeRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetConnectionTypeResponse{}
-	soapResponse := &tr064.SOAPResponse[SetConnectionTypeResponse]{
-		Body: &tr064.SOAPResponseBody[SetConnectionTypeResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetConnectionType", soapRequest, soapResponse)
 }
 
@@ -123,18 +93,8 @@ type GetStatusInfoResponse struct {
 
 func (client *ServiceClient) GetStatusInfo(out *GetStatusInfoResponse) error {
 	in := &GetStatusInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetStatusInfoRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetStatusInfoRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetStatusInfoResponse]{
-		Body: &tr064.SOAPResponseBody[GetStatusInfoResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetStatusInfo", soapRequest, soapResponse)
 }
 
@@ -151,18 +111,8 @@ type GetNATRSIPStatusResponse struct {
 
 func (client *ServiceClient) GetNATRSIPStatus(out *GetNATRSIPStatusResponse) error {
 	in := &GetNATRSIPStatusRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetNATRSIPStatusRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetNATRSIPStatusRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetNATRSIPStatusResponse]{
-		Body: &tr064.SOAPResponseBody[GetNATRSIPStatusResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetNATRSIPStatus", soapRequest, soapResponse)
 }
 
@@ -178,19 +128,9 @@ type SetConnectionTriggerResponse struct {
 
 func (client *ServiceClient) SetConnectionTrigger(in *SetConnectionTriggerRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetConnectionTriggerRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetConnectionTriggerRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetConnectionTriggerResponse{}
-	soapResponse := &tr064.SOAPResponse[SetConnectionTriggerResponse]{
-		Body: &tr064.SOAPResponseBody[SetConnectionTriggerResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetConnectionTrigger", soapRequest, soapResponse)
 }
 
@@ -205,19 +145,9 @@ type ForceTerminationResponse struct {
 
 func (client *ServiceClient) ForceTermination() error {
 	in := &ForceTerminationRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[ForceTerminationRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[ForceTerminationRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &ForceTerminationResponse{}
-	soapResponse := &tr064.SOAPResponse[ForceTerminationResponse]{
-		Body: &tr064.SOAPResponseBody[ForceTerminationResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "ForceTermination", soapRequest, soapResponse)
 }
 
@@ -232,19 +162,9 @@ type RequestConnectionResponse struct {
 
 func (client *ServiceClient) RequestConnection() error {
 	in := &RequestConnectionRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[RequestConnectionRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[RequestConnectionRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &RequestConnectionResponse{}
-	soapResponse := &tr064.SOAPResponse[RequestConnectionResponse]{
-		Body: &tr064.SOAPResponseBody[RequestConnectionResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "RequestConnection", soapRequest, soapResponse)
 }
 
@@ -268,18 +188,8 @@ type GetGenericPortMappingEntryResponse struct {
 
 func (client *ServiceClient) GetGenericPortMappingEntry(in *GetGenericPortMappingEntryRequest, out *GetGenericPortMappingEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[GetGenericPortMappingEntryRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetGenericPortMappingEntryRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetGenericPortMappingEntryResponse]{
-		Body: &tr064.SOAPResponseBody[GetGenericPortMappingEntryResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetGenericPortMappingEntry", soapRequest, soapResponse)
 }
 
@@ -302,18 +212,8 @@ type GetSpecificPortMappingEntryResponse struct {
 
 func (client *ServiceClient) GetSpecificPortMappingEntry(in *GetSpecificPortMappingEntryRequest, out *GetSpecificPortMappingEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[GetSpecificPortMappingEntryRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetSpecificPortMappingEntryRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetSpecificPortMappingEntryResponse]{
-		Body: &tr064.SOAPResponseBody[GetSpecificPortMappingEntryResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetSpecificPortMappingEntry", soapRequest, soapResponse)
 }
 
@@ -336,19 +236,9 @@ type AddPortMappingResponse struct {
 
 func (client *ServiceClient) AddPortMapping(in *AddPortMappingRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[AddPortMappingRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[AddPortMappingRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &AddPortMappingResponse{}
-	soapResponse := &tr064.SOAPResponse[AddPortMappingResponse]{
-		Body: &tr064.SOAPResponseBody[AddPortMappingResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "AddPortMapping", soapRequest, soapResponse)
 }
 
@@ -366,19 +256,9 @@ type DeletePortMappingResponse struct {
 
 func (client *ServiceClient) DeletePortMapping(in *DeletePortMappingRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[DeletePortMappingRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[DeletePortMappingRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &DeletePortMappingResponse{}
-	soapResponse := &tr064.SOAPResponse[DeletePortMappingResponse]{
-		Body: &tr064.SOAPResponseBody[DeletePortMappingResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "DeletePortMapping", soapRequest, soapResponse)
 }
 
@@ -394,18 +274,8 @@ type GetExternalIPAddressResponse struct {
 
 func (client *ServiceClient) GetExternalIPAddress(out *GetExternalIPAddressResponse) error {
 	in := &GetExternalIPAddressRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetExternalIPAddressRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetExternalIPAddressRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetExternalIPAddressResponse]{
-		Body: &tr064.SOAPResponseBody[GetExternalIPAddressResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetExternalIPAddress", soapRequest, soapResponse)
 }
 
@@ -421,18 +291,8 @@ type X_GetDNSServersResponse struct {
 
 func (client *ServiceClient) X_GetDNSServers(out *X_GetDNSServersResponse) error {
 	in := &X_GetDNSServersRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[X_GetDNSServersRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_GetDNSServersRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[X_GetDNSServersResponse]{
-		Body: &tr064.SOAPResponseBody[X_GetDNSServersResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_GetDNSServers", soapRequest, soapResponse)
 }
 
@@ -448,18 +308,8 @@ type GetPortMappingNumberOfEntriesResponse struct {
 
 func (client *ServiceClient) GetPortMappingNumberOfEntries(out *GetPortMappingNumberOfEntriesResponse) error {
 	in := &GetPortMappingNumberOfEntriesRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetPortMappingNumberOfEntriesRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetPortMappingNumberOfEntriesRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetPortMappingNumberOfEntriesResponse]{
-		Body: &tr064.SOAPResponseBody[GetPortMappingNumberOfEntriesResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetPortMappingNumberOfEntries", soapRequest, soapResponse)
 }
 
@@ -475,19 +325,9 @@ type SetRouteProtocolRxResponse struct {
 
 func (client *ServiceClient) SetRouteProtocolRx(in *SetRouteProtocolRxRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetRouteProtocolRxRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetRouteProtocolRxRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetRouteProtocolRxResponse{}
-	soapResponse := &tr064.SOAPResponse[SetRouteProtocolRxResponse]{
-		Body: &tr064.SOAPResponseBody[SetRouteProtocolRxResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetRouteProtocolRx", soapRequest, soapResponse)
 }
 
@@ -503,18 +343,8 @@ type SetIdleDisconnectTimeResponse struct {
 
 func (client *ServiceClient) SetIdleDisconnectTime(in *SetIdleDisconnectTimeRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetIdleDisconnectTimeRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetIdleDisconnectTimeRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetIdleDisconnectTimeResponse{}
-	soapResponse := &tr064.SOAPResponse[SetIdleDisconnectTimeResponse]{
-		Body: &tr064.SOAPResponseBody[SetIdleDisconnectTimeResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetIdleDisconnectTime", soapRequest, soapResponse)
 }

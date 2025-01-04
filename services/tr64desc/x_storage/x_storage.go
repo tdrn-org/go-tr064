@@ -28,18 +28,8 @@ type GetInfoResponse struct {
 
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetInfoRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetInfoRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetInfoResponse]{
-		Body: &tr064.SOAPResponseBody[GetInfoResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetInfo", soapRequest, soapResponse)
 }
 
@@ -56,18 +46,8 @@ type RequestFTPServerWANResponse struct {
 
 func (client *ServiceClient) RequestFTPServerWAN(out *RequestFTPServerWANResponse) error {
 	in := &RequestFTPServerWANRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[RequestFTPServerWANRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[RequestFTPServerWANRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[RequestFTPServerWANResponse]{
-		Body: &tr064.SOAPResponseBody[RequestFTPServerWANResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "RequestFTPServerWAN", soapRequest, soapResponse)
 }
 
@@ -83,19 +63,9 @@ type SetFTPServerResponse struct {
 
 func (client *ServiceClient) SetFTPServer(in *SetFTPServerRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetFTPServerRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetFTPServerRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetFTPServerResponse{}
-	soapResponse := &tr064.SOAPResponse[SetFTPServerResponse]{
-		Body: &tr064.SOAPResponseBody[SetFTPServerResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetFTPServer", soapRequest, soapResponse)
 }
 
@@ -112,19 +82,9 @@ type SetFTPServerWANResponse struct {
 
 func (client *ServiceClient) SetFTPServerWAN(in *SetFTPServerWANRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetFTPServerWANRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetFTPServerWANRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetFTPServerWANResponse{}
-	soapResponse := &tr064.SOAPResponse[SetFTPServerWANResponse]{
-		Body: &tr064.SOAPResponseBody[SetFTPServerWANResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetFTPServerWAN", soapRequest, soapResponse)
 }
 
@@ -140,19 +100,9 @@ type SetSMBServerResponse struct {
 
 func (client *ServiceClient) SetSMBServer(in *SetSMBServerRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetSMBServerRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetSMBServerRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetSMBServerResponse{}
-	soapResponse := &tr064.SOAPResponse[SetSMBServerResponse]{
-		Body: &tr064.SOAPResponseBody[SetSMBServerResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetSMBServer", soapRequest, soapResponse)
 }
 
@@ -170,18 +120,8 @@ type GetUserInfoResponse struct {
 
 func (client *ServiceClient) GetUserInfo(out *GetUserInfoResponse) error {
 	in := &GetUserInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetUserInfoRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetUserInfoRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetUserInfoResponse]{
-		Body: &tr064.SOAPResponseBody[GetUserInfoResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetUserInfo", soapRequest, soapResponse)
 }
 
@@ -199,18 +139,8 @@ type SetUserConfigResponse struct {
 
 func (client *ServiceClient) SetUserConfig(in *SetUserConfigRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetUserConfigRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetUserConfigRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetUserConfigResponse{}
-	soapResponse := &tr064.SOAPResponse[SetUserConfigResponse]{
-		Body: &tr064.SOAPResponseBody[SetUserConfigResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetUserConfig", soapRequest, soapResponse)
 }

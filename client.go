@@ -173,16 +173,33 @@ func (collector *serviceCollector) collectService(service *serviceDoc, scpd *scp
 	return nil
 }
 
+func NewSOAPRequest[T any](in *T) *SOAPRequest[T] {
+	return &SOAPRequest[T]{
+		XMLNameSpace:     XMLNameSpace,
+		XMLEncodingStyle: XMLEncodingStyle,
+		Body: &SOAPRequestBody[T]{
+			In: in,
+		},
+	}
+}
+
 type SOAPRequest[T any] struct {
 	XMLName          xml.Name `xml:"s:Envelope"`
 	XMLNameSpace     string   `xml:"xmlns:s,attr"`
 	XMLEncodingStyle string   `xml:"s:encodingStyle,attr"`
 	Body             *SOAPRequestBody[T]
 }
-
 type SOAPRequestBody[T any] struct {
 	XMLName xml.Name `xml:"s:Body"`
 	In      *T
+}
+
+func NewSOAPResponse[T any](out *T) *SOAPResponse[T] {
+	return &SOAPResponse[T]{
+		Body: &SOAPResponseBody[T]{
+			Out: out,
+		},
+	}
 }
 
 type SOAPResponse[T any] struct {

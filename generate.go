@@ -30,7 +30,7 @@ import (
 
 func Generate(baseUrl *url.URL, spec TR064Spec, dir string) {
 	specUrl := baseUrl.JoinPath(spec.Path())
-	log.Println("Reading '", specUrl, "'...")
+	log.Println("Reading '", specUrl.Redacted(), "'...")
 	tr64desc := &tr64descDoc{}
 	err := unmarshalDocument(specUrl, tr64desc)
 	if err != nil {
@@ -157,21 +157,11 @@ func (gc *generateContext) generateServiceClientAction(buffer *bytes.Buffer, act
 	} else {
 		gc.emit(buffer, "in := &%s{XMLNameSpace: client.Service.Type() }\n", requestTypeName)
 	}
-	gc.emit(buffer, "soapRequest := &tr064.SOAPRequest[%s]{\n", requestTypeName)
-	gc.emit(buffer, "XMLNameSpace: tr064.XMLNameSpace,\n")
-	gc.emit(buffer, "XMLEncodingStyle: tr064.XMLEncodingStyle,\n")
-	gc.emit(buffer, "Body: &tr064.SOAPRequestBody[%s]{\n", requestTypeName)
-	gc.emit(buffer, "In: in,\n")
-	gc.emit(buffer, "},\n")
-	gc.emit(buffer, "}\n")
+	gc.emit(buffer, "soapRequest := tr064.NewSOAPRequest(in)\n")
 	if !hasResponse {
 		gc.emit(buffer, "out := &%s{}\n", responseTypeName)
 	}
-	gc.emit(buffer, "soapResponse := &tr064.SOAPResponse[%s]{\n", responseTypeName)
-	gc.emit(buffer, "Body: &tr064.SOAPResponseBody[%s]{\n", responseTypeName)
-	gc.emit(buffer, "Out: out,\n")
-	gc.emit(buffer, "},\n")
-	gc.emit(buffer, "}\n")
+	gc.emit(buffer, "soapResponse := tr064.NewSOAPResponse(out)\n")
 	gc.emit(buffer, "return client.TR064Client.InvokeService(client.Service, \"%s\", soapRequest, soapResponse)\n", action.Name)
 	gc.emit(buffer, "}\n")
 }

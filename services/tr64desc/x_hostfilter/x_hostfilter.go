@@ -23,18 +23,8 @@ type MarkTicketResponse struct {
 
 func (client *ServiceClient) MarkTicket(out *MarkTicketResponse) error {
 	in := &MarkTicketRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[MarkTicketRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[MarkTicketRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[MarkTicketResponse]{
-		Body: &tr064.SOAPResponseBody[MarkTicketResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "MarkTicket", soapRequest, soapResponse)
 }
 
@@ -51,18 +41,8 @@ type GetTicketIDStatusResponse struct {
 
 func (client *ServiceClient) GetTicketIDStatus(in *GetTicketIDStatusRequest, out *GetTicketIDStatusResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[GetTicketIDStatusRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetTicketIDStatusRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetTicketIDStatusResponse]{
-		Body: &tr064.SOAPResponseBody[GetTicketIDStatusResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetTicketIDStatus", soapRequest, soapResponse)
 }
 
@@ -77,19 +57,9 @@ type DiscardAllTicketsResponse struct {
 
 func (client *ServiceClient) DiscardAllTickets() error {
 	in := &DiscardAllTicketsRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[DiscardAllTicketsRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[DiscardAllTicketsRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &DiscardAllTicketsResponse{}
-	soapResponse := &tr064.SOAPResponse[DiscardAllTicketsResponse]{
-		Body: &tr064.SOAPResponseBody[DiscardAllTicketsResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "DiscardAllTickets", soapRequest, soapResponse)
 }
 
@@ -106,19 +76,9 @@ type DisallowWANAccessByIPResponse struct {
 
 func (client *ServiceClient) DisallowWANAccessByIP(in *DisallowWANAccessByIPRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[DisallowWANAccessByIPRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[DisallowWANAccessByIPRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &DisallowWANAccessByIPResponse{}
-	soapResponse := &tr064.SOAPResponse[DisallowWANAccessByIPResponse]{
-		Body: &tr064.SOAPResponseBody[DisallowWANAccessByIPResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "DisallowWANAccessByIP", soapRequest, soapResponse)
 }
 
@@ -136,17 +96,7 @@ type GetWANAccessByIPResponse struct {
 
 func (client *ServiceClient) GetWANAccessByIP(in *GetWANAccessByIPRequest, out *GetWANAccessByIPResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[GetWANAccessByIPRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetWANAccessByIPRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetWANAccessByIPResponse]{
-		Body: &tr064.SOAPResponseBody[GetWANAccessByIPResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetWANAccessByIP", soapRequest, soapResponse)
 }

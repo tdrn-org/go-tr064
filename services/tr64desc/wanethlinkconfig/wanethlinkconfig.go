@@ -23,17 +23,7 @@ type GetEthernetLinkStatusResponse struct {
 
 func (client *ServiceClient) GetEthernetLinkStatus(out *GetEthernetLinkStatusResponse) error {
 	in := &GetEthernetLinkStatusRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetEthernetLinkStatusRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetEthernetLinkStatusRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetEthernetLinkStatusResponse]{
-		Body: &tr064.SOAPResponseBody[GetEthernetLinkStatusResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetEthernetLinkStatus", soapRequest, soapResponse)
 }

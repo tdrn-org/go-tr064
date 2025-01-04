@@ -27,18 +27,8 @@ type GetInfoResponse struct {
 
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetInfoRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetInfoRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetInfoResponse]{
-		Body: &tr064.SOAPResponseBody[GetInfoResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetInfo", soapRequest, soapResponse)
 }
 
@@ -84,18 +74,8 @@ type GetGenericDeviceInfosResponse struct {
 
 func (client *ServiceClient) GetGenericDeviceInfos(in *GetGenericDeviceInfosRequest, out *GetGenericDeviceInfosResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[GetGenericDeviceInfosRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetGenericDeviceInfosRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetGenericDeviceInfosResponse]{
-		Body: &tr064.SOAPResponseBody[GetGenericDeviceInfosResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetGenericDeviceInfos", soapRequest, soapResponse)
 }
 
@@ -140,18 +120,8 @@ type GetSpecificDeviceInfosResponse struct {
 
 func (client *ServiceClient) GetSpecificDeviceInfos(in *GetSpecificDeviceInfosRequest, out *GetSpecificDeviceInfosResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[GetSpecificDeviceInfosRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetSpecificDeviceInfosRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetSpecificDeviceInfosResponse]{
-		Body: &tr064.SOAPResponseBody[GetSpecificDeviceInfosResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetSpecificDeviceInfos", soapRequest, soapResponse)
 }
 
@@ -168,19 +138,9 @@ type SetDeviceNameResponse struct {
 
 func (client *ServiceClient) SetDeviceName(in *SetDeviceNameRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetDeviceNameRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetDeviceNameRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetDeviceNameResponse{}
-	soapResponse := &tr064.SOAPResponse[SetDeviceNameResponse]{
-		Body: &tr064.SOAPResponseBody[SetDeviceNameResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetDeviceName", soapRequest, soapResponse)
 }
 
@@ -197,18 +157,8 @@ type SetSwitchResponse struct {
 
 func (client *ServiceClient) SetSwitch(in *SetSwitchRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetSwitchRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetSwitchRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetSwitchResponse{}
-	soapResponse := &tr064.SOAPResponse[SetSwitchResponse]{
-		Body: &tr064.SOAPResponseBody[SetSwitchResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetSwitch", soapRequest, soapResponse)
 }

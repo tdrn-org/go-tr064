@@ -38,18 +38,8 @@ type GetInfoResponse struct {
 
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetInfoRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetInfoRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetInfoResponse]{
-		Body: &tr064.SOAPResponseBody[GetInfoResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetInfo", soapRequest, soapResponse)
 }
 
@@ -82,18 +72,8 @@ type GetUSPControllerByIndexResponse struct {
 
 func (client *ServiceClient) GetUSPControllerByIndex(in *GetUSPControllerByIndexRequest, out *GetUSPControllerByIndexResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[GetUSPControllerByIndexRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetUSPControllerByIndexRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetUSPControllerByIndexResponse]{
-		Body: &tr064.SOAPResponseBody[GetUSPControllerByIndexResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetUSPControllerByIndex", soapRequest, soapResponse)
 }
 
@@ -109,18 +89,8 @@ type GetUSPControllerNumberOfEntriesResponse struct {
 
 func (client *ServiceClient) GetUSPControllerNumberOfEntries(out *GetUSPControllerNumberOfEntriesResponse) error {
 	in := &GetUSPControllerNumberOfEntriesRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetUSPControllerNumberOfEntriesRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetUSPControllerNumberOfEntriesRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetUSPControllerNumberOfEntriesResponse]{
-		Body: &tr064.SOAPResponseBody[GetUSPControllerNumberOfEntriesResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetUSPControllerNumberOfEntries", soapRequest, soapResponse)
 }
 
@@ -154,18 +124,8 @@ type AddUSPControllerResponse struct {
 
 func (client *ServiceClient) AddUSPController(in *AddUSPControllerRequest, out *AddUSPControllerResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[AddUSPControllerRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[AddUSPControllerRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[AddUSPControllerResponse]{
-		Body: &tr064.SOAPResponseBody[AddUSPControllerResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "AddUSPController", soapRequest, soapResponse)
 }
 
@@ -181,19 +141,9 @@ type DeleteUSPControllerByIndexResponse struct {
 
 func (client *ServiceClient) DeleteUSPControllerByIndex(in *DeleteUSPControllerByIndexRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[DeleteUSPControllerByIndexRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[DeleteUSPControllerByIndexRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &DeleteUSPControllerByIndexResponse{}
-	soapResponse := &tr064.SOAPResponse[DeleteUSPControllerByIndexResponse]{
-		Body: &tr064.SOAPResponseBody[DeleteUSPControllerByIndexResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "DeleteUSPControllerByIndex", soapRequest, soapResponse)
 }
 
@@ -210,19 +160,9 @@ type SetUSPControllerEnableByIndexResponse struct {
 
 func (client *ServiceClient) SetUSPControllerEnableByIndex(in *SetUSPControllerEnableByIndexRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetUSPControllerEnableByIndexRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetUSPControllerEnableByIndexRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetUSPControllerEnableByIndexResponse{}
-	soapResponse := &tr064.SOAPResponse[SetUSPControllerEnableByIndexResponse]{
-		Body: &tr064.SOAPResponseBody[SetUSPControllerEnableByIndexResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetUSPControllerEnableByIndex", soapRequest, soapResponse)
 }
 
@@ -238,18 +178,8 @@ type GetUSPMyFRITZEnableResponse struct {
 
 func (client *ServiceClient) GetUSPMyFRITZEnable(out *GetUSPMyFRITZEnableResponse) error {
 	in := &GetUSPMyFRITZEnableRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetUSPMyFRITZEnableRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetUSPMyFRITZEnableRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetUSPMyFRITZEnableResponse]{
-		Body: &tr064.SOAPResponseBody[GetUSPMyFRITZEnableResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetUSPMyFRITZEnable", soapRequest, soapResponse)
 }
 
@@ -265,18 +195,8 @@ type SetUSPMyFRITZEnableResponse struct {
 
 func (client *ServiceClient) SetUSPMyFRITZEnable(in *SetUSPMyFRITZEnableRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetUSPMyFRITZEnableRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetUSPMyFRITZEnableRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetUSPMyFRITZEnableResponse{}
-	soapResponse := &tr064.SOAPResponse[SetUSPMyFRITZEnableResponse]{
-		Body: &tr064.SOAPResponseBody[SetUSPMyFRITZEnableResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetUSPMyFRITZEnable", soapRequest, soapResponse)
 }

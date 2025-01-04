@@ -32,18 +32,8 @@ type GetInfoResponse struct {
 
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetInfoRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetInfoRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetInfoResponse]{
-		Body: &tr064.SOAPResponseBody[GetInfoResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetInfo", soapRequest, soapResponse)
 }
 
@@ -59,19 +49,9 @@ type SetDHCPServerEnableResponse struct {
 
 func (client *ServiceClient) SetDHCPServerEnable(in *SetDHCPServerEnableRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetDHCPServerEnableRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetDHCPServerEnableRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetDHCPServerEnableResponse{}
-	soapResponse := &tr064.SOAPResponse[SetDHCPServerEnableResponse]{
-		Body: &tr064.SOAPResponseBody[SetDHCPServerEnableResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetDHCPServerEnable", soapRequest, soapResponse)
 }
 
@@ -90,19 +70,9 @@ type SetIPInterfaceResponse struct {
 
 func (client *ServiceClient) SetIPInterface(in *SetIPInterfaceRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetIPInterfaceRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetIPInterfaceRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetIPInterfaceResponse{}
-	soapResponse := &tr064.SOAPResponse[SetIPInterfaceResponse]{
-		Body: &tr064.SOAPResponseBody[SetIPInterfaceResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetIPInterface", soapRequest, soapResponse)
 }
 
@@ -119,18 +89,8 @@ type GetAddressRangeResponse struct {
 
 func (client *ServiceClient) GetAddressRange(out *GetAddressRangeResponse) error {
 	in := &GetAddressRangeRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetAddressRangeRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetAddressRangeRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetAddressRangeResponse]{
-		Body: &tr064.SOAPResponseBody[GetAddressRangeResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetAddressRange", soapRequest, soapResponse)
 }
 
@@ -147,19 +107,9 @@ type SetAddressRangeResponse struct {
 
 func (client *ServiceClient) SetAddressRange(in *SetAddressRangeRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetAddressRangeRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetAddressRangeRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetAddressRangeResponse{}
-	soapResponse := &tr064.SOAPResponse[SetAddressRangeResponse]{
-		Body: &tr064.SOAPResponseBody[SetAddressRangeResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetAddressRange", soapRequest, soapResponse)
 }
 
@@ -175,18 +125,8 @@ type GetIPRoutersListResponse struct {
 
 func (client *ServiceClient) GetIPRoutersList(out *GetIPRoutersListResponse) error {
 	in := &GetIPRoutersListRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetIPRoutersListRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetIPRoutersListRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetIPRoutersListResponse]{
-		Body: &tr064.SOAPResponseBody[GetIPRoutersListResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetIPRoutersList", soapRequest, soapResponse)
 }
 
@@ -202,19 +142,9 @@ type SetIPRouterResponse struct {
 
 func (client *ServiceClient) SetIPRouter(in *SetIPRouterRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetIPRouterRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetIPRouterRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetIPRouterResponse{}
-	soapResponse := &tr064.SOAPResponse[SetIPRouterResponse]{
-		Body: &tr064.SOAPResponseBody[SetIPRouterResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetIPRouter", soapRequest, soapResponse)
 }
 
@@ -230,18 +160,8 @@ type GetSubnetMaskResponse struct {
 
 func (client *ServiceClient) GetSubnetMask(out *GetSubnetMaskResponse) error {
 	in := &GetSubnetMaskRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetSubnetMaskRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetSubnetMaskRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetSubnetMaskResponse]{
-		Body: &tr064.SOAPResponseBody[GetSubnetMaskResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetSubnetMask", soapRequest, soapResponse)
 }
 
@@ -257,19 +177,9 @@ type SetSubnetMaskResponse struct {
 
 func (client *ServiceClient) SetSubnetMask(in *SetSubnetMaskRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetSubnetMaskRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetSubnetMaskRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetSubnetMaskResponse{}
-	soapResponse := &tr064.SOAPResponse[SetSubnetMaskResponse]{
-		Body: &tr064.SOAPResponseBody[SetSubnetMaskResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetSubnetMask", soapRequest, soapResponse)
 }
 
@@ -285,18 +195,8 @@ type GetDNSServersResponse struct {
 
 func (client *ServiceClient) GetDNSServers(out *GetDNSServersResponse) error {
 	in := &GetDNSServersRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetDNSServersRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetDNSServersRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetDNSServersResponse]{
-		Body: &tr064.SOAPResponseBody[GetDNSServersResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetDNSServers", soapRequest, soapResponse)
 }
 
@@ -312,17 +212,7 @@ type GetIPInterfaceNumberOfEntriesResponse struct {
 
 func (client *ServiceClient) GetIPInterfaceNumberOfEntries(out *GetIPInterfaceNumberOfEntriesResponse) error {
 	in := &GetIPInterfaceNumberOfEntriesRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetIPInterfaceNumberOfEntriesRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetIPInterfaceNumberOfEntriesRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetIPInterfaceNumberOfEntriesResponse]{
-		Body: &tr064.SOAPResponseBody[GetIPInterfaceNumberOfEntriesResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetIPInterfaceNumberOfEntries", soapRequest, soapResponse)
 }

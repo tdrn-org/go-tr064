@@ -23,19 +23,9 @@ type SetDefaultConnectionServiceResponse struct {
 
 func (client *ServiceClient) SetDefaultConnectionService(in *SetDefaultConnectionServiceRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetDefaultConnectionServiceRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetDefaultConnectionServiceRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetDefaultConnectionServiceResponse{}
-	soapResponse := &tr064.SOAPResponse[SetDefaultConnectionServiceResponse]{
-		Body: &tr064.SOAPResponseBody[SetDefaultConnectionServiceResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetDefaultConnectionService", soapRequest, soapResponse)
 }
 
@@ -51,18 +41,8 @@ type GetDefaultConnectionServiceResponse struct {
 
 func (client *ServiceClient) GetDefaultConnectionService(out *GetDefaultConnectionServiceResponse) error {
 	in := &GetDefaultConnectionServiceRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetDefaultConnectionServiceRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetDefaultConnectionServiceRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetDefaultConnectionServiceResponse]{
-		Body: &tr064.SOAPResponseBody[GetDefaultConnectionServiceResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetDefaultConnectionService", soapRequest, soapResponse)
 }
 
@@ -78,18 +58,8 @@ type GetForwardNumberOfEntriesResponse struct {
 
 func (client *ServiceClient) GetForwardNumberOfEntries(out *GetForwardNumberOfEntriesResponse) error {
 	in := &GetForwardNumberOfEntriesRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetForwardNumberOfEntriesRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetForwardNumberOfEntriesRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetForwardNumberOfEntriesResponse]{
-		Body: &tr064.SOAPResponseBody[GetForwardNumberOfEntriesResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetForwardNumberOfEntries", soapRequest, soapResponse)
 }
 
@@ -112,19 +82,9 @@ type AddForwardingEntryResponse struct {
 
 func (client *ServiceClient) AddForwardingEntry(in *AddForwardingEntryRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[AddForwardingEntryRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[AddForwardingEntryRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &AddForwardingEntryResponse{}
-	soapResponse := &tr064.SOAPResponse[AddForwardingEntryResponse]{
-		Body: &tr064.SOAPResponseBody[AddForwardingEntryResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "AddForwardingEntry", soapRequest, soapResponse)
 }
 
@@ -143,19 +103,9 @@ type DeleteForwardingEntryResponse struct {
 
 func (client *ServiceClient) DeleteForwardingEntry(in *DeleteForwardingEntryRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[DeleteForwardingEntryRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[DeleteForwardingEntryRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &DeleteForwardingEntryResponse{}
-	soapResponse := &tr064.SOAPResponse[DeleteForwardingEntryResponse]{
-		Body: &tr064.SOAPResponseBody[DeleteForwardingEntryResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "DeleteForwardingEntry", soapRequest, soapResponse)
 }
 
@@ -180,18 +130,8 @@ type GetSpecificForwardingEntryResponse struct {
 
 func (client *ServiceClient) GetSpecificForwardingEntry(in *GetSpecificForwardingEntryRequest, out *GetSpecificForwardingEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[GetSpecificForwardingEntryRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetSpecificForwardingEntryRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetSpecificForwardingEntryResponse]{
-		Body: &tr064.SOAPResponseBody[GetSpecificForwardingEntryResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetSpecificForwardingEntry", soapRequest, soapResponse)
 }
 
@@ -217,18 +157,8 @@ type GetGenericForwardingEntryResponse struct {
 
 func (client *ServiceClient) GetGenericForwardingEntry(in *GetGenericForwardingEntryRequest, out *GetGenericForwardingEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[GetGenericForwardingEntryRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetGenericForwardingEntryRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetGenericForwardingEntryResponse]{
-		Body: &tr064.SOAPResponseBody[GetGenericForwardingEntryResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetGenericForwardingEntry", soapRequest, soapResponse)
 }
 
@@ -248,18 +178,8 @@ type SetForwardingEntryEnableResponse struct {
 
 func (client *ServiceClient) SetForwardingEntryEnable(in *SetForwardingEntryEnableRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetForwardingEntryEnableRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetForwardingEntryEnableRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetForwardingEntryEnableResponse{}
-	soapResponse := &tr064.SOAPResponse[SetForwardingEntryEnableResponse]{
-		Body: &tr064.SOAPResponseBody[SetForwardingEntryEnableResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetForwardingEntryEnable", soapRequest, soapResponse)
 }

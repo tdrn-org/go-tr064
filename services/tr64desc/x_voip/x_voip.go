@@ -43,18 +43,8 @@ type GetInfoExResponse struct {
 
 func (client *ServiceClient) GetInfoEx(out *GetInfoExResponse) error {
 	in := &GetInfoExRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetInfoExRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetInfoExRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetInfoExResponse]{
-		Body: &tr064.SOAPResponseBody[GetInfoExResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetInfoEx", soapRequest, soapResponse)
 }
 
@@ -76,19 +66,9 @@ type X_AVM_DE_AddVoIPAccountResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_AddVoIPAccount(in *X_AVM_DE_AddVoIPAccountRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_AddVoIPAccountRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_AddVoIPAccountRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_AddVoIPAccountResponse{}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_AddVoIPAccountResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_AddVoIPAccountResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_AddVoIPAccount", soapRequest, soapResponse)
 }
 
@@ -111,18 +91,8 @@ type X_AVM_DE_GetVoIPAccountResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetVoIPAccount(in *X_AVM_DE_GetVoIPAccountRequest, out *X_AVM_DE_GetVoIPAccountResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetVoIPAccountRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetVoIPAccountRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_GetVoIPAccountResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_GetVoIPAccountResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetVoIPAccount", soapRequest, soapResponse)
 }
 
@@ -138,19 +108,9 @@ type X_AVM_DE_DelVoIPAccountResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_DelVoIPAccount(in *X_AVM_DE_DelVoIPAccountRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_DelVoIPAccountRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_DelVoIPAccountRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_DelVoIPAccountResponse{}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_DelVoIPAccountResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_DelVoIPAccountResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_DelVoIPAccount", soapRequest, soapResponse)
 }
 
@@ -166,18 +126,8 @@ type X_AVM_DE_GetVoIPAccountsResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetVoIPAccounts(out *X_AVM_DE_GetVoIPAccountsResponse) error {
 	in := &X_AVM_DE_GetVoIPAccountsRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetVoIPAccountsRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetVoIPAccountsRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_GetVoIPAccountsResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_GetVoIPAccountsResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetVoIPAccounts", soapRequest, soapResponse)
 }
 
@@ -194,18 +144,8 @@ type X_AVM_DE_GetVoIPStatusResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetVoIPStatus(in *X_AVM_DE_GetVoIPStatusRequest, out *X_AVM_DE_GetVoIPStatusResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetVoIPStatusRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetVoIPStatusRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_GetVoIPStatusResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_GetVoIPStatusResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetVoIPStatus", soapRequest, soapResponse)
 }
 
@@ -222,18 +162,8 @@ type GetInfoResponse struct {
 
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetInfoRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetInfoRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetInfoResponse]{
-		Body: &tr064.SOAPResponseBody[GetInfoResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetInfo", soapRequest, soapResponse)
 }
 
@@ -250,19 +180,9 @@ type SetConfigResponse struct {
 
 func (client *ServiceClient) SetConfig(in *SetConfigRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetConfigRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetConfigRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetConfigResponse{}
-	soapResponse := &tr064.SOAPResponse[SetConfigResponse]{
-		Body: &tr064.SOAPResponseBody[SetConfigResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetConfig", soapRequest, soapResponse)
 }
 
@@ -278,18 +198,8 @@ type GetMaxVoIPNumbersResponse struct {
 
 func (client *ServiceClient) GetMaxVoIPNumbers(out *GetMaxVoIPNumbersResponse) error {
 	in := &GetMaxVoIPNumbersRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetMaxVoIPNumbersRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetMaxVoIPNumbersRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetMaxVoIPNumbersResponse]{
-		Body: &tr064.SOAPResponseBody[GetMaxVoIPNumbersResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetMaxVoIPNumbers", soapRequest, soapResponse)
 }
 
@@ -305,18 +215,8 @@ type GetExistingVoIPNumbersResponse struct {
 
 func (client *ServiceClient) GetExistingVoIPNumbers(out *GetExistingVoIPNumbersResponse) error {
 	in := &GetExistingVoIPNumbersRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetExistingVoIPNumbersRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetExistingVoIPNumbersRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetExistingVoIPNumbersResponse]{
-		Body: &tr064.SOAPResponseBody[GetExistingVoIPNumbersResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetExistingVoIPNumbers", soapRequest, soapResponse)
 }
 
@@ -332,18 +232,8 @@ type X_AVM_DE_GetNumberOfClientsResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetNumberOfClients(out *X_AVM_DE_GetNumberOfClientsResponse) error {
 	in := &X_AVM_DE_GetNumberOfClientsRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetNumberOfClientsRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetNumberOfClientsRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_GetNumberOfClientsResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_GetNumberOfClientsResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetNumberOfClients", soapRequest, soapResponse)
 }
 
@@ -364,18 +254,8 @@ type X_AVM_DE_GetClientResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetClient(in *X_AVM_DE_GetClientRequest, out *X_AVM_DE_GetClientResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetClientRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetClientRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_GetClientResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_GetClientResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetClient", soapRequest, soapResponse)
 }
 
@@ -398,18 +278,8 @@ type X_AVM_DE_GetClient2Response struct {
 
 func (client *ServiceClient) X_AVM_DE_GetClient2(in *X_AVM_DE_GetClient2Request, out *X_AVM_DE_GetClient2Response) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetClient2Request]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetClient2Request]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_GetClient2Response]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_GetClient2Response]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetClient2", soapRequest, soapResponse)
 }
 
@@ -428,19 +298,9 @@ type X_AVM_DE_SetClientResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_SetClient(in *X_AVM_DE_SetClientRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_SetClientRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_SetClientRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_SetClientResponse{}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_SetClientResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_SetClientResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetClient", soapRequest, soapResponse)
 }
 
@@ -460,19 +320,9 @@ type X_AVM_DE_SetClient2Response struct {
 
 func (client *ServiceClient) X_AVM_DE_SetClient2(in *X_AVM_DE_SetClient2Request) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_SetClient2Request]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_SetClient2Request]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_SetClient2Response{}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_SetClient2Response]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_SetClient2Response]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetClient2", soapRequest, soapResponse)
 }
 
@@ -498,18 +348,8 @@ type X_AVM_DE_GetClient3Response struct {
 
 func (client *ServiceClient) X_AVM_DE_GetClient3(in *X_AVM_DE_GetClient3Request, out *X_AVM_DE_GetClient3Response) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetClient3Request]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetClient3Request]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_GetClient3Response]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_GetClient3Response]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetClient3", soapRequest, soapResponse)
 }
 
@@ -536,18 +376,8 @@ type X_AVM_DE_GetClientByClientIdResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetClientByClientId(in *X_AVM_DE_GetClientByClientIdRequest, out *X_AVM_DE_GetClientByClientIdResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetClientByClientIdRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetClientByClientIdRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_GetClientByClientIdResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_GetClientByClientIdResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetClientByClientId", soapRequest, soapResponse)
 }
 
@@ -569,19 +399,9 @@ type X_AVM_DE_SetClient3Response struct {
 
 func (client *ServiceClient) X_AVM_DE_SetClient3(in *X_AVM_DE_SetClient3Request) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_SetClient3Request]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_SetClient3Request]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_SetClient3Response{}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_SetClient3Response]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_SetClient3Response]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetClient3", soapRequest, soapResponse)
 }
 
@@ -604,18 +424,8 @@ type X_AVM_DE_SetClient4Response struct {
 
 func (client *ServiceClient) X_AVM_DE_SetClient4(in *X_AVM_DE_SetClient4Request, out *X_AVM_DE_SetClient4Response) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_SetClient4Request]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_SetClient4Request]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_SetClient4Response]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_SetClient4Response]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetClient4", soapRequest, soapResponse)
 }
 
@@ -631,18 +441,8 @@ type X_AVM_DE_GetClientsResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetClients(out *X_AVM_DE_GetClientsResponse) error {
 	in := &X_AVM_DE_GetClientsRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetClientsRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetClientsRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_GetClientsResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_GetClientsResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetClients", soapRequest, soapResponse)
 }
 
@@ -658,18 +458,8 @@ type X_AVM_DE_GetNumberOfNumbersResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetNumberOfNumbers(out *X_AVM_DE_GetNumberOfNumbersResponse) error {
 	in := &X_AVM_DE_GetNumberOfNumbersRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetNumberOfNumbersRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetNumberOfNumbersRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_GetNumberOfNumbersResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_GetNumberOfNumbersResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetNumberOfNumbers", soapRequest, soapResponse)
 }
 
@@ -685,18 +475,8 @@ type X_AVM_DE_GetNumbersResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetNumbers(out *X_AVM_DE_GetNumbersResponse) error {
 	in := &X_AVM_DE_GetNumbersRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetNumbersRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetNumbersRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_GetNumbersResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_GetNumbersResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetNumbers", soapRequest, soapResponse)
 }
 
@@ -712,19 +492,9 @@ type X_AVM_DE_DeleteClientResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_DeleteClient(in *X_AVM_DE_DeleteClientRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_DeleteClientRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_DeleteClientRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_DeleteClientResponse{}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_DeleteClientResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_DeleteClientResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_DeleteClient", soapRequest, soapResponse)
 }
 
@@ -740,18 +510,8 @@ type X_AVM_DE_DialGetConfigResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_DialGetConfig(out *X_AVM_DE_DialGetConfigResponse) error {
 	in := &X_AVM_DE_DialGetConfigRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_DialGetConfigRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_DialGetConfigRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_DialGetConfigResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_DialGetConfigResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_DialGetConfig", soapRequest, soapResponse)
 }
 
@@ -767,19 +527,9 @@ type X_AVM_DE_DialSetConfigResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_DialSetConfig(in *X_AVM_DE_DialSetConfigRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_DialSetConfigRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_DialSetConfigRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_DialSetConfigResponse{}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_DialSetConfigResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_DialSetConfigResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_DialSetConfig", soapRequest, soapResponse)
 }
 
@@ -795,19 +545,9 @@ type X_AVM_DE_DialNumberResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_DialNumber(in *X_AVM_DE_DialNumberRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_DialNumberRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_DialNumberRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_DialNumberResponse{}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_DialNumberResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_DialNumberResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_DialNumber", soapRequest, soapResponse)
 }
 
@@ -822,19 +562,9 @@ type X_AVM_DE_DialHangupResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_DialHangup() error {
 	in := &X_AVM_DE_DialHangupRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_DialHangupRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_DialHangupRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_DialHangupResponse{}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_DialHangupResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_DialHangupResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_DialHangup", soapRequest, soapResponse)
 }
 
@@ -851,18 +581,8 @@ type X_AVM_DE_GetPhonePortResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetPhonePort(in *X_AVM_DE_GetPhonePortRequest, out *X_AVM_DE_GetPhonePortResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetPhonePortRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetPhonePortRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_GetPhonePortResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_GetPhonePortResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetPhonePort", soapRequest, soapResponse)
 }
 
@@ -879,19 +599,9 @@ type X_AVM_DE_SetDelayedCallNotificationResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_SetDelayedCallNotification(in *X_AVM_DE_SetDelayedCallNotificationRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_SetDelayedCallNotificationRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_SetDelayedCallNotificationRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_SetDelayedCallNotificationResponse{}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_SetDelayedCallNotificationResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_SetDelayedCallNotificationResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetDelayedCallNotification", soapRequest, soapResponse)
 }
 
@@ -907,18 +617,8 @@ type GetVoIPCommonCountryCodeResponse struct {
 
 func (client *ServiceClient) GetVoIPCommonCountryCode(out *GetVoIPCommonCountryCodeResponse) error {
 	in := &GetVoIPCommonCountryCodeRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetVoIPCommonCountryCodeRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetVoIPCommonCountryCodeRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetVoIPCommonCountryCodeResponse]{
-		Body: &tr064.SOAPResponseBody[GetVoIPCommonCountryCodeResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetVoIPCommonCountryCode", soapRequest, soapResponse)
 }
 
@@ -935,18 +635,8 @@ type X_AVM_DE_GetVoIPCommonCountryCodeResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetVoIPCommonCountryCode(out *X_AVM_DE_GetVoIPCommonCountryCodeResponse) error {
 	in := &X_AVM_DE_GetVoIPCommonCountryCodeRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetVoIPCommonCountryCodeRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetVoIPCommonCountryCodeRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_GetVoIPCommonCountryCodeResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_GetVoIPCommonCountryCodeResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetVoIPCommonCountryCode", soapRequest, soapResponse)
 }
 
@@ -962,19 +652,9 @@ type SetVoIPCommonCountryCodeResponse struct {
 
 func (client *ServiceClient) SetVoIPCommonCountryCode(in *SetVoIPCommonCountryCodeRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetVoIPCommonCountryCodeRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetVoIPCommonCountryCodeRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetVoIPCommonCountryCodeResponse{}
-	soapResponse := &tr064.SOAPResponse[SetVoIPCommonCountryCodeResponse]{
-		Body: &tr064.SOAPResponseBody[SetVoIPCommonCountryCodeResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetVoIPCommonCountryCode", soapRequest, soapResponse)
 }
 
@@ -991,19 +671,9 @@ type X_AVM_DE_SetVoIPCommonCountryCodeResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_SetVoIPCommonCountryCode(in *X_AVM_DE_SetVoIPCommonCountryCodeRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_SetVoIPCommonCountryCodeRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_SetVoIPCommonCountryCodeRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_SetVoIPCommonCountryCodeResponse{}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_SetVoIPCommonCountryCodeResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_SetVoIPCommonCountryCodeResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetVoIPCommonCountryCode", soapRequest, soapResponse)
 }
 
@@ -1020,18 +690,8 @@ type GetVoIPEnableCountryCodeResponse struct {
 
 func (client *ServiceClient) GetVoIPEnableCountryCode(in *GetVoIPEnableCountryCodeRequest, out *GetVoIPEnableCountryCodeResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[GetVoIPEnableCountryCodeRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetVoIPEnableCountryCodeRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetVoIPEnableCountryCodeResponse]{
-		Body: &tr064.SOAPResponseBody[GetVoIPEnableCountryCodeResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetVoIPEnableCountryCode", soapRequest, soapResponse)
 }
 
@@ -1048,19 +708,9 @@ type SetVoIPEnableCountryCodeResponse struct {
 
 func (client *ServiceClient) SetVoIPEnableCountryCode(in *SetVoIPEnableCountryCodeRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetVoIPEnableCountryCodeRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetVoIPEnableCountryCodeRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetVoIPEnableCountryCodeResponse{}
-	soapResponse := &tr064.SOAPResponse[SetVoIPEnableCountryCodeResponse]{
-		Body: &tr064.SOAPResponseBody[SetVoIPEnableCountryCodeResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetVoIPEnableCountryCode", soapRequest, soapResponse)
 }
 
@@ -1076,18 +726,8 @@ type GetVoIPCommonAreaCodeResponse struct {
 
 func (client *ServiceClient) GetVoIPCommonAreaCode(out *GetVoIPCommonAreaCodeResponse) error {
 	in := &GetVoIPCommonAreaCodeRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetVoIPCommonAreaCodeRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetVoIPCommonAreaCodeRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetVoIPCommonAreaCodeResponse]{
-		Body: &tr064.SOAPResponseBody[GetVoIPCommonAreaCodeResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetVoIPCommonAreaCode", soapRequest, soapResponse)
 }
 
@@ -1104,18 +744,8 @@ type X_AVM_DE_GetVoIPCommonAreaCodeResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetVoIPCommonAreaCode(out *X_AVM_DE_GetVoIPCommonAreaCodeResponse) error {
 	in := &X_AVM_DE_GetVoIPCommonAreaCodeRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetVoIPCommonAreaCodeRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetVoIPCommonAreaCodeRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_GetVoIPCommonAreaCodeResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_GetVoIPCommonAreaCodeResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetVoIPCommonAreaCode", soapRequest, soapResponse)
 }
 
@@ -1131,19 +761,9 @@ type SetVoIPCommonAreaCodeResponse struct {
 
 func (client *ServiceClient) SetVoIPCommonAreaCode(in *SetVoIPCommonAreaCodeRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetVoIPCommonAreaCodeRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetVoIPCommonAreaCodeRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetVoIPCommonAreaCodeResponse{}
-	soapResponse := &tr064.SOAPResponse[SetVoIPCommonAreaCodeResponse]{
-		Body: &tr064.SOAPResponseBody[SetVoIPCommonAreaCodeResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetVoIPCommonAreaCode", soapRequest, soapResponse)
 }
 
@@ -1160,19 +780,9 @@ type X_AVM_DE_SetVoIPCommonAreaCodeResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_SetVoIPCommonAreaCode(in *X_AVM_DE_SetVoIPCommonAreaCodeRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_SetVoIPCommonAreaCodeRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_SetVoIPCommonAreaCodeRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_SetVoIPCommonAreaCodeResponse{}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_SetVoIPCommonAreaCodeResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_SetVoIPCommonAreaCodeResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetVoIPCommonAreaCode", soapRequest, soapResponse)
 }
 
@@ -1189,18 +799,8 @@ type GetVoIPEnableAreaCodeResponse struct {
 
 func (client *ServiceClient) GetVoIPEnableAreaCode(in *GetVoIPEnableAreaCodeRequest, out *GetVoIPEnableAreaCodeResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[GetVoIPEnableAreaCodeRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetVoIPEnableAreaCodeRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetVoIPEnableAreaCodeResponse]{
-		Body: &tr064.SOAPResponseBody[GetVoIPEnableAreaCodeResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetVoIPEnableAreaCode", soapRequest, soapResponse)
 }
 
@@ -1217,19 +817,9 @@ type SetVoIPEnableAreaCodeResponse struct {
 
 func (client *ServiceClient) SetVoIPEnableAreaCode(in *SetVoIPEnableAreaCodeRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[SetVoIPEnableAreaCodeRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[SetVoIPEnableAreaCodeRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetVoIPEnableAreaCodeResponse{}
-	soapResponse := &tr064.SOAPResponse[SetVoIPEnableAreaCodeResponse]{
-		Body: &tr064.SOAPResponseBody[SetVoIPEnableAreaCodeResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "SetVoIPEnableAreaCode", soapRequest, soapResponse)
 }
 
@@ -1250,18 +840,8 @@ type X_AVM_DE_GetAlarmClockResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetAlarmClock(in *X_AVM_DE_GetAlarmClockRequest, out *X_AVM_DE_GetAlarmClockResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetAlarmClockRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetAlarmClockRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_GetAlarmClockResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_GetAlarmClockResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetAlarmClock", soapRequest, soapResponse)
 }
 
@@ -1278,19 +858,9 @@ type X_AVM_DE_SetAlarmClockEnableResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_SetAlarmClockEnable(in *X_AVM_DE_SetAlarmClockEnableRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_SetAlarmClockEnableRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_SetAlarmClockEnableRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_SetAlarmClockEnableResponse{}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_SetAlarmClockEnableResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_SetAlarmClockEnableResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetAlarmClockEnable", soapRequest, soapResponse)
 }
 
@@ -1306,17 +876,7 @@ type X_AVM_DE_GetNumberOfAlarmClocksResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetNumberOfAlarmClocks(out *X_AVM_DE_GetNumberOfAlarmClocksResponse) error {
 	in := &X_AVM_DE_GetNumberOfAlarmClocksRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[X_AVM_DE_GetNumberOfAlarmClocksRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[X_AVM_DE_GetNumberOfAlarmClocksRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[X_AVM_DE_GetNumberOfAlarmClocksResponse]{
-		Body: &tr064.SOAPResponseBody[X_AVM_DE_GetNumberOfAlarmClocksResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetNumberOfAlarmClocks", soapRequest, soapResponse)
 }

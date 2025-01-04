@@ -24,18 +24,8 @@ type GetFirewallStatusResponse struct {
 
 func (client *ServiceClient) GetFirewallStatus(out *GetFirewallStatusResponse) error {
 	in := &GetFirewallStatusRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := &tr064.SOAPRequest[GetFirewallStatusRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetFirewallStatusRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetFirewallStatusResponse]{
-		Body: &tr064.SOAPResponseBody[GetFirewallStatusResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetFirewallStatus", soapRequest, soapResponse)
 }
 
@@ -56,18 +46,8 @@ type GetOutboundPinholeTimeoutResponse struct {
 
 func (client *ServiceClient) GetOutboundPinholeTimeout(in *GetOutboundPinholeTimeoutRequest, out *GetOutboundPinholeTimeoutResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[GetOutboundPinholeTimeoutRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetOutboundPinholeTimeoutRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetOutboundPinholeTimeoutResponse]{
-		Body: &tr064.SOAPResponseBody[GetOutboundPinholeTimeoutResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetOutboundPinholeTimeout", soapRequest, soapResponse)
 }
 
@@ -89,18 +69,8 @@ type AddPinholeResponse struct {
 
 func (client *ServiceClient) AddPinhole(in *AddPinholeRequest, out *AddPinholeResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[AddPinholeRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[AddPinholeRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[AddPinholeResponse]{
-		Body: &tr064.SOAPResponseBody[AddPinholeResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "AddPinhole", soapRequest, soapResponse)
 }
 
@@ -117,19 +87,9 @@ type UpdatePinholeResponse struct {
 
 func (client *ServiceClient) UpdatePinhole(in *UpdatePinholeRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[UpdatePinholeRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[UpdatePinholeRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &UpdatePinholeResponse{}
-	soapResponse := &tr064.SOAPResponse[UpdatePinholeResponse]{
-		Body: &tr064.SOAPResponseBody[UpdatePinholeResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "UpdatePinhole", soapRequest, soapResponse)
 }
 
@@ -145,19 +105,9 @@ type DeletePinholeResponse struct {
 
 func (client *ServiceClient) DeletePinhole(in *DeletePinholeRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[DeletePinholeRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[DeletePinholeRequest]{
-			In: in,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
 	out := &DeletePinholeResponse{}
-	soapResponse := &tr064.SOAPResponse[DeletePinholeResponse]{
-		Body: &tr064.SOAPResponseBody[DeletePinholeResponse]{
-			Out: out,
-		},
-	}
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "DeletePinhole", soapRequest, soapResponse)
 }
 
@@ -174,18 +124,8 @@ type GetPinholePacketsResponse struct {
 
 func (client *ServiceClient) GetPinholePackets(in *GetPinholePacketsRequest, out *GetPinholePacketsResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[GetPinholePacketsRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[GetPinholePacketsRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[GetPinholePacketsResponse]{
-		Body: &tr064.SOAPResponseBody[GetPinholePacketsResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "GetPinholePackets", soapRequest, soapResponse)
 }
 
@@ -202,17 +142,7 @@ type CheckPinholeWorkingResponse struct {
 
 func (client *ServiceClient) CheckPinholeWorking(in *CheckPinholeWorkingRequest, out *CheckPinholeWorkingResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := &tr064.SOAPRequest[CheckPinholeWorkingRequest]{
-		XMLNameSpace:     tr064.XMLNameSpace,
-		XMLEncodingStyle: tr064.XMLEncodingStyle,
-		Body: &tr064.SOAPRequestBody[CheckPinholeWorkingRequest]{
-			In: in,
-		},
-	}
-	soapResponse := &tr064.SOAPResponse[CheckPinholeWorkingResponse]{
-		Body: &tr064.SOAPResponseBody[CheckPinholeWorkingResponse]{
-			Out: out,
-		},
-	}
+	soapRequest := tr064.NewSOAPRequest(in)
+	soapResponse := tr064.NewSOAPResponse(out)
 	return client.TR064Client.InvokeService(client.Service, "CheckPinholeWorking", soapRequest, soapResponse)
 }
