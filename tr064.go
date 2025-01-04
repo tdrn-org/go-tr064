@@ -76,14 +76,7 @@ type tr64descDoc struct {
 }
 
 func (doc *tr64descDoc) bind(spec ServiceSpec) {
-	for serviceIndex := range doc.Device.ServiceList.Services {
-		doc.Device.ServiceList.Services[serviceIndex].spec = spec
-	}
-	for deviceIndex := range doc.Device.DeviceList.Devices {
-		for serviceIndex := range doc.Device.DeviceList.Devices[deviceIndex].ServiceList.Services {
-			doc.Device.DeviceList.Devices[deviceIndex].ServiceList.Services[serviceIndex].spec = spec
-		}
-	}
+	doc.Device.bind(spec)
 }
 
 type WalkServiceFunc func(*serviceDoc, *scpdDoc) error
@@ -131,6 +124,15 @@ type deviceDoc struct {
 	PresentationURL  string         `xml:"presentationURL"`
 }
 
+func (doc *deviceDoc) bind(spec ServiceSpec) {
+	for serviceIndex := range doc.ServiceList.Services {
+		doc.ServiceList.Services[serviceIndex].bind(spec)
+	}
+	for deviceIndex := range doc.DeviceList.Devices {
+		doc.DeviceList.Devices[deviceIndex].bind(spec)
+	}
+}
+
 func (doc *deviceDoc) walk(baseUrl *url.URL, f WalkServiceFunc) error {
 	for _, service := range doc.ServiceList.Services {
 		if strings.HasPrefix(service.ServiceType, "urn:schemas-any-com:service:Any:") {
@@ -166,6 +168,10 @@ type serviceDoc struct {
 	SCPDURL     string      `xml:"SCPDURL"`
 	spec        ServiceSpec `xml:"-"`
 	cachedSCPD  *scpdDoc    `xml:"-"`
+}
+
+func (doc *serviceDoc) bind(spec ServiceSpec) {
+	doc.spec = spec
 }
 
 func (doc *serviceDoc) scpd(baseUrl *url.URL) (*scpdDoc, error) {
