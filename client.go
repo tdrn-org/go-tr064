@@ -68,16 +68,17 @@ func (service *StaticServiceDescriptor) Url() string {
 // NewClient instantiates a new TR-064 client for accessing the given URL.
 //
 // If the given URL contains a userinfo, the contained username and password are automatically used for authentication.
-func NewClient(deviceUrl *url.URL) *Client {
-	safeUrl := *deviceUrl
-	safeUrl.User = url.User("")
+func NewClient(deviceUrl *url.URL, spec TR064Spec) *Client {
+	anonymousDeviceUrl := *deviceUrl
+	anonymousDeviceUrl.User = url.User("")
 	username := deviceUrl.User.Username()
 	password, _ := deviceUrl.User.Password()
 	return &Client{
-		Url:      &safeUrl,
-		Username: username,
-		Password: password,
-		mutex:    &sync.Mutex{},
+		DeviceUrl: &anonymousDeviceUrl,
+		Username:  username,
+		Password:  password,
+		Spec:      spec,
+		mutex:     &sync.Mutex{},
 	}
 }
 
@@ -98,11 +99,12 @@ func NewClient(deviceUrl *url.URL) *Client {
 // The service client is then used to access the individual service functions.
 type Client struct {
 	// Url defines the URL to access the TR-064 server.
-	Url *url.URL
+	DeviceUrl *url.URL
 	// Username is set to the login to use for accessing restricted services.
 	Username string
 	// Password is set to the password to use for accessing restricted services.
 	Password string
+	Spec     TR064Spec
 	// Timeout sets the timeout for HTTP(S) communication.
 	Timeout time.Duration
 	// InsecureSkipVerify disables certificate validation while access the TR-064 server. Use with care.
@@ -125,7 +127,7 @@ func (client *Client) Services() ([]ServiceDescriptor, error) {
 			return nil, err
 		}
 		collector := &serviceCollector{serviceMap: make(map[string]ServiceDescriptor)}
-		err = tr64desc.walk(client.Url, collector.collectService)
+		err = tr64desc.walk(client.DeviceUrl, collector.collectService)
 		if err != nil {
 			return nil, err
 		}
@@ -153,7 +155,7 @@ func (client *Client) ServicesByName(name string) ([]ServiceDescriptor, error) {
 }
 
 func (client *Client) fetchSpec() (*tr64descDoc, error) {
-	tr64descUrl := client.Url.JoinPath(rootSpec)
+	tr64descUrl := client.DeviceUrl.JoinPath(client.Spec.Path())
 	tr64desc := &tr64descDoc{}
 	err := unmarshalDocument(tr64descUrl, tr64desc)
 	if err != nil {
@@ -198,7 +200,7 @@ func (client *Client) InvokeService(service ServiceDescriptor, actionName, in an
 	if err != nil {
 		return fmt.Errorf("failed to parse control URL '%s' (cause: %w)", service.Url(), err)
 	}
-	endpoint := client.Url.ResolveReference(controlUrl).String()
+	endpoint := client.DeviceUrl.ResolveReference(controlUrl).String()
 	soapAction := fmt.Sprintf("%s#%s", service.Type(), actionName)
 	requestBody, err := xml.MarshalIndent(in, "", "\t")
 	if err != nil {

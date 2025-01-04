@@ -26,6 +26,7 @@ import (
 	"log"
 	"net/url"
 	"os"
+	"regexp"
 	"strings"
 
 	"github.com/tdrn-org/go-tr064"
@@ -38,6 +39,8 @@ func main() {
 		generate()
 	}
 }
+
+var specNamePattern = regexp.MustCompile(`^/(.+)\.xml$`)
 
 // Generate from generate.conf (if available)
 func generate() {
@@ -57,10 +60,15 @@ func generate() {
 			continue
 		}
 		line = strings.Trim(line, " \r\n")
-		url, err := url.Parse(line)
+		parsedUrl, err := url.Parse(line)
 		if err != nil {
 			log.Fatal(err)
 		}
-		tr064.Generate(url, ".")
+		baseUrl := *parsedUrl
+		baseUrl.User = nil
+		baseUrl.Path = "/"
+		match := specNamePattern.FindStringSubmatch(parsedUrl.Path)
+		spec := tr064.TR064Spec(match[1])
+		tr064.Generate(&baseUrl, spec, ".")
 	}
 }

@@ -28,17 +28,18 @@ import (
 	"strings"
 )
 
-func Generate(url *url.URL, dir string) {
-	tr64descUrl := url.JoinPath(rootSpec)
-	log.Println("Reading '", tr64descUrl, "'...")
+func Generate(baseUrl *url.URL, spec TR064Spec, dir string) {
+	specUrl := baseUrl.JoinPath(spec.Path())
+	log.Println("Reading '", specUrl, "'...")
 	tr64desc := &tr64descDoc{}
-	err := unmarshalDocument(tr64descUrl, tr64desc)
+	err := unmarshalDocument(specUrl, tr64desc)
 	if err != nil {
-		log.Fatal("Failed to unmarshal ", tr64descUrl, " cause: ", err)
+		log.Fatal("Failed to unmarshal ", specUrl, " cause: ", err)
 	}
 	log.Println("Generating...")
 	gc := &generateContext{
-		url:            url,
+		baseUrl:        baseUrl,
+		spec:           spec,
 		serviceClients: make(map[string]*bytes.Buffer),
 		serviceNames:   make(map[string]string),
 		serviceTests:   make(map[string]*bytes.Buffer),
@@ -50,7 +51,8 @@ func Generate(url *url.URL, dir string) {
 }
 
 type generateContext struct {
-	url            *url.URL
+	baseUrl        *url.URL
+	spec           TR064Spec
 	serviceClients map[string]*bytes.Buffer
 	serviceNames   map[string]string
 	serviceTests   map[string]*bytes.Buffer
@@ -58,11 +60,11 @@ type generateContext struct {
 }
 
 func (gc *generateContext) generate(tr64desc *tr64descDoc, dir string) error {
-	gc.err = tr64desc.walk(gc.url, gc.generateServiceClient)
+	gc.err = tr64desc.walk(gc.baseUrl, gc.generateServiceClient)
 	if gc.err != nil {
 		return gc.err
 	}
-	gc.err = tr64desc.walk(gc.url, gc.generateServiceTest)
+	gc.err = tr64desc.walk(gc.baseUrl, gc.generateServiceTest)
 	if gc.err != nil {
 		return gc.err
 	}
@@ -189,7 +191,7 @@ func (gc *generateContext) generateServiceTest(service *serviceDoc, scpd *scpdDo
 		gc.emit(buffer, "\"github.com/stretchr/testify/require\"\n")
 		gc.emit(buffer, "\"github.com/tdrn-org/go-tr064\"\n")
 		gc.emit(buffer, "\"github.com/tdrn-org/go-tr064/mock\"\n")
-		gc.emit(buffer, "\"github.com/tdrn-org/go-tr064/services/%s\"\n", packageName)
+		gc.emit(buffer, "\"github.com/tdrn-org/go-tr064/services/%s/%s\"\n", gc.spec.Name(), packageName)
 		gc.emit(buffer, ")\n")
 		gc.emit(buffer, "var %sMock = &mock.ServiceMock {\n", packageName)
 		gc.emit(buffer, "Path: \"%s\",\n", service.ControlURL)
@@ -200,7 +202,7 @@ func (gc *generateContext) generateServiceTest(service *serviceDoc, scpd *scpdDo
 		gc.emit(buffer, "tr064Mock := mock.Start(\"testdata\", %sMock)\n", packageName)
 		gc.emit(buffer, "defer tr064Mock.Shutdown()\n")
 		gc.emit(buffer, "// Actual test\n")
-		gc.emit(buffer, "client := tr064.NewClient(tr064Mock.Server())\n")
+		gc.emit(buffer, "client := tr064.NewClient(tr064Mock.Server(),tr064.TR064Spec(\"%s\"))\n", gc.spec.Name())
 		gc.emit(buffer, "client.Debug = true\n")
 		gc.emit(buffer, "serviceClient := &%s.ServiceClient{\n", packageName)
 		gc.emit(buffer, "TR064Client: client,\n")
@@ -295,7 +297,7 @@ func (gc *generateContext) flushServiceClientFiles(dir string) {
 	}
 	for packageName, buffer := range gc.serviceClients {
 		log.Println("Writing service client '", packageName, "'...")
-		packageDir := filepath.Join(dir, "services", packageName)
+		packageDir := filepath.Join(dir, "services", gc.spec.Name(), packageName)
 		code, err := format.Source(buffer.Bytes())
 		if err != nil {
 			gc.err = fmt.Errorf("failed to format generated service client code (cause: %w)", err)
@@ -324,7 +326,7 @@ func (gc *generateContext) flushServiceClientFiles(dir string) {
 			gc.err = fmt.Errorf("failed to format generated service name code (cause: %w)", err)
 			return
 		}
-		file := filepath.Join(dir, "services", packageName, "name.go")
+		file := filepath.Join(dir, "services", gc.spec.Name(), packageName, "name.go")
 		err = os.WriteFile(file, code, 0666)
 		if err != nil {
 			gc.err = fmt.Errorf("failed to write service name file '%s' (cause: %w)", file, err)
@@ -339,7 +341,7 @@ func (gc *generateContext) flushServiceTestFiles(dir string) {
 	}
 	for packageName, buffer := range gc.serviceTests {
 		log.Println("Writing service test '", packageName, "'...")
-		packageDir := filepath.Join(dir, "services")
+		packageDir := filepath.Join(dir, "services", gc.spec.Name())
 		code, err := formatSource(buffer.Bytes())
 		if err != nil {
 			gc.err = fmt.Errorf("failed to format generated service test code (cause: %w)", err)

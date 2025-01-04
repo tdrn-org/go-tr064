@@ -32,7 +32,20 @@ const XMLNameSpace = "http://schemas.xmlsoap.org/soap/envelope/"
 
 const XMLEncodingStyle = "http://schemas.xmlsoap.org/soap/encoding/"
 
-const rootSpec = "/tr64desc.xml"
+type TR064Spec string
+
+const (
+	DefaultSpec = "tr64desc"
+	IGDSpec     = "igddesc"
+)
+
+func (spec TR064Spec) Name() string {
+	return string(spec)
+}
+
+func (spec TR064Spec) Path() string {
+	return "/" + string(spec) + ".xml"
+}
 
 func unmarshalDocument(url *url.URL, v any) error {
 	response, err := http.Get(url.String())
@@ -162,14 +175,14 @@ func (service *serviceDoc) scpdName() string {
 	return match[1]
 }
 
-var serviceTypeNamePattern = regexp.MustCompile(`^urn\:dslforum-org\:service\:(.+):\d+$`)
+var serviceTypeNamePattern = regexp.MustCompile(`^urn\:(.+)\:service\:(.+):\d+$`)
 
 func (service *serviceDoc) Name() string {
 	match := serviceTypeNamePattern.FindStringSubmatch(service.ServiceType)
 	if match == nil {
 		log.Fatal(fmt.Errorf("unexpected service type '%s'", service.ServiceType))
 	}
-	mangledServiceName := mangleName(match[1])
+	mangledServiceName := mangleName(match[2])
 	return mangledServiceName
 }
 
