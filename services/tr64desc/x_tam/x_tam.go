@@ -32,9 +32,7 @@ type GetInfoResponse struct {
 
 func (client *ServiceClient) GetInfo(in *GetInfoRequest, out *GetInfoResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetEnableRequest struct {
@@ -50,10 +48,8 @@ type SetEnableResponse struct {
 
 func (client *ServiceClient) SetEnable(in *SetEnableRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetEnableResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetEnable", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetEnable", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetMessageListRequest struct {
@@ -69,9 +65,7 @@ type GetMessageListResponse struct {
 
 func (client *ServiceClient) GetMessageList(in *GetMessageListRequest, out *GetMessageListResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetMessageList", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetMessageList", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type MarkMessageRequest struct {
@@ -88,10 +82,8 @@ type MarkMessageResponse struct {
 
 func (client *ServiceClient) MarkMessage(in *MarkMessageRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &MarkMessageResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "MarkMessage", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "MarkMessage", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type DeleteMessageRequest struct {
@@ -107,10 +99,8 @@ type DeleteMessageResponse struct {
 
 func (client *ServiceClient) DeleteMessage(in *DeleteMessageRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &DeleteMessageResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "DeleteMessage", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "DeleteMessage", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetListRequest struct {
@@ -125,7 +115,5 @@ type GetListResponse struct {
 
 func (client *ServiceClient) GetList(out *GetListResponse) error {
 	in := &GetListRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetList", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetList", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }

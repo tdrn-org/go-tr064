@@ -37,9 +37,7 @@ type GetInfoResponse struct {
 
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetStatisticsTotalRequest struct {
@@ -68,9 +66,7 @@ type GetStatisticsTotalResponse struct {
 
 func (client *ServiceClient) GetStatisticsTotal(out *GetStatisticsTotalResponse) error {
 	in := &GetStatisticsTotalRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetStatisticsTotal", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetStatisticsTotal", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetDSLDiagnoseInfoRequest struct {
@@ -90,9 +86,7 @@ type X_AVM_DE_GetDSLDiagnoseInfoResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetDSLDiagnoseInfo(out *X_AVM_DE_GetDSLDiagnoseInfoResponse) error {
 	in := &X_AVM_DE_GetDSLDiagnoseInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetDSLDiagnoseInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetDSLDiagnoseInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetDSLInfoRequest struct {
@@ -131,7 +125,5 @@ type X_AVM_DE_GetDSLInfoResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetDSLInfo(out *X_AVM_DE_GetDSLInfoResponse) error {
 	in := &X_AVM_DE_GetDSLInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetDSLInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetDSLInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }

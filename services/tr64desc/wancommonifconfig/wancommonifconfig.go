@@ -30,9 +30,7 @@ type GetCommonLinkPropertiesResponse struct {
 
 func (client *ServiceClient) GetCommonLinkProperties(out *GetCommonLinkPropertiesResponse) error {
 	in := &GetCommonLinkPropertiesRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetCommonLinkProperties", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetCommonLinkProperties", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetTotalBytesSentRequest struct {
@@ -47,9 +45,7 @@ type GetTotalBytesSentResponse struct {
 
 func (client *ServiceClient) GetTotalBytesSent(out *GetTotalBytesSentResponse) error {
 	in := &GetTotalBytesSentRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetTotalBytesSent", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetTotalBytesSent", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetTotalBytesReceivedRequest struct {
@@ -64,9 +60,7 @@ type GetTotalBytesReceivedResponse struct {
 
 func (client *ServiceClient) GetTotalBytesReceived(out *GetTotalBytesReceivedResponse) error {
 	in := &GetTotalBytesReceivedRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetTotalBytesReceived", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetTotalBytesReceived", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetTotalPacketsSentRequest struct {
@@ -81,9 +75,7 @@ type GetTotalPacketsSentResponse struct {
 
 func (client *ServiceClient) GetTotalPacketsSent(out *GetTotalPacketsSentResponse) error {
 	in := &GetTotalPacketsSentRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetTotalPacketsSent", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetTotalPacketsSent", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetTotalPacketsReceivedRequest struct {
@@ -98,9 +90,7 @@ type GetTotalPacketsReceivedResponse struct {
 
 func (client *ServiceClient) GetTotalPacketsReceived(out *GetTotalPacketsReceivedResponse) error {
 	in := &GetTotalPacketsReceivedRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetTotalPacketsReceived", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetTotalPacketsReceived", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_SetWANAccessTypeRequest struct {
@@ -115,10 +105,8 @@ type X_AVM_DE_SetWANAccessTypeResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_SetWANAccessType(in *X_AVM_DE_SetWANAccessTypeRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_SetWANAccessTypeResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetWANAccessType", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetWANAccessType", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetActiveProviderRequest struct {
@@ -133,9 +121,7 @@ type X_AVM_DE_GetActiveProviderResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetActiveProvider(out *X_AVM_DE_GetActiveProviderResponse) error {
 	in := &X_AVM_DE_GetActiveProviderRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetActiveProvider", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetActiveProvider", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetOnlineMonitorRequest struct {
@@ -162,7 +148,5 @@ type X_AVM_DE_GetOnlineMonitorResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetOnlineMonitor(in *X_AVM_DE_GetOnlineMonitorRequest, out *X_AVM_DE_GetOnlineMonitorResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetOnlineMonitor", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetOnlineMonitor", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }

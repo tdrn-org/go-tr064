@@ -26,9 +26,7 @@ type GetInfoResponse struct {
 
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetConfigRequest struct {
@@ -47,8 +45,6 @@ type SetConfigResponse struct {
 
 func (client *ServiceClient) SetConfig(in *SetConfigRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetConfigResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetConfig", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetConfig", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }

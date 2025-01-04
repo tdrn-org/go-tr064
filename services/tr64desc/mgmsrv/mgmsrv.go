@@ -32,9 +32,7 @@ type GetInfoResponse struct {
 
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetManagementServerURLRequest struct {
@@ -49,10 +47,8 @@ type SetManagementServerURLResponse struct {
 
 func (client *ServiceClient) SetManagementServerURL(in *SetManagementServerURLRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetManagementServerURLResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetManagementServerURL", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetManagementServerURL", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetManagementServerUsernameRequest struct {
@@ -67,10 +63,8 @@ type SetManagementServerUsernameResponse struct {
 
 func (client *ServiceClient) SetManagementServerUsername(in *SetManagementServerUsernameRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetManagementServerUsernameResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetManagementServerUsername", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetManagementServerUsername", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetManagementServerPasswordRequest struct {
@@ -85,10 +79,8 @@ type SetManagementServerPasswordResponse struct {
 
 func (client *ServiceClient) SetManagementServerPassword(in *SetManagementServerPasswordRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetManagementServerPasswordResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetManagementServerPassword", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetManagementServerPassword", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetPeriodicInformRequest struct {
@@ -105,10 +97,8 @@ type SetPeriodicInformResponse struct {
 
 func (client *ServiceClient) SetPeriodicInform(in *SetPeriodicInformRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetPeriodicInformResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetPeriodicInform", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetPeriodicInform", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetConnectionRequestAuthenticationRequest struct {
@@ -124,10 +114,8 @@ type SetConnectionRequestAuthenticationResponse struct {
 
 func (client *ServiceClient) SetConnectionRequestAuthentication(in *SetConnectionRequestAuthenticationRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetConnectionRequestAuthenticationResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetConnectionRequestAuthentication", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetConnectionRequestAuthentication", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetUpgradeManagementRequest struct {
@@ -142,10 +130,8 @@ type SetUpgradeManagementResponse struct {
 
 func (client *ServiceClient) SetUpgradeManagement(in *SetUpgradeManagementRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetUpgradeManagementResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetUpgradeManagement", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetUpgradeManagement", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_SetTR069EnableRequest struct {
@@ -160,10 +146,8 @@ type X_SetTR069EnableResponse struct {
 
 func (client *ServiceClient) X_SetTR069Enable(in *X_SetTR069EnableRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_SetTR069EnableResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_SetTR069Enable", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_SetTR069Enable", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetTR069FirmwareDownloadEnabledRequest struct {
@@ -178,9 +162,7 @@ type X_AVM_DE_GetTR069FirmwareDownloadEnabledResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetTR069FirmwareDownloadEnabled(out *X_AVM_DE_GetTR069FirmwareDownloadEnabledResponse) error {
 	in := &X_AVM_DE_GetTR069FirmwareDownloadEnabledRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetTR069FirmwareDownloadEnabled", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetTR069FirmwareDownloadEnabled", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_SetTR069FirmwareDownloadEnabledRequest struct {
@@ -195,8 +177,6 @@ type X_AVM_DE_SetTR069FirmwareDownloadEnabledResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_SetTR069FirmwareDownloadEnabled(in *X_AVM_DE_SetTR069FirmwareDownloadEnabledRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_SetTR069FirmwareDownloadEnabledResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetTR069FirmwareDownloadEnabled", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetTR069FirmwareDownloadEnabled", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }

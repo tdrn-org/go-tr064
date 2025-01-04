@@ -50,9 +50,7 @@ type GetInfoResponse struct {
 
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetConfigRequest struct {
@@ -74,9 +72,7 @@ type GetConfigResponse struct {
 
 func (client *ServiceClient) GetConfig(out *GetConfigResponse) error {
 	in := &GetConfigRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetConfig", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetConfig", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetAppMessageFilterRequest struct {
@@ -92,9 +88,7 @@ type GetAppMessageFilterResponse struct {
 
 func (client *ServiceClient) GetAppMessageFilter(in *GetAppMessageFilterRequest, out *GetAppMessageFilterResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetAppMessageFilter", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetAppMessageFilter", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type RegisterAppRequest struct {
@@ -118,10 +112,8 @@ type RegisterAppResponse struct {
 
 func (client *ServiceClient) RegisterApp(in *RegisterAppRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &RegisterAppResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "RegisterApp", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "RegisterApp", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetAppVPNRequest struct {
@@ -140,10 +132,8 @@ type SetAppVPNResponse struct {
 
 func (client *ServiceClient) SetAppVPN(in *SetAppVPNRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetAppVPNResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetAppVPN", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetAppVPN", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetAppVPNwithPFSRequest struct {
@@ -162,10 +152,8 @@ type SetAppVPNwithPFSResponse struct {
 
 func (client *ServiceClient) SetAppVPNwithPFS(in *SetAppVPNwithPFSRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetAppVPNwithPFSResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetAppVPNwithPFS", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetAppVPNwithPFS", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetAppMessageFilterRequest struct {
@@ -182,10 +170,8 @@ type SetAppMessageFilterResponse struct {
 
 func (client *ServiceClient) SetAppMessageFilter(in *SetAppMessageFilterRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetAppMessageFilterResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetAppMessageFilter", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetAppMessageFilter", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetAppMessageReceiverRequest struct {
@@ -205,9 +191,7 @@ type SetAppMessageReceiverResponse struct {
 
 func (client *ServiceClient) SetAppMessageReceiver(in *SetAppMessageReceiverRequest, out *SetAppMessageReceiverResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetAppMessageReceiver", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetAppMessageReceiver", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type ResetEventRequest struct {
@@ -222,10 +206,8 @@ type ResetEventResponse struct {
 
 func (client *ServiceClient) ResetEvent(in *ResetEventRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &ResetEventResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "ResetEvent", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "ResetEvent", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetAppRemoteInfoRequest struct {
@@ -247,9 +229,7 @@ type GetAppRemoteInfoResponse struct {
 
 func (client *ServiceClient) GetAppRemoteInfo(out *GetAppRemoteInfoResponse) error {
 	in := &GetAppRemoteInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetAppRemoteInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetAppRemoteInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetBoxSenderIdRequest struct {
@@ -265,7 +245,5 @@ type GetBoxSenderIdResponse struct {
 
 func (client *ServiceClient) GetBoxSenderId(in *GetBoxSenderIdRequest, out *GetBoxSenderIdResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetBoxSenderId", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetBoxSenderId", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }

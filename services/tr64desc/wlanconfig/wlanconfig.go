@@ -23,10 +23,8 @@ type SetEnableResponse struct {
 
 func (client *ServiceClient) SetEnable(in *SetEnableRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetEnableResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetEnable", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetEnable", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetInfoRequest struct {
@@ -60,9 +58,7 @@ type GetInfoResponse struct {
 
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetConfigRequest struct {
@@ -83,10 +79,8 @@ type SetConfigResponse struct {
 
 func (client *ServiceClient) SetConfig(in *SetConfigRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetConfigResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetConfig", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetConfig", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetSecurityKeysRequest struct {
@@ -106,10 +100,8 @@ type SetSecurityKeysResponse struct {
 
 func (client *ServiceClient) SetSecurityKeys(in *SetSecurityKeysRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetSecurityKeysResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetSecurityKeys", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetSecurityKeys", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetSecurityKeysRequest struct {
@@ -129,9 +121,7 @@ type GetSecurityKeysResponse struct {
 
 func (client *ServiceClient) GetSecurityKeys(out *GetSecurityKeysResponse) error {
 	in := &GetSecurityKeysRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetSecurityKeys", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetSecurityKeys", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetDefaultWEPKeyIndexRequest struct {
@@ -146,10 +136,8 @@ type SetDefaultWEPKeyIndexResponse struct {
 
 func (client *ServiceClient) SetDefaultWEPKeyIndex(in *SetDefaultWEPKeyIndexRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetDefaultWEPKeyIndexResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetDefaultWEPKeyIndex", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetDefaultWEPKeyIndex", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetDefaultWEPKeyIndexRequest struct {
@@ -164,9 +152,7 @@ type GetDefaultWEPKeyIndexResponse struct {
 
 func (client *ServiceClient) GetDefaultWEPKeyIndex(out *GetDefaultWEPKeyIndexResponse) error {
 	in := &GetDefaultWEPKeyIndexRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetDefaultWEPKeyIndex", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetDefaultWEPKeyIndex", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetBasBeaconSecurityPropertiesRequest struct {
@@ -182,10 +168,8 @@ type SetBasBeaconSecurityPropertiesResponse struct {
 
 func (client *ServiceClient) SetBasBeaconSecurityProperties(in *SetBasBeaconSecurityPropertiesRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetBasBeaconSecurityPropertiesResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetBasBeaconSecurityProperties", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetBasBeaconSecurityProperties", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetBasBeaconSecurityPropertiesRequest struct {
@@ -201,9 +185,7 @@ type GetBasBeaconSecurityPropertiesResponse struct {
 
 func (client *ServiceClient) GetBasBeaconSecurityProperties(out *GetBasBeaconSecurityPropertiesResponse) error {
 	in := &GetBasBeaconSecurityPropertiesRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetBasBeaconSecurityProperties", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetBasBeaconSecurityProperties", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetStatisticsRequest struct {
@@ -219,9 +201,7 @@ type GetStatisticsResponse struct {
 
 func (client *ServiceClient) GetStatistics(out *GetStatisticsResponse) error {
 	in := &GetStatisticsRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetStatistics", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetStatistics", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetPacketStatisticsRequest struct {
@@ -237,9 +217,7 @@ type GetPacketStatisticsResponse struct {
 
 func (client *ServiceClient) GetPacketStatistics(out *GetPacketStatisticsResponse) error {
 	in := &GetPacketStatisticsRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetPacketStatistics", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetPacketStatistics", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetBSSIDRequest struct {
@@ -254,9 +232,7 @@ type GetBSSIDResponse struct {
 
 func (client *ServiceClient) GetBSSID(out *GetBSSIDResponse) error {
 	in := &GetBSSIDRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetBSSID", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetBSSID", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetSSIDRequest struct {
@@ -271,9 +247,7 @@ type GetSSIDResponse struct {
 
 func (client *ServiceClient) GetSSID(out *GetSSIDResponse) error {
 	in := &GetSSIDRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetSSID", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetSSID", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetSSIDRequest struct {
@@ -288,10 +262,8 @@ type SetSSIDResponse struct {
 
 func (client *ServiceClient) SetSSID(in *SetSSIDRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetSSIDResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetSSID", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetSSID", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetBeaconTypeRequest struct {
@@ -307,9 +279,7 @@ type GetBeaconTypeResponse struct {
 
 func (client *ServiceClient) GetBeaconType(out *GetBeaconTypeResponse) error {
 	in := &GetBeaconTypeRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetBeaconType", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetBeaconType", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetBeaconTypeRequest struct {
@@ -324,10 +294,8 @@ type SetBeaconTypeResponse struct {
 
 func (client *ServiceClient) SetBeaconType(in *SetBeaconTypeRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetBeaconTypeResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetBeaconType", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetBeaconType", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetChannelInfoRequest struct {
@@ -345,9 +313,7 @@ type GetChannelInfoResponse struct {
 
 func (client *ServiceClient) GetChannelInfo(out *GetChannelInfoResponse) error {
 	in := &GetChannelInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetChannelInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetChannelInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetChannelRequest struct {
@@ -362,10 +328,8 @@ type SetChannelResponse struct {
 
 func (client *ServiceClient) SetChannel(in *SetChannelRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetChannelResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetChannel", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetChannel", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetBeaconAdvertisementRequest struct {
@@ -380,9 +344,7 @@ type GetBeaconAdvertisementResponse struct {
 
 func (client *ServiceClient) GetBeaconAdvertisement(out *GetBeaconAdvertisementResponse) error {
 	in := &GetBeaconAdvertisementRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetBeaconAdvertisement", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetBeaconAdvertisement", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetBeaconAdvertisementRequest struct {
@@ -397,10 +359,8 @@ type SetBeaconAdvertisementResponse struct {
 
 func (client *ServiceClient) SetBeaconAdvertisement(in *SetBeaconAdvertisementRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetBeaconAdvertisementResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetBeaconAdvertisement", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetBeaconAdvertisement", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetTotalAssociationsRequest struct {
@@ -415,9 +375,7 @@ type GetTotalAssociationsResponse struct {
 
 func (client *ServiceClient) GetTotalAssociations(out *GetTotalAssociationsResponse) error {
 	in := &GetTotalAssociationsRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetTotalAssociations", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetTotalAssociations", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetGenericAssociatedDeviceInfoRequest struct {
@@ -438,9 +396,7 @@ type GetGenericAssociatedDeviceInfoResponse struct {
 
 func (client *ServiceClient) GetGenericAssociatedDeviceInfo(in *GetGenericAssociatedDeviceInfoRequest, out *GetGenericAssociatedDeviceInfoResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetGenericAssociatedDeviceInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetGenericAssociatedDeviceInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetSpecificAssociatedDeviceInfoRequest struct {
@@ -460,9 +416,7 @@ type GetSpecificAssociatedDeviceInfoResponse struct {
 
 func (client *ServiceClient) GetSpecificAssociatedDeviceInfo(in *GetSpecificAssociatedDeviceInfoRequest, out *GetSpecificAssociatedDeviceInfoResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetSpecificAssociatedDeviceInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetSpecificAssociatedDeviceInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetSpecificAssociatedDeviceInfoByIpRequest struct {
@@ -482,9 +436,7 @@ type X_AVM_DE_GetSpecificAssociatedDeviceInfoByIpResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetSpecificAssociatedDeviceInfoByIp(in *X_AVM_DE_GetSpecificAssociatedDeviceInfoByIpRequest, out *X_AVM_DE_GetSpecificAssociatedDeviceInfoByIpResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetSpecificAssociatedDeviceInfoByIp", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetSpecificAssociatedDeviceInfoByIp", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetWLANDeviceListPathRequest struct {
@@ -499,9 +451,7 @@ type X_AVM_DE_GetWLANDeviceListPathResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetWLANDeviceListPath(out *X_AVM_DE_GetWLANDeviceListPathResponse) error {
 	in := &X_AVM_DE_GetWLANDeviceListPathRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetWLANDeviceListPath", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetWLANDeviceListPath", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_SetStickSurfEnableRequest struct {
@@ -516,10 +466,8 @@ type X_AVM_DE_SetStickSurfEnableResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_SetStickSurfEnable(in *X_AVM_DE_SetStickSurfEnableRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_SetStickSurfEnableResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetStickSurfEnable", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetStickSurfEnable", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetIPTVOptimizedRequest struct {
@@ -534,9 +482,7 @@ type X_AVM_DE_GetIPTVOptimizedResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetIPTVOptimized(out *X_AVM_DE_GetIPTVOptimizedResponse) error {
 	in := &X_AVM_DE_GetIPTVOptimizedRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetIPTVOptimized", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetIPTVOptimized", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_SetIPTVOptimizedRequest struct {
@@ -551,10 +497,8 @@ type X_AVM_DE_SetIPTVOptimizedResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_SetIPTVOptimized(in *X_AVM_DE_SetIPTVOptimizedRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_SetIPTVOptimizedResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetIPTVOptimized", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetIPTVOptimized", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetNightControlRequest struct {
@@ -570,9 +514,7 @@ type X_AVM_DE_GetNightControlResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetNightControl(out *X_AVM_DE_GetNightControlResponse) error {
 	in := &X_AVM_DE_GetNightControlRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetNightControl", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetNightControl", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetWLANHybridModeRequest struct {
@@ -595,9 +537,7 @@ type X_AVM_DE_GetWLANHybridModeResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetWLANHybridMode(out *X_AVM_DE_GetWLANHybridModeResponse) error {
 	in := &X_AVM_DE_GetWLANHybridModeRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetWLANHybridMode", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetWLANHybridMode", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_SetWLANHybridModeRequest struct {
@@ -620,10 +560,8 @@ type X_AVM_DE_SetWLANHybridModeResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_SetWLANHybridMode(in *X_AVM_DE_SetWLANHybridModeRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_SetWLANHybridModeResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetWLANHybridMode", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetWLANHybridMode", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetWLANExtInfoRequest struct {
@@ -647,9 +585,7 @@ type X_AVM_DE_GetWLANExtInfoResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetWLANExtInfo(out *X_AVM_DE_GetWLANExtInfoResponse) error {
 	in := &X_AVM_DE_GetWLANExtInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetWLANExtInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetWLANExtInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetWPSInfoRequest struct {
@@ -665,9 +601,7 @@ type X_AVM_DE_GetWPSInfoResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetWPSInfo(out *X_AVM_DE_GetWPSInfoResponse) error {
 	in := &X_AVM_DE_GetWPSInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetWPSInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetWPSInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_SetWPSConfigRequest struct {
@@ -683,9 +617,7 @@ type X_AVM_DE_SetWPSConfigResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_SetWPSConfig(in *X_AVM_DE_SetWPSConfigRequest, out *X_AVM_DE_SetWPSConfigResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetWPSConfig", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetWPSConfig", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_SetWPSEnableRequest struct {
@@ -700,10 +632,8 @@ type X_AVM_DE_SetWPSEnableResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_SetWPSEnable(in *X_AVM_DE_SetWPSEnableRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_SetWPSEnableResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetWPSEnable", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetWPSEnable", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_SetWLANGlobalEnableRequest struct {
@@ -718,10 +648,8 @@ type X_AVM_DE_SetWLANGlobalEnableResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_SetWLANGlobalEnable(in *X_AVM_DE_SetWLANGlobalEnableRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_SetWLANGlobalEnableResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetWLANGlobalEnable", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetWLANGlobalEnable", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetWLANConnectionInfoRequest struct {
@@ -749,7 +677,5 @@ type X_AVM_DE_GetWLANConnectionInfoResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetWLANConnectionInfo(out *X_AVM_DE_GetWLANConnectionInfoResponse) error {
 	in := &X_AVM_DE_GetWLANConnectionInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetWLANConnectionInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetWLANConnectionInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }

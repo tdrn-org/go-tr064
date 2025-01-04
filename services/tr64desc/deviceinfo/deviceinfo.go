@@ -34,9 +34,7 @@ type GetInfoResponse struct {
 
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetProvisioningCodeRequest struct {
@@ -51,10 +49,8 @@ type SetProvisioningCodeResponse struct {
 
 func (client *ServiceClient) SetProvisioningCode(in *SetProvisioningCodeRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetProvisioningCodeResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetProvisioningCode", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetProvisioningCode", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetDeviceLogRequest struct {
@@ -69,9 +65,7 @@ type GetDeviceLogResponse struct {
 
 func (client *ServiceClient) GetDeviceLog(out *GetDeviceLogResponse) error {
 	in := &GetDeviceLogRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetDeviceLog", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetDeviceLog", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetSecurityPortRequest struct {
@@ -86,9 +80,7 @@ type GetSecurityPortResponse struct {
 
 func (client *ServiceClient) GetSecurityPort(out *GetSecurityPortResponse) error {
 	in := &GetSecurityPortRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetSecurityPort", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetSecurityPort", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetDeviceLogPathRequest struct {
@@ -103,7 +95,5 @@ type X_AVM_DE_GetDeviceLogPathResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetDeviceLogPath(out *X_AVM_DE_GetDeviceLogPathResponse) error {
 	in := &X_AVM_DE_GetDeviceLogPathRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetDeviceLogPath", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetDeviceLogPath", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }

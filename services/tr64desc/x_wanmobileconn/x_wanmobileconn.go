@@ -26,9 +26,7 @@ type GetInfoResponse struct {
 
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetInfoExRequest struct {
@@ -60,9 +58,7 @@ type GetInfoExResponse struct {
 
 func (client *ServiceClient) GetInfoEx(out *GetInfoExResponse) error {
 	in := &GetInfoExRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetInfoEx", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetInfoEx", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetPINRequest struct {
@@ -77,10 +73,8 @@ type SetPINResponse struct {
 
 func (client *ServiceClient) SetPIN(in *SetPINRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetPINResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetPIN", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetPIN", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetPUKRequest struct {
@@ -96,10 +90,8 @@ type SetPUKResponse struct {
 
 func (client *ServiceClient) SetPUK(in *SetPUKRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetPUKResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetPUK", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetPUK", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetAccessTechnologyRequest struct {
@@ -114,10 +106,8 @@ type SetAccessTechnologyResponse struct {
 
 func (client *ServiceClient) SetAccessTechnology(in *SetAccessTechnologyRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetAccessTechnologyResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetAccessTechnology", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetAccessTechnology", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetAccessTechnologyRequest struct {
@@ -134,9 +124,7 @@ type GetAccessTechnologyResponse struct {
 
 func (client *ServiceClient) GetAccessTechnology(out *GetAccessTechnologyResponse) error {
 	in := &GetAccessTechnologyRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetAccessTechnology", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetAccessTechnology", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetPreferredAccessTechnologyRequest struct {
@@ -151,10 +139,8 @@ type SetPreferredAccessTechnologyResponse struct {
 
 func (client *ServiceClient) SetPreferredAccessTechnology(in *SetPreferredAccessTechnologyRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetPreferredAccessTechnologyResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetPreferredAccessTechnology", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetPreferredAccessTechnology", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetPreferredAccessTechnologyRequest struct {
@@ -170,9 +156,7 @@ type GetPreferredAccessTechnologyResponse struct {
 
 func (client *ServiceClient) GetPreferredAccessTechnology(out *GetPreferredAccessTechnologyResponse) error {
 	in := &GetPreferredAccessTechnologyRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetPreferredAccessTechnology", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetPreferredAccessTechnology", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetEnabledBandCapabilitiesRequest struct {
@@ -189,10 +173,8 @@ type SetEnabledBandCapabilitiesResponse struct {
 
 func (client *ServiceClient) SetEnabledBandCapabilities(in *SetEnabledBandCapabilitiesRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetEnabledBandCapabilitiesResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetEnabledBandCapabilities", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetEnabledBandCapabilities", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetEnabledBandCapabilitiesRequest struct {
@@ -209,9 +191,7 @@ type GetEnabledBandCapabilitiesResponse struct {
 
 func (client *ServiceClient) GetEnabledBandCapabilities(out *GetEnabledBandCapabilitiesResponse) error {
 	in := &GetEnabledBandCapabilitiesRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetEnabledBandCapabilities", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetEnabledBandCapabilities", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetBandCapabilitiesRequest struct {
@@ -228,7 +208,5 @@ type GetBandCapabilitiesResponse struct {
 
 func (client *ServiceClient) GetBandCapabilities(out *GetBandCapabilitiesResponse) error {
 	in := &GetBandCapabilitiesRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetBandCapabilities", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetBandCapabilities", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }

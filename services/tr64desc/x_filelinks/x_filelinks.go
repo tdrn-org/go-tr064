@@ -23,9 +23,7 @@ type GetNumberOfFilelinkEntriesResponse struct {
 
 func (client *ServiceClient) GetNumberOfFilelinkEntries(out *GetNumberOfFilelinkEntriesResponse) error {
 	in := &GetNumberOfFilelinkEntriesRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetNumberOfFilelinkEntries", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetNumberOfFilelinkEntries", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetGenericFilelinkEntryRequest struct {
@@ -50,9 +48,7 @@ type GetGenericFilelinkEntryResponse struct {
 
 func (client *ServiceClient) GetGenericFilelinkEntry(in *GetGenericFilelinkEntryRequest, out *GetGenericFilelinkEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetGenericFilelinkEntry", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetGenericFilelinkEntry", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetSpecificFilelinkEntryRequest struct {
@@ -76,9 +72,7 @@ type GetSpecificFilelinkEntryResponse struct {
 
 func (client *ServiceClient) GetSpecificFilelinkEntry(in *GetSpecificFilelinkEntryRequest, out *GetSpecificFilelinkEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetSpecificFilelinkEntry", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetSpecificFilelinkEntry", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type NewFilelinkEntryRequest struct {
@@ -96,9 +90,7 @@ type NewFilelinkEntryResponse struct {
 
 func (client *ServiceClient) NewFilelinkEntry(in *NewFilelinkEntryRequest, out *NewFilelinkEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "NewFilelinkEntry", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "NewFilelinkEntry", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetFilelinkEntryRequest struct {
@@ -115,10 +107,8 @@ type SetFilelinkEntryResponse struct {
 
 func (client *ServiceClient) SetFilelinkEntry(in *SetFilelinkEntryRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetFilelinkEntryResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetFilelinkEntry", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetFilelinkEntry", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type DeleteFilelinkEntryRequest struct {
@@ -133,10 +123,8 @@ type DeleteFilelinkEntryResponse struct {
 
 func (client *ServiceClient) DeleteFilelinkEntry(in *DeleteFilelinkEntryRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &DeleteFilelinkEntryResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "DeleteFilelinkEntry", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "DeleteFilelinkEntry", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetFilelinkListPathRequest struct {
@@ -151,7 +139,5 @@ type GetFilelinkListPathResponse struct {
 
 func (client *ServiceClient) GetFilelinkListPath(out *GetFilelinkListPathResponse) error {
 	in := &GetFilelinkListPathRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetFilelinkListPath", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetFilelinkListPath", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }

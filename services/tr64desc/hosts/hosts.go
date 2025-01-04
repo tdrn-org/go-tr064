@@ -23,9 +23,7 @@ type GetHostNumberOfEntriesResponse struct {
 
 func (client *ServiceClient) GetHostNumberOfEntries(out *GetHostNumberOfEntriesResponse) error {
 	in := &GetHostNumberOfEntriesRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetHostNumberOfEntries", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetHostNumberOfEntries", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetSpecificHostEntryRequest struct {
@@ -46,9 +44,7 @@ type GetSpecificHostEntryResponse struct {
 
 func (client *ServiceClient) GetSpecificHostEntry(in *GetSpecificHostEntryRequest, out *GetSpecificHostEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetSpecificHostEntry", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetSpecificHostEntry", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetGenericHostEntryRequest struct {
@@ -70,9 +66,7 @@ type GetGenericHostEntryResponse struct {
 
 func (client *ServiceClient) GetGenericHostEntry(in *GetGenericHostEntryRequest, out *GetGenericHostEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetGenericHostEntry", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetGenericHostEntry", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetInfoRequest struct {
@@ -91,9 +85,7 @@ type X_AVM_DE_GetInfoResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetInfo(out *X_AVM_DE_GetInfoResponse) error {
 	in := &X_AVM_DE_GetInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetChangeCounterRequest struct {
@@ -108,9 +100,7 @@ type X_AVM_DE_GetChangeCounterResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetChangeCounter(out *X_AVM_DE_GetChangeCounterResponse) error {
 	in := &X_AVM_DE_GetChangeCounterRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetChangeCounter", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetChangeCounter", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_SetHostNameByMACAddressRequest struct {
@@ -126,10 +116,8 @@ type X_AVM_DE_SetHostNameByMACAddressResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_SetHostNameByMACAddress(in *X_AVM_DE_SetHostNameByMACAddressRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_SetHostNameByMACAddressResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetHostNameByMACAddress", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetHostNameByMACAddress", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetAutoWakeOnLANByMACAddressRequest struct {
@@ -145,9 +133,7 @@ type X_AVM_DE_GetAutoWakeOnLANByMACAddressResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetAutoWakeOnLANByMACAddress(in *X_AVM_DE_GetAutoWakeOnLANByMACAddressRequest, out *X_AVM_DE_GetAutoWakeOnLANByMACAddressResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetAutoWakeOnLANByMACAddress", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetAutoWakeOnLANByMACAddress", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_SetAutoWakeOnLANByMACAddressRequest struct {
@@ -163,10 +149,8 @@ type X_AVM_DE_SetAutoWakeOnLANByMACAddressResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_SetAutoWakeOnLANByMACAddress(in *X_AVM_DE_SetAutoWakeOnLANByMACAddressRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_SetAutoWakeOnLANByMACAddressResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetAutoWakeOnLANByMACAddress", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetAutoWakeOnLANByMACAddress", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_WakeOnLANByMACAddressRequest struct {
@@ -181,10 +165,8 @@ type X_AVM_DE_WakeOnLANByMACAddressResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_WakeOnLANByMACAddress(in *X_AVM_DE_WakeOnLANByMACAddressRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_WakeOnLANByMACAddressResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_WakeOnLANByMACAddress", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_WakeOnLANByMACAddress", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetSpecificHostEntryByIPRequest struct {
@@ -220,9 +202,7 @@ type X_AVM_DE_GetSpecificHostEntryByIPResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetSpecificHostEntryByIP(in *X_AVM_DE_GetSpecificHostEntryByIPRequest, out *X_AVM_DE_GetSpecificHostEntryByIPResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetSpecificHostEntryByIP", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetSpecificHostEntryByIP", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_HostsCheckUpdateRequest struct {
@@ -236,10 +216,8 @@ type X_AVM_DE_HostsCheckUpdateResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_HostsCheckUpdate() error {
 	in := &X_AVM_DE_HostsCheckUpdateRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_HostsCheckUpdateResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_HostsCheckUpdate", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_HostsCheckUpdate", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_HostDoUpdateRequest struct {
@@ -254,10 +232,8 @@ type X_AVM_DE_HostDoUpdateResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_HostDoUpdate(in *X_AVM_DE_HostDoUpdateRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_HostDoUpdateResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_HostDoUpdate", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_HostDoUpdate", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_SetPrioritizationByIPRequest struct {
@@ -273,10 +249,8 @@ type X_AVM_DE_SetPrioritizationByIPResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_SetPrioritizationByIP(in *X_AVM_DE_SetPrioritizationByIPRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_SetPrioritizationByIPResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetPrioritizationByIP", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetPrioritizationByIP", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetHostListPathRequest struct {
@@ -291,9 +265,7 @@ type X_AVM_DE_GetHostListPathResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetHostListPath(out *X_AVM_DE_GetHostListPathResponse) error {
 	in := &X_AVM_DE_GetHostListPathRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetHostListPath", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetHostListPath", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetMeshListPathRequest struct {
@@ -308,9 +280,7 @@ type X_AVM_DE_GetMeshListPathResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetMeshListPath(out *X_AVM_DE_GetMeshListPathResponse) error {
 	in := &X_AVM_DE_GetMeshListPathRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetMeshListPath", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetMeshListPath", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetFriendlyNameRequest struct {
@@ -325,9 +295,7 @@ type X_AVM_DE_GetFriendlyNameResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetFriendlyName(out *X_AVM_DE_GetFriendlyNameResponse) error {
 	in := &X_AVM_DE_GetFriendlyNameRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetFriendlyName", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetFriendlyName", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_SetFriendlyNameRequest struct {
@@ -342,10 +310,8 @@ type X_AVM_DE_SetFriendlyNameResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_SetFriendlyName(in *X_AVM_DE_SetFriendlyNameRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_SetFriendlyNameResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetFriendlyName", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetFriendlyName", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_SetFriendlyNameByIPRequest struct {
@@ -361,10 +327,8 @@ type X_AVM_DE_SetFriendlyNameByIPResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_SetFriendlyNameByIP(in *X_AVM_DE_SetFriendlyNameByIPRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_SetFriendlyNameByIPResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetFriendlyNameByIP", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetFriendlyNameByIP", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_SetFriendlyNameByMACRequest struct {
@@ -380,8 +344,6 @@ type X_AVM_DE_SetFriendlyNameByMACResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_SetFriendlyNameByMAC(in *X_AVM_DE_SetFriendlyNameByMACRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_SetFriendlyNameByMACResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetFriendlyNameByMAC", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetFriendlyNameByMAC", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }

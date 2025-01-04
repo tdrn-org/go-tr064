@@ -23,9 +23,7 @@ type GetNumberOfDeviceEntriesResponse struct {
 
 func (client *ServiceClient) GetNumberOfDeviceEntries(out *GetNumberOfDeviceEntriesResponse) error {
 	in := &GetNumberOfDeviceEntriesRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetNumberOfDeviceEntries", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetNumberOfDeviceEntries", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetGenericDeviceEntryRequest struct {
@@ -46,9 +44,7 @@ type GetGenericDeviceEntryResponse struct {
 
 func (client *ServiceClient) GetGenericDeviceEntry(in *GetGenericDeviceEntryRequest, out *GetGenericDeviceEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetGenericDeviceEntry", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetGenericDeviceEntry", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetSpecificDeviceEntryRequest struct {
@@ -68,9 +64,7 @@ type GetSpecificDeviceEntryResponse struct {
 
 func (client *ServiceClient) GetSpecificDeviceEntry(in *GetSpecificDeviceEntryRequest, out *GetSpecificDeviceEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetSpecificDeviceEntry", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetSpecificDeviceEntry", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type DeviceDoUpdateRequest struct {
@@ -85,8 +79,6 @@ type DeviceDoUpdateResponse struct {
 
 func (client *ServiceClient) DeviceDoUpdate(in *DeviceDoUpdateRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &DeviceDoUpdateResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "DeviceDoUpdate", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "DeviceDoUpdate", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }

@@ -27,9 +27,7 @@ type GetInfoResponse struct {
 
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetGenericDeviceInfosRequest struct {
@@ -74,9 +72,7 @@ type GetGenericDeviceInfosResponse struct {
 
 func (client *ServiceClient) GetGenericDeviceInfos(in *GetGenericDeviceInfosRequest, out *GetGenericDeviceInfosResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetGenericDeviceInfos", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetGenericDeviceInfos", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetSpecificDeviceInfosRequest struct {
@@ -120,9 +116,7 @@ type GetSpecificDeviceInfosResponse struct {
 
 func (client *ServiceClient) GetSpecificDeviceInfos(in *GetSpecificDeviceInfosRequest, out *GetSpecificDeviceInfosResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetSpecificDeviceInfos", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetSpecificDeviceInfos", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetDeviceNameRequest struct {
@@ -138,10 +132,8 @@ type SetDeviceNameResponse struct {
 
 func (client *ServiceClient) SetDeviceName(in *SetDeviceNameRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetDeviceNameResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetDeviceName", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetDeviceName", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetSwitchRequest struct {
@@ -157,8 +149,6 @@ type SetSwitchResponse struct {
 
 func (client *ServiceClient) SetSwitch(in *SetSwitchRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetSwitchResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetSwitch", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetSwitch", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }

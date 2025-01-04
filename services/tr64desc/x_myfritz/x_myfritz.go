@@ -28,9 +28,7 @@ type GetInfoResponse struct {
 
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetMyFRITZRequest struct {
@@ -46,10 +44,8 @@ type SetMyFRITZResponse struct {
 
 func (client *ServiceClient) SetMyFRITZ(in *SetMyFRITZRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetMyFRITZResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetMyFRITZ", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetMyFRITZ", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetNumberOfServicesRequest struct {
@@ -64,9 +60,7 @@ type GetNumberOfServicesResponse struct {
 
 func (client *ServiceClient) GetNumberOfServices(out *GetNumberOfServicesResponse) error {
 	in := &GetNumberOfServicesRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetNumberOfServices", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetNumberOfServices", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetServiceByIndexRequest struct {
@@ -95,9 +89,7 @@ type GetServiceByIndexResponse struct {
 
 func (client *ServiceClient) GetServiceByIndex(in *GetServiceByIndexRequest, out *GetServiceByIndexResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetServiceByIndex", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetServiceByIndex", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetServiceByIndexRequest struct {
@@ -123,10 +115,8 @@ type SetServiceByIndexResponse struct {
 
 func (client *ServiceClient) SetServiceByIndex(in *SetServiceByIndexRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetServiceByIndexResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetServiceByIndex", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetServiceByIndex", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type DeleteServiceByIndexRequest struct {
@@ -141,8 +131,6 @@ type DeleteServiceByIndexResponse struct {
 
 func (client *ServiceClient) DeleteServiceByIndex(in *DeleteServiceByIndexRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &DeleteServiceByIndexResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "DeleteServiceByIndex", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "DeleteServiceByIndex", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }

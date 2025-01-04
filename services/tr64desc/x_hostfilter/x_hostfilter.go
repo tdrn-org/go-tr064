@@ -23,9 +23,7 @@ type MarkTicketResponse struct {
 
 func (client *ServiceClient) MarkTicket(out *MarkTicketResponse) error {
 	in := &MarkTicketRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "MarkTicket", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "MarkTicket", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetTicketIDStatusRequest struct {
@@ -41,9 +39,7 @@ type GetTicketIDStatusResponse struct {
 
 func (client *ServiceClient) GetTicketIDStatus(in *GetTicketIDStatusRequest, out *GetTicketIDStatusResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetTicketIDStatus", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetTicketIDStatus", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type DiscardAllTicketsRequest struct {
@@ -57,10 +53,8 @@ type DiscardAllTicketsResponse struct {
 
 func (client *ServiceClient) DiscardAllTickets() error {
 	in := &DiscardAllTicketsRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &DiscardAllTicketsResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "DiscardAllTickets", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "DiscardAllTickets", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type DisallowWANAccessByIPRequest struct {
@@ -76,10 +70,8 @@ type DisallowWANAccessByIPResponse struct {
 
 func (client *ServiceClient) DisallowWANAccessByIP(in *DisallowWANAccessByIPRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &DisallowWANAccessByIPResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "DisallowWANAccessByIP", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "DisallowWANAccessByIP", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetWANAccessByIPRequest struct {
@@ -96,7 +88,5 @@ type GetWANAccessByIPResponse struct {
 
 func (client *ServiceClient) GetWANAccessByIP(in *GetWANAccessByIPRequest, out *GetWANAccessByIPResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetWANAccessByIP", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetWANAccessByIP", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }

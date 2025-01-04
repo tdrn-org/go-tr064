@@ -27,9 +27,7 @@ type GetInfoResponse struct {
 
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetCurrentUserRequest struct {
@@ -45,9 +43,7 @@ type X_AVM_DE_GetCurrentUserResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetCurrentUser(out *X_AVM_DE_GetCurrentUserResponse) error {
 	in := &X_AVM_DE_GetCurrentUserRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetCurrentUser", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetCurrentUser", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetAnonymousLoginRequest struct {
@@ -63,9 +59,7 @@ type X_AVM_DE_GetAnonymousLoginResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetAnonymousLogin(out *X_AVM_DE_GetAnonymousLoginResponse) error {
 	in := &X_AVM_DE_GetAnonymousLoginRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetAnonymousLogin", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetAnonymousLogin", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetConfigPasswordRequest struct {
@@ -80,10 +74,8 @@ type SetConfigPasswordResponse struct {
 
 func (client *ServiceClient) SetConfigPassword(in *SetConfigPasswordRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetConfigPasswordResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetConfigPassword", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetConfigPassword", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetUserListRequest struct {
@@ -98,7 +90,5 @@ type X_AVM_DE_GetUserListResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetUserList(out *X_AVM_DE_GetUserListResponse) error {
 	in := &X_AVM_DE_GetUserListRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetUserList", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetUserList", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }

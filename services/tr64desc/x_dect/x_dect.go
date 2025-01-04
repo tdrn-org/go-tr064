@@ -23,9 +23,7 @@ type GetNumberOfDectEntriesResponse struct {
 
 func (client *ServiceClient) GetNumberOfDectEntries(out *GetNumberOfDectEntriesResponse) error {
 	in := &GetNumberOfDectEntriesRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetNumberOfDectEntries", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetNumberOfDectEntries", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetGenericDectEntryRequest struct {
@@ -47,9 +45,7 @@ type GetGenericDectEntryResponse struct {
 
 func (client *ServiceClient) GetGenericDectEntry(in *GetGenericDectEntryRequest, out *GetGenericDectEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetGenericDectEntry", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetGenericDectEntry", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetSpecificDectEntryRequest struct {
@@ -70,9 +66,7 @@ type GetSpecificDectEntryResponse struct {
 
 func (client *ServiceClient) GetSpecificDectEntry(in *GetSpecificDectEntryRequest, out *GetSpecificDectEntryResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetSpecificDectEntry", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetSpecificDectEntry", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type DectDoUpdateRequest struct {
@@ -87,10 +81,8 @@ type DectDoUpdateResponse struct {
 
 func (client *ServiceClient) DectDoUpdate(in *DectDoUpdateRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &DectDoUpdateResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "DectDoUpdate", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "DectDoUpdate", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetDectListPathRequest struct {
@@ -105,7 +97,5 @@ type GetDectListPathResponse struct {
 
 func (client *ServiceClient) GetDectListPath(out *GetDectListPathResponse) error {
 	in := &GetDectListPathRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetDectListPath", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetDectListPath", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }

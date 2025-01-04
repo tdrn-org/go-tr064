@@ -30,9 +30,7 @@ type GetInfoResponse struct {
 
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetNTPServersRequest struct {
@@ -48,8 +46,6 @@ type SetNTPServersResponse struct {
 
 func (client *ServiceClient) SetNTPServers(in *SetNTPServersRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetNTPServersResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetNTPServers", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetNTPServers", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }

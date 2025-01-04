@@ -32,9 +32,7 @@ type GetInfoResponse struct {
 
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_CheckUpdateRequest struct {
@@ -48,10 +46,8 @@ type X_AVM_DE_CheckUpdateResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_CheckUpdate() error {
 	in := &X_AVM_DE_CheckUpdateRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_CheckUpdateResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_CheckUpdate", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_CheckUpdate", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_DoUpdateRequest struct {
@@ -67,9 +63,7 @@ type X_AVM_DE_DoUpdateResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_DoUpdate(out *X_AVM_DE_DoUpdateResponse) error {
 	in := &X_AVM_DE_DoUpdateRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_DoUpdate", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_DoUpdate", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_DoPrepareCGIRequest struct {
@@ -85,9 +79,7 @@ type X_AVM_DE_DoPrepareCGIResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_DoPrepareCGI(out *X_AVM_DE_DoPrepareCGIResponse) error {
 	in := &X_AVM_DE_DoPrepareCGIRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_DoPrepareCGI", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_DoPrepareCGI", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_DoManualUpdateRequest struct {
@@ -103,10 +95,8 @@ type X_AVM_DE_DoManualUpdateResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_DoManualUpdate(in *X_AVM_DE_DoManualUpdateRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_DoManualUpdateResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_DoManualUpdate", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_DoManualUpdate", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetInternationalConfigRequest struct {
@@ -126,9 +116,7 @@ type X_AVM_DE_GetInternationalConfigResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetInternationalConfig(out *X_AVM_DE_GetInternationalConfigResponse) error {
 	in := &X_AVM_DE_GetInternationalConfigRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetInternationalConfig", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetInternationalConfig", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_SetInternationalConfigRequest struct {
@@ -145,10 +133,8 @@ type X_AVM_DE_SetInternationalConfigResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_SetInternationalConfig(in *X_AVM_DE_SetInternationalConfigRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_SetInternationalConfigResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetInternationalConfig", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetInternationalConfig", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_GetInfoRequest struct {
@@ -168,9 +154,7 @@ type X_AVM_DE_GetInfoResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_GetInfo(out *X_AVM_DE_GetInfoResponse) error {
 	in := &X_AVM_DE_GetInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type X_AVM_DE_SetConfigRequest struct {
@@ -185,8 +169,6 @@ type X_AVM_DE_SetConfigResponse struct {
 
 func (client *ServiceClient) X_AVM_DE_SetConfig(in *X_AVM_DE_SetConfigRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &X_AVM_DE_SetConfigResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetConfig", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetConfig", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }

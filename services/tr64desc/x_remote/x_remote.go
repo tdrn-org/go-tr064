@@ -27,9 +27,7 @@ type GetInfoResponse struct {
 
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 	in := &GetInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetConfigRequest struct {
@@ -47,10 +45,8 @@ type SetConfigResponse struct {
 
 func (client *ServiceClient) SetConfig(in *SetConfigRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetConfigResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetConfig", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetConfig", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetEnableRequest struct {
@@ -66,9 +62,7 @@ type SetEnableResponse struct {
 
 func (client *ServiceClient) SetEnable(in *SetEnableRequest, out *SetEnableResponse) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetEnable", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetEnable", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetLetsEncryptEnableRequest struct {
@@ -83,10 +77,8 @@ type SetLetsEncryptEnableResponse struct {
 
 func (client *ServiceClient) SetLetsEncryptEnable(in *SetLetsEncryptEnableRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetLetsEncryptEnableResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetLetsEncryptEnable", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetLetsEncryptEnable", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetDDNSInfoRequest struct {
@@ -110,9 +102,7 @@ type GetDDNSInfoResponse struct {
 
 func (client *ServiceClient) GetDDNSInfo(out *GetDDNSInfoResponse) error {
 	in := &GetDDNSInfoRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetDDNSInfo", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetDDNSInfo", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type GetDDNSProvidersRequest struct {
@@ -127,9 +117,7 @@ type GetDDNSProvidersResponse struct {
 
 func (client *ServiceClient) GetDDNSProviders(out *GetDDNSProvidersResponse) error {
 	in := &GetDDNSProvidersRequest{XMLNameSpace: client.Service.Type()}
-	soapRequest := tr064.NewSOAPRequest(in)
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "GetDDNSProviders", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "GetDDNSProviders", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
 
 type SetDDNSConfigRequest struct {
@@ -152,8 +140,6 @@ type SetDDNSConfigResponse struct {
 
 func (client *ServiceClient) SetDDNSConfig(in *SetDDNSConfigRequest) error {
 	in.XMLNameSpace = client.Service.Type()
-	soapRequest := tr064.NewSOAPRequest(in)
 	out := &SetDDNSConfigResponse{}
-	soapResponse := tr064.NewSOAPResponse(out)
-	return client.TR064Client.InvokeService(client.Service, "SetDDNSConfig", soapRequest, soapResponse)
+	return client.TR064Client.InvokeService(client.Service, "SetDDNSConfig", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
