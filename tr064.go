@@ -26,6 +26,7 @@ import (
 	"net/http"
 	"net/url"
 	"regexp"
+	"strings"
 )
 
 const XMLNameSpace = "http://schemas.xmlsoap.org/soap/envelope/"
@@ -121,6 +122,9 @@ type deviceDoc struct {
 
 func (doc *deviceDoc) walk(baseUrl *url.URL, f WalkServiceFunc) error {
 	for _, service := range doc.ServiceList.Services {
+		if strings.HasPrefix(service.ServiceType, "urn:schemas-any-com:service:Any:") {
+			continue
+		}
 		scpd, err := service.scpd(baseUrl)
 		if err != nil {
 			return err
