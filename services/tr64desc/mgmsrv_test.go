@@ -21,13 +21,12 @@ func TestManagementServer(t *testing.T) {
 	tr064Mock := mock.Start("testdata", mgmsrvMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), tr064.TR064Spec("tr64desc"))
+	client := tr064.NewClient(tr064Mock.Server(), tr064.ServiceSpec("tr64desc"))
 	client.Debug = true
 	serviceClient := &mgmsrv.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceName: "ManagementServer",
-			ServiceType: "urn:dslforum-org:service:ManagementServer:1",
+			ServiceSpec: tr064.ServiceSpec("tr64desc"),
 			ServiceId:   "urn:ManagementServer-com:serviceId:ManagementServer1",
 			ServiceUrl:  "/upnp/control/mgmsrv",
 		},

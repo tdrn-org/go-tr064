@@ -21,13 +21,12 @@ func TestWANPPPConnection(t *testing.T) {
 	tr064Mock := mock.Start("testdata", wanpppconnMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), tr064.TR064Spec("tr64desc"))
+	client := tr064.NewClient(tr064Mock.Server(), tr064.ServiceSpec("tr64desc"))
 	client.Debug = true
 	serviceClient := &wanpppconn.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceName: "WANPPPConnection",
-			ServiceType: "urn:dslforum-org:service:WANPPPConnection:1",
+			ServiceSpec: tr064.ServiceSpec("tr64desc"),
 			ServiceId:   "urn:WANPPPConnection-com:serviceId:WANPPPConnection1",
 			ServiceUrl:  "/upnp/control/wanpppconn1",
 		},

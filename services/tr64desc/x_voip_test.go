@@ -21,13 +21,12 @@ func TestX_VoIP(t *testing.T) {
 	tr064Mock := mock.Start("testdata", x_voipMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), tr064.TR064Spec("tr64desc"))
+	client := tr064.NewClient(tr064Mock.Server(), tr064.ServiceSpec("tr64desc"))
 	client.Debug = true
 	serviceClient := &x_voip.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceName: "X_VoIP",
-			ServiceType: "urn:dslforum-org:service:X_VoIP:1",
+			ServiceSpec: tr064.ServiceSpec("tr64desc"),
 			ServiceId:   "urn:X_VoIP-com:serviceId:X_VoIP1",
 			ServiceUrl:  "/upnp/control/x_voip",
 		},

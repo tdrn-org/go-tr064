@@ -21,13 +21,12 @@ func TestUserInterface(t *testing.T) {
 	tr064Mock := mock.Start("testdata", userifMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), tr064.TR064Spec("tr64desc"))
+	client := tr064.NewClient(tr064Mock.Server(), tr064.ServiceSpec("tr64desc"))
 	client.Debug = true
 	serviceClient := &userif.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceName: "UserInterface",
-			ServiceType: "urn:dslforum-org:service:UserInterface:1",
+			ServiceSpec: tr064.ServiceSpec("tr64desc"),
 			ServiceId:   "urn:UserInterface-com:serviceId:UserInterface1",
 			ServiceUrl:  "/upnp/control/userif",
 		},

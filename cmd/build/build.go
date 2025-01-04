@@ -68,7 +68,10 @@ func generate() {
 		baseUrl.User = nil
 		baseUrl.Path = "/"
 		match := specNamePattern.FindStringSubmatch(parsedUrl.Path)
-		spec := tr064.TR064Spec(match[1])
+		if match == nil {
+			log.Fatal("Unexpected URL: '", parsedUrl.Redacted(), "'")
+		}
+		spec := tr064.ServiceSpec(match[1])
 		tr064.Generate(&baseUrl, spec, ".")
 	}
 }

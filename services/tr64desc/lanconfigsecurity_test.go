@@ -21,13 +21,12 @@ func TestLANConfigSecurity(t *testing.T) {
 	tr064Mock := mock.Start("testdata", lanconfigsecurityMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), tr064.TR064Spec("tr64desc"))
+	client := tr064.NewClient(tr064Mock.Server(), tr064.ServiceSpec("tr64desc"))
 	client.Debug = true
 	serviceClient := &lanconfigsecurity.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceName: "LANConfigSecurity",
-			ServiceType: "urn:dslforum-org:service:LANConfigSecurity:1",
+			ServiceSpec: tr064.ServiceSpec("tr64desc"),
 			ServiceId:   "urn:LANConfigSecurity-com:serviceId:LANConfigSecurity1",
 			ServiceUrl:  "/upnp/control/lanconfigsecurity",
 		},

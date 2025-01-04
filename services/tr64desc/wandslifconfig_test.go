@@ -21,13 +21,12 @@ func TestWANDSLInterfaceConfig(t *testing.T) {
 	tr064Mock := mock.Start("testdata", wandslifconfigMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), tr064.TR064Spec("tr64desc"))
+	client := tr064.NewClient(tr064Mock.Server(), tr064.ServiceSpec("tr64desc"))
 	client.Debug = true
 	serviceClient := &wandslifconfig.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceName: "WANDSLInterfaceConfig",
-			ServiceType: "urn:dslforum-org:service:WANDSLInterfaceConfig:1",
+			ServiceSpec: tr064.ServiceSpec("tr64desc"),
 			ServiceId:   "urn:WANDSLIfConfig-com:serviceId:WANDSLInterfaceConfig1",
 			ServiceUrl:  "/upnp/control/wandslifconfig1",
 		},

@@ -21,13 +21,12 @@ func TestX_AVM_DE_Dect(t *testing.T) {
 	tr064Mock := mock.Start("testdata", x_dectMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), tr064.TR064Spec("tr64desc"))
+	client := tr064.NewClient(tr064Mock.Server(), tr064.ServiceSpec("tr64desc"))
 	client.Debug = true
 	serviceClient := &x_dect.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceName: "X_AVM_DE_Dect",
-			ServiceType: "urn:dslforum-org:service:X_AVM-DE_Dect:1",
+			ServiceSpec: tr064.ServiceSpec("tr64desc"),
 			ServiceId:   "urn:X_AVM-DE_Dect-com:serviceId:X_AVM-DE_Dect1",
 			ServiceUrl:  "/upnp/control/x_dect",
 		},

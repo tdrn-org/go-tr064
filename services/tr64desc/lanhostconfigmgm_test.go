@@ -21,13 +21,12 @@ func TestLANHostConfigManagement(t *testing.T) {
 	tr064Mock := mock.Start("testdata", lanhostconfigmgmMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), tr064.TR064Spec("tr64desc"))
+	client := tr064.NewClient(tr064Mock.Server(), tr064.ServiceSpec("tr64desc"))
 	client.Debug = true
 	serviceClient := &lanhostconfigmgm.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceName: "LANHostConfigManagement",
-			ServiceType: "urn:dslforum-org:service:LANHostConfigManagement:1",
+			ServiceSpec: tr064.ServiceSpec("tr64desc"),
 			ServiceId:   "urn:LANHCfgMgm-com:serviceId:LANHostConfigManagement1",
 			ServiceUrl:  "/upnp/control/lanhostconfigmgm",
 		},

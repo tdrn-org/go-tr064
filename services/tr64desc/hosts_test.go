@@ -21,13 +21,12 @@ func TestHosts(t *testing.T) {
 	tr064Mock := mock.Start("testdata", hostsMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), tr064.TR064Spec("tr64desc"))
+	client := tr064.NewClient(tr064Mock.Server(), tr064.ServiceSpec("tr64desc"))
 	client.Debug = true
 	serviceClient := &hosts.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceName: "Hosts",
-			ServiceType: "urn:dslforum-org:service:Hosts:1",
+			ServiceSpec: tr064.ServiceSpec("tr64desc"),
 			ServiceId:   "urn:LanDeviceHosts-com:serviceId:Hosts1",
 			ServiceUrl:  "/upnp/control/hosts",
 		},

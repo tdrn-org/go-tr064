@@ -21,13 +21,12 @@ func TestWANIPv6FirewallControl(t *testing.T) {
 	tr064Mock := mock.Start("testdata", igd2ipv6fwcMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), tr064.TR064Spec("igddesc"))
+	client := tr064.NewClient(tr064Mock.Server(), tr064.ServiceSpec("igddesc"))
 	client.Debug = true
 	serviceClient := &igd2ipv6fwc.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceName: "WANIPv6FirewallControl",
-			ServiceType: "urn:schemas-upnp-org:service:WANIPv6FirewallControl:1",
+			ServiceSpec: tr064.ServiceSpec("igddesc"),
 			ServiceId:   "urn:upnp-org:serviceId:WANIPv6Firewall1",
 			ServiceUrl:  "/igd2upnp/control/WANIPv6Firewall1",
 		},

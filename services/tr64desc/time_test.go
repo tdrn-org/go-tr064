@@ -21,13 +21,12 @@ func TestTime(t *testing.T) {
 	tr064Mock := mock.Start("testdata", timeMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), tr064.TR064Spec("tr64desc"))
+	client := tr064.NewClient(tr064Mock.Server(), tr064.ServiceSpec("tr64desc"))
 	client.Debug = true
 	serviceClient := &time.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceName: "Time",
-			ServiceType: "urn:dslforum-org:service:Time:1",
+			ServiceSpec: tr064.ServiceSpec("tr64desc"),
 			ServiceId:   "urn:Time-com:serviceId:Time1",
 			ServiceUrl:  "/upnp/control/time",
 		},

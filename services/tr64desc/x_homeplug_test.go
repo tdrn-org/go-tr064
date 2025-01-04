@@ -21,13 +21,12 @@ func TestX_AVM_DE_Homeplug(t *testing.T) {
 	tr064Mock := mock.Start("testdata", x_homeplugMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), tr064.TR064Spec("tr64desc"))
+	client := tr064.NewClient(tr064Mock.Server(), tr064.ServiceSpec("tr64desc"))
 	client.Debug = true
 	serviceClient := &x_homeplug.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceName: "X_AVM_DE_Homeplug",
-			ServiceType: "urn:dslforum-org:service:X_AVM-DE_Homeplug:1",
+			ServiceSpec: tr064.ServiceSpec("tr64desc"),
 			ServiceId:   "urn:X_AVM-DE_Homeplug-com:serviceId:X_AVM-DE_Homeplug1",
 			ServiceUrl:  "/upnp/control/x_homeplug",
 		},

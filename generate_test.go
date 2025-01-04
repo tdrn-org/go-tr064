@@ -37,7 +37,7 @@ func TestGenerate(t *testing.T) {
 	dir.Mkdir()
 	defer dir.Remove()
 	// Actual test
-	tr064.Generate(tr064Mock.Server(), tr064.DefaultSpec, dir.TempDir)
+	tr064.Generate(tr064Mock.Server(), tr064.DefaultServiceSpec, dir.TempDir)
 	require.NoError(t, dir.FileNotEmpty("services/tr64desc/mockecho/mockecho.go"))
 	require.NoError(t, dir.FileNotEmpty("services/tr64desc/mockecho/name.go"))
 	require.NoError(t, dir.FileNotEmpty("services/tr64desc/mockecho_test.go"))

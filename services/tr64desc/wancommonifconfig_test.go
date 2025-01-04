@@ -21,13 +21,12 @@ func TestWANCommonInterfaceConfig(t *testing.T) {
 	tr064Mock := mock.Start("testdata", wancommonifconfigMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), tr064.TR064Spec("tr64desc"))
+	client := tr064.NewClient(tr064Mock.Server(), tr064.ServiceSpec("tr64desc"))
 	client.Debug = true
 	serviceClient := &wancommonifconfig.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceName: "WANCommonInterfaceConfig",
-			ServiceType: "urn:dslforum-org:service:WANCommonInterfaceConfig:1",
+			ServiceSpec: tr064.ServiceSpec("tr64desc"),
 			ServiceId:   "urn:WANCIfConfig-com:serviceId:WANCommonInterfaceConfig1",
 			ServiceUrl:  "/upnp/control/wancommonifconfig1",
 		},

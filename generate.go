@@ -28,7 +28,7 @@ import (
 	"strings"
 )
 
-func Generate(baseUrl *url.URL, spec TR064Spec, dir string) {
+func Generate(baseUrl *url.URL, spec ServiceSpec, dir string) {
 	specUrl := baseUrl.JoinPath(spec.Path())
 	log.Println("Reading '", specUrl.Redacted(), "'...")
 	tr64desc := &tr64descDoc{}
@@ -36,6 +36,7 @@ func Generate(baseUrl *url.URL, spec TR064Spec, dir string) {
 	if err != nil {
 		log.Fatal("Failed to unmarshal ", specUrl, " cause: ", err)
 	}
+	tr64desc.bind(spec)
 	log.Println("Generating...")
 	gc := &generateContext{
 		baseUrl:        baseUrl,
@@ -52,7 +53,7 @@ func Generate(baseUrl *url.URL, spec TR064Spec, dir string) {
 
 type generateContext struct {
 	baseUrl        *url.URL
-	spec           TR064Spec
+	spec           ServiceSpec
 	serviceClients map[string]*bytes.Buffer
 	serviceNames   map[string]string
 	serviceTests   map[string]*bytes.Buffer
@@ -74,7 +75,7 @@ func (gc *generateContext) generate(tr64desc *tr64descDoc, dir string) error {
 
 func (gc *generateContext) generateServiceClient(service *serviceDoc, scpd *scpdDoc) error {
 	packageName := service.scpdName()
-	gc.serviceNames[service.Name()] = packageName
+	gc.serviceNames[service.ShortType()] = packageName
 	buffer := gc.serviceClients[packageName]
 	if buffer == nil {
 		buffer = &bytes.Buffer{}
@@ -185,18 +186,17 @@ func (gc *generateContext) generateServiceTest(service *serviceDoc, scpd *scpdDo
 		gc.emit(buffer, "Path: \"%s\",\n", service.ControlURL)
 		gc.emit(buffer, "HandleFunc: %sHandler,\n", packageName)
 		gc.emit(buffer, "}\n")
-		gc.emit(buffer, "\nfunc Test%s(t *testing.T) {\n", service.Name())
+		gc.emit(buffer, "\nfunc Test%s(t *testing.T) {\n", service.ShortType())
 		gc.emit(buffer, "// Start mock server\n")
 		gc.emit(buffer, "tr064Mock := mock.Start(\"testdata\", %sMock)\n", packageName)
 		gc.emit(buffer, "defer tr064Mock.Shutdown()\n")
 		gc.emit(buffer, "// Actual test\n")
-		gc.emit(buffer, "client := tr064.NewClient(tr064Mock.Server(),tr064.TR064Spec(\"%s\"))\n", gc.spec.Name())
+		gc.emit(buffer, "client := tr064.NewClient(tr064Mock.Server(),tr064.ServiceSpec(\"%s\"))\n", gc.spec.Name())
 		gc.emit(buffer, "client.Debug = true\n")
 		gc.emit(buffer, "serviceClient := &%s.ServiceClient{\n", packageName)
 		gc.emit(buffer, "TR064Client: client,\n")
 		gc.emit(buffer, "Service: &tr064.StaticServiceDescriptor{\n")
-		gc.emit(buffer, "ServiceName: \"%s\",\n", service.Name())
-		gc.emit(buffer, "ServiceType: \"%s\",\n", service.Type())
+		gc.emit(buffer, "ServiceSpec: tr064.ServiceSpec(\"%s\"),\n", gc.spec.Name())
 		gc.emit(buffer, "ServiceId: \"%s\",\n", service.Id())
 		gc.emit(buffer, "ServiceUrl:  \"%s\",\n", service.ControlURL)
 		gc.emit(buffer, "},\n")

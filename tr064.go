@@ -33,18 +33,18 @@ const XMLNameSpace = "http://schemas.xmlsoap.org/soap/envelope/"
 
 const XMLEncodingStyle = "http://schemas.xmlsoap.org/soap/encoding/"
 
-type TR064Spec string
+type ServiceSpec string
 
 const (
-	DefaultSpec = "tr64desc"
-	IGDSpec     = "igddesc"
+	DefaultServiceSpec ServiceSpec = "tr64desc"
+	IgdServiceSpec     ServiceSpec = "igddesc"
 )
 
-func (spec TR064Spec) Name() string {
+func (spec ServiceSpec) Name() string {
 	return string(spec)
 }
 
-func (spec TR064Spec) Path() string {
+func (spec ServiceSpec) Path() string {
 	return "/" + string(spec) + ".xml"
 }
 
@@ -73,6 +73,17 @@ type tr64descDoc struct {
 	SpecVersion   specVersionDoc   `xml:"specVersion"`
 	SystemVersion systemVersionDoc `xml:"systemVersion"`
 	Device        deviceDoc        `xml:"device"`
+}
+
+func (doc *tr64descDoc) bind(spec ServiceSpec) {
+	for serviceIndex := range doc.Device.ServiceList.Services {
+		doc.Device.ServiceList.Services[serviceIndex].spec = spec
+	}
+	for deviceIndex := range doc.Device.DeviceList.Devices {
+		for serviceIndex := range doc.Device.DeviceList.Devices[deviceIndex].ServiceList.Services {
+			doc.Device.DeviceList.Devices[deviceIndex].ServiceList.Services[serviceIndex].spec = spec
+		}
+	}
 }
 
 type WalkServiceFunc func(*serviceDoc, *scpdDoc) error
@@ -148,12 +159,13 @@ type serviceListDoc struct {
 }
 
 type serviceDoc struct {
-	ServiceType string   `xml:"serviceType"`
-	ServiceId   string   `xml:"serviceId"`
-	ControlURL  string   `xml:"controlURL"`
-	EventSubURL string   `xml:"eventSubURL"`
-	SCPDURL     string   `xml:"SCPDURL"`
-	cachedSCPD  *scpdDoc `xml:"-"`
+	ServiceType string      `xml:"serviceType"`
+	ServiceId   string      `xml:"serviceId"`
+	ControlURL  string      `xml:"controlURL"`
+	EventSubURL string      `xml:"eventSubURL"`
+	SCPDURL     string      `xml:"SCPDURL"`
+	spec        ServiceSpec `xml:"-"`
+	cachedSCPD  *scpdDoc    `xml:"-"`
 }
 
 func (doc *serviceDoc) scpd(baseUrl *url.URL) (*scpdDoc, error) {
@@ -179,19 +191,16 @@ func (service *serviceDoc) scpdName() string {
 	return match[1]
 }
 
-var serviceTypeNamePattern = regexp.MustCompile(`^urn\:(.+)\:service\:(.+):\d+$`)
-
-func (service *serviceDoc) Name() string {
-	match := serviceTypeNamePattern.FindStringSubmatch(service.ServiceType)
-	if match == nil {
-		log.Fatal(fmt.Errorf("unexpected service type '%s'", service.ServiceType))
-	}
-	mangledServiceName := mangleName(match[2])
-	return mangledServiceName
+func (service *serviceDoc) Spec() ServiceSpec {
+	return service.spec
 }
 
 func (service *serviceDoc) Type() string {
 	return service.ServiceType
+}
+
+func (service *serviceDoc) ShortType() string {
+	return serviceShortType(service.ServiceType)
 }
 
 func (service *serviceDoc) Id() string {
@@ -267,4 +276,15 @@ type stateVariableDoc struct {
 
 type allowedValueListDoc struct {
 	AllowedValues []string `xml:"allowedValue"`
+}
+
+var serviceShortTypePattern = regexp.MustCompile(`^urn\:(.+)\:service\:(.+):\d+$`)
+
+func serviceShortType(serviceType string) string {
+	match := serviceShortTypePattern.FindStringSubmatch(serviceType)
+	if match == nil {
+		log.Fatal("Unexpected service type '", serviceType, "'")
+	}
+	mangledServiceName := mangleName(match[2])
+	return mangledServiceName
 }

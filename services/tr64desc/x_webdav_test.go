@@ -21,13 +21,12 @@ func TestX_AVM_DE_WebDAVClient(t *testing.T) {
 	tr064Mock := mock.Start("testdata", x_webdavMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), tr064.TR064Spec("tr64desc"))
+	client := tr064.NewClient(tr064Mock.Server(), tr064.ServiceSpec("tr64desc"))
 	client.Debug = true
 	serviceClient := &x_webdav.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceName: "X_AVM_DE_WebDAVClient",
-			ServiceType: "urn:dslforum-org:service:X_AVM-DE_WebDAVClient:1",
+			ServiceSpec: tr064.ServiceSpec("tr64desc"),
 			ServiceId:   "urn:X_AVM-DE_WebDAV-com:serviceId:X_AVM-DE_WebDAVClient1",
 			ServiceUrl:  "/upnp/control/x_webdav",
 		},

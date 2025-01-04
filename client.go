@@ -36,25 +36,30 @@ import (
 )
 
 type ServiceDescriptor interface {
-	Name() string
+	Spec() ServiceSpec
 	Type() string
+	ShortType() string
 	Id() string
 	Url() string
 }
 
 type StaticServiceDescriptor struct {
-	ServiceName string
+	ServiceSpec ServiceSpec
 	ServiceType string
 	ServiceId   string
 	ServiceUrl  string
 }
 
-func (service *StaticServiceDescriptor) Name() string {
-	return service.ServiceName
+func (service *StaticServiceDescriptor) Spec() ServiceSpec {
+	return service.ServiceSpec
 }
 
 func (service *StaticServiceDescriptor) Type() string {
 	return service.ServiceType
+}
+
+func (service *StaticServiceDescriptor) ShortType() string {
+	return serviceShortType(service.ServiceType)
 }
 
 func (service *StaticServiceDescriptor) Id() string {
@@ -68,7 +73,7 @@ func (service *StaticServiceDescriptor) Url() string {
 // NewClient instantiates a new TR-064 client for accessing the given URL.
 //
 // If the given URL contains a userinfo, the contained username and password are automatically used for authentication.
-func NewClient(deviceUrl *url.URL, spec TR064Spec) *Client {
+func NewClient(deviceUrl *url.URL, specs ...ServiceSpec) *Client {
 	anonymousDeviceUrl := *deviceUrl
 	anonymousDeviceUrl.User = url.User("")
 	username := deviceUrl.User.Username()
@@ -77,7 +82,7 @@ func NewClient(deviceUrl *url.URL, spec TR064Spec) *Client {
 		DeviceUrl: &anonymousDeviceUrl,
 		Username:  username,
 		Password:  password,
-		Spec:      spec,
+		Specs:     specs,
 		mutex:     &sync.Mutex{},
 	}
 }
@@ -104,7 +109,7 @@ type Client struct {
 	Username string
 	// Password is set to the password to use for accessing restricted services.
 	Password string
-	Spec     TR064Spec
+	Specs    []ServiceSpec
 	// Timeout sets the timeout for HTTP(S) communication.
 	Timeout time.Duration
 	// InsecureSkipVerify disables certificate validation while access the TR-064 server. Use with care.
@@ -122,16 +127,23 @@ func (client *Client) Services() ([]ServiceDescriptor, error) {
 	client.mutex.Lock()
 	defer client.mutex.Unlock()
 	if client.cachedServices == nil {
-		tr64desc, err := client.fetchSpec()
-		if err != nil {
-			return nil, err
+		specs := client.Specs
+		if len(specs) == 0 {
+			specs = []ServiceSpec{DefaultServiceSpec}
 		}
-		collector := &serviceCollector{serviceMap: make(map[string]ServiceDescriptor)}
-		err = tr64desc.walk(client.DeviceUrl, collector.collectService)
-		if err != nil {
-			return nil, err
+		services := make([]ServiceDescriptor, 0)
+		for _, spec := range specs {
+			tr64desc, err := client.fetchSpec(spec)
+			if err != nil {
+				return nil, err
+			}
+			collector := &serviceCollector{serviceMap: make(map[string]ServiceDescriptor)}
+			err = tr64desc.walk(client.DeviceUrl, collector.collectService)
+			if err != nil {
+				return nil, err
+			}
+			services = append(services, slices.Collect(maps.Values(collector.serviceMap))...)
 		}
-		services := slices.Collect(maps.Values(collector.serviceMap))
 		slices.SortFunc(services, func(a ServiceDescriptor, b ServiceDescriptor) int { return strings.Compare(a.Type(), b.Type()) })
 		client.cachedServices = services
 	}
@@ -140,27 +152,28 @@ func (client *Client) Services() ([]ServiceDescriptor, error) {
 
 // ServicesByName fetches and parses the TR-064 server's service specifications
 // like [Services], but returns only the available services matching the given service name.
-func (client *Client) ServicesByName(name string) ([]ServiceDescriptor, error) {
+func (client *Client) ServicesByType(spec ServiceSpec, serviceType string) ([]ServiceDescriptor, error) {
 	all, err := client.Services()
 	if err != nil {
 		return nil, err
 	}
 	services := make([]ServiceDescriptor, 0)
 	for _, service := range all {
-		if service.Name() == name {
+		if service.Spec() == spec && (service.Type() == serviceType || service.ShortType() == serviceType) {
 			services = append(services, service)
 		}
 	}
 	return services, nil
 }
 
-func (client *Client) fetchSpec() (*tr64descDoc, error) {
-	tr64descUrl := client.DeviceUrl.JoinPath(client.Spec.Path())
+func (client *Client) fetchSpec(spec ServiceSpec) (*tr64descDoc, error) {
+	tr64descUrl := client.DeviceUrl.JoinPath(spec.Path())
 	tr64desc := &tr64descDoc{}
 	err := unmarshalDocument(tr64descUrl, tr64desc)
 	if err != nil {
 		return nil, fmt.Errorf("failed to fetch '%s' (cause: %w)", tr64descUrl, err)
 	}
+	tr64desc.bind(spec)
 	return tr64desc, nil
 }
 

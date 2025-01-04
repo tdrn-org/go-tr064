@@ -21,13 +21,12 @@ func TestWANCommonInterfaceConfig(t *testing.T) {
 	tr064Mock := mock.Start("testdata", igdicfgMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), tr064.TR064Spec("igddesc"))
+	client := tr064.NewClient(tr064Mock.Server(), tr064.ServiceSpec("igddesc"))
 	client.Debug = true
 	serviceClient := &igdicfg.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceName: "WANCommonInterfaceConfig",
-			ServiceType: "urn:schemas-upnp-org:service:WANCommonInterfaceConfig:1",
+			ServiceSpec: tr064.ServiceSpec("igddesc"),
 			ServiceId:   "urn:upnp-org:serviceId:WANCommonIFC1",
 			ServiceUrl:  "/igdupnp/control/WANCommonIFC1",
 		},

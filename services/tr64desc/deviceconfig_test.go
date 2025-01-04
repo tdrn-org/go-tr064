@@ -21,13 +21,12 @@ func TestDeviceConfig(t *testing.T) {
 	tr064Mock := mock.Start("testdata", deviceconfigMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), tr064.TR064Spec("tr64desc"))
+	client := tr064.NewClient(tr064Mock.Server(), tr064.ServiceSpec("tr64desc"))
 	client.Debug = true
 	serviceClient := &deviceconfig.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceName: "DeviceConfig",
-			ServiceType: "urn:dslforum-org:service:DeviceConfig:1",
+			ServiceSpec: tr064.ServiceSpec("tr64desc"),
 			ServiceId:   "urn:DeviceConfig-com:serviceId:DeviceConfig1",
 			ServiceUrl:  "/upnp/control/deviceconfig",
 		},

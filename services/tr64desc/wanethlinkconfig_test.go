@@ -21,13 +21,12 @@ func TestWANEthernetLinkConfig(t *testing.T) {
 	tr064Mock := mock.Start("testdata", wanethlinkconfigMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), tr064.TR064Spec("tr64desc"))
+	client := tr064.NewClient(tr064Mock.Server(), tr064.ServiceSpec("tr64desc"))
 	client.Debug = true
 	serviceClient := &wanethlinkconfig.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceName: "WANEthernetLinkConfig",
-			ServiceType: "urn:dslforum-org:service:WANEthernetLinkConfig:1",
+			ServiceSpec: tr064.ServiceSpec("tr64desc"),
 			ServiceId:   "urn:WANEthernetLinkConfig-com:serviceId:WANEthernetLinkConfig1",
 			ServiceUrl:  "/upnp/control/wanethlinkconfig1",
 		},

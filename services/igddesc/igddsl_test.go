@@ -21,13 +21,12 @@ func TestWANDSLLinkConfig(t *testing.T) {
 	tr064Mock := mock.Start("testdata", igddslMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), tr064.TR064Spec("igddesc"))
+	client := tr064.NewClient(tr064Mock.Server(), tr064.ServiceSpec("igddesc"))
 	client.Debug = true
 	serviceClient := &igddsl.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceName: "WANDSLLinkConfig",
-			ServiceType: "urn:schemas-upnp-org:service:WANDSLLinkConfig:1",
+			ServiceSpec: tr064.ServiceSpec("igddesc"),
 			ServiceId:   "urn:upnp-org:serviceId:WANDSLLinkC1",
 			ServiceUrl:  "/igdupnp/control/WANDSLLinkC1",
 		},
