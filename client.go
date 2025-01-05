@@ -75,7 +75,7 @@ func (service *StaticServiceDescriptor) Url() string {
 // If the given URL contains a userinfo, the contained username and password are automatically used for authentication.
 func NewClient(deviceUrl *url.URL, specs ...ServiceSpec) *Client {
 	anonymousDeviceUrl := *deviceUrl
-	anonymousDeviceUrl.User = url.User("")
+	anonymousDeviceUrl.User = nil
 	username := deviceUrl.User.Username()
 	password, _ := deviceUrl.User.Password()
 	return &Client{
