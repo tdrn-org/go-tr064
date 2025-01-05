@@ -1,4 +1,4 @@
 // WANPPPConnection
 package wanpppconn
 
-const ServiceName = "WANPPPConnection"
+const ServiceShortType = "WANPPPConnection"

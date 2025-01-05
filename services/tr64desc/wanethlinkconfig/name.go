@@ -1,4 +1,4 @@
 // WANEthernetLinkConfig
 package wanethlinkconfig
 
-const ServiceName = "WANEthernetLinkConfig"
+const ServiceShortType = "WANEthernetLinkConfig"

@@ -1,4 +1,4 @@
 // WANCommonInterfaceConfig
 package igdicfg
 
-const ServiceName = "WANCommonInterfaceConfig"
+const ServiceShortType = "WANCommonInterfaceConfig"

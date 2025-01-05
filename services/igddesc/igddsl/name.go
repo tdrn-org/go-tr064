@@ -1,4 +1,4 @@
 // WANDSLLinkConfig
 package igddsl
 
-const ServiceName = "WANDSLLinkConfig"
+const ServiceShortType = "WANDSLLinkConfig"

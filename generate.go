@@ -42,7 +42,7 @@ func Generate(baseUrl *url.URL, spec ServiceSpec, dir string) {
 		baseUrl:        baseUrl,
 		spec:           spec,
 		serviceClients: make(map[string]*bytes.Buffer),
-		serviceNames:   make(map[string]string),
+		serviceTypes:   make(map[string]string),
 		serviceTests:   make(map[string]*bytes.Buffer),
 	}
 	err = gc.generate(tr64desc, dir)
@@ -55,7 +55,7 @@ type generateContext struct {
 	baseUrl        *url.URL
 	spec           ServiceSpec
 	serviceClients map[string]*bytes.Buffer
-	serviceNames   map[string]string
+	serviceTypes   map[string]string
 	serviceTests   map[string]*bytes.Buffer
 	err            error
 }
@@ -75,7 +75,7 @@ func (gc *generateContext) generate(tr64desc *tr64descDoc, dir string) error {
 
 func (gc *generateContext) generateServiceClient(service *serviceDoc, scpd *scpdDoc) error {
 	packageName := service.scpdName()
-	gc.serviceNames[service.ShortType()] = packageName
+	gc.serviceTypes[service.ShortType()] = packageName
 	buffer := gc.serviceClients[packageName]
 	if buffer == nil {
 		buffer = &bytes.Buffer{}
@@ -303,12 +303,12 @@ func (gc *generateContext) flushServiceClientFiles(dir string) {
 			return
 		}
 	}
-	for serviceName, packageName := range gc.serviceNames {
-		log.Println("Writing service name '", packageName, "'/'", serviceName, "'...")
+	for serviceType, packageName := range gc.serviceTypes {
+		log.Println("Writing service name '", packageName, "'/'", serviceType, "'...")
 		buffer := &bytes.Buffer{}
-		gc.emit(buffer, "// %s\n", serviceName)
+		gc.emit(buffer, "// %s\n", serviceType)
 		gc.emit(buffer, "package %s\n", packageName)
-		gc.emit(buffer, "const ServiceName = \"%s\"\n", serviceName)
+		gc.emit(buffer, "const ServiceShortType = \"%s\"\n", serviceType)
 		code, err := format.Source(buffer.Bytes())
 		if err != nil {
 			gc.err = fmt.Errorf("failed to format generated service name code (cause: %w)", err)

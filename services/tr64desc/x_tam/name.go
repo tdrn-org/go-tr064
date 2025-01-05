@@ -1,4 +1,4 @@
 // X_AVM_DE_TAM
 package x_tam
 
-const ServiceName = "X_AVM_DE_TAM"
+const ServiceShortType = "X_AVM_DE_TAM"

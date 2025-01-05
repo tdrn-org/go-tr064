@@ -1,4 +1,4 @@
 // WANDSLInterfaceConfig
 package wandslifconfig
 
-const ServiceName = "WANDSLInterfaceConfig"
+const ServiceShortType = "WANDSLInterfaceConfig"

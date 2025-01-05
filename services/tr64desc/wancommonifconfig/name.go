@@ -1,4 +1,4 @@
 // WANCommonInterfaceConfig
 package wancommonifconfig
 
-const ServiceName = "WANCommonInterfaceConfig"
+const ServiceShortType = "WANCommonInterfaceConfig"

@@ -1,4 +1,4 @@
 // DeviceConfig
 package deviceconfig
 
-const ServiceName = "DeviceConfig"
+const ServiceShortType = "DeviceConfig"

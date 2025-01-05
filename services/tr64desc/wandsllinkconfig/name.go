@@ -1,4 +1,4 @@
 // WANDSLLinkConfig
 package wandsllinkconfig
 
-const ServiceName = "WANDSLLinkConfig"
+const ServiceShortType = "WANDSLLinkConfig"

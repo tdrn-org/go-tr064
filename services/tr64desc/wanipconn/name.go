@@ -1,4 +1,4 @@
 // WANIPConnection
 package wanipconn
 
-const ServiceName = "WANIPConnection"
+const ServiceShortType = "WANIPConnection"

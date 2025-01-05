@@ -1,4 +1,4 @@
 // DeviceInfo
 package deviceinfo
 
-const ServiceName = "DeviceInfo"
+const ServiceShortType = "DeviceInfo"

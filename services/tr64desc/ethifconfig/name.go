@@ -1,4 +1,4 @@
 // LANEthernetInterfaceConfig
 package ethifconfig
 
-const ServiceName = "LANEthernetInterfaceConfig"
+const ServiceShortType = "LANEthernetInterfaceConfig"

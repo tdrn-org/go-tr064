@@ -1,4 +1,4 @@
 // Hosts
 package hosts
 
-const ServiceName = "Hosts"
+const ServiceShortType = "Hosts"

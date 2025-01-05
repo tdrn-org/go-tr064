@@ -1,4 +1,4 @@
 // Time
 package time
 
-const ServiceName = "Time"
+const ServiceShortType = "Time"

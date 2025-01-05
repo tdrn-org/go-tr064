@@ -1,4 +1,4 @@
 // WANIPConnection
 package igdconn
 
-const ServiceName = "WANIPConnection"
+const ServiceShortType = "WANIPConnection"

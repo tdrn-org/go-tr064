@@ -1,4 +1,4 @@
 // LANConfigSecurity
 package lanconfigsecurity
 
-const ServiceName = "LANConfigSecurity"
+const ServiceShortType = "LANConfigSecurity"

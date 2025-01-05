@@ -1,4 +1,4 @@
 // LANHostConfigManagement
 package lanhostconfigmgm
 
-const ServiceName = "LANHostConfigManagement"
+const ServiceShortType = "LANHostConfigManagement"
