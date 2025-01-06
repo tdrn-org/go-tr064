@@ -48,23 +48,34 @@ func (spec ServiceSpec) Path() string {
 	return "/" + string(spec) + ".xml"
 }
 
-func unmarshalDocument(url *url.URL, v any) error {
-	response, err := http.Get(url.String())
+func fetchServiceSpec(client *http.Client, deviceUrl *url.URL, spec ServiceSpec) (*tr64descDoc, error) {
+	tr64descUrl := deviceUrl.JoinPath(spec.Path())
+	tr64desc := &tr64descDoc{}
+	err := unmarshalXMLDocument(client, tr64descUrl, tr64desc)
 	if err != nil {
-		return fmt.Errorf("failed to access URL '%s' (cause: %w)", url, err)
+		return nil, fmt.Errorf("failed to fetch '%s' (cause: %w)", tr64descUrl, err)
+	}
+	tr64desc.bind(spec)
+	return tr64desc, nil
+}
+
+func unmarshalXMLDocument(client *http.Client, docUrl *url.URL, v any) error {
+	response, err := client.Get(docUrl.String())
+	if err != nil {
+		return fmt.Errorf("failed to access URL '%s' (cause: %w)", docUrl, err)
 	}
 	if response.StatusCode != http.StatusOK {
-		return fmt.Errorf("failed to get URL '%s' (status: %s)", url, response.Status)
+		return fmt.Errorf("failed to get URL '%s' (status: %s)", docUrl, response.Status)
 	}
 	document := response.Body
 	defer document.Close()
 	documentBytes, err := io.ReadAll(document)
 	if err != nil {
-		return fmt.Errorf("failed to read URL '%s' (cause: %w)", url, err)
+		return fmt.Errorf("failed to read URL '%s' (cause: %w)", docUrl, err)
 	}
 	err = xml.Unmarshal(documentBytes, v)
 	if err != nil {
-		return fmt.Errorf("failed to unmarshal URL '%s' (cause: %w)", url, err)
+		return fmt.Errorf("failed to unmarshal URL '%s' (cause: %w)", docUrl, err)
 	}
 	return nil
 }
@@ -81,8 +92,8 @@ func (doc *tr64descDoc) bind(spec ServiceSpec) {
 
 type WalkServiceFunc func(*serviceDoc, *scpdDoc) error
 
-func (doc *tr64descDoc) walk(baseUrl *url.URL, f WalkServiceFunc) error {
-	return doc.Device.walk(baseUrl, f)
+func (doc *tr64descDoc) walk(client *http.Client, baseUrl *url.URL, f WalkServiceFunc) error {
+	return doc.Device.walk(client, baseUrl, f)
 }
 
 type specVersionDoc struct {
@@ -133,12 +144,12 @@ func (doc *deviceDoc) bind(spec ServiceSpec) {
 	}
 }
 
-func (doc *deviceDoc) walk(baseUrl *url.URL, f WalkServiceFunc) error {
+func (doc *deviceDoc) walk(client *http.Client, baseUrl *url.URL, f WalkServiceFunc) error {
 	for _, service := range doc.ServiceList.Services {
 		if strings.HasPrefix(service.ServiceType, "urn:schemas-any-com:service:Any:") {
 			continue
 		}
-		scpd, err := service.scpd(baseUrl)
+		scpd, err := service.scpd(client, baseUrl)
 		if err != nil {
 			return err
 		}
@@ -148,7 +159,7 @@ func (doc *deviceDoc) walk(baseUrl *url.URL, f WalkServiceFunc) error {
 		}
 	}
 	for _, device := range doc.DeviceList.Devices {
-		err := device.walk(baseUrl, f)
+		err := device.walk(client, baseUrl, f)
 		if err != nil {
 			return err
 		}
@@ -174,11 +185,11 @@ func (doc *serviceDoc) bind(spec ServiceSpec) {
 	doc.spec = spec
 }
 
-func (doc *serviceDoc) scpd(baseUrl *url.URL) (*scpdDoc, error) {
+func (doc *serviceDoc) scpd(client *http.Client, baseUrl *url.URL) (*scpdDoc, error) {
 	if doc.cachedSCPD == nil {
 		scpdUrl := baseUrl.JoinPath(doc.SCPDURL)
 		scpd := &scpdDoc{}
-		err := unmarshalDocument(scpdUrl, scpd)
+		err := unmarshalXMLDocument(client, scpdUrl, scpd)
 		if err != nil {
 			return nil, err
 		}

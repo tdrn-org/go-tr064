@@ -78,13 +78,15 @@ func NewClient(deviceUrl *url.URL, specs ...ServiceSpec) *Client {
 	anonymousDeviceUrl.User = nil
 	username := deviceUrl.User.Username()
 	password, _ := deviceUrl.User.Password()
-	return &Client{
+	client := &Client{
 		DeviceUrl: &anonymousDeviceUrl,
 		Username:  username,
 		Password:  password,
 		Specs:     specs,
 		mutex:     &sync.Mutex{},
 	}
+	client.cachedHttpClient = sync.OnceValue(client.httpClient)
+	return client
 }
 
 // Client provides the necessary parameters to access a TR-064 capable server and perform service discovery.
@@ -119,8 +121,8 @@ type Client struct {
 	Debug                 bool
 	mutex                 *sync.Mutex
 	cachedServices        []ServiceDescriptor
-	cachedHttpClient      *http.Client
 	cachedAuthentications map[string]string
+	cachedHttpClient      func() *http.Client
 }
 
 // Services fetches and parses the TR-064 server's service specifications and returns the available services.
@@ -133,13 +135,14 @@ func (client *Client) Services() ([]ServiceDescriptor, error) {
 			specs = []ServiceSpec{DefaultServiceSpec}
 		}
 		services := make([]ServiceDescriptor, 0)
+		httpClient := client.cachedHttpClient()
 		for _, spec := range specs {
-			tr64desc, err := client.fetchSpec(spec)
+			tr64desc, err := fetchServiceSpec(httpClient, client.DeviceUrl, spec)
 			if err != nil {
 				return nil, err
 			}
 			collector := &serviceCollector{serviceMap: make(map[string]ServiceDescriptor)}
-			err = tr64desc.walk(client.DeviceUrl, collector.collectService)
+			err = tr64desc.walk(httpClient, client.DeviceUrl, collector.collectService)
 			if err != nil {
 				return nil, err
 			}
@@ -165,17 +168,6 @@ func (client *Client) ServicesByType(spec ServiceSpec, serviceType string) ([]Se
 		}
 	}
 	return services, nil
-}
-
-func (client *Client) fetchSpec(spec ServiceSpec) (*tr64descDoc, error) {
-	tr64descUrl := client.DeviceUrl.JoinPath(spec.Path())
-	tr64desc := &tr64descDoc{}
-	err := unmarshalDocument(tr64descUrl, tr64desc)
-	if err != nil {
-		return nil, fmt.Errorf("failed to fetch '%s' (cause: %w)", tr64descUrl, err)
-	}
-	tr64desc.bind(spec)
-	return tr64desc, nil
 }
 
 type serviceCollector struct {
@@ -347,7 +339,7 @@ func (client *Client) postSoapActionRequest(endpoint string, action string, requ
 	if authentication != "" {
 		request.Header.Add("Authorization", authentication)
 	}
-	response, err := client.httpClient().Do(request)
+	response, err := client.cachedHttpClient().Do(request)
 	if err != nil {
 		return response, fmt.Errorf("failed to post request (cause: %w)", err)
 	}
@@ -358,18 +350,14 @@ func (client *Client) postSoapActionRequest(endpoint string, action string, requ
 }
 
 func (client *Client) httpClient() *http.Client {
-	client.mutex.Lock()
-	defer client.mutex.Unlock()
-	if client.cachedHttpClient == nil {
-		tlsClientConfig := &tls.Config{
-			InsecureSkipVerify: client.InsecureSkipVerify,
-		}
-		transport := &http.Transport{
-			TLSClientConfig: tlsClientConfig,
-		}
-		client.cachedHttpClient = &http.Client{
-			Transport: transport,
-		}
+	tlsClientConfig := &tls.Config{
+		InsecureSkipVerify: client.InsecureSkipVerify,
 	}
-	return client.cachedHttpClient
+	transport := &http.Transport{
+		TLSClientConfig: tlsClientConfig,
+	}
+	return &http.Client{
+		Transport: transport,
+		Timeout:   client.Timeout,
+	}
 }

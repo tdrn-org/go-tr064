@@ -19,9 +19,11 @@ package tr064
 import (
 	"bufio"
 	"bytes"
+	"crypto/tls"
 	"fmt"
 	"go/format"
 	"log"
+	"net/http"
 	"net/url"
 	"os"
 	"path/filepath"
@@ -31,14 +33,20 @@ import (
 func Generate(baseUrl *url.URL, spec ServiceSpec, dir string) {
 	specUrl := baseUrl.JoinPath(spec.Path())
 	log.Println("Reading '", specUrl.Redacted(), "'...")
-	tr64desc := &tr64descDoc{}
-	err := unmarshalDocument(specUrl, tr64desc)
-	if err != nil {
-		log.Fatal("Failed to unmarshal ", specUrl, " cause: ", err)
+	httpClient := &http.Client{
+		Transport: &http.Transport{
+			TLSClientConfig: &tls.Config{
+				InsecureSkipVerify: true,
+			},
+		},
 	}
-	tr64desc.bind(spec)
+	tr64desc, err := fetchServiceSpec(httpClient, baseUrl, spec)
+	if err != nil {
+		log.Fatal("Failed to fetch ", specUrl, " cause: ", err)
+	}
 	log.Println("Generating...")
 	gc := &generateContext{
+		httpClient:     httpClient,
 		baseUrl:        baseUrl,
 		spec:           spec,
 		serviceClients: make(map[string]*bytes.Buffer),
@@ -52,6 +60,7 @@ func Generate(baseUrl *url.URL, spec ServiceSpec, dir string) {
 }
 
 type generateContext struct {
+	httpClient     *http.Client
 	baseUrl        *url.URL
 	spec           ServiceSpec
 	serviceClients map[string]*bytes.Buffer
@@ -61,11 +70,11 @@ type generateContext struct {
 }
 
 func (gc *generateContext) generate(tr64desc *tr64descDoc, dir string) error {
-	gc.err = tr64desc.walk(gc.baseUrl, gc.generateServiceClient)
+	gc.err = tr64desc.walk(gc.httpClient, gc.baseUrl, gc.generateServiceClient)
 	if gc.err != nil {
 		return gc.err
 	}
-	gc.err = tr64desc.walk(gc.baseUrl, gc.generateServiceTest)
+	gc.err = tr64desc.walk(gc.httpClient, gc.baseUrl, gc.generateServiceTest)
 	if gc.err != nil {
 		return gc.err
 	}
