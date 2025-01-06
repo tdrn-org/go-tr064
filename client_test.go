@@ -17,6 +17,7 @@
 package tr064_test
 
 import (
+	"net/http"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -46,4 +47,16 @@ func TestServicesByType(t *testing.T) {
 	services, err := client.ServicesByType(tr064.DefaultServiceSpec, "MockPing")
 	require.NoError(t, err)
 	require.Equal(t, 1, len(services))
+}
+
+func TestGet(t *testing.T) {
+	// Start mock server
+	tr064Mock := mock.Start("testdata")
+	defer tr064Mock.Shutdown()
+	// Actual test
+	client := tr064.NewClient(tr064Mock.Server(), tr064.DefaultServiceSpec)
+	client.Debug = true
+	response, err := client.Get(tr064.DefaultServiceSpec.Path())
+	require.NoError(t, err)
+	require.Equal(t, http.StatusOK, response.StatusCode)
 }

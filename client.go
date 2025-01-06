@@ -154,6 +154,15 @@ func (client *Client) Services() ([]ServiceDescriptor, error) {
 	return client.cachedServices, nil
 }
 
+type serviceCollector struct {
+	serviceMap map[string]ServiceDescriptor
+}
+
+func (collector *serviceCollector) collectService(service *serviceDoc, scpd *scpdDoc) error {
+	collector.serviceMap[service.ServiceId] = service
+	return nil
+}
+
 // ServicesByType fetches and parses the TR-064 server's service specifications
 // like [Services], but returns only the services matching the given spec and service type.
 func (client *Client) ServicesByType(spec ServiceSpec, serviceType string) ([]ServiceDescriptor, error) {
@@ -170,13 +179,9 @@ func (client *Client) ServicesByType(spec ServiceSpec, serviceType string) ([]Se
 	return services, nil
 }
 
-type serviceCollector struct {
-	serviceMap map[string]ServiceDescriptor
-}
-
-func (collector *serviceCollector) collectService(service *serviceDoc, scpd *scpdDoc) error {
-	collector.serviceMap[service.ServiceId] = service
-	return nil
+// Get performs a simple GET toward the TR-064 server using the given path.
+func (client *Client) Get(path string) (*http.Response, error) {
+	return client.cachedHttpClient().Get(client.DeviceUrl.JoinPath(path).String())
 }
 
 func NewSOAPRequest[T any](in *T) *SOAPRequest[T] {
