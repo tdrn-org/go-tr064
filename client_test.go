@@ -56,7 +56,7 @@ func TestGet(t *testing.T) {
 	// Actual test
 	client := tr064.NewClient(tr064Mock.Server(), tr064.DefaultServiceSpec)
 	client.Debug = true
-	response, err := client.Get(tr064.DefaultServiceSpec.Path())
+	response, err := client.Get(tr064.DefaultServiceSpec.Path() + "?query=1234")
 	require.NoError(t, err)
 	require.Equal(t, http.StatusOK, response.StatusCode)
 }

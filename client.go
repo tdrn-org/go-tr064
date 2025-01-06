@@ -180,8 +180,13 @@ func (client *Client) ServicesByType(spec ServiceSpec, serviceType string) ([]Se
 }
 
 // Get performs a simple GET toward the TR-064 server using the given path.
-func (client *Client) Get(path string) (*http.Response, error) {
-	return client.cachedHttpClient().Get(client.DeviceUrl.JoinPath(path).String())
+func (client *Client) Get(ref string) (*http.Response, error) {
+	refUrl, err := url.Parse(ref)
+	if err != nil {
+		return nil, fmt.Errorf("failed to parse reference: '%s' (cause: %w)", ref, err)
+	}
+	targetUrl := client.DeviceUrl.ResolveReference(refUrl)
+	return client.cachedHttpClient().Get(targetUrl.String())
 }
 
 func NewSOAPRequest[T any](in *T) *SOAPRequest[T] {
