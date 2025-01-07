@@ -21,30 +21,30 @@ type List struct {
 	Nodes         []Node `json:"nodes"`
 }
 
-func (list *List) Connections() []Connection {
+func (list *List) Connections() []*Connection {
 	nodeMap := make(map[string]*Node)
 	for nodeIndex, node := range list.Nodes {
 		nodeMap[node.Uid] = &list.Nodes[nodeIndex]
 	}
-	connections := make([]Connection, 0)
-	for _, right := range nodeMap {
-		for _, rightInterface := range right.NodeInterfaces {
-			for _, rightLink := range rightInterface.NodeLinks {
-				if rightLink.Node2Uid != right.Uid || !rightLink.IsConnected() {
+	connections := make([]*Connection, 0)
+	for _, left := range nodeMap {
+		for _, leftInterface := range left.NodeInterfaces {
+			for _, leftLink := range leftInterface.NodeLinks {
+				if leftLink.Node1Uid != left.Uid || !leftLink.IsConnected() {
 					continue
 				}
-				left := nodeMap[rightLink.Node1Uid]
-				connection := Connection{
+				right := nodeMap[leftLink.Node2Uid]
+				connection := &Connection{
 					LeftMeshRole:    left.MeshRole,
 					LeftDeviceName:  left.DeviceName,
 					RightMeshRole:   right.MeshRole,
 					RightDeviceName: right.DeviceName,
-					InterfaceName:   rightInterface.Name,
-					InterfaceType:   rightInterface.Type,
-					MaxDataRateRx:   rightLink.MaxDataRateRx,
-					MaxDataRateTx:   rightLink.MaxDataRateTx,
-					CurDataRateRx:   rightLink.CurDataRateRx,
-					CurDataRateTx:   rightLink.CurDataRateTx,
+					InterfaceName:   leftInterface.Name,
+					InterfaceType:   leftInterface.Type,
+					MaxDataRateRx:   leftLink.MaxDataRateRx,
+					MaxDataRateTx:   leftLink.MaxDataRateTx,
+					CurDataRateRx:   leftLink.CurDataRateRx,
+					CurDataRateTx:   leftLink.CurDataRateTx,
 				}
 				connections = append(connections, connection)
 			}
