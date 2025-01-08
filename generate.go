@@ -30,6 +30,12 @@ import (
 	"strings"
 )
 
+// Generate generates Go code suitable for invoking the services defined in the given specification.
+//
+// The base URL points towards the device providing the service.
+// The spec argument defines the specification use for code generation.
+// The code is generated within the given directory. Already existing files are
+// overwritten without notice.
 func Generate(baseUrl *url.URL, spec ServiceSpec, dir string) {
 	specUrl := baseUrl.JoinPath(spec.Path())
 	log.Println("Reading '", specUrl.Redacted(), "'...")

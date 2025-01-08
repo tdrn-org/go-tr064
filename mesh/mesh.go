@@ -16,11 +16,15 @@
 
 package mesh
 
+// List contains all nodes of a mesh.
 type List struct {
 	SchemaVersion string `json:"schema_version"`
 	Nodes         []Node `json:"nodes"`
 }
 
+// Connections determines all unique connections within the mesh left to right.
+// Means, left device of a connection is always either a master or a slave node
+// of the mesh and right device is either a slave node or a client node.
 func (list *List) Connections() []*Connection {
 	nodeMap := make(map[string]*Node)
 	for nodeIndex, node := range list.Nodes {
@@ -53,19 +57,31 @@ func (list *List) Connections() []*Connection {
 	return connections
 }
 
+// Connection represents a single connection between two nodes within the mesh.
 type Connection struct {
-	LeftMeshRole    string
-	LeftDeviceName  string
-	RightMeshRole   string
+	// LeftMeshRole contains the role of the left device (master or slave).
+	LeftMeshRole string
+	// LeftDeviceName contains the name of the left device.
+	LeftDeviceName string
+	// RightMeshRole contains the role of the right device (slave or unknown)
+	RightMeshRole string
+	// RightDeviceName contains the name of the right device.
 	RightDeviceName string
-	InterfaceName   string
-	InterfaceType   string
-	MaxDataRateRx   int
-	MaxDataRateTx   int
-	CurDataRateRx   int
-	CurDataRateTx   int
+	// InterfaceName contains the logical name of the interface the devices are connected via.
+	InterfaceName string
+	// InterfaceType contains the type of the interface the devices are connected via (LAN or WLAN)
+	InterfaceType string
+	// MaxDataRateRx contains the maximum receiving bit rate between the devices.
+	MaxDataRateRx int
+	// MaxDataRateRx contains the maximum transmitting bit rate between the devices.
+	MaxDataRateTx int
+	// CurDataRateRx contains the current receiving bit rate between the devices.
+	CurDataRateRx int
+	// CurDataRateTx contains the current transmitting bit rate between the devices.
+	CurDataRateTx int
 }
 
+// Node represents a single node within the mesh.
 type Node struct {
 	Uid            string      `json:"uid"`
 	DeviceName     string      `json:"device_name"`
@@ -74,14 +90,17 @@ type Node struct {
 	NodeInterfaces []Interface `json:"node_interfaces"`
 }
 
+// IsMaster determines whether this node is a master node.
 func (node *Node) IsMaster() bool {
 	return node.IsMeshed && node.MeshRole == "master"
 }
 
+// IsSlave determines whether this node is a slave node.
 func (node *Node) IsSlave() bool {
 	return node.IsMeshed && node.MeshRole == "slave"
 }
 
+// Interface represents a node's interface capable of handling multiple links to other nodes.
 type Interface struct {
 	Uid       string `json:"uid"`
 	Name      string `json:"name"`
@@ -89,6 +108,7 @@ type Interface struct {
 	NodeLinks []Link `json:"node_links"`
 }
 
+// Link represents a single connection between two nodes.
 type Link struct {
 	State             string `json:"state"`
 	Node1Uid          string `json:"node_1_uid"`
@@ -101,6 +121,7 @@ type Link struct {
 	CurDataRateTx     int    `json:"cur_data_rate_tx"`
 }
 
+// IsConnected whether a link is currently connected.
 func (link *Link) IsConnected() bool {
 	return link.State == "CONNECTED"
 }

@@ -130,10 +130,17 @@ type mockServer struct {
 	stoppedWG      sync.WaitGroup
 }
 
+// Server gets the HTTP URL the mock server is listenting on.
 func (mock *mockServer) Server() *url.URL {
 	return mock.httpServerUrl
 }
 
+// Server gets the HTTPS URL the mock server is listenting on.
+func (mock *mockServer) SecureServer() *url.URL {
+	return mock.httpsServerUrl
+}
+
+// Ping checks whether the mock server is up and running (on the HTTP address).
 func (mock *mockServer) Ping() error {
 	return mock.ping(http.DefaultClient, mock.httpServerUrl)
 }
@@ -152,10 +159,7 @@ func (mock *mockServer) ping(client *http.Client, url *url.URL) error {
 	return nil
 }
 
-func (mock *mockServer) SecureServer() *url.URL {
-	return mock.httpsServerUrl
-}
-
+// Ping checks whether the mock server is up and running (on the HTTPS address).
 func (mock *mockServer) SecurePing() error {
 	client := &http.Client{
 		Transport: &http.Transport{
@@ -167,6 +171,7 @@ func (mock *mockServer) SecurePing() error {
 	return mock.ping(client, mock.httpsServerUrl)
 }
 
+// Shutdown terminates the mock server gracefully.
 func (mock *mockServer) Shutdown() {
 	log.Println("Shutting down mock server...")
 	err := mock.httpServer.Shutdown(context.Background())
@@ -221,6 +226,8 @@ func UnmarshalSoapAction(w http.ResponseWriter, req *http.Request) (string, erro
 }
 
 // WriteSoapResponse writes a SOAP response by wrapping the given output object into the necessary SOAP envelope.
+//
+// In case of an error, the corresponding response status code is automatically written.
 func WriteSoapResponse(w http.ResponseWriter, out any) error {
 	response := &soapResponse{
 		XMLNameSpace:     "http://schemas.xmlsoap.org/soap/envelope/",

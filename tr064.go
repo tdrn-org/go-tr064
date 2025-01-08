@@ -20,6 +20,7 @@ package tr064
 
 import (
 	"encoding/xml"
+	"errors"
 	"fmt"
 	"io"
 	"log"
@@ -29,21 +30,32 @@ import (
 	"strings"
 )
 
+// ErrNotFound indicates a specification document was not found.
+var ErrNotFound = errors.New("document not found")
+
+// XMLNameSpace defines the XML namespace to use for SOAP calls.
 const XMLNameSpace = "http://schemas.xmlsoap.org/soap/envelope/"
 
+// XMLEncodingStyle defines the XML encoding to use for SOAP calls.
 const XMLEncodingStyle = "http://schemas.xmlsoap.org/soap/encoding/"
 
+// ServiceSpec represents a well-known TR-064 specification document.
 type ServiceSpec string
 
 const (
+	// DefaultServiceSpec defines the default TR-064 specification to be assumed available for
+	// any TR-064 capabable device.
 	DefaultServiceSpec ServiceSpec = "tr64desc"
-	IgdServiceSpec     ServiceSpec = "igddesc"
+	// IgdServiceSpec defines the TR-064 specification of Internet-Gateway-Devices (e.g. router).
+	IgdServiceSpec ServiceSpec = "igddesc"
 )
 
+// Name gets the specification name.
 func (spec ServiceSpec) Name() string {
 	return string(spec)
 }
 
+// Path gets the specification path relative to the device URL.
 func (spec ServiceSpec) Path() string {
 	return "/" + string(spec) + ".xml"
 }
@@ -64,7 +76,12 @@ func unmarshalXMLDocument(client *http.Client, docUrl *url.URL, v any) error {
 	if err != nil {
 		return fmt.Errorf("failed to access URL '%s' (cause: %w)", docUrl, err)
 	}
-	if response.StatusCode != http.StatusOK {
+	switch response.StatusCode {
+	case http.StatusOK:
+		// success, simply move on
+	case http.StatusNotFound:
+		return fmt.Errorf("failed to get URL '%s' (cause: %w)", docUrl, ErrNotFound)
+	default:
 		return fmt.Errorf("failed to get URL '%s' (status: %s)", docUrl, response.Status)
 	}
 	document := response.Body

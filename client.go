@@ -23,6 +23,7 @@ import (
 	"crypto/tls"
 	"encoding/hex"
 	"encoding/xml"
+	"errors"
 	"fmt"
 	"io"
 	"log"
@@ -35,37 +36,61 @@ import (
 	"time"
 )
 
+// ServiceDescriptor represents a concrete service provided by a TR-064 server.
+//
+// The available services of a TR-064 server are determined by calling [Client.Services].
+// Via [Client.InvokeService] a identified service can be invoked. The latter is normally
+// not used directly. Instead the generated ServiceClient for the service is instantiated
+// and invoked. See [Client] for further details.
 type ServiceDescriptor interface {
+	// Spec returns the TR-064 specification describing this service.
 	Spec() ServiceSpec
+	// Type returns the full service type as defined in the specification document.
 	Type() string
+	// ShortType returns the short type name of this service.
 	ShortType() string
+	// Id returns the full service id as defined in the specification document.
 	Id() string
+	// Url returns the control URL to use for accessing this service.
 	Url() string
 }
 
+// StaticServiceDescriptor represents a statically defined [ServiceDescriptor].
+//
+// Normally a service should be identified dynamically by calling [Client.ServicesByType].
+// In case the presence of a service is well-known, this static descriptor can be used.
 type StaticServiceDescriptor struct {
+	// ServiceSpec receives the TR-064 specification this service is normally defined in.
 	ServiceSpec ServiceSpec
+	// ServiceType receives the full service type of the service.
 	ServiceType string
-	ServiceId   string
-	ServiceUrl  string
+	// ServiceId receives the full service id of the service.
+	ServiceId string
+	// ServiceUrl receives the URL to use for accessing the service.
+	ServiceUrl string
 }
 
+// Spec returns the TR-064 specification describing this service.
 func (service *StaticServiceDescriptor) Spec() ServiceSpec {
 	return service.ServiceSpec
 }
 
+// Type returns the full service type as defined in the specification document.
 func (service *StaticServiceDescriptor) Type() string {
 	return service.ServiceType
 }
 
+// ShortType returns the short type name of this service.
 func (service *StaticServiceDescriptor) ShortType() string {
 	return serviceShortType(service.ServiceType)
 }
 
+// Id returns the full service id as defined in the specification document.
 func (service *StaticServiceDescriptor) Id() string {
 	return service.ServiceId
 }
 
+// Url returns the control URL to use for accessing this service.
 func (service *StaticServiceDescriptor) Url() string {
 	return service.ServiceUrl
 }
@@ -138,6 +163,9 @@ func (client *Client) Services() ([]ServiceDescriptor, error) {
 		httpClient := client.cachedHttpClient()
 		for _, spec := range specs {
 			tr64desc, err := fetchServiceSpec(httpClient, client.DeviceUrl, spec)
+			if spec != DefaultServiceSpec && errors.Is(err, ErrNotFound) {
+				continue
+			}
 			if err != nil {
 				return nil, err
 			}
@@ -179,7 +207,7 @@ func (client *Client) ServicesByType(spec ServiceSpec, serviceType string) ([]Se
 	return services, nil
 }
 
-// Get performs a simple GET toward the TR-064 server using the given path.
+// Get performs a simple GET request towards the TR-064 server using the given path reference.
 func (client *Client) Get(ref string) (*http.Response, error) {
 	refUrl, err := url.Parse(ref)
 	if err != nil {
@@ -189,6 +217,8 @@ func (client *Client) Get(ref string) (*http.Response, error) {
 	return client.cachedHttpClient().Get(targetUrl.String())
 }
 
+// NewSOAPRequest constructs a new SOAP request object wrapping the given input argument.
+// The constructed SOAP request is suitable for invoking [Client.InvokeService]
 func NewSOAPRequest[T any](in *T) *SOAPRequest[T] {
 	return &SOAPRequest[T]{
 		XMLNameSpace:     XMLNameSpace,
@@ -199,17 +229,22 @@ func NewSOAPRequest[T any](in *T) *SOAPRequest[T] {
 	}
 }
 
+// SOAPRequest defines XML based SOAP request object.
 type SOAPRequest[T any] struct {
 	XMLName          xml.Name `xml:"s:Envelope"`
 	XMLNameSpace     string   `xml:"xmlns:s,attr"`
 	XMLEncodingStyle string   `xml:"s:encodingStyle,attr"`
 	Body             *SOAPRequestBody[T]
 }
+
+// SOAPRequestBody defines the Body element for a SOAP request.
 type SOAPRequestBody[T any] struct {
 	XMLName xml.Name `xml:"s:Body"`
 	In      *T
 }
 
+// NewSOAPResponse constructs a new SOAP response object wrapping the given output argument.
+// The constructed SOAP response is suitable for invoking [Client.InvokeService]
 func NewSOAPResponse[T any](out *T) *SOAPResponse[T] {
 	return &SOAPResponse[T]{
 		Body: &SOAPResponseBody[T]{
@@ -218,16 +253,21 @@ func NewSOAPResponse[T any](out *T) *SOAPResponse[T] {
 	}
 }
 
+// SOAPResponse defines XML based SOAP response object.
 type SOAPResponse[T any] struct {
 	XMLName xml.Name `xml:"Envelope"`
 	Body    *SOAPResponseBody[T]
 }
 
+// SOAPResponseBody defines the Body element for a SOAP response.
 type SOAPResponseBody[T any] struct {
 	XMLName xml.Name `xml:"Body"`
 	Out     *T
 }
 
+// InvokeService invokes the SOAP service identifed via the given service descriptor using the given input and output objects.
+//
+// If needed, the function performs the required authentication using the client's username and password attributes.
 func (client *Client) InvokeService(service ServiceDescriptor, actionName, in any, out any) error {
 	controlUrl, err := url.Parse(service.Url())
 	if err != nil {
