@@ -30,8 +30,8 @@ import (
 	"strings"
 )
 
-// ErrNotFound indicates a specification document was not found.
-var ErrNotFound = errors.New("document not found")
+// ErrDocNotFound indicates a specification document was not found.
+var ErrDocNotFound = errors.New("document not found")
 
 // XMLNameSpace defines the XML namespace to use for SOAP calls.
 const XMLNameSpace = "http://schemas.xmlsoap.org/soap/envelope/"
@@ -80,7 +80,7 @@ func unmarshalXMLDocument(client *http.Client, docUrl *url.URL, v any) error {
 	case http.StatusOK:
 		// success, simply move on
 	case http.StatusNotFound:
-		return fmt.Errorf("failed to get URL '%s' (cause: %w)", docUrl, ErrNotFound)
+		return fmt.Errorf("failed to get URL '%s' (cause: %w)", docUrl, ErrDocNotFound)
 	default:
 		return fmt.Errorf("failed to get URL '%s' (status: %s)", docUrl, response.Status)
 	}
@@ -241,7 +241,11 @@ func (service *serviceDoc) Id() string {
 	return service.ServiceId
 }
 
-func (service *serviceDoc) Url() string {
+func (service *serviceDoc) ShortId() string {
+	return serviceShortId(service.ServiceId)
+}
+
+func (service *serviceDoc) ControlUrl() string {
 	return service.ControlURL
 }
 
@@ -319,6 +323,17 @@ func serviceShortType(serviceType string) string {
 	if match == nil {
 		log.Fatal("Unexpected service type '", serviceType, "'")
 	}
-	mangledServiceName := mangleName(match[2])
-	return mangledServiceName
+	mangledServiceType := mangleName(match[2])
+	return mangledServiceType
+}
+
+var serviceShortIdPattern = regexp.MustCompile(`^urn\:(.+)\:serviceId\:(.+)$`)
+
+func serviceShortId(serviceId string) string {
+	match := serviceShortIdPattern.FindStringSubmatch(serviceId)
+	if match == nil {
+		log.Fatal("Unexpected service id '", serviceId, "'")
+	}
+	mangledServiceId := mangleName(match[2])
+	return mangledServiceId
 }

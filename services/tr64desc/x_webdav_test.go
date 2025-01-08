@@ -26,9 +26,10 @@ func TestX_AVM_DE_WebDAVClient(t *testing.T) {
 	serviceClient := &x_webdav.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:X_AVM-DE_WebDAV-com:serviceId:X_AVM-DE_WebDAVClient1",
-			ServiceUrl:  "/upnp/control/x_webdav",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:X_AVM-DE_WebDAVClient:1",
+			ServiceId:         "urn:X_AVM-DE_WebDAV-com:serviceId:X_AVM-DE_WebDAVClient1",
+			ServiceControlUrl: "/upnp/control/x_webdav",
 		},
 	}
 	{

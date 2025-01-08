@@ -26,9 +26,10 @@ func TestWANPPPConnection(t *testing.T) {
 	serviceClient := &wanpppconn.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:WANPPPConnection-com:serviceId:WANPPPConnection1",
-			ServiceUrl:  "/upnp/control/wanpppconn1",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:WANPPPConnection:1",
+			ServiceId:         "urn:WANPPPConnection-com:serviceId:WANPPPConnection1",
+			ServiceControlUrl: "/upnp/control/wanpppconn1",
 		},
 	}
 	{

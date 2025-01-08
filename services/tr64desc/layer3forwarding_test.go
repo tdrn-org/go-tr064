@@ -26,9 +26,10 @@ func TestLayer3Forwarding(t *testing.T) {
 	serviceClient := &layer3forwarding.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:Layer3Forwarding-com:serviceId:Layer3Forwarding1",
-			ServiceUrl:  "/upnp/control/layer3forwarding",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:Layer3Forwarding:1",
+			ServiceId:         "urn:Layer3Forwarding-com:serviceId:Layer3Forwarding1",
+			ServiceControlUrl: "/upnp/control/layer3forwarding",
 		},
 	}
 	{

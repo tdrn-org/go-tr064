@@ -26,9 +26,10 @@ func TestLANEthernetInterfaceConfig(t *testing.T) {
 	serviceClient := &ethifconfig.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:LANEthernetIfCfg-com:serviceId:LANEthernetInterfaceConfig1",
-			ServiceUrl:  "/upnp/control/lanethernetifcfg",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:LANEthernetInterfaceConfig:1",
+			ServiceId:         "urn:LANEthernetIfCfg-com:serviceId:LANEthernetInterfaceConfig1",
+			ServiceControlUrl: "/upnp/control/lanethernetifcfg",
 		},
 	}
 	{

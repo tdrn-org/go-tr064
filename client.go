@@ -51,8 +51,10 @@ type ServiceDescriptor interface {
 	ShortType() string
 	// Id returns the full service id as defined in the specification document.
 	Id() string
-	// Url returns the control URL to use for accessing this service.
-	Url() string
+	// ShortId returns the short id of this service.
+	ShortId() string
+	// ControlUrl returns the control URL to use for accessing this service.
+	ControlUrl() string
 }
 
 // StaticServiceDescriptor represents a statically defined [ServiceDescriptor].
@@ -66,8 +68,8 @@ type StaticServiceDescriptor struct {
 	ServiceType string
 	// ServiceId receives the full service id of the service.
 	ServiceId string
-	// ServiceUrl receives the URL to use for accessing the service.
-	ServiceUrl string
+	// ServiceControlUrl receives the URL to use for accessing the service.
+	ServiceControlUrl string
 }
 
 // Spec returns the TR-064 specification describing this service.
@@ -90,9 +92,14 @@ func (service *StaticServiceDescriptor) Id() string {
 	return service.ServiceId
 }
 
-// Url returns the control URL to use for accessing this service.
-func (service *StaticServiceDescriptor) Url() string {
-	return service.ServiceUrl
+// ShortId returns the short id of this service.
+func (service *StaticServiceDescriptor) ShortId() string {
+	return serviceShortId(service.ServiceId)
+}
+
+// ControlUrl returns the control URL to use for accessing this service.
+func (service *StaticServiceDescriptor) ControlUrl() string {
+	return service.ServiceControlUrl
 }
 
 // NewClient instantiates a new TR-064 client for accessing the given URL.
@@ -163,7 +170,7 @@ func (client *Client) Services() ([]ServiceDescriptor, error) {
 		httpClient := client.cachedHttpClient()
 		for _, spec := range specs {
 			tr64desc, err := fetchServiceSpec(httpClient, client.DeviceUrl, spec)
-			if spec != DefaultServiceSpec && errors.Is(err, ErrNotFound) {
+			if spec != DefaultServiceSpec && errors.Is(err, ErrDocNotFound) {
 				continue
 			}
 			if err != nil {
@@ -269,9 +276,9 @@ type SOAPResponseBody[T any] struct {
 //
 // If needed, the function performs the required authentication using the client's username and password attributes.
 func (client *Client) InvokeService(service ServiceDescriptor, actionName, in any, out any) error {
-	controlUrl, err := url.Parse(service.Url())
+	controlUrl, err := url.Parse(service.ControlUrl())
 	if err != nil {
-		return fmt.Errorf("failed to parse control URL '%s' (cause: %w)", service.Url(), err)
+		return fmt.Errorf("failed to parse control URL '%s' (cause: %w)", service.ControlUrl(), err)
 	}
 	endpoint := client.DeviceUrl.ResolveReference(controlUrl).String()
 	soapAction := fmt.Sprintf("%s#%s", service.Type(), actionName)

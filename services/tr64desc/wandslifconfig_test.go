@@ -26,9 +26,10 @@ func TestWANDSLInterfaceConfig(t *testing.T) {
 	serviceClient := &wandslifconfig.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:WANDSLIfConfig-com:serviceId:WANDSLInterfaceConfig1",
-			ServiceUrl:  "/upnp/control/wandslifconfig1",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:WANDSLInterfaceConfig:1",
+			ServiceId:         "urn:WANDSLIfConfig-com:serviceId:WANDSLInterfaceConfig1",
+			ServiceControlUrl: "/upnp/control/wandslifconfig1",
 		},
 	}
 	{

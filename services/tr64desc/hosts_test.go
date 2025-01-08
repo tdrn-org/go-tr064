@@ -26,9 +26,10 @@ func TestHosts(t *testing.T) {
 	serviceClient := &hosts.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:LanDeviceHosts-com:serviceId:Hosts1",
-			ServiceUrl:  "/upnp/control/hosts",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:Hosts:1",
+			ServiceId:         "urn:LanDeviceHosts-com:serviceId:Hosts1",
+			ServiceControlUrl: "/upnp/control/hosts",
 		},
 	}
 	{

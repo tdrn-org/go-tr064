@@ -26,9 +26,10 @@ func TestWANIPConnection(t *testing.T) {
 	serviceClient := &igdconn.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("igddesc"),
-			ServiceId:   "urn:upnp-org:serviceId:WANIPConn1",
-			ServiceUrl:  "/igdupnp/control/WANIPConn1",
+			ServiceSpec:       tr064.ServiceSpec("igddesc"),
+			ServiceType:       "urn:schemas-upnp-org:service:WANIPConnection:1",
+			ServiceId:         "urn:upnp-org:serviceId:WANIPConn1",
+			ServiceControlUrl: "/igdupnp/control/WANIPConn1",
 		},
 	}
 	{

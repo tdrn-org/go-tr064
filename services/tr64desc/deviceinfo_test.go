@@ -26,9 +26,10 @@ func TestDeviceInfo(t *testing.T) {
 	serviceClient := &deviceinfo.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:DeviceInfo-com:serviceId:DeviceInfo1",
-			ServiceUrl:  "/upnp/control/deviceinfo",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:DeviceInfo:1",
+			ServiceId:         "urn:DeviceInfo-com:serviceId:DeviceInfo1",
+			ServiceControlUrl: "/upnp/control/deviceinfo",
 		},
 	}
 	{

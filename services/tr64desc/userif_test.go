@@ -26,9 +26,10 @@ func TestUserInterface(t *testing.T) {
 	serviceClient := &userif.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:UserInterface-com:serviceId:UserInterface1",
-			ServiceUrl:  "/upnp/control/userif",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:UserInterface:1",
+			ServiceId:         "urn:UserInterface-com:serviceId:UserInterface1",
+			ServiceControlUrl: "/upnp/control/userif",
 		},
 	}
 	{

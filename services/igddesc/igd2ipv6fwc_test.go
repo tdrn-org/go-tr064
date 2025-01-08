@@ -26,9 +26,10 @@ func TestWANIPv6FirewallControl(t *testing.T) {
 	serviceClient := &igd2ipv6fwc.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("igddesc"),
-			ServiceId:   "urn:upnp-org:serviceId:WANIPv6Firewall1",
-			ServiceUrl:  "/igd2upnp/control/WANIPv6Firewall1",
+			ServiceSpec:       tr064.ServiceSpec("igddesc"),
+			ServiceType:       "urn:schemas-upnp-org:service:WANIPv6FirewallControl:1",
+			ServiceId:         "urn:upnp-org:serviceId:WANIPv6Firewall1",
+			ServiceControlUrl: "/igd2upnp/control/WANIPv6Firewall1",
 		},
 	}
 	{

@@ -26,9 +26,10 @@ func TestLANHostConfigManagement(t *testing.T) {
 	serviceClient := &lanhostconfigmgm.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:LANHCfgMgm-com:serviceId:LANHostConfigManagement1",
-			ServiceUrl:  "/upnp/control/lanhostconfigmgm",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:LANHostConfigManagement:1",
+			ServiceId:         "urn:LANHCfgMgm-com:serviceId:LANHostConfigManagement1",
+			ServiceControlUrl: "/upnp/control/lanhostconfigmgm",
 		},
 	}
 	{

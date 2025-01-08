@@ -26,9 +26,10 @@ func TestX_AVM_DE_Homeplug(t *testing.T) {
 	serviceClient := &x_homeplug.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:X_AVM-DE_Homeplug-com:serviceId:X_AVM-DE_Homeplug1",
-			ServiceUrl:  "/upnp/control/x_homeplug",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:X_AVM-DE_Homeplug:1",
+			ServiceId:         "urn:X_AVM-DE_Homeplug-com:serviceId:X_AVM-DE_Homeplug1",
+			ServiceControlUrl: "/upnp/control/x_homeplug",
 		},
 	}
 	{

@@ -26,9 +26,10 @@ func TestX_AVM_DE_RemoteAccess(t *testing.T) {
 	serviceClient := &x_remote.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:X_AVM-DE_RemoteAccess-com:serviceId:X_AVM-DE_RemoteAccess1",
-			ServiceUrl:  "/upnp/control/x_remote",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:X_AVM-DE_RemoteAccess:1",
+			ServiceId:         "urn:X_AVM-DE_RemoteAccess-com:serviceId:X_AVM-DE_RemoteAccess1",
+			ServiceControlUrl: "/upnp/control/x_remote",
 		},
 	}
 	{

@@ -26,9 +26,10 @@ func TestX_AVM_DE_HostFilter(t *testing.T) {
 	serviceClient := &x_hostfilter.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:X_AVM-DE_HostFilter-com:serviceId:X_AVM-DE_HostFilter1",
-			ServiceUrl:  "/upnp/control/x_hostfilter",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:X_AVM-DE_HostFilter:1",
+			ServiceId:         "urn:X_AVM-DE_HostFilter-com:serviceId:X_AVM-DE_HostFilter1",
+			ServiceControlUrl: "/upnp/control/x_hostfilter",
 		},
 	}
 	{

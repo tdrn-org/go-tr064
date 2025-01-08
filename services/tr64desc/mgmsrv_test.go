@@ -26,9 +26,10 @@ func TestManagementServer(t *testing.T) {
 	serviceClient := &mgmsrv.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:ManagementServer-com:serviceId:ManagementServer1",
-			ServiceUrl:  "/upnp/control/mgmsrv",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:ManagementServer:1",
+			ServiceId:         "urn:ManagementServer-com:serviceId:ManagementServer1",
+			ServiceControlUrl: "/upnp/control/mgmsrv",
 		},
 	}
 	{

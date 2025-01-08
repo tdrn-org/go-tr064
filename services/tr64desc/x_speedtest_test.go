@@ -26,9 +26,10 @@ func TestX_AVM_DE_Speedtest(t *testing.T) {
 	serviceClient := &x_speedtest.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:X_AVM-DE_Speedtest-com:serviceId:X_AVM-DE_Speedtest1",
-			ServiceUrl:  "/upnp/control/x_speedtest",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:X_AVM-DE_Speedtest:1",
+			ServiceId:         "urn:X_AVM-DE_Speedtest-com:serviceId:X_AVM-DE_Speedtest1",
+			ServiceControlUrl: "/upnp/control/x_speedtest",
 		},
 	}
 	{

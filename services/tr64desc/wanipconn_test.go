@@ -26,9 +26,10 @@ func TestWANIPConnection(t *testing.T) {
 	serviceClient := &wanipconn.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:WANIPConnection-com:serviceId:WANIPConnection1",
-			ServiceUrl:  "/upnp/control/wanipconnection1",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:WANIPConnection:1",
+			ServiceId:         "urn:WANIPConnection-com:serviceId:WANIPConnection1",
+			ServiceControlUrl: "/upnp/control/wanipconnection1",
 		},
 	}
 	{

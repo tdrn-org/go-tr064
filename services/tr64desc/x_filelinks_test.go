@@ -26,9 +26,10 @@ func TestX_AVM_DE_Filelinks(t *testing.T) {
 	serviceClient := &x_filelinks.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:X_AVM-DE_Filelinks-com:serviceId:X_AVM-DE_Filelinks1",
-			ServiceUrl:  "/upnp/control/x_filelinks",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:X_AVM-DE_Filelinks:1",
+			ServiceId:         "urn:X_AVM-DE_Filelinks-com:serviceId:X_AVM-DE_Filelinks1",
+			ServiceControlUrl: "/upnp/control/x_filelinks",
 		},
 	}
 	{

@@ -26,9 +26,10 @@ func TestX_AVM_DE_USPController(t *testing.T) {
 	serviceClient := &x_uspcontroller.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:X_AVM-DE_USPController-com:serviceId:X_AVM-DE_USPController1",
-			ServiceUrl:  "/upnp/control/x_uspcontroller",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:X_AVM-DE_USPController:1",
+			ServiceId:         "urn:X_AVM-DE_USPController-com:serviceId:X_AVM-DE_USPController1",
+			ServiceControlUrl: "/upnp/control/x_uspcontroller",
 		},
 	}
 	{

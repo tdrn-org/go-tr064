@@ -26,9 +26,10 @@ func TestX_AVM_DE_TAM(t *testing.T) {
 	serviceClient := &x_tam.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:X_AVM-DE_TAM-com:serviceId:X_AVM-DE_TAM1",
-			ServiceUrl:  "/upnp/control/x_tam",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:X_AVM-DE_TAM:1",
+			ServiceId:         "urn:X_AVM-DE_TAM-com:serviceId:X_AVM-DE_TAM1",
+			ServiceControlUrl: "/upnp/control/x_tam",
 		},
 	}
 	{

@@ -26,9 +26,10 @@ func TestWLANConfiguration(t *testing.T) {
 	serviceClient := &wlanconfig.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:WLANConfiguration-com:serviceId:WLANConfiguration1",
-			ServiceUrl:  "/upnp/control/wlanconfig1",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:WLANConfiguration:1",
+			ServiceId:         "urn:WLANConfiguration-com:serviceId:WLANConfiguration1",
+			ServiceControlUrl: "/upnp/control/wlanconfig1",
 		},
 	}
 	{

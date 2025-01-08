@@ -26,9 +26,10 @@ func TestWANCommonInterfaceConfig(t *testing.T) {
 	serviceClient := &igdicfg.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("igddesc"),
-			ServiceId:   "urn:upnp-org:serviceId:WANCommonIFC1",
-			ServiceUrl:  "/igdupnp/control/WANCommonIFC1",
+			ServiceSpec:       tr064.ServiceSpec("igddesc"),
+			ServiceType:       "urn:schemas-upnp-org:service:WANCommonInterfaceConfig:1",
+			ServiceId:         "urn:upnp-org:serviceId:WANCommonIFC1",
+			ServiceControlUrl: "/igdupnp/control/WANCommonIFC1",
 		},
 	}
 	{

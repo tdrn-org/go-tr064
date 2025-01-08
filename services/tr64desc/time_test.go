@@ -26,9 +26,10 @@ func TestTime(t *testing.T) {
 	serviceClient := &time.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:Time-com:serviceId:Time1",
-			ServiceUrl:  "/upnp/control/time",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:Time:1",
+			ServiceId:         "urn:Time-com:serviceId:Time1",
+			ServiceControlUrl: "/upnp/control/time",
 		},
 	}
 	{

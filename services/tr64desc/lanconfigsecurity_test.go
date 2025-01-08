@@ -26,9 +26,10 @@ func TestLANConfigSecurity(t *testing.T) {
 	serviceClient := &lanconfigsecurity.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:LANConfigSecurity-com:serviceId:LANConfigSecurity1",
-			ServiceUrl:  "/upnp/control/lanconfigsecurity",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:LANConfigSecurity:1",
+			ServiceId:         "urn:LANConfigSecurity-com:serviceId:LANConfigSecurity1",
+			ServiceControlUrl: "/upnp/control/lanconfigsecurity",
 		},
 	}
 	{

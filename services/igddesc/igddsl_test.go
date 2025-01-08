@@ -26,9 +26,10 @@ func TestWANDSLLinkConfig(t *testing.T) {
 	serviceClient := &igddsl.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("igddesc"),
-			ServiceId:   "urn:upnp-org:serviceId:WANDSLLinkC1",
-			ServiceUrl:  "/igdupnp/control/WANDSLLinkC1",
+			ServiceSpec:       tr064.ServiceSpec("igddesc"),
+			ServiceType:       "urn:schemas-upnp-org:service:WANDSLLinkConfig:1",
+			ServiceId:         "urn:upnp-org:serviceId:WANDSLLinkC1",
+			ServiceControlUrl: "/igdupnp/control/WANDSLLinkC1",
 		},
 	}
 	{

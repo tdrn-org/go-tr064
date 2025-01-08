@@ -26,9 +26,10 @@ func TestWANCommonInterfaceConfig(t *testing.T) {
 	serviceClient := &wancommonifconfig.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:WANCIfConfig-com:serviceId:WANCommonInterfaceConfig1",
-			ServiceUrl:  "/upnp/control/wancommonifconfig1",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:WANCommonInterfaceConfig:1",
+			ServiceId:         "urn:WANCIfConfig-com:serviceId:WANCommonInterfaceConfig1",
+			ServiceControlUrl: "/upnp/control/wancommonifconfig1",
 		},
 	}
 	{

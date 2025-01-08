@@ -26,9 +26,10 @@ func TestX_AVM_DE_OnTel(t *testing.T) {
 	serviceClient := &x_contact.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:X_AVM-DE_OnTel-com:serviceId:X_AVM-DE_OnTel1",
-			ServiceUrl:  "/upnp/control/x_contact",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:X_AVM-DE_OnTel:1",
+			ServiceId:         "urn:X_AVM-DE_OnTel-com:serviceId:X_AVM-DE_OnTel1",
+			ServiceControlUrl: "/upnp/control/x_contact",
 		},
 	}
 	{

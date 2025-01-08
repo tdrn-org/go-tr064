@@ -26,9 +26,10 @@ func TestWANEthernetLinkConfig(t *testing.T) {
 	serviceClient := &wanethlinkconfig.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:WANEthernetLinkConfig-com:serviceId:WANEthernetLinkConfig1",
-			ServiceUrl:  "/upnp/control/wanethlinkconfig1",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:WANEthernetLinkConfig:1",
+			ServiceId:         "urn:WANEthernetLinkConfig-com:serviceId:WANEthernetLinkConfig1",
+			ServiceControlUrl: "/upnp/control/wanethlinkconfig1",
 		},
 	}
 	{

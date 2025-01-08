@@ -26,9 +26,10 @@ func TestX_AVM_DE_Dect(t *testing.T) {
 	serviceClient := &x_dect.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:X_AVM-DE_Dect-com:serviceId:X_AVM-DE_Dect1",
-			ServiceUrl:  "/upnp/control/x_dect",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:X_AVM-DE_Dect:1",
+			ServiceId:         "urn:X_AVM-DE_Dect-com:serviceId:X_AVM-DE_Dect1",
+			ServiceControlUrl: "/upnp/control/x_dect",
 		},
 	}
 	{

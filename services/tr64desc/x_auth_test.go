@@ -26,9 +26,10 @@ func TestX_AVM_DE_Auth(t *testing.T) {
 	serviceClient := &x_auth.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:X_AVM-DE_Auth-com:serviceId:X_AVM-DE_Auth1",
-			ServiceUrl:  "/upnp/control/x_auth",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:X_AVM-DE_Auth:1",
+			ServiceId:         "urn:X_AVM-DE_Auth-com:serviceId:X_AVM-DE_Auth1",
+			ServiceControlUrl: "/upnp/control/x_auth",
 		},
 	}
 	{

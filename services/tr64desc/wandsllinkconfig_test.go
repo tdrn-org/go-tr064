@@ -26,9 +26,10 @@ func TestWANDSLLinkConfig(t *testing.T) {
 	serviceClient := &wandsllinkconfig.ServiceClient{
 		TR064Client: client,
 		Service: &tr064.StaticServiceDescriptor{
-			ServiceSpec: tr064.ServiceSpec("tr64desc"),
-			ServiceId:   "urn:WANDSLLinkConfig-com:serviceId:WANDSLLinkConfig1",
-			ServiceUrl:  "/upnp/control/wandsllinkconfig1",
+			ServiceSpec:       tr064.ServiceSpec("tr64desc"),
+			ServiceType:       "urn:dslforum-org:service:WANDSLLinkConfig:1",
+			ServiceId:         "urn:WANDSLLinkConfig-com:serviceId:WANDSLLinkConfig1",
+			ServiceControlUrl: "/upnp/control/wandsllinkconfig1",
 		},
 	}
 	{
