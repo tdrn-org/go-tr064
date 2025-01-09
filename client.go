@@ -127,7 +127,7 @@ func NewClient(deviceUrl *url.URL) *Client {
 // service specific service client:
 //
 //	client := tr064.NewClient(deviceUrl)
-//	services, _ := client.ServiceByName(deviceinfo.ServiceName)
+//	services, _ := client.ServicesByName(tr064.DefaultServiceSpec, deviceinfo.ServiceName)
 //	serviceClient := deviceinfo.ServiceClient {
 //		TR064Client: client,
 //		Service:     services[0],
