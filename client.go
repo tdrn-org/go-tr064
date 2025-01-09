@@ -23,7 +23,6 @@ import (
 	"crypto/tls"
 	"encoding/hex"
 	"encoding/xml"
-	"errors"
 	"fmt"
 	"io"
 	"log"
@@ -104,18 +103,19 @@ func (service *StaticServiceDescriptor) ControlUrl() string {
 
 // NewClient instantiates a new TR-064 client for accessing the given URL.
 //
-// If the given URL contains a userinfo, the contained username and password are automatically used for authentication.
-func NewClient(deviceUrl *url.URL, specs ...ServiceSpec) *Client {
+// If the given URL contains a user info, the contained username and password are automatically used for authentication.
+func NewClient(deviceUrl *url.URL) *Client {
 	anonymousDeviceUrl := *deviceUrl
 	anonymousDeviceUrl.User = nil
 	username := deviceUrl.User.Username()
 	password, _ := deviceUrl.User.Password()
 	client := &Client{
-		DeviceUrl: &anonymousDeviceUrl,
-		Username:  username,
-		Password:  password,
-		Specs:     specs,
-		mutex:     &sync.Mutex{},
+		DeviceUrl:             &anonymousDeviceUrl,
+		Username:              username,
+		Password:              password,
+		mutex:                 &sync.Mutex{},
+		cachedServices:        make(map[ServiceSpec][]ServiceDescriptor),
+		cachedAuthentications: make(map[string]string),
 	}
 	client.cachedHttpClient = sync.OnceValue(client.httpClient)
 	return client
@@ -143,8 +143,6 @@ type Client struct {
 	Username string
 	// Password is set to the password to use for accessing restricted services.
 	Password string
-	// Specs lists the TR-064 specs describing the TR-064 server's services. If empty [DefaultServiceSpec] is assumed.
-	Specs []ServiceSpec
 	// Timeout sets the timeout for HTTP(S) communication.
 	Timeout time.Duration
 	// InsecureSkipVerify disables certificate validation while access the TR-064 server. Use with care.
@@ -152,41 +150,33 @@ type Client struct {
 	// Debug enables debug logging while accessing the TR-064 server.
 	Debug                 bool
 	mutex                 *sync.Mutex
-	cachedServices        []ServiceDescriptor
+	cachedServices        map[ServiceSpec][]ServiceDescriptor
 	cachedAuthentications map[string]string
 	cachedHttpClient      func() *http.Client
 }
 
-// Services fetches and parses the TR-064 server's service specifications and returns the available services.
-func (client *Client) Services() ([]ServiceDescriptor, error) {
+// Services fetches and parses the given specification and returns the defined services.
+func (client *Client) Services(spec ServiceSpec) ([]ServiceDescriptor, error) {
 	client.mutex.Lock()
 	defer client.mutex.Unlock()
-	if client.cachedServices == nil {
-		specs := client.Specs
-		if len(specs) == 0 {
-			specs = []ServiceSpec{DefaultServiceSpec}
-		}
-		services := make([]ServiceDescriptor, 0)
+	services := client.cachedServices[spec]
+	if services == nil {
+		services = make([]ServiceDescriptor, 0)
 		httpClient := client.cachedHttpClient()
-		for _, spec := range specs {
-			tr64desc, err := fetchServiceSpec(httpClient, client.DeviceUrl, spec)
-			if spec != DefaultServiceSpec && errors.Is(err, ErrDocNotFound) {
-				continue
-			}
-			if err != nil {
-				return nil, err
-			}
-			collector := &serviceCollector{serviceMap: make(map[string]ServiceDescriptor)}
-			err = tr64desc.walk(httpClient, client.DeviceUrl, collector.collectService)
-			if err != nil {
-				return nil, err
-			}
-			services = append(services, slices.Collect(maps.Values(collector.serviceMap))...)
+		tr64desc, err := fetchServiceSpec(httpClient, client.DeviceUrl, spec)
+		if err != nil {
+			return nil, err
 		}
+		collector := &serviceCollector{serviceMap: make(map[string]ServiceDescriptor)}
+		err = tr64desc.walk(httpClient, client.DeviceUrl, collector.collectService)
+		if err != nil {
+			return nil, err
+		}
+		services = append(services, slices.Collect(maps.Values(collector.serviceMap))...)
 		slices.SortFunc(services, func(a ServiceDescriptor, b ServiceDescriptor) int { return strings.Compare(a.Type(), b.Type()) })
-		client.cachedServices = services
+		client.cachedServices[spec] = services
 	}
-	return client.cachedServices, nil
+	return services, nil
 }
 
 type serviceCollector struct {
@@ -199,15 +189,15 @@ func (collector *serviceCollector) collectService(service *serviceDoc, scpd *scp
 }
 
 // ServicesByType fetches and parses the TR-064 server's service specifications
-// like [Services], but returns only the services matching the given spec and service type.
+// like [Services], but returns only the services matching service type.
 func (client *Client) ServicesByType(spec ServiceSpec, serviceType string) ([]ServiceDescriptor, error) {
-	all, err := client.Services()
+	all, err := client.Services(spec)
 	if err != nil {
 		return nil, err
 	}
 	services := make([]ServiceDescriptor, 0)
 	for _, service := range all {
-		if service.Spec() == spec && (service.Type() == serviceType || service.ShortType() == serviceType) {
+		if service.Type() == serviceType || service.ShortType() == serviceType {
 			services = append(services, service)
 		}
 	}
@@ -324,9 +314,6 @@ func (client *Client) InvokeService(service ServiceDescriptor, actionName, in an
 func (client *Client) authentication(serviceType string) string {
 	client.mutex.Lock()
 	defer client.mutex.Unlock()
-	if client.cachedAuthentications == nil {
-		return ""
-	}
 	return client.cachedAuthentications[serviceType]
 }
 

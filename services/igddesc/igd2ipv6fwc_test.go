@@ -21,7 +21,7 @@ func TestWANIPv6FirewallControl(t *testing.T) {
 	tr064Mock := mock.Start("testdata", igd2ipv6fwcMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), tr064.ServiceSpec("igddesc"))
+	client := tr064.NewClient(tr064Mock.Server())
 	client.Debug = true
 	serviceClient := &igd2ipv6fwc.ServiceClient{
 		TR064Client: client,

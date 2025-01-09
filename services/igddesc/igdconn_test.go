@@ -21,7 +21,7 @@ func TestWANIPConnection(t *testing.T) {
 	tr064Mock := mock.Start("testdata", igdconnMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), tr064.ServiceSpec("igddesc"))
+	client := tr064.NewClient(tr064Mock.Server())
 	client.Debug = true
 	serviceClient := &igdconn.ServiceClient{
 		TR064Client: client,

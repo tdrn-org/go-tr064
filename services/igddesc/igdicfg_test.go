@@ -21,7 +21,7 @@ func TestWANCommonInterfaceConfig(t *testing.T) {
 	tr064Mock := mock.Start("testdata", igdicfgMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), tr064.ServiceSpec("igddesc"))
+	client := tr064.NewClient(tr064Mock.Server())
 	client.Debug = true
 	serviceClient := &igdicfg.ServiceClient{
 		TR064Client: client,

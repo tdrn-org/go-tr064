@@ -21,7 +21,7 @@ func TestLANEthernetInterfaceConfig(t *testing.T) {
 	tr064Mock := mock.Start("testdata", ethifconfigMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), tr064.ServiceSpec("tr64desc"))
+	client := tr064.NewClient(tr064Mock.Server())
 	client.Debug = true
 	serviceClient := &ethifconfig.ServiceClient{
 		TR064Client: client,

@@ -21,7 +21,7 @@ func TestX_AVM_DE_USPController(t *testing.T) {
 	tr064Mock := mock.Start("testdata", x_uspcontrollerMock)
 	defer tr064Mock.Shutdown()
 	// Actual test
-	client := tr064.NewClient(tr064Mock.Server(), tr064.ServiceSpec("tr64desc"))
+	client := tr064.NewClient(tr064Mock.Server())
 	client.Debug = true
 	serviceClient := &x_uspcontroller.ServiceClient{
 		TR064Client: client,
