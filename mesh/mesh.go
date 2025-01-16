@@ -16,6 +16,11 @@
 
 package mesh
 
+import (
+	"slices"
+	"strings"
+)
+
 // List contains all nodes of a mesh.
 type List struct {
 	SchemaVersion string `json:"schema_version"`
@@ -54,6 +59,7 @@ func (list *List) Connections() []*Connection {
 			}
 		}
 	}
+	slices.SortFunc(connections, compareConnections)
 	return connections
 }
 
@@ -79,6 +85,34 @@ type Connection struct {
 	CurDataRateRx int
 	// CurDataRateTx contains the current transmitting bit rate between the devices.
 	CurDataRateTx int
+}
+
+func compareConnections(a *Connection, b *Connection) int {
+	comparison := strings.Compare(a.LeftMeshRole, b.LeftMeshRole)
+	if comparison != 0 {
+		return comparison
+	}
+	comparison = strings.Compare(a.RightMeshRole, b.RightMeshRole)
+	if comparison != 0 {
+		return comparison
+	}
+	comparison = strings.Compare(a.InterfaceType, b.InterfaceType)
+	if comparison != 0 {
+		return comparison
+	}
+	comparison = strings.Compare(a.InterfaceName, b.InterfaceName)
+	if comparison != 0 {
+		return comparison
+	}
+	comparison = strings.Compare(a.LeftDeviceName, b.LeftDeviceName)
+	if comparison != 0 {
+		return comparison
+	}
+	comparison = strings.Compare(a.RightDeviceName, b.RightDeviceName)
+	if comparison != 0 {
+		return comparison
+	}
+	return 0
 }
 
 // Node represents a single node within the mesh.
