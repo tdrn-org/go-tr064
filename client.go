@@ -145,8 +145,8 @@ type Client struct {
 	Password string
 	// Timeout sets the timeout for HTTP(S) communication.
 	Timeout time.Duration
-	// InsecureSkipVerify disables certificate validation while access the TR-064 server. Use with care.
-	InsecureSkipVerify bool
+	// TlsConfig defines the TLS options to use for HTTPS communication. May be nil.
+	TlsConfig *tls.Config
 	// Debug enables debug logging while accessing the TR-064 server.
 	Debug                 bool
 	mutex                 *sync.Mutex
@@ -394,9 +394,7 @@ func (client *Client) postSoapActionRequest(endpoint string, action string, requ
 }
 
 func (client *Client) httpClient() *http.Client {
-	tlsClientConfig := &tls.Config{
-		InsecureSkipVerify: client.InsecureSkipVerify,
-	}
+	tlsClientConfig := client.TlsConfig.Clone()
 	transport := &http.Transport{
 		TLSClientConfig: tlsClientConfig,
 	}

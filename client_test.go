@@ -34,7 +34,7 @@ func TestServices(t *testing.T) {
 	client.Debug = true
 	services, err := client.Services(tr064.DefaultServiceSpec)
 	require.NoError(t, err)
-	require.Equal(t, 2, len(services))
+	require.Len(t, services, 2)
 }
 
 func TestServicesByType(t *testing.T) {
@@ -46,7 +46,7 @@ func TestServicesByType(t *testing.T) {
 	client.Debug = true
 	services, err := client.ServicesByType(tr064.DefaultServiceSpec, "MockPing")
 	require.NoError(t, err)
-	require.Equal(t, 1, len(services))
+	require.Len(t, services, 1)
 }
 
 func TestGet(t *testing.T) {
