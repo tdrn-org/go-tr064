@@ -29,6 +29,8 @@ type GetInfoResponse struct {
 	NewMaxCharsMQTTControllerTopic uint16   `xml:"NewMaxCharsMQTTControllerTopic"`
 	NewMinCharsMQTTResponseTopic   uint16   `xml:"NewMinCharsMQTTResponseTopic"`
 	NewMaxCharsMQTTResponseTopic   uint16   `xml:"NewMaxCharsMQTTResponseTopic"`
+	NewMinCharsMQTTClientID        uint16   `xml:"NewMinCharsMQTTClientID"`
+	NewMaxCharsMQTTClientID        uint16   `xml:"NewMaxCharsMQTTClientID"`
 	NewMinCharsUsername            uint16   `xml:"NewMinCharsUsername"`
 	NewMaxCharsUsername            uint16   `xml:"NewMaxCharsUsername"`
 	NewMinCharsPassword            uint16   `xml:"NewMinCharsPassword"`
@@ -58,6 +60,7 @@ type GetUSPControllerByIndexResponse struct {
 	NewUseTLS                bool     `xml:"NewUseTLS"`
 	NewMQTTControllerTopic   string   `xml:"NewMQTTControllerTopic"`
 	NewMQTTResponseTopic     string   `xml:"NewMQTTResponseTopic"`
+	NewMQTTClientID          string   `xml:"NewMQTTClientID"`
 	NewAccessRightSmarthome  bool     `xml:"NewAccessRightSmarthome"`
 	NewAccessRightMesh       bool     `xml:"NewAccessRightMesh"`
 	NewAccessRightInternet   bool     `xml:"NewAccessRightInternet"`
@@ -100,6 +103,7 @@ type AddUSPControllerRequest struct {
 	NewUseTLS                bool     `xml:"NewUseTLS"`
 	NewMQTTControllerTopic   string   `xml:"NewMQTTControllerTopic"`
 	NewMQTTResponseTopic     string   `xml:"NewMQTTResponseTopic"`
+	NewMQTTClientID          string   `xml:"NewMQTTClientID"`
 	NewAccessRightSmarthome  bool     `xml:"NewAccessRightSmarthome"`
 	NewAccessRightMesh       bool     `xml:"NewAccessRightMesh"`
 	NewAccessRightInternet   bool     `xml:"NewAccessRightInternet"`
