@@ -17,9 +17,47 @@
 package mesh
 
 import (
+	"encoding/json"
+	"fmt"
+	"io"
+	"net/http"
 	"slices"
 	"strings"
+
+	"github.com/tdrn-org/go-tr064/services/tr64desc/hosts"
 )
+
+// FetchList downloads and decodes the mesh list via the given hosts service client.
+// The returned list may be nil even in case of success, meaning the accessed device
+// provides the hosts service, but is not a mesh master.
+func FetchList(serviceClient *hosts.ServiceClient) (*List, error) {
+	meshListPath := &hosts.X_AVM_DE_GetMeshListPathResponse{}
+	err := serviceClient.X_AVM_DE_GetMeshListPath(meshListPath)
+	if err != nil {
+		return nil, err
+	}
+	meshListResponse, err := serviceClient.TR064Client.Get(meshListPath.NewX_AVM_DE_MeshListPath)
+	if err != nil {
+		return nil, err
+	}
+	if meshListResponse.StatusCode == http.StatusNotFound {
+		return nil, nil
+	}
+	if meshListResponse.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("failed to fetch mesh list %q (status: %s)", meshListPath.NewX_AVM_DE_MeshListPath, meshListResponse.Status)
+	}
+	defer meshListResponse.Body.Close()
+	meshListBytes, err := io.ReadAll(meshListResponse.Body)
+	if err != nil {
+		return nil, fmt.Errorf("failed to read mesh list from %q (cause: %w)", meshListPath.NewX_AVM_DE_MeshListPath, err)
+	}
+	list := &List{}
+	err = json.Unmarshal(meshListBytes, list)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode mesh list from %q (cause: %w)", meshListPath.NewX_AVM_DE_MeshListPath, err)
+	}
+	return list, nil
+}
 
 // List contains all nodes of a mesh.
 type List struct {
