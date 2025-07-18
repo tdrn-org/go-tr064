@@ -673,6 +673,10 @@ type X_AVM_DE_GetWLANConnectionInfoResponse struct {
 	NewX_AVM_DE_SpeedRX            uint32   `xml:"NewX_AVM-DE_SpeedRX"`
 	NewX_AVM_DE_SpeedMax           uint32   `xml:"NewX_AVM-DE_SpeedMax"`
 	NewX_AVM_DE_SpeedRXMax         uint32   `xml:"NewX_AVM-DE_SpeedRXMax"`
+	NewX_AVM_DE_MLDMACAddress      string   `xml:"NewX_AVM-DE_MLDMACAddress"`
+	NewX_AVM_DE_APMLDMACAddress    string   `xml:"NewX_AVM-DE_APMLDMACAddress"`
+	NewX_AVM_DE_MLOModes           string   `xml:"NewX_AVM-DE_MLOModes"`
+	NewX_AVM_DE_MLOList            string   `xml:"NewX_AVM-DE_MLOList"`
 }
 
 func (client *ServiceClient) X_AVM_DE_GetWLANConnectionInfo(out *X_AVM_DE_GetWLANConnectionInfoResponse) error {
