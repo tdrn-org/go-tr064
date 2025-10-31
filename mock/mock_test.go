@@ -26,7 +26,7 @@ import (
 
 func TestMockStartStop(t *testing.T) {
 	tr064Mock := mock.Start("testdata")
-	defer tr064Mock.Shutdown()
+	defer tr064Mock.Stop(t.Context())
 	require.NotNil(t, tr064Mock)
 	err := tr064Mock.Ping()
 	require.NoError(t, err)
@@ -36,7 +36,7 @@ func TestMockStartStop(t *testing.T) {
 
 func TestServiceMockFromFile(t *testing.T) {
 	tr064Mock := mock.Start("testdata", mock.ServiceMockFromFile("/mocknotfound", "testdata/notfound.xml"), mock.ServiceMockFromFile("/mockping", "testdata/ping.xml"))
-	defer tr064Mock.Shutdown()
+	defer tr064Mock.Stop(t.Context())
 	response, err := http.Post(tr064Mock.Server().JoinPath("/mocknotfound").String(), "text/xml", nil)
 	require.NoError(t, err)
 	require.Equal(t, http.StatusNotFound, response.StatusCode)

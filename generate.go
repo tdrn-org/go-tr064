@@ -204,7 +204,7 @@ func (gc *generateContext) generateServiceTest(service *serviceDoc, scpd *scpdDo
 		gc.emit(buffer, "\nfunc Test%s(t *testing.T) {\n", service.ShortType())
 		gc.emit(buffer, "// Start mock server\n")
 		gc.emit(buffer, "tr064Mock := mock.Start(\"testdata\", %sMock)\n", packageName)
-		gc.emit(buffer, "defer tr064Mock.Shutdown()\n")
+		gc.emit(buffer, "defer tr064Mock.Stop(t.Context())\n")
 		gc.emit(buffer, "// Actual test\n")
 		gc.emit(buffer, "client := tr064.NewClient(tr064Mock.Server())\n")
 		gc.emit(buffer, "client.Debug = true\n")

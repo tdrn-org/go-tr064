@@ -2,13 +2,14 @@
 package services_test
 
 import (
+	"log"
+	"net/http"
+	"testing"
+
 	"github.com/stretchr/testify/require"
 	"github.com/tdrn-org/go-tr064"
 	"github.com/tdrn-org/go-tr064/mock"
 	"github.com/tdrn-org/go-tr064/services/tr64desc/x_filelinks"
-	"log"
-	"net/http"
-	"testing"
 )
 
 var x_filelinksMock = &mock.ServiceMock{
@@ -19,7 +20,7 @@ var x_filelinksMock = &mock.ServiceMock{
 func TestX_AVM_DE_Filelinks(t *testing.T) {
 	// Start mock server
 	tr064Mock := mock.Start("testdata", x_filelinksMock)
-	defer tr064Mock.Shutdown()
+	defer tr064Mock.Stop(t.Context())
 	// Actual test
 	client := tr064.NewClient(tr064Mock.Server())
 	client.Debug = true

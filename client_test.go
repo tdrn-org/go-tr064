@@ -28,7 +28,7 @@ import (
 func TestServices(t *testing.T) {
 	// Start mock server
 	tr064Mock := mock.Start("testdata")
-	defer tr064Mock.Shutdown()
+	defer tr064Mock.Stop(t.Context())
 	// Actual test
 	client := tr064.NewClient(tr064Mock.Server())
 	client.Debug = true
@@ -40,7 +40,7 @@ func TestServices(t *testing.T) {
 func TestServicesByType(t *testing.T) {
 	// Start mock server
 	tr064Mock := mock.Start("testdata")
-	defer tr064Mock.Shutdown()
+	defer tr064Mock.Stop(t.Context())
 	// Actual test
 	client := tr064.NewClient(tr064Mock.Server())
 	client.Debug = true
@@ -52,7 +52,7 @@ func TestServicesByType(t *testing.T) {
 func TestGet(t *testing.T) {
 	// Start mock server
 	tr064Mock := mock.Start("testdata")
-	defer tr064Mock.Shutdown()
+	defer tr064Mock.Stop(t.Context())
 	// Actual test
 	client := tr064.NewClient(tr064Mock.Server())
 	client.Debug = true

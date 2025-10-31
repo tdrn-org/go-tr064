@@ -83,8 +83,8 @@ type TR064Server interface {
 	Ping() error
 	// Ping checks whether the mock server is up and running (on the HTTPS address).
 	SecurePing() error
-	// Shutdown terminates the mock server gracefully.
-	Shutdown()
+	// Stop terminates the mock server gracefully.
+	Stop(ctx context.Context)
 }
 
 // Start setup and starts a new mock server.
@@ -171,14 +171,14 @@ func (mock *mockServer) SecurePing() error {
 	return mock.ping(client, mock.httpsServerUrl)
 }
 
-// Shutdown terminates the mock server gracefully.
-func (mock *mockServer) Shutdown() {
+// Stop terminates the mock server gracefully.
+func (mock *mockServer) Stop(ctx context.Context) {
 	log.Println("Shutting down mock server...")
-	err := mock.httpServer.Shutdown(context.Background())
+	err := mock.httpServer.Shutdown(ctx)
 	if err != nil {
 		log.Println("Failed to shutdown HTTPS server: ", err)
 	}
-	err = mock.httpsServer.Shutdown(context.Background())
+	err = mock.httpsServer.Shutdown(ctx)
 	if err != nil {
 		log.Println("Failed to shutdown HTTP server: ", err)
 	}

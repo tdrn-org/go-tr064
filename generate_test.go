@@ -31,7 +31,7 @@ import (
 func TestGenerate(t *testing.T) {
 	// Start mock server
 	tr064Mock := mock.Start("testdata")
-	defer tr064Mock.Shutdown()
+	defer tr064Mock.Stop(t.Context())
 	// Prepare temp dir (for generate output)
 	dir := &generateDir{}
 	dir.Mkdir()

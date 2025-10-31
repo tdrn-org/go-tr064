@@ -2,13 +2,14 @@
 package services_test
 
 import (
+	"log"
+	"net/http"
+	"testing"
+
 	"github.com/stretchr/testify/require"
 	"github.com/tdrn-org/go-tr064"
 	"github.com/tdrn-org/go-tr064/mock"
 	"github.com/tdrn-org/go-tr064/services/igddesc/igdconn"
-	"log"
-	"net/http"
-	"testing"
 )
 
 var igdconnMock = &mock.ServiceMock{
@@ -19,7 +20,7 @@ var igdconnMock = &mock.ServiceMock{
 func TestWANIPConnection(t *testing.T) {
 	// Start mock server
 	tr064Mock := mock.Start("testdata", igdconnMock)
-	defer tr064Mock.Shutdown()
+	defer tr064Mock.Stop(t.Context())
 	// Actual test
 	client := tr064.NewClient(tr064Mock.Server())
 	client.Debug = true

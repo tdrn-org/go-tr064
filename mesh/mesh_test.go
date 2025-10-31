@@ -41,7 +41,7 @@ func TestMesh(t *testing.T) {
 func TestFetchList(t *testing.T) {
 	// Start mock server
 	tr064Mock := mock.Start("testdata", mock.ServiceMockFromFile("/hosts", "testdata/Hosts.xml"))
-	defer tr064Mock.Shutdown()
+	defer tr064Mock.Stop(t.Context())
 	// Actual test
 	client := tr064.NewClient(tr064Mock.Server())
 	client.Debug = true

@@ -2,13 +2,14 @@
 package services_test
 
 import (
+	"log"
+	"net/http"
+	"testing"
+
 	"github.com/stretchr/testify/require"
 	"github.com/tdrn-org/go-tr064"
 	"github.com/tdrn-org/go-tr064/mock"
 	"github.com/tdrn-org/go-tr064/services/tr64desc/layer3forwarding"
-	"log"
-	"net/http"
-	"testing"
 )
 
 var layer3forwardingMock = &mock.ServiceMock{
@@ -19,7 +20,7 @@ var layer3forwardingMock = &mock.ServiceMock{
 func TestLayer3Forwarding(t *testing.T) {
 	// Start mock server
 	tr064Mock := mock.Start("testdata", layer3forwardingMock)
-	defer tr064Mock.Shutdown()
+	defer tr064Mock.Stop(t.Context())
 	// Actual test
 	client := tr064.NewClient(tr064Mock.Server())
 	client.Debug = true
