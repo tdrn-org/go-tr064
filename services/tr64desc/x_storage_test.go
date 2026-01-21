@@ -2,14 +2,13 @@
 package services_test
 
 import (
-	"log"
-	"net/http"
-	"testing"
-
 	"github.com/stretchr/testify/require"
 	"github.com/tdrn-org/go-tr064"
 	"github.com/tdrn-org/go-tr064/mock"
 	"github.com/tdrn-org/go-tr064/services/tr64desc/x_storage"
+	"log"
+	"net/http"
+	"testing"
 )
 
 var x_storageMock = &mock.ServiceMock{

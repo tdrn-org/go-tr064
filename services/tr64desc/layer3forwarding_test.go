@@ -2,14 +2,13 @@
 package services_test
 
 import (
-	"log"
-	"net/http"
-	"testing"
-
 	"github.com/stretchr/testify/require"
 	"github.com/tdrn-org/go-tr064"
 	"github.com/tdrn-org/go-tr064/mock"
 	"github.com/tdrn-org/go-tr064/services/tr64desc/layer3forwarding"
+	"log"
+	"net/http"
+	"testing"
 )
 
 var layer3forwardingMock = &mock.ServiceMock{
