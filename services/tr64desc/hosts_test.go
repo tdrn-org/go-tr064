@@ -111,14 +111,6 @@ func TestHosts(t *testing.T) {
 		in := &hosts.X_AVM_DE_SetFriendlyNameByMACRequest{}
 		require.NoError(t, serviceClient.X_AVM_DE_SetFriendlyNameByMAC(in))
 	}
-	{
-		in := &hosts.X_AVM_DE_SetDeviceClassUserByIPRequest{}
-		require.NoError(t, serviceClient.X_AVM_DE_SetDeviceClassUserByIP(in))
-	}
-	{
-		in := &hosts.X_AVM_DE_SetDeviceClassUserByMACRequest{}
-		require.NoError(t, serviceClient.X_AVM_DE_SetDeviceClassUserByMAC(in))
-	}
 }
 
 func hostsHandler(w http.ResponseWriter, req *http.Request) {
@@ -167,10 +159,6 @@ func hostsHandler(w http.ResponseWriter, req *http.Request) {
 		hosts_X_AVM_DE_SetFriendlyNameByIP(w)
 	case "X_AVM-DE_SetFriendlyNameByMAC":
 		hosts_X_AVM_DE_SetFriendlyNameByMAC(w)
-	case "X_AVM-DE_SetDeviceClassUserByIP":
-		hosts_X_AVM_DE_SetDeviceClassUserByIP(w)
-	case "X_AVM-DE_SetDeviceClassUserByMAC":
-		hosts_X_AVM_DE_SetDeviceClassUserByMAC(w)
 
 	default:
 		log.Println("Unknown action: ", action)
@@ -324,22 +312,6 @@ func hosts_X_AVM_DE_SetFriendlyNameByIP(w http.ResponseWriter) {
 
 func hosts_X_AVM_DE_SetFriendlyNameByMAC(w http.ResponseWriter) {
 	out := hosts.X_AVM_DE_SetFriendlyNameByMACResponse{}
-	err := mock.WriteSoapResponse(w, out)
-	if err != nil {
-		log.Println(err)
-	}
-}
-
-func hosts_X_AVM_DE_SetDeviceClassUserByIP(w http.ResponseWriter) {
-	out := hosts.X_AVM_DE_SetDeviceClassUserByIPResponse{}
-	err := mock.WriteSoapResponse(w, out)
-	if err != nil {
-		log.Println(err)
-	}
-}
-
-func hosts_X_AVM_DE_SetDeviceClassUserByMAC(w http.ResponseWriter) {
-	out := hosts.X_AVM_DE_SetDeviceClassUserByMACResponse{}
 	err := mock.WriteSoapResponse(w, out)
 	if err != nil {
 		log.Println(err)
