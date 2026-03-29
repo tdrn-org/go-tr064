@@ -53,6 +53,29 @@ func TestX_AVM_DE_HostFilter(t *testing.T) {
 		out := &x_hostfilter.GetWANAccessByIPResponse{}
 		require.NoError(t, serviceClient.GetWANAccessByIP(in, out))
 	}
+	{
+		in := &x_hostfilter.GetHostEntryByIPRequest{}
+		out := &x_hostfilter.GetHostEntryByIPResponse{}
+		require.NoError(t, serviceClient.GetHostEntryByIP(in, out))
+	}
+	{
+		in := &x_hostfilter.GetFilterProfileByIDRequest{}
+		out := &x_hostfilter.GetFilterProfileByIDResponse{}
+		require.NoError(t, serviceClient.GetFilterProfileByID(in, out))
+	}
+	{
+		in := &x_hostfilter.AddTicketTimeToHostEntryByIPRequest{}
+		out := &x_hostfilter.AddTicketTimeToHostEntryByIPResponse{}
+		require.NoError(t, serviceClient.AddTicketTimeToHostEntryByIP(in, out))
+	}
+	{
+		in := &x_hostfilter.AddHostEntryToFilterProfileRequest{}
+		require.NoError(t, serviceClient.AddHostEntryToFilterProfile(in))
+	}
+	{
+		out := &x_hostfilter.GetFilterProfilesResponse{}
+		require.NoError(t, serviceClient.GetFilterProfiles(out))
+	}
 }
 
 func x_hostfilterHandler(w http.ResponseWriter, req *http.Request) {
@@ -73,6 +96,16 @@ func x_hostfilterHandler(w http.ResponseWriter, req *http.Request) {
 		x_hostfilter_DisallowWANAccessByIP(w)
 	case "GetWANAccessByIP":
 		x_hostfilter_GetWANAccessByIP(w)
+	case "GetHostEntryByIP":
+		x_hostfilter_GetHostEntryByIP(w)
+	case "GetFilterProfileByID":
+		x_hostfilter_GetFilterProfileByID(w)
+	case "AddTicketTimeToHostEntryByIP":
+		x_hostfilter_AddTicketTimeToHostEntryByIP(w)
+	case "AddHostEntryToFilterProfile":
+		x_hostfilter_AddHostEntryToFilterProfile(w)
+	case "GetFilterProfiles":
+		x_hostfilter_GetFilterProfiles(w)
 
 	default:
 		log.Println("Unknown action: ", action)
@@ -114,6 +147,46 @@ func x_hostfilter_DisallowWANAccessByIP(w http.ResponseWriter) {
 
 func x_hostfilter_GetWANAccessByIP(w http.ResponseWriter) {
 	out := x_hostfilter.GetWANAccessByIPResponse{}
+	err := mock.WriteSoapResponse(w, out)
+	if err != nil {
+		log.Println(err)
+	}
+}
+
+func x_hostfilter_GetHostEntryByIP(w http.ResponseWriter) {
+	out := x_hostfilter.GetHostEntryByIPResponse{}
+	err := mock.WriteSoapResponse(w, out)
+	if err != nil {
+		log.Println(err)
+	}
+}
+
+func x_hostfilter_GetFilterProfileByID(w http.ResponseWriter) {
+	out := x_hostfilter.GetFilterProfileByIDResponse{}
+	err := mock.WriteSoapResponse(w, out)
+	if err != nil {
+		log.Println(err)
+	}
+}
+
+func x_hostfilter_AddTicketTimeToHostEntryByIP(w http.ResponseWriter) {
+	out := x_hostfilter.AddTicketTimeToHostEntryByIPResponse{}
+	err := mock.WriteSoapResponse(w, out)
+	if err != nil {
+		log.Println(err)
+	}
+}
+
+func x_hostfilter_AddHostEntryToFilterProfile(w http.ResponseWriter) {
+	out := x_hostfilter.AddHostEntryToFilterProfileResponse{}
+	err := mock.WriteSoapResponse(w, out)
+	if err != nil {
+		log.Println(err)
+	}
+}
+
+func x_hostfilter_GetFilterProfiles(w http.ResponseWriter) {
+	out := x_hostfilter.GetFilterProfilesResponse{}
 	err := mock.WriteSoapResponse(w, out)
 	if err != nil {
 		log.Println(err)

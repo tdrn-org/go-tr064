@@ -95,24 +95,26 @@ type GetAddonInfosRequest struct {
 }
 
 type GetAddonInfosResponse struct {
-	XMLName                          xml.Name `xml:"GetAddonInfosResponse"`
-	NewByteSendRate                  uint32   `xml:"NewByteSendRate"`
-	NewByteReceiveRate               uint32   `xml:"NewByteReceiveRate"`
-	NewPacketSendRate                uint32   `xml:"NewPacketSendRate"`
-	NewPacketReceiveRate             uint32   `xml:"NewPacketReceiveRate"`
-	NewTotalBytesSent                uint32   `xml:"NewTotalBytesSent"`
-	NewTotalBytesReceived            uint32   `xml:"NewTotalBytesReceived"`
-	NewAutoDisconnectTime            uint32   `xml:"NewAutoDisconnectTime"`
-	NewIdleDisconnectTime            uint32   `xml:"NewIdleDisconnectTime"`
-	NewDNSServer1                    string   `xml:"NewDNSServer1"`
-	NewDNSServer2                    string   `xml:"NewDNSServer2"`
-	NewVoipDNSServer1                string   `xml:"NewVoipDNSServer1"`
-	NewVoipDNSServer2                string   `xml:"NewVoipDNSServer2"`
-	NewUpnpControlEnabled            bool     `xml:"NewUpnpControlEnabled"`
-	NewRoutedBridgedModeBoth         uint8    `xml:"NewRoutedBridgedModeBoth"`
-	NewX_AVM_DE_TotalBytesSent64     string   `xml:"NewX_AVM_DE_TotalBytesSent64"`
-	NewX_AVM_DE_TotalBytesReceived64 string   `xml:"NewX_AVM_DE_TotalBytesReceived64"`
-	NewX_AVM_DE_WANAccessType        string   `xml:"NewX_AVM_DE_WANAccessType"`
+	XMLName                                  xml.Name `xml:"GetAddonInfosResponse"`
+	NewByteSendRate                          uint32   `xml:"NewByteSendRate"`
+	NewByteReceiveRate                       uint32   `xml:"NewByteReceiveRate"`
+	NewPacketSendRate                        uint32   `xml:"NewPacketSendRate"`
+	NewPacketReceiveRate                     uint32   `xml:"NewPacketReceiveRate"`
+	NewTotalBytesSent                        uint32   `xml:"NewTotalBytesSent"`
+	NewTotalBytesReceived                    uint32   `xml:"NewTotalBytesReceived"`
+	NewAutoDisconnectTime                    uint32   `xml:"NewAutoDisconnectTime"`
+	NewIdleDisconnectTime                    uint32   `xml:"NewIdleDisconnectTime"`
+	NewDNSServer1                            string   `xml:"NewDNSServer1"`
+	NewDNSServer2                            string   `xml:"NewDNSServer2"`
+	NewVoipDNSServer1                        string   `xml:"NewVoipDNSServer1"`
+	NewVoipDNSServer2                        string   `xml:"NewVoipDNSServer2"`
+	NewUpnpControlEnabled                    bool     `xml:"NewUpnpControlEnabled"`
+	NewRoutedBridgedModeBoth                 uint8    `xml:"NewRoutedBridgedModeBoth"`
+	NewX_AVM_DE_TotalBytesSent64             string   `xml:"NewX_AVM_DE_TotalBytesSent64"`
+	NewX_AVM_DE_TotalBytesReceived64         string   `xml:"NewX_AVM_DE_TotalBytesReceived64"`
+	NewX_AVM_DE_WANAccessType                string   `xml:"NewX_AVM_DE_WANAccessType"`
+	NewX_AVM_DE_Layer1UpstreamMaxBitRate64   string   `xml:"NewX_AVM_DE_Layer1UpstreamMaxBitRate64"`
+	NewX_AVM_DE_Layer1DownstreamMaxBitRate64 string   `xml:"NewX_AVM_DE_Layer1DownstreamMaxBitRate64"`
 }
 
 func (client *ServiceClient) GetAddonInfos(out *GetAddonInfosResponse) error {

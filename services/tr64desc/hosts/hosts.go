@@ -75,12 +75,13 @@ type X_AVM_DE_GetInfoRequest struct {
 }
 
 type X_AVM_DE_GetInfoResponse struct {
-	XMLName                          xml.Name `xml:"X_AVM-DE_GetInfoResponse"`
-	NewX_AVM_DE_FriendlynameMinChars uint16   `xml:"NewX_AVM-DE_FriendlynameMinChars"`
-	NewX_AVM_DE_FriendlynameMaxChars uint16   `xml:"NewX_AVM-DE_FriendlynameMaxChars"`
-	NewX_AVM_DE_HostnameMinChars     uint16   `xml:"NewX_AVM-DE_HostnameMinChars"`
-	NewX_AVM_DE_HostnameMaxChars     uint16   `xml:"NewX_AVM-DE_HostnameMaxChars"`
-	NewX_AVM_DE_HostnameAllowedChars string   `xml:"NewX_AVM-DE_HostnameAllowedChars"`
+	XMLName                                   xml.Name `xml:"X_AVM-DE_GetInfoResponse"`
+	NewX_AVM_DE_FriendlynameMinChars          uint16   `xml:"NewX_AVM-DE_FriendlynameMinChars"`
+	NewX_AVM_DE_FriendlynameMaxChars          uint16   `xml:"NewX_AVM-DE_FriendlynameMaxChars"`
+	NewX_AVM_DE_HostnameMinChars              uint16   `xml:"NewX_AVM-DE_HostnameMinChars"`
+	NewX_AVM_DE_HostnameMaxChars              uint16   `xml:"NewX_AVM-DE_HostnameMaxChars"`
+	NewX_AVM_DE_HostnameAllowedChars          string   `xml:"NewX_AVM-DE_HostnameAllowedChars"`
+	NewX_AVM_DE_DeviceClassUserPossibleValues string   `xml:"NewX_AVM-DE_DeviceClassUserPossibleValues"`
 }
 
 func (client *ServiceClient) X_AVM_DE_GetInfo(out *X_AVM_DE_GetInfoResponse) error {
@@ -196,8 +197,12 @@ type X_AVM_DE_GetSpecificHostEntryByIPResponse struct {
 	NewX_AVM_DE_Disallow                bool     `xml:"NewX_AVM-DE_Disallow"`
 	NewX_AVM_DE_IsMeshable              bool     `xml:"NewX_AVM-DE_IsMeshable"`
 	NewX_AVM_DE_Priority                bool     `xml:"NewX_AVM-DE_Priority"`
+	NewX_AVM_DE_DeviceClass             string   `xml:"NewX_AVM-DE_DeviceClass"`
+	NewX_AVM_DE_DeviceClassUser         string   `xml:"NewX_AVM-DE_DeviceClassUser"`
 	NewX_AVM_DE_FriendlyName            string   `xml:"NewX_AVM-DE_FriendlyName"`
 	NewX_AVM_DE_FriendlyNameIsWriteable bool     `xml:"NewX_AVM-DE_FriendlyNameIsWriteable"`
+	NewX_AVM_DE_FilterProfileID         string   `xml:"NewX_AVM-DE_FilterProfileID"`
+	NewX_AVM_DE_AddTicketAvailable      bool     `xml:"NewX_AVM-DE_AddTicketAvailable"`
 }
 
 func (client *ServiceClient) X_AVM_DE_GetSpecificHostEntryByIP(in *X_AVM_DE_GetSpecificHostEntryByIPRequest, out *X_AVM_DE_GetSpecificHostEntryByIPResponse) error {
@@ -346,4 +351,38 @@ func (client *ServiceClient) X_AVM_DE_SetFriendlyNameByMAC(in *X_AVM_DE_SetFrien
 	in.XMLNameSpace = client.Service.Type()
 	out := &X_AVM_DE_SetFriendlyNameByMACResponse{}
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetFriendlyNameByMAC", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
+}
+
+type X_AVM_DE_SetDeviceClassUserByIPRequest struct {
+	XMLName                     xml.Name `xml:"u:X_AVM-DE_SetDeviceClassUserByIPRequest"`
+	XMLNameSpace                string   `xml:"xmlns:u,attr"`
+	NewIPAddress                string   `xml:"NewIPAddress"`
+	NewX_AVM_DE_DeviceClassUser string   `xml:"NewX_AVM-DE_DeviceClassUser"`
+}
+
+type X_AVM_DE_SetDeviceClassUserByIPResponse struct {
+	XMLName xml.Name `xml:"X_AVM-DE_SetDeviceClassUserByIPResponse"`
+}
+
+func (client *ServiceClient) X_AVM_DE_SetDeviceClassUserByIP(in *X_AVM_DE_SetDeviceClassUserByIPRequest) error {
+	in.XMLNameSpace = client.Service.Type()
+	out := &X_AVM_DE_SetDeviceClassUserByIPResponse{}
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetDeviceClassUserByIP", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
+}
+
+type X_AVM_DE_SetDeviceClassUserByMACRequest struct {
+	XMLName                     xml.Name `xml:"u:X_AVM-DE_SetDeviceClassUserByMACRequest"`
+	XMLNameSpace                string   `xml:"xmlns:u,attr"`
+	NewMACAddress               string   `xml:"NewMACAddress"`
+	NewX_AVM_DE_DeviceClassUser string   `xml:"NewX_AVM-DE_DeviceClassUser"`
+}
+
+type X_AVM_DE_SetDeviceClassUserByMACResponse struct {
+	XMLName xml.Name `xml:"X_AVM-DE_SetDeviceClassUserByMACResponse"`
+}
+
+func (client *ServiceClient) X_AVM_DE_SetDeviceClassUserByMAC(in *X_AVM_DE_SetDeviceClassUserByMACRequest) error {
+	in.XMLNameSpace = client.Service.Type()
+	out := &X_AVM_DE_SetDeviceClassUserByMACResponse{}
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetDeviceClassUserByMAC", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }

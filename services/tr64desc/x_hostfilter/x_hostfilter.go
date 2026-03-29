@@ -90,3 +90,93 @@ func (client *ServiceClient) GetWANAccessByIP(in *GetWANAccessByIPRequest, out *
 	in.XMLNameSpace = client.Service.Type()
 	return client.TR064Client.InvokeService(client.Service, "GetWANAccessByIP", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
+
+type GetHostEntryByIPRequest struct {
+	XMLName        xml.Name `xml:"u:GetHostEntryByIPRequest"`
+	XMLNameSpace   string   `xml:"xmlns:u,attr"`
+	NewIPv4Address string   `xml:"NewIPv4Address"`
+}
+
+type GetHostEntryByIPResponse struct {
+	XMLName             xml.Name `xml:"GetHostEntryByIPResponse"`
+	NewHostName         string   `xml:"NewHostName"`
+	NewFilterProfileID  string   `xml:"NewFilterProfileID"`
+	NewTimeUsed         uint32   `xml:"NewTimeUsed"`
+	NewTimeMax          uint32   `xml:"NewTimeMax"`
+	NewTicketsInAdvance uint32   `xml:"NewTicketsInAdvance"`
+	NewTicketValid      uint32   `xml:"NewTicketValid"`
+	NewIsTimeShared     bool     `xml:"NewIsTimeShared"`
+	NewWANAccess        string   `xml:"NewWANAccess"`
+}
+
+func (client *ServiceClient) GetHostEntryByIP(in *GetHostEntryByIPRequest, out *GetHostEntryByIPResponse) error {
+	in.XMLNameSpace = client.Service.Type()
+	return client.TR064Client.InvokeService(client.Service, "GetHostEntryByIP", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
+}
+
+type GetFilterProfileByIDRequest struct {
+	XMLName            xml.Name `xml:"u:GetFilterProfileByIDRequest"`
+	XMLNameSpace       string   `xml:"xmlns:u,attr"`
+	NewFilterProfileID string   `xml:"NewFilterProfileID"`
+}
+
+type GetFilterProfileByIDResponse struct {
+	XMLName          xml.Name `xml:"GetFilterProfileByIDResponse"`
+	NewFilterProfile string   `xml:"NewFilterProfile"`
+}
+
+func (client *ServiceClient) GetFilterProfileByID(in *GetFilterProfileByIDRequest, out *GetFilterProfileByIDResponse) error {
+	in.XMLNameSpace = client.Service.Type()
+	return client.TR064Client.InvokeService(client.Service, "GetFilterProfileByID", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
+}
+
+type AddTicketTimeToHostEntryByIPRequest struct {
+	XMLName        xml.Name `xml:"u:AddTicketTimeToHostEntryByIPRequest"`
+	XMLNameSpace   string   `xml:"xmlns:u,attr"`
+	NewIPv4Address string   `xml:"NewIPv4Address"`
+}
+
+type AddTicketTimeToHostEntryByIPResponse struct {
+	XMLName             xml.Name `xml:"AddTicketTimeToHostEntryByIPResponse"`
+	NewTimeUsed         uint32   `xml:"NewTimeUsed"`
+	NewTimeMax          uint32   `xml:"NewTimeMax"`
+	NewTicketsInAdvance uint32   `xml:"NewTicketsInAdvance"`
+	NewTicketValid      uint32   `xml:"NewTicketValid"`
+}
+
+func (client *ServiceClient) AddTicketTimeToHostEntryByIP(in *AddTicketTimeToHostEntryByIPRequest, out *AddTicketTimeToHostEntryByIPResponse) error {
+	in.XMLNameSpace = client.Service.Type()
+	return client.TR064Client.InvokeService(client.Service, "AddTicketTimeToHostEntryByIP", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
+}
+
+type AddHostEntryToFilterProfileRequest struct {
+	XMLName            xml.Name `xml:"u:AddHostEntryToFilterProfileRequest"`
+	XMLNameSpace       string   `xml:"xmlns:u,attr"`
+	NewIPv4Address     string   `xml:"NewIPv4Address"`
+	NewFilterProfileID string   `xml:"NewFilterProfileID"`
+}
+
+type AddHostEntryToFilterProfileResponse struct {
+	XMLName xml.Name `xml:"AddHostEntryToFilterProfileResponse"`
+}
+
+func (client *ServiceClient) AddHostEntryToFilterProfile(in *AddHostEntryToFilterProfileRequest) error {
+	in.XMLNameSpace = client.Service.Type()
+	out := &AddHostEntryToFilterProfileResponse{}
+	return client.TR064Client.InvokeService(client.Service, "AddHostEntryToFilterProfile", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
+}
+
+type GetFilterProfilesRequest struct {
+	XMLName      xml.Name `xml:"u:GetFilterProfilesRequest"`
+	XMLNameSpace string   `xml:"xmlns:u,attr"`
+}
+
+type GetFilterProfilesResponse struct {
+	XMLName              xml.Name `xml:"GetFilterProfilesResponse"`
+	NewFilterProfileList string   `xml:"NewFilterProfileList"`
+}
+
+func (client *ServiceClient) GetFilterProfiles(out *GetFilterProfilesResponse) error {
+	in := &GetFilterProfilesRequest{XMLNameSpace: client.Service.Type()}
+	return client.TR064Client.InvokeService(client.Service, "GetFilterProfiles", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
+}
