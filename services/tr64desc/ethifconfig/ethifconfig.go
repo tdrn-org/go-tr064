@@ -53,10 +53,10 @@ type GetStatisticsRequest struct {
 
 type GetStatisticsResponse struct {
 	XMLName            xml.Name `xml:"GetStatisticsResponse"`
-	NewBytesSent       uint32   `xml:"NewBytesSent"`
-	NewBytesReceived   uint32   `xml:"NewBytesReceived"`
-	NewPacketsSent     uint32   `xml:"NewPacketsSent"`
-	NewPacketsReceived uint32   `xml:"NewPacketsReceived"`
+	NewBytesSent       uint64   `xml:"NewBytesSent"`
+	NewBytesReceived   uint64   `xml:"NewBytesReceived"`
+	NewPacketsSent     uint64   `xml:"NewPacketsSent"`
+	NewPacketsReceived uint64   `xml:"NewPacketsReceived"`
 }
 
 func (client *ServiceClient) GetStatistics(out *GetStatisticsResponse) error {

@@ -195,8 +195,8 @@ type GetStatisticsRequest struct {
 
 type GetStatisticsResponse struct {
 	XMLName                 xml.Name `xml:"GetStatisticsResponse"`
-	NewTotalPacketsSent     uint32   `xml:"NewTotalPacketsSent"`
-	NewTotalPacketsReceived uint32   `xml:"NewTotalPacketsReceived"`
+	NewTotalPacketsSent     uint64   `xml:"NewTotalPacketsSent"`
+	NewTotalPacketsReceived uint64   `xml:"NewTotalPacketsReceived"`
 }
 
 func (client *ServiceClient) GetStatistics(out *GetStatisticsResponse) error {
@@ -211,8 +211,8 @@ type GetPacketStatisticsRequest struct {
 
 type GetPacketStatisticsResponse struct {
 	XMLName                 xml.Name `xml:"GetPacketStatisticsResponse"`
-	NewTotalPacketsSent     uint32   `xml:"NewTotalPacketsSent"`
-	NewTotalPacketsReceived uint32   `xml:"NewTotalPacketsReceived"`
+	NewTotalPacketsSent     uint64   `xml:"NewTotalPacketsSent"`
+	NewTotalPacketsReceived uint64   `xml:"NewTotalPacketsReceived"`
 }
 
 func (client *ServiceClient) GetPacketStatistics(out *GetPacketStatisticsResponse) error {
@@ -531,8 +531,8 @@ type X_AVM_DE_GetWLANHybridModeResponse struct {
 	NewBSSID         string   `xml:"NewBSSID"`
 	NewTrafficMode   string   `xml:"NewTrafficMode"`
 	NewManualSpeed   bool     `xml:"NewManualSpeed"`
-	NewMaxSpeedDS    uint32   `xml:"NewMaxSpeedDS"`
-	NewMaxSpeedUS    uint32   `xml:"NewMaxSpeedUS"`
+	NewMaxSpeedDS    uint64   `xml:"NewMaxSpeedDS"`
+	NewMaxSpeedUS    uint64   `xml:"NewMaxSpeedUS"`
 }
 
 func (client *ServiceClient) X_AVM_DE_GetWLANHybridMode(out *X_AVM_DE_GetWLANHybridModeResponse) error {
@@ -550,8 +550,8 @@ type X_AVM_DE_SetWLANHybridModeRequest struct {
 	NewBSSID         string   `xml:"NewBSSID"`
 	NewTrafficMode   string   `xml:"NewTrafficMode"`
 	NewManualSpeed   bool     `xml:"NewManualSpeed"`
-	NewMaxSpeedDS    uint32   `xml:"NewMaxSpeedDS"`
-	NewMaxSpeedUS    uint32   `xml:"NewMaxSpeedUS"`
+	NewMaxSpeedDS    uint64   `xml:"NewMaxSpeedDS"`
+	NewMaxSpeedUS    uint64   `xml:"NewMaxSpeedUS"`
 }
 
 type X_AVM_DE_SetWLANHybridModeResponse struct {
@@ -580,7 +580,7 @@ type X_AVM_DE_GetWLANExtInfoResponse struct {
 	NewX_AVM_DE_NoForcedOff      string   `xml:"NewX_AVM-DE_NoForcedOff"`
 	NewX_AVM_DE_UserIsolation    string   `xml:"NewX_AVM-DE_UserIsolation"`
 	NewX_AVM_DE_EncryptionMode   string   `xml:"NewX_AVM-DE_EncryptionMode"`
-	NewX_AVM_DE_LastChangedStamp uint32   `xml:"NewX_AVM-DE_LastChangedStamp"`
+	NewX_AVM_DE_LastChangedStamp uint64   `xml:"NewX_AVM-DE_LastChangedStamp"`
 }
 
 func (client *ServiceClient) X_AVM_DE_GetWLANExtInfo(out *X_AVM_DE_GetWLANExtInfoResponse) error {
@@ -670,9 +670,9 @@ type X_AVM_DE_GetWLANConnectionInfoResponse struct {
 	NewX_AVM_DE_FrequencyBand      string   `xml:"NewX_AVM-DE_FrequencyBand"`
 	NewX_AVM_DE_SignalStrength     uint8    `xml:"NewX_AVM-DE_SignalStrength"`
 	NewX_AVM_DE_Speed              uint16   `xml:"NewX_AVM-DE_Speed"`
-	NewX_AVM_DE_SpeedRX            uint32   `xml:"NewX_AVM-DE_SpeedRX"`
-	NewX_AVM_DE_SpeedMax           uint32   `xml:"NewX_AVM-DE_SpeedMax"`
-	NewX_AVM_DE_SpeedRXMax         uint32   `xml:"NewX_AVM-DE_SpeedRXMax"`
+	NewX_AVM_DE_SpeedRX            uint64   `xml:"NewX_AVM-DE_SpeedRX"`
+	NewX_AVM_DE_SpeedMax           uint64   `xml:"NewX_AVM-DE_SpeedMax"`
+	NewX_AVM_DE_SpeedRXMax         uint64   `xml:"NewX_AVM-DE_SpeedRXMax"`
 	NewX_AVM_DE_MLDMACAddress      string   `xml:"NewX_AVM-DE_MLDMACAddress"`
 	NewX_AVM_DE_APMLDMACAddress    string   `xml:"NewX_AVM-DE_APMLDMACAddress"`
 	NewX_AVM_DE_MLOModes           string   `xml:"NewX_AVM-DE_MLOModes"`

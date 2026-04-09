@@ -23,7 +23,7 @@ type GetInfoResponse struct {
 	NewPossibleConnectionTypes string   `xml:"NewPossibleConnectionTypes"`
 	NewConnectionType          string   `xml:"NewConnectionType"`
 	NewName                    string   `xml:"NewName"`
-	NewUptime                  uint32   `xml:"NewUptime"`
+	NewUptime                  uint64   `xml:"NewUptime"`
 	NewLastConnectionError     string   `xml:"NewLastConnectionError"`
 	NewRSIPAvailable           bool     `xml:"NewRSIPAvailable"`
 	NewNATEnabled              bool     `xml:"NewNATEnabled"`
@@ -82,7 +82,7 @@ type GetStatusInfoResponse struct {
 	XMLName                xml.Name `xml:"GetStatusInfoResponse"`
 	NewConnectionStatus    string   `xml:"NewConnectionStatus"`
 	NewLastConnectionError string   `xml:"NewLastConnectionError"`
-	NewUptime              uint32   `xml:"NewUptime"`
+	NewUptime              uint64   `xml:"NewUptime"`
 }
 
 func (client *ServiceClient) GetStatusInfo(out *GetStatusInfoResponse) error {
@@ -167,7 +167,7 @@ type GetGenericPortMappingEntryResponse struct {
 	NewInternalClient         string   `xml:"NewInternalClient"`
 	NewEnabled                bool     `xml:"NewEnabled"`
 	NewPortMappingDescription string   `xml:"NewPortMappingDescription"`
-	NewLeaseDuration          uint32   `xml:"NewLeaseDuration"`
+	NewLeaseDuration          uint64   `xml:"NewLeaseDuration"`
 }
 
 func (client *ServiceClient) GetGenericPortMappingEntry(in *GetGenericPortMappingEntryRequest, out *GetGenericPortMappingEntryResponse) error {
@@ -189,7 +189,7 @@ type GetSpecificPortMappingEntryResponse struct {
 	NewInternalClient         string   `xml:"NewInternalClient"`
 	NewEnabled                bool     `xml:"NewEnabled"`
 	NewPortMappingDescription string   `xml:"NewPortMappingDescription"`
-	NewLeaseDuration          uint32   `xml:"NewLeaseDuration"`
+	NewLeaseDuration          uint64   `xml:"NewLeaseDuration"`
 }
 
 func (client *ServiceClient) GetSpecificPortMappingEntry(in *GetSpecificPortMappingEntryRequest, out *GetSpecificPortMappingEntryResponse) error {
@@ -207,7 +207,7 @@ type AddPortMappingRequest struct {
 	NewInternalClient         string   `xml:"NewInternalClient"`
 	NewEnabled                bool     `xml:"NewEnabled"`
 	NewPortMappingDescription string   `xml:"NewPortMappingDescription"`
-	NewLeaseDuration          uint32   `xml:"NewLeaseDuration"`
+	NewLeaseDuration          uint64   `xml:"NewLeaseDuration"`
 }
 
 type AddPortMappingResponse struct {
@@ -302,7 +302,7 @@ func (client *ServiceClient) SetRouteProtocolRx(in *SetRouteProtocolRxRequest) e
 type SetIdleDisconnectTimeRequest struct {
 	XMLName               xml.Name `xml:"u:SetIdleDisconnectTimeRequest"`
 	XMLNameSpace          string   `xml:"xmlns:u,attr"`
-	NewIdleDisconnectTime uint32   `xml:"NewIdleDisconnectTime"`
+	NewIdleDisconnectTime uint64   `xml:"NewIdleDisconnectTime"`
 }
 
 type SetIdleDisconnectTimeResponse struct {

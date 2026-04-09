@@ -21,7 +21,7 @@ type GetInfoResponse struct {
 	NewURL                       string   `xml:"NewURL"`
 	NewUsername                  string   `xml:"NewUsername"`
 	NewPeriodicInformEnable      bool     `xml:"NewPeriodicInformEnable"`
-	NewPeriodicInformInterval    uint32   `xml:"NewPeriodicInformInterval"`
+	NewPeriodicInformInterval    uint64   `xml:"NewPeriodicInformInterval"`
 	NewPeriodicInformTime        string   `xml:"NewPeriodicInformTime"`
 	NewParameterKey              string   `xml:"NewParameterKey"`
 	NewParameterHash             string   `xml:"NewParameterHash"`
@@ -87,7 +87,7 @@ type SetPeriodicInformRequest struct {
 	XMLName                   xml.Name `xml:"u:SetPeriodicInformRequest"`
 	XMLNameSpace              string   `xml:"xmlns:u,attr"`
 	NewPeriodicInformEnable   bool     `xml:"NewPeriodicInformEnable"`
-	NewPeriodicInformInterval uint32   `xml:"NewPeriodicInformInterval"`
+	NewPeriodicInformInterval uint64   `xml:"NewPeriodicInformInterval"`
 	NewPeriodicInformTime     string   `xml:"NewPeriodicInformTime"`
 }
 

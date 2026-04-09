@@ -39,7 +39,7 @@ type RequestFTPServerWANRequest struct {
 type RequestFTPServerWANResponse struct {
 	XMLName           xml.Name `xml:"RequestFTPServerWANResponse"`
 	NewFTPWANPort     uint16   `xml:"NewFTPWANPort"`
-	NewFTPWANLifetime uint32   `xml:"NewFTPWANLifetime"`
+	NewFTPWANLifetime uint64   `xml:"NewFTPWANLifetime"`
 }
 
 func (client *ServiceClient) RequestFTPServerWAN(out *RequestFTPServerWANResponse) error {

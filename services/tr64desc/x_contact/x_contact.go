@@ -247,7 +247,7 @@ type GetPhonebookEntryRequest struct {
 	XMLName             xml.Name `xml:"u:GetPhonebookEntryRequest"`
 	XMLNameSpace        string   `xml:"xmlns:u,attr"`
 	NewPhonebookID      uint16   `xml:"NewPhonebookID"`
-	NewPhonebookEntryID uint32   `xml:"NewPhonebookEntryID"`
+	NewPhonebookEntryID uint64   `xml:"NewPhonebookEntryID"`
 }
 
 type GetPhonebookEntryResponse struct {
@@ -264,7 +264,7 @@ type GetPhonebookEntryUIDRequest struct {
 	XMLName                   xml.Name `xml:"u:GetPhonebookEntryUIDRequest"`
 	XMLNameSpace              string   `xml:"xmlns:u,attr"`
 	NewPhonebookID            uint16   `xml:"NewPhonebookID"`
-	NewPhonebookEntryUniqueID uint32   `xml:"NewPhonebookEntryUniqueID"`
+	NewPhonebookEntryUniqueID uint64   `xml:"NewPhonebookEntryUniqueID"`
 }
 
 type GetPhonebookEntryUIDResponse struct {
@@ -281,7 +281,7 @@ type SetPhonebookEntryRequest struct {
 	XMLName               xml.Name `xml:"u:SetPhonebookEntryRequest"`
 	XMLNameSpace          string   `xml:"xmlns:u,attr"`
 	NewPhonebookID        uint16   `xml:"NewPhonebookID"`
-	NewPhonebookEntryID   uint32   `xml:"NewPhonebookEntryID"`
+	NewPhonebookEntryID   uint64   `xml:"NewPhonebookEntryID"`
 	NewPhonebookEntryData string   `xml:"NewPhonebookEntryData"`
 }
 
@@ -304,7 +304,7 @@ type SetPhonebookEntryUIDRequest struct {
 
 type SetPhonebookEntryUIDResponse struct {
 	XMLName                   xml.Name `xml:"SetPhonebookEntryUIDResponse"`
-	NewPhonebookEntryUniqueID uint32   `xml:"NewPhonebookEntryUniqueID"`
+	NewPhonebookEntryUniqueID uint64   `xml:"NewPhonebookEntryUniqueID"`
 }
 
 func (client *ServiceClient) SetPhonebookEntryUID(in *SetPhonebookEntryUIDRequest, out *SetPhonebookEntryUIDResponse) error {
@@ -316,7 +316,7 @@ type DeletePhonebookEntryRequest struct {
 	XMLName             xml.Name `xml:"u:DeletePhonebookEntryRequest"`
 	XMLNameSpace        string   `xml:"xmlns:u,attr"`
 	NewPhonebookID      uint16   `xml:"NewPhonebookID"`
-	NewPhonebookEntryID uint32   `xml:"NewPhonebookEntryID"`
+	NewPhonebookEntryID uint64   `xml:"NewPhonebookEntryID"`
 }
 
 type DeletePhonebookEntryResponse struct {
@@ -333,7 +333,7 @@ type DeletePhonebookEntryUIDRequest struct {
 	XMLName                   xml.Name `xml:"u:DeletePhonebookEntryUIDRequest"`
 	XMLNameSpace              string   `xml:"xmlns:u,attr"`
 	NewPhonebookID            uint16   `xml:"NewPhonebookID"`
-	NewPhonebookEntryUniqueID uint32   `xml:"NewPhonebookEntryUniqueID"`
+	NewPhonebookEntryUniqueID uint64   `xml:"NewPhonebookEntryUniqueID"`
 }
 
 type DeletePhonebookEntryUIDResponse struct {
@@ -349,7 +349,7 @@ func (client *ServiceClient) DeletePhonebookEntryUID(in *DeletePhonebookEntryUID
 type GetCallBarringEntryRequest struct {
 	XMLName             xml.Name `xml:"u:GetCallBarringEntryRequest"`
 	XMLNameSpace        string   `xml:"xmlns:u,attr"`
-	NewPhonebookEntryID uint32   `xml:"NewPhonebookEntryID"`
+	NewPhonebookEntryID uint64   `xml:"NewPhonebookEntryID"`
 }
 
 type GetCallBarringEntryResponse struct {
@@ -401,7 +401,7 @@ type SetCallBarringEntryRequest struct {
 
 type SetCallBarringEntryResponse struct {
 	XMLName                   xml.Name `xml:"SetCallBarringEntryResponse"`
-	NewPhonebookEntryUniqueID uint32   `xml:"NewPhonebookEntryUniqueID"`
+	NewPhonebookEntryUniqueID uint64   `xml:"NewPhonebookEntryUniqueID"`
 }
 
 func (client *ServiceClient) SetCallBarringEntry(in *SetCallBarringEntryRequest, out *SetCallBarringEntryResponse) error {
@@ -412,7 +412,7 @@ func (client *ServiceClient) SetCallBarringEntry(in *SetCallBarringEntryRequest,
 type DeleteCallBarringEntryUIDRequest struct {
 	XMLName                   xml.Name `xml:"u:DeleteCallBarringEntryUIDRequest"`
 	XMLNameSpace              string   `xml:"xmlns:u,attr"`
-	NewPhonebookEntryUniqueID uint32   `xml:"NewPhonebookEntryUniqueID"`
+	NewPhonebookEntryUniqueID uint64   `xml:"NewPhonebookEntryUniqueID"`
 }
 
 type DeleteCallBarringEntryUIDResponse struct {

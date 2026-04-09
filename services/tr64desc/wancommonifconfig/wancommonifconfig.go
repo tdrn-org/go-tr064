@@ -19,13 +19,13 @@ type GetCommonLinkPropertiesRequest struct {
 type GetCommonLinkPropertiesResponse struct {
 	XMLName                                  xml.Name `xml:"GetCommonLinkPropertiesResponse"`
 	NewWANAccessType                         string   `xml:"NewWANAccessType"`
-	NewLayer1UpstreamMaxBitRate              uint32   `xml:"NewLayer1UpstreamMaxBitRate"`
-	NewLayer1DownstreamMaxBitRate            uint32   `xml:"NewLayer1DownstreamMaxBitRate"`
+	NewLayer1UpstreamMaxBitRate              uint64   `xml:"NewLayer1UpstreamMaxBitRate"`
+	NewLayer1DownstreamMaxBitRate            uint64   `xml:"NewLayer1DownstreamMaxBitRate"`
 	NewPhysicalLinkStatus                    string   `xml:"NewPhysicalLinkStatus"`
 	NewX_AVM_DE_DownstreamCurrentUtilization string   `xml:"NewX_AVM-DE_DownstreamCurrentUtilization"`
 	NewX_AVM_DE_UpstreamCurrentUtilization   string   `xml:"NewX_AVM-DE_UpstreamCurrentUtilization"`
-	NewX_AVM_DE_DownstreamCurrentMaxSpeed    uint32   `xml:"NewX_AVM-DE_DownstreamCurrentMaxSpeed"`
-	NewX_AVM_DE_UpstreamCurrentMaxSpeed      uint32   `xml:"NewX_AVM-DE_UpstreamCurrentMaxSpeed"`
+	NewX_AVM_DE_DownstreamCurrentMaxSpeed    uint64   `xml:"NewX_AVM-DE_DownstreamCurrentMaxSpeed"`
+	NewX_AVM_DE_UpstreamCurrentMaxSpeed      uint64   `xml:"NewX_AVM-DE_UpstreamCurrentMaxSpeed"`
 }
 
 func (client *ServiceClient) GetCommonLinkProperties(out *GetCommonLinkPropertiesResponse) error {
@@ -40,7 +40,7 @@ type GetTotalBytesSentRequest struct {
 
 type GetTotalBytesSentResponse struct {
 	XMLName           xml.Name `xml:"GetTotalBytesSentResponse"`
-	NewTotalBytesSent uint32   `xml:"NewTotalBytesSent"`
+	NewTotalBytesSent uint64   `xml:"NewTotalBytesSent"`
 }
 
 func (client *ServiceClient) GetTotalBytesSent(out *GetTotalBytesSentResponse) error {
@@ -55,7 +55,7 @@ type GetTotalBytesReceivedRequest struct {
 
 type GetTotalBytesReceivedResponse struct {
 	XMLName               xml.Name `xml:"GetTotalBytesReceivedResponse"`
-	NewTotalBytesReceived uint32   `xml:"NewTotalBytesReceived"`
+	NewTotalBytesReceived uint64   `xml:"NewTotalBytesReceived"`
 }
 
 func (client *ServiceClient) GetTotalBytesReceived(out *GetTotalBytesReceivedResponse) error {
@@ -70,7 +70,7 @@ type GetTotalPacketsSentRequest struct {
 
 type GetTotalPacketsSentResponse struct {
 	XMLName             xml.Name `xml:"GetTotalPacketsSentResponse"`
-	NewTotalPacketsSent uint32   `xml:"NewTotalPacketsSent"`
+	NewTotalPacketsSent uint64   `xml:"NewTotalPacketsSent"`
 }
 
 func (client *ServiceClient) GetTotalPacketsSent(out *GetTotalPacketsSentResponse) error {
@@ -85,7 +85,7 @@ type GetTotalPacketsReceivedRequest struct {
 
 type GetTotalPacketsReceivedResponse struct {
 	XMLName                 xml.Name `xml:"GetTotalPacketsReceivedResponse"`
-	NewTotalPacketsReceived uint32   `xml:"NewTotalPacketsReceived"`
+	NewTotalPacketsReceived uint64   `xml:"NewTotalPacketsReceived"`
 }
 
 func (client *ServiceClient) GetTotalPacketsReceived(out *GetTotalPacketsReceivedResponse) error {
@@ -127,16 +127,16 @@ func (client *ServiceClient) X_AVM_DE_GetActiveProvider(out *X_AVM_DE_GetActiveP
 type X_AVM_DE_GetOnlineMonitorRequest struct {
 	XMLName           xml.Name `xml:"u:X_AVM-DE_GetOnlineMonitorRequest"`
 	XMLNameSpace      string   `xml:"xmlns:u,attr"`
-	NewSyncGroupIndex uint32   `xml:"NewSyncGroupIndex"`
+	NewSyncGroupIndex uint64   `xml:"NewSyncGroupIndex"`
 }
 
 type X_AVM_DE_GetOnlineMonitorResponse struct {
 	XMLName                  xml.Name `xml:"X_AVM-DE_GetOnlineMonitorResponse"`
-	NewTotalNumberSyncGroups uint32   `xml:"NewTotalNumberSyncGroups"`
+	NewTotalNumberSyncGroups uint64   `xml:"NewTotalNumberSyncGroups"`
 	NewSyncGroupName         string   `xml:"NewSyncGroupName"`
 	NewSyncGroupMode         string   `xml:"NewSyncGroupMode"`
-	Newmax_ds                uint32   `xml:"Newmax_ds"`
-	Newmax_us                uint32   `xml:"Newmax_us"`
+	Newmax_ds                uint64   `xml:"Newmax_ds"`
+	Newmax_us                uint64   `xml:"Newmax_us"`
 	Newds_current_bps        string   `xml:"Newds_current_bps"`
 	Newmc_current_bps        string   `xml:"Newmc_current_bps"`
 	Newus_current_bps        string   `xml:"Newus_current_bps"`

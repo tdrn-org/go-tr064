@@ -36,7 +36,7 @@ type GetSpecificHostEntryResponse struct {
 	XMLName               xml.Name `xml:"GetSpecificHostEntryResponse"`
 	NewIPAddress          string   `xml:"NewIPAddress"`
 	NewAddressSource      string   `xml:"NewAddressSource"`
-	NewLeaseTimeRemaining int32    `xml:"NewLeaseTimeRemaining"`
+	NewLeaseTimeRemaining int64    `xml:"NewLeaseTimeRemaining"`
 	NewInterfaceType      string   `xml:"NewInterfaceType"`
 	NewActive             bool     `xml:"NewActive"`
 	NewHostName           string   `xml:"NewHostName"`
@@ -57,7 +57,7 @@ type GetGenericHostEntryResponse struct {
 	XMLName               xml.Name `xml:"GetGenericHostEntryResponse"`
 	NewIPAddress          string   `xml:"NewIPAddress"`
 	NewAddressSource      string   `xml:"NewAddressSource"`
-	NewLeaseTimeRemaining int32    `xml:"NewLeaseTimeRemaining"`
+	NewLeaseTimeRemaining int64    `xml:"NewLeaseTimeRemaining"`
 	NewMACAddress         string   `xml:"NewMACAddress"`
 	NewInterfaceType      string   `xml:"NewInterfaceType"`
 	NewActive             bool     `xml:"NewActive"`
@@ -96,7 +96,7 @@ type X_AVM_DE_GetChangeCounterRequest struct {
 
 type X_AVM_DE_GetChangeCounterResponse struct {
 	XMLName                   xml.Name `xml:"X_AVM-DE_GetChangeCounterResponse"`
-	NewX_AVM_DE_ChangeCounter uint32   `xml:"NewX_AVM-DE_ChangeCounter"`
+	NewX_AVM_DE_ChangeCounter uint64   `xml:"NewX_AVM-DE_ChangeCounter"`
 }
 
 func (client *ServiceClient) X_AVM_DE_GetChangeCounter(out *X_AVM_DE_GetChangeCounterResponse) error {
@@ -182,8 +182,8 @@ type X_AVM_DE_GetSpecificHostEntryByIPResponse struct {
 	NewActive                           bool     `xml:"NewActive"`
 	NewHostName                         string   `xml:"NewHostName"`
 	NewInterfaceType                    string   `xml:"NewInterfaceType"`
-	NewX_AVM_DE_Port                    uint32   `xml:"NewX_AVM-DE_Port"`
-	NewX_AVM_DE_Speed                   uint32   `xml:"NewX_AVM-DE_Speed"`
+	NewX_AVM_DE_Port                    uint64   `xml:"NewX_AVM-DE_Port"`
+	NewX_AVM_DE_Speed                   uint64   `xml:"NewX_AVM-DE_Speed"`
 	NewX_AVM_DE_UpdateAvailable         bool     `xml:"NewX_AVM-DE_UpdateAvailable"`
 	NewX_AVM_DE_UpdateSuccessful        string   `xml:"NewX_AVM-DE_UpdateSuccessful"`
 	NewX_AVM_DE_InfoURL                 string   `xml:"NewX_AVM-DE_InfoURL"`

@@ -197,7 +197,7 @@ func (client *ServiceClient) SetAppMessageReceiver(in *SetAppMessageReceiverRequ
 type ResetEventRequest struct {
 	XMLName      xml.Name `xml:"u:ResetEventRequest"`
 	XMLNameSpace string   `xml:"xmlns:u,attr"`
-	NewEventId   uint32   `xml:"NewEventId"`
+	NewEventId   uint64   `xml:"NewEventId"`
 }
 
 type ResetEventResponse struct {

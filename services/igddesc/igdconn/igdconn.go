@@ -50,7 +50,7 @@ type GetAutoDisconnectTimeRequest struct {
 
 type GetAutoDisconnectTimeResponse struct {
 	XMLName               xml.Name `xml:"GetAutoDisconnectTimeResponse"`
-	NewAutoDisconnectTime uint32   `xml:"NewAutoDisconnectTime"`
+	NewAutoDisconnectTime uint64   `xml:"NewAutoDisconnectTime"`
 }
 
 func (client *ServiceClient) GetAutoDisconnectTime(out *GetAutoDisconnectTimeResponse) error {
@@ -65,7 +65,7 @@ type GetIdleDisconnectTimeRequest struct {
 
 type GetIdleDisconnectTimeResponse struct {
 	XMLName               xml.Name `xml:"GetIdleDisconnectTimeResponse"`
-	NewIdleDisconnectTime uint32   `xml:"NewIdleDisconnectTime"`
+	NewIdleDisconnectTime uint64   `xml:"NewIdleDisconnectTime"`
 }
 
 func (client *ServiceClient) GetIdleDisconnectTime(out *GetIdleDisconnectTimeResponse) error {
@@ -127,7 +127,7 @@ type GetStatusInfoResponse struct {
 	XMLName                xml.Name `xml:"GetStatusInfoResponse"`
 	NewConnectionStatus    string   `xml:"NewConnectionStatus"`
 	NewLastConnectionError string   `xml:"NewLastConnectionError"`
-	NewUptime              uint32   `xml:"NewUptime"`
+	NewUptime              uint64   `xml:"NewUptime"`
 }
 
 func (client *ServiceClient) GetStatusInfo(out *GetStatusInfoResponse) error {
@@ -166,7 +166,7 @@ type GetGenericPortMappingEntryResponse struct {
 	NewInternalClient         string   `xml:"NewInternalClient"`
 	NewEnabled                bool     `xml:"NewEnabled"`
 	NewPortMappingDescription string   `xml:"NewPortMappingDescription"`
-	NewLeaseDuration          uint32   `xml:"NewLeaseDuration"`
+	NewLeaseDuration          uint64   `xml:"NewLeaseDuration"`
 }
 
 func (client *ServiceClient) GetGenericPortMappingEntry(in *GetGenericPortMappingEntryRequest, out *GetGenericPortMappingEntryResponse) error {
@@ -188,7 +188,7 @@ type GetSpecificPortMappingEntryResponse struct {
 	NewInternalClient         string   `xml:"NewInternalClient"`
 	NewEnabled                bool     `xml:"NewEnabled"`
 	NewPortMappingDescription string   `xml:"NewPortMappingDescription"`
-	NewLeaseDuration          uint32   `xml:"NewLeaseDuration"`
+	NewLeaseDuration          uint64   `xml:"NewLeaseDuration"`
 }
 
 func (client *ServiceClient) GetSpecificPortMappingEntry(in *GetSpecificPortMappingEntryRequest, out *GetSpecificPortMappingEntryResponse) error {
@@ -206,7 +206,7 @@ type AddPortMappingRequest struct {
 	NewInternalClient         string   `xml:"NewInternalClient"`
 	NewEnabled                bool     `xml:"NewEnabled"`
 	NewPortMappingDescription string   `xml:"NewPortMappingDescription"`
-	NewLeaseDuration          uint32   `xml:"NewLeaseDuration"`
+	NewLeaseDuration          uint64   `xml:"NewLeaseDuration"`
 }
 
 type AddPortMappingResponse struct {
@@ -261,8 +261,8 @@ type X_AVM_DE_GetExternalIPv6AddressResponse struct {
 	XMLName                xml.Name `xml:"X_AVM_DE_GetExternalIPv6AddressResponse"`
 	NewExternalIPv6Address string   `xml:"NewExternalIPv6Address"`
 	NewPrefixLength        uint8    `xml:"NewPrefixLength"`
-	NewValidLifetime       uint32   `xml:"NewValidLifetime"`
-	NewPreferedLifetime    uint32   `xml:"NewPreferedLifetime"`
+	NewValidLifetime       uint64   `xml:"NewValidLifetime"`
+	NewPreferedLifetime    uint64   `xml:"NewPreferedLifetime"`
 }
 
 func (client *ServiceClient) X_AVM_DE_GetExternalIPv6Address(out *X_AVM_DE_GetExternalIPv6AddressResponse) error {
@@ -279,8 +279,8 @@ type X_AVM_DE_GetIPv6PrefixResponse struct {
 	XMLName             xml.Name `xml:"X_AVM_DE_GetIPv6PrefixResponse"`
 	NewIPv6Prefix       string   `xml:"NewIPv6Prefix"`
 	NewPrefixLength     uint8    `xml:"NewPrefixLength"`
-	NewValidLifetime    uint32   `xml:"NewValidLifetime"`
-	NewPreferedLifetime uint32   `xml:"NewPreferedLifetime"`
+	NewValidLifetime    uint64   `xml:"NewValidLifetime"`
+	NewPreferedLifetime uint64   `xml:"NewPreferedLifetime"`
 }
 
 func (client *ServiceClient) X_AVM_DE_GetIPv6Prefix(out *X_AVM_DE_GetIPv6PrefixResponse) error {
@@ -312,9 +312,9 @@ type X_AVM_DE_GetIPv6DNSServerRequest struct {
 type X_AVM_DE_GetIPv6DNSServerResponse struct {
 	XMLName           xml.Name `xml:"X_AVM_DE_GetIPv6DNSServerResponse"`
 	NewIPv6DNSServer1 string   `xml:"NewIPv6DNSServer1"`
-	NewValidLifetime1 uint32   `xml:"NewValidLifetime1"`
+	NewValidLifetime1 uint64   `xml:"NewValidLifetime1"`
 	NewIPv6DNSServer2 string   `xml:"NewIPv6DNSServer2"`
-	NewValidLifetime  uint32   `xml:"NewValidLifetime"`
+	NewValidLifetime  uint64   `xml:"NewValidLifetime"`
 }
 
 func (client *ServiceClient) X_AVM_DE_GetIPv6DNSServer(out *X_AVM_DE_GetIPv6DNSServerResponse) error {

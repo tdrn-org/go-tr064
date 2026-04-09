@@ -101,10 +101,10 @@ type GetHostEntryByIPResponse struct {
 	XMLName             xml.Name `xml:"GetHostEntryByIPResponse"`
 	NewHostName         string   `xml:"NewHostName"`
 	NewFilterProfileID  string   `xml:"NewFilterProfileID"`
-	NewTimeUsed         uint32   `xml:"NewTimeUsed"`
-	NewTimeMax          uint32   `xml:"NewTimeMax"`
-	NewTicketsInAdvance uint32   `xml:"NewTicketsInAdvance"`
-	NewTicketValid      uint32   `xml:"NewTicketValid"`
+	NewTimeUsed         uint64   `xml:"NewTimeUsed"`
+	NewTimeMax          uint64   `xml:"NewTimeMax"`
+	NewTicketsInAdvance uint64   `xml:"NewTicketsInAdvance"`
+	NewTicketValid      uint64   `xml:"NewTicketValid"`
 	NewIsTimeShared     bool     `xml:"NewIsTimeShared"`
 	NewWANAccess        string   `xml:"NewWANAccess"`
 }
@@ -138,10 +138,10 @@ type AddTicketTimeToHostEntryByIPRequest struct {
 
 type AddTicketTimeToHostEntryByIPResponse struct {
 	XMLName             xml.Name `xml:"AddTicketTimeToHostEntryByIPResponse"`
-	NewTimeUsed         uint32   `xml:"NewTimeUsed"`
-	NewTimeMax          uint32   `xml:"NewTimeMax"`
-	NewTicketsInAdvance uint32   `xml:"NewTicketsInAdvance"`
-	NewTicketValid      uint32   `xml:"NewTicketValid"`
+	NewTimeUsed         uint64   `xml:"NewTimeUsed"`
+	NewTimeMax          uint64   `xml:"NewTimeMax"`
+	NewTicketsInAdvance uint64   `xml:"NewTicketsInAdvance"`
+	NewTicketValid      uint64   `xml:"NewTicketValid"`
 }
 
 func (client *ServiceClient) AddTicketTimeToHostEntryByIP(in *AddTicketTimeToHostEntryByIPRequest, out *AddTicketTimeToHostEntryByIPResponse) error {

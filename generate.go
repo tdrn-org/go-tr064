@@ -387,10 +387,10 @@ func mangleName(name string) string {
 var dataTypeMap map[string]string = map[string]string{
 	"i1":       "int8",
 	"i2":       "int16",
-	"i4":       "int32",
+	"i4":       "int64",
 	"ui1":      "uint8",
 	"ui2":      "uint16",
-	"ui4":      "uint32",
+	"ui4":      "uint64",
 	"boolean":  "bool",
 	"string":   "string",
 	"dateTime": "string",

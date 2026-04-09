@@ -43,16 +43,16 @@ type GetInfoExResponse struct {
 	NewPPPAuthProtocol         string   `xml:"NewPPPAuthProtocol"`
 	NewPPPAuthProtocolVoIP     string   `xml:"NewPPPAuthProtocolVoIP"`
 	NewSoftwareVersion         string   `xml:"NewSoftwareVersion"`
-	NewUptime                  uint32   `xml:"NewUptime"`
-	NewPDN1_MTU                uint32   `xml:"NewPDN1_MTU"`
-	NewPDN2_MTU                uint32   `xml:"NewPDN2_MTU"`
+	NewUptime                  uint64   `xml:"NewUptime"`
+	NewPDN1_MTU                uint64   `xml:"NewPDN1_MTU"`
+	NewPDN2_MTU                uint64   `xml:"NewPDN2_MTU"`
 	NewIMSI                    string   `xml:"NewIMSI"`
 	NewAPN_VoIP                string   `xml:"NewAPN_VoIP"`
 	NewAPN                     string   `xml:"NewAPN"`
 	NewRoaming                 bool     `xml:"NewRoaming"`
 	NewCurrentAccessTechnology string   `xml:"NewCurrentAccessTechnology"`
-	NewSignalRSRP0             int32    `xml:"NewSignalRSRP0"`
-	NewSignalRSRP1             int32    `xml:"NewSignalRSRP1"`
+	NewSignalRSRP0             int64    `xml:"NewSignalRSRP0"`
+	NewSignalRSRP1             int64    `xml:"NewSignalRSRP1"`
 	NewCellList                string   `xml:"NewCellList"`
 }
 

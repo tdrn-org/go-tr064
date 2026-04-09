@@ -413,7 +413,7 @@ type X_AVM_DE_GetNumberOfNumbersRequest struct {
 
 type X_AVM_DE_GetNumberOfNumbersResponse struct {
 	XMLName            xml.Name `xml:"X_AVM-DE_GetNumberOfNumbersResponse"`
-	NewNumberOfNumbers uint32   `xml:"NewNumberOfNumbers"`
+	NewNumberOfNumbers uint64   `xml:"NewNumberOfNumbers"`
 }
 
 func (client *ServiceClient) X_AVM_DE_GetNumberOfNumbers(out *X_AVM_DE_GetNumberOfNumbersResponse) error {

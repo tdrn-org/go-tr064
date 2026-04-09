@@ -18,17 +18,17 @@ type GetInfoRequest struct {
 
 type GetInfoResponse struct {
 	XMLName                        xml.Name `xml:"GetInfoResponse"`
-	NewOpticalSignalLevel          int32    `xml:"NewOpticalSignalLevel"`
-	NewLowerOpticalThreshold       int32    `xml:"NewLowerOpticalThreshold"`
-	NewUpperOpticalThreshold       int32    `xml:"NewUpperOpticalThreshold"`
-	NewTransmitOpticalLevel        int32    `xml:"NewTransmitOpticalLevel"`
-	NewLowerTransmitPowerThreshold int32    `xml:"NewLowerTransmitPowerThreshold"`
-	NewUpperTransmitPowerThreshold int32    `xml:"NewUpperTransmitPowerThreshold"`
+	NewOpticalSignalLevel          int64    `xml:"NewOpticalSignalLevel"`
+	NewLowerOpticalThreshold       int64    `xml:"NewLowerOpticalThreshold"`
+	NewUpperOpticalThreshold       int64    `xml:"NewUpperOpticalThreshold"`
+	NewTransmitOpticalLevel        int64    `xml:"NewTransmitOpticalLevel"`
+	NewLowerTransmitPowerThreshold int64    `xml:"NewLowerTransmitPowerThreshold"`
+	NewUpperTransmitPowerThreshold int64    `xml:"NewUpperTransmitPowerThreshold"`
 	NewSFPVendor                   string   `xml:"NewSFPVendor"`
 	NewSFPPartNumber               string   `xml:"NewSFPPartNumber"`
 	NewSFPSerialNumber             string   `xml:"NewSFPSerialNumber"`
-	NewSFPType                     int32    `xml:"NewSFPType"`
-	NewTXWaveLength                uint32   `xml:"NewTXWaveLength"`
+	NewSFPType                     int64    `xml:"NewSFPType"`
+	NewTXWaveLength                uint64   `xml:"NewTXWaveLength"`
 	NewFiberMode                   string   `xml:"NewFiberMode"`
 }
 
@@ -46,9 +46,9 @@ type GetInfoGPONResponse struct {
 	XMLName         xml.Name `xml:"GetInfoGPONResponse"`
 	NewGPONSerial   string   `xml:"NewGPONSerial"`
 	NewPONId        string   `xml:"NewPONId"`
-	NewONUId        uint32   `xml:"NewONUId"`
+	NewONUId        uint64   `xml:"NewONUId"`
 	NewUNIType      string   `xml:"NewUNIType"`
-	NewGEMPortCount uint32   `xml:"NewGEMPortCount"`
+	NewGEMPortCount uint64   `xml:"NewGEMPortCount"`
 }
 
 func (client *ServiceClient) GetInfoGPON(out *GetInfoGPONResponse) error {
@@ -63,18 +63,18 @@ type GetStatisticsRequest struct {
 
 type GetStatisticsResponse struct {
 	XMLName                 xml.Name `xml:"GetStatisticsResponse"`
-	NewBytesSent            uint32   `xml:"NewBytesSent"`
-	NewBytesReceived        uint32   `xml:"NewBytesReceived"`
-	NewPacketsSent          uint32   `xml:"NewPacketsSent"`
-	NewPacketsReceived      uint32   `xml:"NewPacketsReceived"`
-	NewPacketErrorsSent     uint32   `xml:"NewPacketErrorsSent"`
-	NewPacketErrorsReceived uint32   `xml:"NewPacketErrorsReceived"`
-	NewPacketsMulticast     uint32   `xml:"NewPacketsMulticast"`
-	NewConnectionRateDown   uint32   `xml:"NewConnectionRateDown"`
-	NewConnectionRateUp     uint32   `xml:"NewConnectionRateUp"`
-	NewBestTrainState       uint32   `xml:"NewBestTrainState"`
-	NewResyncs              uint32   `xml:"NewResyncs"`
-	NewMinutesInShowtime    uint32   `xml:"NewMinutesInShowtime"`
+	NewBytesSent            uint64   `xml:"NewBytesSent"`
+	NewBytesReceived        uint64   `xml:"NewBytesReceived"`
+	NewPacketsSent          uint64   `xml:"NewPacketsSent"`
+	NewPacketsReceived      uint64   `xml:"NewPacketsReceived"`
+	NewPacketErrorsSent     uint64   `xml:"NewPacketErrorsSent"`
+	NewPacketErrorsReceived uint64   `xml:"NewPacketErrorsReceived"`
+	NewPacketsMulticast     uint64   `xml:"NewPacketsMulticast"`
+	NewConnectionRateDown   uint64   `xml:"NewConnectionRateDown"`
+	NewConnectionRateUp     uint64   `xml:"NewConnectionRateUp"`
+	NewBestTrainState       uint64   `xml:"NewBestTrainState"`
+	NewResyncs              uint64   `xml:"NewResyncs"`
+	NewMinutesInShowtime    uint64   `xml:"NewMinutesInShowtime"`
 }
 
 func (client *ServiceClient) GetStatistics(out *GetStatisticsResponse) error {

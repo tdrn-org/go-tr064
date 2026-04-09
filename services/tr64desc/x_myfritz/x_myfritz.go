@@ -21,7 +21,7 @@ type GetInfoResponse struct {
 	NewEnabled          bool     `xml:"NewEnabled"`
 	NewDeviceRegistered bool     `xml:"NewDeviceRegistered"`
 	NewDynDNSName       string   `xml:"NewDynDNSName"`
-	NewPort             uint32   `xml:"NewPort"`
+	NewPort             uint64   `xml:"NewPort"`
 	NewState            string   `xml:"NewState"`
 	NewEmail            string   `xml:"NewEmail"`
 }
@@ -55,7 +55,7 @@ type GetNumberOfServicesRequest struct {
 
 type GetNumberOfServicesResponse struct {
 	XMLName             xml.Name `xml:"GetNumberOfServicesResponse"`
-	NewNumberOfServices uint32   `xml:"NewNumberOfServices"`
+	NewNumberOfServices uint64   `xml:"NewNumberOfServices"`
 }
 
 func (client *ServiceClient) GetNumberOfServices(out *GetNumberOfServicesResponse) error {
@@ -66,7 +66,7 @@ func (client *ServiceClient) GetNumberOfServices(out *GetNumberOfServicesRespons
 type GetServiceByIndexRequest struct {
 	XMLName      xml.Name `xml:"u:GetServiceByIndexRequest"`
 	XMLNameSpace string   `xml:"xmlns:u,attr"`
-	NewIndex     uint32   `xml:"NewIndex"`
+	NewIndex     uint64   `xml:"NewIndex"`
 }
 
 type GetServiceByIndexResponse struct {
@@ -74,7 +74,7 @@ type GetServiceByIndexResponse struct {
 	NewEnabled               bool     `xml:"NewEnabled"`
 	NewName                  string   `xml:"NewName"`
 	NewScheme                string   `xml:"NewScheme"`
-	NewPort                  uint32   `xml:"NewPort"`
+	NewPort                  uint64   `xml:"NewPort"`
 	NewURLPath               string   `xml:"NewURLPath"`
 	NewType                  string   `xml:"NewType"`
 	NewIPv4ForwardingWarning uint8    `xml:"NewIPv4ForwardingWarning"`
@@ -84,7 +84,7 @@ type GetServiceByIndexResponse struct {
 	NewMACAddress            string   `xml:"NewMACAddress"`
 	NewHostName              string   `xml:"NewHostName"`
 	NewDynDnsLabel           string   `xml:"NewDynDnsLabel"`
-	NewStatus                uint32   `xml:"NewStatus"`
+	NewStatus                uint64   `xml:"NewStatus"`
 }
 
 func (client *ServiceClient) GetServiceByIndex(in *GetServiceByIndexRequest, out *GetServiceByIndexResponse) error {
@@ -95,11 +95,11 @@ func (client *ServiceClient) GetServiceByIndex(in *GetServiceByIndexRequest, out
 type SetServiceByIndexRequest struct {
 	XMLName            xml.Name `xml:"u:SetServiceByIndexRequest"`
 	XMLNameSpace       string   `xml:"xmlns:u,attr"`
-	NewIndex           uint32   `xml:"NewIndex"`
+	NewIndex           uint64   `xml:"NewIndex"`
 	NewEnabled         bool     `xml:"NewEnabled"`
 	NewName            string   `xml:"NewName"`
 	NewScheme          string   `xml:"NewScheme"`
-	NewPort            uint32   `xml:"NewPort"`
+	NewPort            uint64   `xml:"NewPort"`
 	NewURLPath         string   `xml:"NewURLPath"`
 	NewType            string   `xml:"NewType"`
 	NewIPv4Address     string   `xml:"NewIPv4Address"`
@@ -122,7 +122,7 @@ func (client *ServiceClient) SetServiceByIndex(in *SetServiceByIndexRequest) err
 type DeleteServiceByIndexRequest struct {
 	XMLName      xml.Name `xml:"u:DeleteServiceByIndexRequest"`
 	XMLNameSpace string   `xml:"xmlns:u,attr"`
-	NewIndex     uint32   `xml:"NewIndex"`
+	NewIndex     uint64   `xml:"NewIndex"`
 }
 
 type DeleteServiceByIndexResponse struct {

@@ -28,7 +28,7 @@ type GetInfoResponse struct {
 	NewHardwareVersion  string   `xml:"NewHardwareVersion"`
 	NewSpecVersion      string   `xml:"NewSpecVersion"`
 	NewProvisioningCode string   `xml:"NewProvisioningCode"`
-	NewUpTime           uint32   `xml:"NewUpTime"`
+	NewUpTime           uint64   `xml:"NewUpTime"`
 	NewDeviceLog        string   `xml:"NewDeviceLog"`
 }
 

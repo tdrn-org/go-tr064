@@ -19,8 +19,8 @@ type GetCommonLinkPropertiesRequest struct {
 type GetCommonLinkPropertiesResponse struct {
 	XMLName                       xml.Name `xml:"GetCommonLinkPropertiesResponse"`
 	NewWANAccessType              string   `xml:"NewWANAccessType"`
-	NewLayer1UpstreamMaxBitRate   uint32   `xml:"NewLayer1UpstreamMaxBitRate"`
-	NewLayer1DownstreamMaxBitRate uint32   `xml:"NewLayer1DownstreamMaxBitRate"`
+	NewLayer1UpstreamMaxBitRate   uint64   `xml:"NewLayer1UpstreamMaxBitRate"`
+	NewLayer1DownstreamMaxBitRate uint64   `xml:"NewLayer1DownstreamMaxBitRate"`
 	NewPhysicalLinkStatus         string   `xml:"NewPhysicalLinkStatus"`
 }
 
@@ -36,7 +36,7 @@ type GetTotalBytesSentRequest struct {
 
 type GetTotalBytesSentResponse struct {
 	XMLName           xml.Name `xml:"GetTotalBytesSentResponse"`
-	NewTotalBytesSent uint32   `xml:"NewTotalBytesSent"`
+	NewTotalBytesSent uint64   `xml:"NewTotalBytesSent"`
 }
 
 func (client *ServiceClient) GetTotalBytesSent(out *GetTotalBytesSentResponse) error {
@@ -51,7 +51,7 @@ type GetTotalBytesReceivedRequest struct {
 
 type GetTotalBytesReceivedResponse struct {
 	XMLName               xml.Name `xml:"GetTotalBytesReceivedResponse"`
-	NewTotalBytesReceived uint32   `xml:"NewTotalBytesReceived"`
+	NewTotalBytesReceived uint64   `xml:"NewTotalBytesReceived"`
 }
 
 func (client *ServiceClient) GetTotalBytesReceived(out *GetTotalBytesReceivedResponse) error {
@@ -66,7 +66,7 @@ type GetTotalPacketsSentRequest struct {
 
 type GetTotalPacketsSentResponse struct {
 	XMLName             xml.Name `xml:"GetTotalPacketsSentResponse"`
-	NewTotalPacketsSent uint32   `xml:"NewTotalPacketsSent"`
+	NewTotalPacketsSent uint64   `xml:"NewTotalPacketsSent"`
 }
 
 func (client *ServiceClient) GetTotalPacketsSent(out *GetTotalPacketsSentResponse) error {
@@ -81,7 +81,7 @@ type GetTotalPacketsReceivedRequest struct {
 
 type GetTotalPacketsReceivedResponse struct {
 	XMLName                 xml.Name `xml:"GetTotalPacketsReceivedResponse"`
-	NewTotalPacketsReceived uint32   `xml:"NewTotalPacketsReceived"`
+	NewTotalPacketsReceived uint64   `xml:"NewTotalPacketsReceived"`
 }
 
 func (client *ServiceClient) GetTotalPacketsReceived(out *GetTotalPacketsReceivedResponse) error {
@@ -96,14 +96,14 @@ type GetAddonInfosRequest struct {
 
 type GetAddonInfosResponse struct {
 	XMLName                                  xml.Name `xml:"GetAddonInfosResponse"`
-	NewByteSendRate                          uint32   `xml:"NewByteSendRate"`
-	NewByteReceiveRate                       uint32   `xml:"NewByteReceiveRate"`
-	NewPacketSendRate                        uint32   `xml:"NewPacketSendRate"`
-	NewPacketReceiveRate                     uint32   `xml:"NewPacketReceiveRate"`
-	NewTotalBytesSent                        uint32   `xml:"NewTotalBytesSent"`
-	NewTotalBytesReceived                    uint32   `xml:"NewTotalBytesReceived"`
-	NewAutoDisconnectTime                    uint32   `xml:"NewAutoDisconnectTime"`
-	NewIdleDisconnectTime                    uint32   `xml:"NewIdleDisconnectTime"`
+	NewByteSendRate                          uint64   `xml:"NewByteSendRate"`
+	NewByteReceiveRate                       uint64   `xml:"NewByteReceiveRate"`
+	NewPacketSendRate                        uint64   `xml:"NewPacketSendRate"`
+	NewPacketReceiveRate                     uint64   `xml:"NewPacketReceiveRate"`
+	NewTotalBytesSent                        uint64   `xml:"NewTotalBytesSent"`
+	NewTotalBytesReceived                    uint64   `xml:"NewTotalBytesReceived"`
+	NewAutoDisconnectTime                    uint64   `xml:"NewAutoDisconnectTime"`
+	NewIdleDisconnectTime                    uint64   `xml:"NewIdleDisconnectTime"`
 	NewDNSServer1                            string   `xml:"NewDNSServer1"`
 	NewDNSServer2                            string   `xml:"NewDNSServer2"`
 	NewVoipDNSServer1                        string   `xml:"NewVoipDNSServer1"`

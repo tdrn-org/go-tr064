@@ -46,7 +46,7 @@ func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
 type GetUSPControllerByIndexRequest struct {
 	XMLName      xml.Name `xml:"u:GetUSPControllerByIndexRequest"`
 	XMLNameSpace string   `xml:"xmlns:u,attr"`
-	NewIndex     uint32   `xml:"NewIndex"`
+	NewIndex     uint64   `xml:"NewIndex"`
 }
 
 type GetUSPControllerByIndexResponse struct {
@@ -83,7 +83,7 @@ type GetUSPControllerNumberOfEntriesRequest struct {
 
 type GetUSPControllerNumberOfEntriesResponse struct {
 	XMLName                         xml.Name `xml:"GetUSPControllerNumberOfEntriesResponse"`
-	NewUSPControllerNumberOfEntries uint32   `xml:"NewUSPControllerNumberOfEntries"`
+	NewUSPControllerNumberOfEntries uint64   `xml:"NewUSPControllerNumberOfEntries"`
 }
 
 func (client *ServiceClient) GetUSPControllerNumberOfEntries(out *GetUSPControllerNumberOfEntriesResponse) error {
@@ -117,7 +117,7 @@ type AddUSPControllerRequest struct {
 
 type AddUSPControllerResponse struct {
 	XMLName  xml.Name `xml:"AddUSPControllerResponse"`
-	NewIndex uint32   `xml:"NewIndex"`
+	NewIndex uint64   `xml:"NewIndex"`
 }
 
 func (client *ServiceClient) AddUSPController(in *AddUSPControllerRequest, out *AddUSPControllerResponse) error {
@@ -128,7 +128,7 @@ func (client *ServiceClient) AddUSPController(in *AddUSPControllerRequest, out *
 type DeleteUSPControllerByIndexRequest struct {
 	XMLName      xml.Name `xml:"u:DeleteUSPControllerByIndexRequest"`
 	XMLNameSpace string   `xml:"xmlns:u,attr"`
-	NewIndex     uint32   `xml:"NewIndex"`
+	NewIndex     uint64   `xml:"NewIndex"`
 }
 
 type DeleteUSPControllerByIndexResponse struct {
@@ -144,7 +144,7 @@ func (client *ServiceClient) DeleteUSPControllerByIndex(in *DeleteUSPControllerB
 type SetUSPControllerEnableByIndexRequest struct {
 	XMLName      xml.Name `xml:"u:SetUSPControllerEnableByIndexRequest"`
 	XMLNameSpace string   `xml:"xmlns:u,attr"`
-	NewIndex     uint32   `xml:"NewIndex"`
+	NewIndex     uint64   `xml:"NewIndex"`
 	NewEnable    bool     `xml:"NewEnable"`
 }
 

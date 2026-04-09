@@ -25,8 +25,8 @@ type GetInfoResponse struct {
 	NewATMEncapsulation       string   `xml:"NewATMEncapsulation"`
 	NewAutoConfig             bool     `xml:"NewAutoConfig"`
 	NewATMQoS                 string   `xml:"NewATMQoS"`
-	NewATMPeakCellRate        uint32   `xml:"NewATMPeakCellRate"`
-	NewATMSustainableCellRate uint32   `xml:"NewATMSustainableCellRate"`
+	NewATMPeakCellRate        uint64   `xml:"NewATMPeakCellRate"`
+	NewATMSustainableCellRate uint64   `xml:"NewATMSustainableCellRate"`
 }
 
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
@@ -166,10 +166,10 @@ type GetStatisticsRequest struct {
 
 type GetStatisticsResponse struct {
 	XMLName                 xml.Name `xml:"GetStatisticsResponse"`
-	NewATMTransmittedBlocks uint32   `xml:"NewATMTransmittedBlocks"`
-	NewATMReceivedBlocks    uint32   `xml:"NewATMReceivedBlocks"`
-	NewAAL5CRCErrors        uint32   `xml:"NewAAL5CRCErrors"`
-	NewATMCRCErrors         uint32   `xml:"NewATMCRCErrors"`
+	NewATMTransmittedBlocks uint64   `xml:"NewATMTransmittedBlocks"`
+	NewATMReceivedBlocks    uint64   `xml:"NewATMReceivedBlocks"`
+	NewAAL5CRCErrors        uint64   `xml:"NewAAL5CRCErrors"`
+	NewATMCRCErrors         uint64   `xml:"NewATMCRCErrors"`
 }
 
 func (client *ServiceClient) GetStatistics(out *GetStatisticsResponse) error {

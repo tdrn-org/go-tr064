@@ -24,7 +24,7 @@ type GetInfoResponse struct {
 	NewTAMRunning   bool     `xml:"NewTAMRunning"`
 	NewStick        uint16   `xml:"NewStick"`
 	NewStatus       uint16   `xml:"NewStatus"`
-	NewCapacity     uint32   `xml:"NewCapacity"`
+	NewCapacity     uint64   `xml:"NewCapacity"`
 	NewMode         string   `xml:"NewMode"`
 	NewRingSeconds  uint16   `xml:"NewRingSeconds"`
 	NewPhoneNumbers string   `xml:"NewPhoneNumbers"`

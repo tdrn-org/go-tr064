@@ -48,12 +48,12 @@ type GetGenericDeviceInfosResponse struct {
 	NewPresent                string   `xml:"NewPresent"`
 	NewMultimeterIsEnabled    string   `xml:"NewMultimeterIsEnabled"`
 	NewMultimeterIsValid      string   `xml:"NewMultimeterIsValid"`
-	NewMultimeterPower        uint32   `xml:"NewMultimeterPower"`
-	NewMultimeterEnergy       uint32   `xml:"NewMultimeterEnergy"`
+	NewMultimeterPower        uint64   `xml:"NewMultimeterPower"`
+	NewMultimeterEnergy       uint64   `xml:"NewMultimeterEnergy"`
 	NewTemperatureIsEnabled   string   `xml:"NewTemperatureIsEnabled"`
 	NewTemperatureIsValid     string   `xml:"NewTemperatureIsValid"`
-	NewTemperatureCelsius     int32    `xml:"NewTemperatureCelsius"`
-	NewTemperatureOffset      int32    `xml:"NewTemperatureOffset"`
+	NewTemperatureCelsius     int64    `xml:"NewTemperatureCelsius"`
+	NewTemperatureOffset      int64    `xml:"NewTemperatureOffset"`
 	NewSwitchIsEnabled        string   `xml:"NewSwitchIsEnabled"`
 	NewSwitchIsValid          string   `xml:"NewSwitchIsValid"`
 	NewSwitchState            string   `xml:"NewSwitchState"`
@@ -61,13 +61,13 @@ type GetGenericDeviceInfosResponse struct {
 	NewSwitchLock             bool     `xml:"NewSwitchLock"`
 	NewHkrIsEnabled           string   `xml:"NewHkrIsEnabled"`
 	NewHkrIsValid             string   `xml:"NewHkrIsValid"`
-	NewHkrIsTemperature       int32    `xml:"NewHkrIsTemperature"`
+	NewHkrIsTemperature       int64    `xml:"NewHkrIsTemperature"`
 	NewHkrSetVentilStatus     string   `xml:"NewHkrSetVentilStatus"`
-	NewHkrSetTemperature      int32    `xml:"NewHkrSetTemperature"`
+	NewHkrSetTemperature      int64    `xml:"NewHkrSetTemperature"`
 	NewHkrReduceVentilStatus  string   `xml:"NewHkrReduceVentilStatus"`
-	NewHkrReduceTemperature   int32    `xml:"NewHkrReduceTemperature"`
+	NewHkrReduceTemperature   int64    `xml:"NewHkrReduceTemperature"`
 	NewHkrComfortVentilStatus string   `xml:"NewHkrComfortVentilStatus"`
-	NewHkrComfortTemperature  int32    `xml:"NewHkrComfortTemperature"`
+	NewHkrComfortTemperature  int64    `xml:"NewHkrComfortTemperature"`
 }
 
 func (client *ServiceClient) GetGenericDeviceInfos(in *GetGenericDeviceInfosRequest, out *GetGenericDeviceInfosResponse) error {
@@ -92,12 +92,12 @@ type GetSpecificDeviceInfosResponse struct {
 	NewPresent                string   `xml:"NewPresent"`
 	NewMultimeterIsEnabled    string   `xml:"NewMultimeterIsEnabled"`
 	NewMultimeterIsValid      string   `xml:"NewMultimeterIsValid"`
-	NewMultimeterPower        uint32   `xml:"NewMultimeterPower"`
-	NewMultimeterEnergy       uint32   `xml:"NewMultimeterEnergy"`
+	NewMultimeterPower        uint64   `xml:"NewMultimeterPower"`
+	NewMultimeterEnergy       uint64   `xml:"NewMultimeterEnergy"`
 	NewTemperatureIsEnabled   string   `xml:"NewTemperatureIsEnabled"`
 	NewTemperatureIsValid     string   `xml:"NewTemperatureIsValid"`
-	NewTemperatureCelsius     int32    `xml:"NewTemperatureCelsius"`
-	NewTemperatureOffset      int32    `xml:"NewTemperatureOffset"`
+	NewTemperatureCelsius     int64    `xml:"NewTemperatureCelsius"`
+	NewTemperatureOffset      int64    `xml:"NewTemperatureOffset"`
 	NewSwitchIsEnabled        string   `xml:"NewSwitchIsEnabled"`
 	NewSwitchIsValid          string   `xml:"NewSwitchIsValid"`
 	NewSwitchState            string   `xml:"NewSwitchState"`
@@ -105,13 +105,13 @@ type GetSpecificDeviceInfosResponse struct {
 	NewSwitchLock             bool     `xml:"NewSwitchLock"`
 	NewHkrIsEnabled           string   `xml:"NewHkrIsEnabled"`
 	NewHkrIsValid             string   `xml:"NewHkrIsValid"`
-	NewHkrIsTemperature       int32    `xml:"NewHkrIsTemperature"`
+	NewHkrIsTemperature       int64    `xml:"NewHkrIsTemperature"`
 	NewHkrSetVentilStatus     string   `xml:"NewHkrSetVentilStatus"`
-	NewHkrSetTemperature      int32    `xml:"NewHkrSetTemperature"`
+	NewHkrSetTemperature      int64    `xml:"NewHkrSetTemperature"`
 	NewHkrReduceVentilStatus  string   `xml:"NewHkrReduceVentilStatus"`
-	NewHkrReduceTemperature   int32    `xml:"NewHkrReduceTemperature"`
+	NewHkrReduceTemperature   int64    `xml:"NewHkrReduceTemperature"`
 	NewHkrComfortVentilStatus string   `xml:"NewHkrComfortVentilStatus"`
-	NewHkrComfortTemperature  int32    `xml:"NewHkrComfortTemperature"`
+	NewHkrComfortTemperature  int64    `xml:"NewHkrComfortTemperature"`
 }
 
 func (client *ServiceClient) GetSpecificDeviceInfos(in *GetSpecificDeviceInfosRequest, out *GetSpecificDeviceInfosResponse) error {

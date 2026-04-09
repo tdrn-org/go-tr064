@@ -23,9 +23,9 @@ type GetInfoResponse struct {
 	NewEnableUdpBidirect bool     `xml:"NewEnableUdpBidirect"`
 	NewWANEnableTcp      bool     `xml:"NewWANEnableTcp"`
 	NewWANEnableUdp      bool     `xml:"NewWANEnableUdp"`
-	NewPortTcp           uint32   `xml:"NewPortTcp"`
-	NewPortUdp           uint32   `xml:"NewPortUdp"`
-	NewPortUdpBidirect   uint32   `xml:"NewPortUdpBidirect"`
+	NewPortTcp           uint64   `xml:"NewPortTcp"`
+	NewPortUdp           uint64   `xml:"NewPortUdp"`
+	NewPortUdpBidirect   uint64   `xml:"NewPortUdpBidirect"`
 }
 
 func (client *ServiceClient) GetInfo(out *GetInfoResponse) error {
@@ -60,12 +60,12 @@ type GetStatisticsRequest struct {
 
 type GetStatisticsResponse struct {
 	XMLName         xml.Name `xml:"GetStatisticsResponse"`
-	NewByteCount    uint32   `xml:"NewByteCount"`
-	NewKbitsCurrent uint32   `xml:"NewKbitsCurrent"`
-	NewKbitsAvg     uint32   `xml:"NewKbitsAvg"`
-	NewPacketCount  uint32   `xml:"NewPacketCount"`
-	NewPPSCurrent   uint32   `xml:"NewPPSCurrent"`
-	NewPPSAvg       uint32   `xml:"NewPPSAvg"`
+	NewByteCount    uint64   `xml:"NewByteCount"`
+	NewKbitsCurrent uint64   `xml:"NewKbitsCurrent"`
+	NewKbitsAvg     uint64   `xml:"NewKbitsAvg"`
+	NewPacketCount  uint64   `xml:"NewPacketCount"`
+	NewPPSCurrent   uint64   `xml:"NewPPSCurrent"`
+	NewPPSAvg       uint64   `xml:"NewPPSAvg"`
 }
 
 func (client *ServiceClient) GetStatistics(out *GetStatisticsResponse) error {

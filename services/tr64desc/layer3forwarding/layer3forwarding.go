@@ -67,7 +67,7 @@ type AddForwardingEntryRequest struct {
 	NewSourceSubnetMask string   `xml:"NewSourceSubnetMask"`
 	NewGatewayIPAddress string   `xml:"NewGatewayIPAddress"`
 	NewInterface        string   `xml:"NewInterface"`
-	NewForwardingMetric int32    `xml:"NewForwardingMetric"`
+	NewForwardingMetric int64    `xml:"NewForwardingMetric"`
 }
 
 type AddForwardingEntryResponse struct {
@@ -115,7 +115,7 @@ type GetSpecificForwardingEntryResponse struct {
 	NewStatus           string   `xml:"NewStatus"`
 	NewType             string   `xml:"NewType"`
 	NewInterface        string   `xml:"NewInterface"`
-	NewForwardingMetric int32    `xml:"NewForwardingMetric"`
+	NewForwardingMetric int64    `xml:"NewForwardingMetric"`
 }
 
 func (client *ServiceClient) GetSpecificForwardingEntry(in *GetSpecificForwardingEntryRequest, out *GetSpecificForwardingEntryResponse) error {
@@ -140,7 +140,7 @@ type GetGenericForwardingEntryResponse struct {
 	NewSourceSubnetMask string   `xml:"NewSourceSubnetMask"`
 	NewGatewayIPAddress string   `xml:"NewGatewayIPAddress"`
 	NewInterface        string   `xml:"NewInterface"`
-	NewForwardingMetric int32    `xml:"NewForwardingMetric"`
+	NewForwardingMetric int64    `xml:"NewForwardingMetric"`
 }
 
 func (client *ServiceClient) GetGenericForwardingEntry(in *GetGenericForwardingEntryRequest, out *GetGenericForwardingEntryResponse) error {

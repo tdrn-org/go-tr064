@@ -21,14 +21,14 @@ type GetInfoResponse struct {
 	NewEnable                bool     `xml:"NewEnable"`
 	NewStatus                string   `xml:"NewStatus"`
 	NewDataPath              string   `xml:"NewDataPath"`
-	NewUpstreamCurrRate      int32    `xml:"NewUpstreamCurrRate"`
-	NewDownstreamCurrRate    uint32   `xml:"NewDownstreamCurrRate"`
-	NewUpstreamMaxRate       uint32   `xml:"NewUpstreamMaxRate"`
-	NewDownstreamMaxRate     uint32   `xml:"NewDownstreamMaxRate"`
-	NewUpstreamNoiseMargin   uint32   `xml:"NewUpstreamNoiseMargin"`
-	NewDownstreamNoiseMargin uint32   `xml:"NewDownstreamNoiseMargin"`
-	NewUpstreamAttenuation   uint32   `xml:"NewUpstreamAttenuation"`
-	NewDownstreamAttenuation uint32   `xml:"NewDownstreamAttenuation"`
+	NewUpstreamCurrRate      int64    `xml:"NewUpstreamCurrRate"`
+	NewDownstreamCurrRate    uint64   `xml:"NewDownstreamCurrRate"`
+	NewUpstreamMaxRate       uint64   `xml:"NewUpstreamMaxRate"`
+	NewDownstreamMaxRate     uint64   `xml:"NewDownstreamMaxRate"`
+	NewUpstreamNoiseMargin   uint64   `xml:"NewUpstreamNoiseMargin"`
+	NewDownstreamNoiseMargin uint64   `xml:"NewDownstreamNoiseMargin"`
+	NewUpstreamAttenuation   uint64   `xml:"NewUpstreamAttenuation"`
+	NewDownstreamAttenuation uint64   `xml:"NewDownstreamAttenuation"`
 	NewATURVendor            string   `xml:"NewATURVendor"`
 	NewATURCountry           string   `xml:"NewATURCountry"`
 	NewUpstreamPower         uint16   `xml:"NewUpstreamPower"`
@@ -47,21 +47,21 @@ type GetStatisticsTotalRequest struct {
 
 type GetStatisticsTotalResponse struct {
 	XMLName                xml.Name `xml:"GetStatisticsTotalResponse"`
-	NewReceiveBlocks       uint32   `xml:"NewReceiveBlocks"`
-	NewTransmitBlocks      uint32   `xml:"NewTransmitBlocks"`
-	NewCellDelin           uint32   `xml:"NewCellDelin"`
-	NewLinkRetrain         uint32   `xml:"NewLinkRetrain"`
-	NewInitErrors          uint32   `xml:"NewInitErrors"`
-	NewInitTimeouts        uint32   `xml:"NewInitTimeouts"`
-	NewLossOfFraming       uint32   `xml:"NewLossOfFraming"`
-	NewErroredSecs         uint32   `xml:"NewErroredSecs"`
-	NewSeverelyErroredSecs uint32   `xml:"NewSeverelyErroredSecs"`
-	NewFECErrors           uint32   `xml:"NewFECErrors"`
-	NewATUCFECErrors       uint32   `xml:"NewATUCFECErrors"`
-	NewHECErrors           uint32   `xml:"NewHECErrors"`
-	NewATUCHECErrors       uint32   `xml:"NewATUCHECErrors"`
-	NewCRCErrors           uint32   `xml:"NewCRCErrors"`
-	NewATUCCRCErrors       uint32   `xml:"NewATUCCRCErrors"`
+	NewReceiveBlocks       uint64   `xml:"NewReceiveBlocks"`
+	NewTransmitBlocks      uint64   `xml:"NewTransmitBlocks"`
+	NewCellDelin           uint64   `xml:"NewCellDelin"`
+	NewLinkRetrain         uint64   `xml:"NewLinkRetrain"`
+	NewInitErrors          uint64   `xml:"NewInitErrors"`
+	NewInitTimeouts        uint64   `xml:"NewInitTimeouts"`
+	NewLossOfFraming       uint64   `xml:"NewLossOfFraming"`
+	NewErroredSecs         uint64   `xml:"NewErroredSecs"`
+	NewSeverelyErroredSecs uint64   `xml:"NewSeverelyErroredSecs"`
+	NewFECErrors           uint64   `xml:"NewFECErrors"`
+	NewATUCFECErrors       uint64   `xml:"NewATUCFECErrors"`
+	NewHECErrors           uint64   `xml:"NewHECErrors"`
+	NewATUCHECErrors       uint64   `xml:"NewATUCHECErrors"`
+	NewCRCErrors           uint64   `xml:"NewCRCErrors"`
+	NewATUCCRCErrors       uint64   `xml:"NewATUCCRCErrors"`
 }
 
 func (client *ServiceClient) GetStatisticsTotal(out *GetStatisticsTotalResponse) error {
@@ -77,9 +77,9 @@ type X_AVM_DE_GetDSLDiagnoseInfoRequest struct {
 type X_AVM_DE_GetDSLDiagnoseInfoResponse struct {
 	XMLName                         xml.Name `xml:"X_AVM-DE_GetDSLDiagnoseInfoResponse"`
 	NewX_AVM_DE_DSLDiagnoseState    string   `xml:"NewX_AVM-DE_DSLDiagnoseState"`
-	NewX_AVM_DE_CableNokDistance    int32    `xml:"NewX_AVM-DE_CableNokDistance"`
-	NewX_AVM_DE_DSLLastDiagnoseTime uint32   `xml:"NewX_AVM-DE_DSLLastDiagnoseTime"`
-	NewX_AVM_DE_DSLSignalLossTime   uint32   `xml:"NewX_AVM-DE_DSLSignalLossTime"`
+	NewX_AVM_DE_CableNokDistance    int64    `xml:"NewX_AVM-DE_CableNokDistance"`
+	NewX_AVM_DE_DSLLastDiagnoseTime uint64   `xml:"NewX_AVM-DE_DSLLastDiagnoseTime"`
+	NewX_AVM_DE_DSLSignalLossTime   uint64   `xml:"NewX_AVM-DE_DSLSignalLossTime"`
 	NewX_AVM_DE_DSLActive           bool     `xml:"NewX_AVM-DE_DSLActive"`
 	NewX_AVM_DE_DSLSync             bool     `xml:"NewX_AVM-DE_DSLSync"`
 }
@@ -96,27 +96,27 @@ type X_AVM_DE_GetDSLInfoRequest struct {
 
 type X_AVM_DE_GetDSLInfoResponse struct {
 	XMLName                  xml.Name `xml:"X_AVM-DE_GetDSLInfoResponse"`
-	NewSNRGds                uint32   `xml:"NewSNRGds"`
-	NewSNRGus                uint32   `xml:"NewSNRGus"`
+	NewSNRGds                uint64   `xml:"NewSNRGds"`
+	NewSNRGus                uint64   `xml:"NewSNRGus"`
 	NewSNRpsds               string   `xml:"NewSNRpsds"`
 	NewSNRpsus               string   `xml:"NewSNRpsus"`
-	NewSNRMTds               uint32   `xml:"NewSNRMTds"`
-	NewSNRMTus               uint32   `xml:"NewSNRMTus"`
+	NewSNRMTds               uint64   `xml:"NewSNRMTds"`
+	NewSNRMTus               uint64   `xml:"NewSNRMTus"`
 	NewLATNds                string   `xml:"NewLATNds"`
 	NewLATNus                string   `xml:"NewLATNus"`
-	NewFECErrors             uint32   `xml:"NewFECErrors"`
-	NewCRCErrors             uint32   `xml:"NewCRCErrors"`
+	NewFECErrors             uint64   `xml:"NewFECErrors"`
+	NewCRCErrors             uint64   `xml:"NewCRCErrors"`
 	NewLinkStatus            string   `xml:"NewLinkStatus"`
 	NewModulationType        string   `xml:"NewModulationType"`
 	NewCurrentProfile        string   `xml:"NewCurrentProfile"`
-	NewUpstreamCurrRate      int32    `xml:"NewUpstreamCurrRate"`
-	NewDownstreamCurrRate    uint32   `xml:"NewDownstreamCurrRate"`
-	NewUpstreamMaxRate       uint32   `xml:"NewUpstreamMaxRate"`
-	NewDownstreamMaxRate     uint32   `xml:"NewDownstreamMaxRate"`
-	NewUpstreamNoiseMargin   uint32   `xml:"NewUpstreamNoiseMargin"`
-	NewDownstreamNoiseMargin uint32   `xml:"NewDownstreamNoiseMargin"`
-	NewUpstreamAttenuation   uint32   `xml:"NewUpstreamAttenuation"`
-	NewDownstreamAttenuation uint32   `xml:"NewDownstreamAttenuation"`
+	NewUpstreamCurrRate      int64    `xml:"NewUpstreamCurrRate"`
+	NewDownstreamCurrRate    uint64   `xml:"NewDownstreamCurrRate"`
+	NewUpstreamMaxRate       uint64   `xml:"NewUpstreamMaxRate"`
+	NewDownstreamMaxRate     uint64   `xml:"NewDownstreamMaxRate"`
+	NewUpstreamNoiseMargin   uint64   `xml:"NewUpstreamNoiseMargin"`
+	NewDownstreamNoiseMargin uint64   `xml:"NewDownstreamNoiseMargin"`
+	NewUpstreamAttenuation   uint64   `xml:"NewUpstreamAttenuation"`
+	NewDownstreamAttenuation uint64   `xml:"NewDownstreamAttenuation"`
 	NewATURVendor            string   `xml:"NewATURVendor"`
 	NewATURCountry           string   `xml:"NewATURCountry"`
 	NewUpstreamPower         uint16   `xml:"NewUpstreamPower"`

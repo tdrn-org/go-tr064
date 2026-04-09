@@ -39,7 +39,7 @@ type GetOutboundPinholeTimeoutRequest struct {
 
 type GetOutboundPinholeTimeoutResponse struct {
 	XMLName                xml.Name `xml:"GetOutboundPinholeTimeoutResponse"`
-	OutboundPinholeTimeout uint32   `xml:"OutboundPinholeTimeout"`
+	OutboundPinholeTimeout uint64   `xml:"OutboundPinholeTimeout"`
 }
 
 func (client *ServiceClient) GetOutboundPinholeTimeout(in *GetOutboundPinholeTimeoutRequest, out *GetOutboundPinholeTimeoutResponse) error {
@@ -55,7 +55,7 @@ type AddPinholeRequest struct {
 	InternalClient string   `xml:"InternalClient"`
 	InternalPort   uint16   `xml:"InternalPort"`
 	Protocol       uint16   `xml:"Protocol"`
-	LeaseTime      uint32   `xml:"LeaseTime"`
+	LeaseTime      uint64   `xml:"LeaseTime"`
 }
 
 type AddPinholeResponse struct {
@@ -72,7 +72,7 @@ type UpdatePinholeRequest struct {
 	XMLName      xml.Name `xml:"u:UpdatePinholeRequest"`
 	XMLNameSpace string   `xml:"xmlns:u,attr"`
 	UniqueID     uint16   `xml:"UniqueID"`
-	NewLeaseTime uint32   `xml:"NewLeaseTime"`
+	NewLeaseTime uint64   `xml:"NewLeaseTime"`
 }
 
 type UpdatePinholeResponse struct {
@@ -109,7 +109,7 @@ type GetPinholePacketsRequest struct {
 
 type GetPinholePacketsResponse struct {
 	XMLName        xml.Name `xml:"GetPinholePacketsResponse"`
-	PinholePackets uint32   `xml:"PinholePackets"`
+	PinholePackets uint64   `xml:"PinholePackets"`
 }
 
 func (client *ServiceClient) GetPinholePackets(in *GetPinholePacketsRequest, out *GetPinholePacketsResponse) error {
