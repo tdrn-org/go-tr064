@@ -87,6 +87,14 @@ func TestDeviceConfig(t *testing.T) {
 		in := &deviceconfig.X_AVM_DE_SetSupportDataEnableRequest{}
 		require.NoError(t, serviceClient.X_AVM_DE_SetSupportDataEnable(in))
 	}
+	{
+		in := &deviceconfig.X_AVM_DE_SetUserAgreementRequest{}
+		require.NoError(t, serviceClient.X_AVM_DE_SetUserAgreement(in))
+	}
+	{
+		out := &deviceconfig.X_AVM_DE_GetUserAgreementResponse{}
+		require.NoError(t, serviceClient.X_AVM_DE_GetUserAgreement(out))
+	}
 }
 
 func deviceconfigHandler(w http.ResponseWriter, req *http.Request) {
@@ -125,6 +133,10 @@ func deviceconfigHandler(w http.ResponseWriter, req *http.Request) {
 		deviceconfig_X_AVM_DE_GetSupportDataEnable(w)
 	case "X_AVM-DE_SetSupportDataEnable":
 		deviceconfig_X_AVM_DE_SetSupportDataEnable(w)
+	case "X_AVM-DE_SetUserAgreement":
+		deviceconfig_X_AVM_DE_SetUserAgreement(w)
+	case "X_AVM-DE_GetUserAgreement":
+		deviceconfig_X_AVM_DE_GetUserAgreement(w)
 
 	default:
 		log.Println("Unknown action: ", action)
@@ -238,6 +250,22 @@ func deviceconfig_X_AVM_DE_GetSupportDataEnable(w http.ResponseWriter) {
 
 func deviceconfig_X_AVM_DE_SetSupportDataEnable(w http.ResponseWriter) {
 	out := deviceconfig.X_AVM_DE_SetSupportDataEnableResponse{}
+	err := mock.WriteSoapResponse(w, out)
+	if err != nil {
+		log.Println(err)
+	}
+}
+
+func deviceconfig_X_AVM_DE_SetUserAgreement(w http.ResponseWriter) {
+	out := deviceconfig.X_AVM_DE_SetUserAgreementResponse{}
+	err := mock.WriteSoapResponse(w, out)
+	if err != nil {
+		log.Println(err)
+	}
+}
+
+func deviceconfig_X_AVM_DE_GetUserAgreement(w http.ResponseWriter) {
+	out := deviceconfig.X_AVM_DE_GetUserAgreementResponse{}
 	err := mock.WriteSoapResponse(w, out)
 	if err != nil {
 		log.Println(err)

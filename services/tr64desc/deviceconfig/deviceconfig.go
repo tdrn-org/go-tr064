@@ -231,3 +231,36 @@ func (client *ServiceClient) X_AVM_DE_SetSupportDataEnable(in *X_AVM_DE_SetSuppo
 	out := &X_AVM_DE_SetSupportDataEnableResponse{}
 	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetSupportDataEnable", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
 }
+
+type X_AVM_DE_SetUserAgreementRequest struct {
+	XMLName                xml.Name `xml:"u:X_AVM-DE_SetUserAgreementRequest"`
+	XMLNameSpace           string   `xml:"xmlns:u,attr"`
+	NewX_AVM_DE_UserAgreed string   `xml:"NewX_AVM-DE_UserAgreed"`
+}
+
+type X_AVM_DE_SetUserAgreementResponse struct {
+	XMLName xml.Name `xml:"X_AVM-DE_SetUserAgreementResponse"`
+}
+
+func (client *ServiceClient) X_AVM_DE_SetUserAgreement(in *X_AVM_DE_SetUserAgreementRequest) error {
+	in.XMLNameSpace = client.Service.Type()
+	out := &X_AVM_DE_SetUserAgreementResponse{}
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_SetUserAgreement", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
+}
+
+type X_AVM_DE_GetUserAgreementRequest struct {
+	XMLName      xml.Name `xml:"u:X_AVM-DE_GetUserAgreementRequest"`
+	XMLNameSpace string   `xml:"xmlns:u,attr"`
+}
+
+type X_AVM_DE_GetUserAgreementResponse struct {
+	XMLName                       xml.Name `xml:"X_AVM-DE_GetUserAgreementResponse"`
+	NewX_AVM_DE_UserAgreed        string   `xml:"NewX_AVM-DE_UserAgreed"`
+	NewX_AVM_DE_TermsOfUseVersion uint64   `xml:"NewX_AVM-DE_TermsOfUseVersion"`
+	NewX_AVM_DE_TermsOfUsePath    string   `xml:"NewX_AVM-DE_TermsOfUsePath"`
+}
+
+func (client *ServiceClient) X_AVM_DE_GetUserAgreement(out *X_AVM_DE_GetUserAgreementResponse) error {
+	in := &X_AVM_DE_GetUserAgreementRequest{XMLNameSpace: client.Service.Type()}
+	return client.TR064Client.InvokeService(client.Service, "X_AVM-DE_GetUserAgreement", tr064.NewSOAPRequest(in), tr064.NewSOAPResponse(out))
+}

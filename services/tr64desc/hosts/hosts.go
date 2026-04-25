@@ -202,6 +202,7 @@ type X_AVM_DE_GetSpecificHostEntryByIPResponse struct {
 	NewX_AVM_DE_FriendlyName            string   `xml:"NewX_AVM-DE_FriendlyName"`
 	NewX_AVM_DE_FriendlyNameIsWriteable bool     `xml:"NewX_AVM-DE_FriendlyNameIsWriteable"`
 	NewX_AVM_DE_FilterProfileID         string   `xml:"NewX_AVM-DE_FilterProfileID"`
+	NewX_AVM_DE_HostFilterEditHide      bool     `xml:"NewX_AVM-DE_HostFilterEditHide"`
 	NewX_AVM_DE_AddTicketAvailable      bool     `xml:"NewX_AVM-DE_AddTicketAvailable"`
 }
 
